@@ -1,0 +1,90 @@
+name: myrpg
+
+env:
+  MIRROR_URL: "git@github.com:EpitechPromo2028/B-MUL-200-MLH-2-1-myrpg-corentin.bergaentzle.git"
+  EXECUTABLES: "myrpg"
+
+on:
+  push:
+    branches-ignore:
+      - "ga-ignore-*"
+  pull_request:
+    branches-ignore:
+      - "ga-ignore-*"
+
+jobs:
+    check_coding_style:
+      name: "Check the coding style of the repository"
+      if : ${{ github.repository != 'EpitechPromo2028/B-MUL-200-MLH-2-1-myrpg-corentin.bergaentzle'}}
+      runs-on: ubuntu-latest
+      container: ghcr.io/epitech/coding-style-checker:latest
+      steps:
+        - name: "Get files of the repository"
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+
+        - name: "Execute the coding style checker program"
+          run: check.sh $(pwd) $(pwd)
+
+        - name: "Create error annotations"
+          run: |
+            FILE_CONTENT=$(cat $(pwd)/coding-style-reports.log)
+            OLDIFS=$IFS
+            IFS=$'\n'
+            for ERROR in $FILE_CONTENT; do
+                file=$(echo "$ERROR" | cut -d ':' -f 1)
+                line=$(echo "$ERROR" | cut -d ':' -f 2)
+                error_type=$(echo "$ERROR" | cut -d ':' -f 3)
+                error_id=$(echo "$ERROR" | cut -d ':' -f 4)
+                echo "::error file=$file, line=$line, title=$error_type coding style error::$error_id"
+            done
+            IFS=$OLDIFS
+            if [[ -n $FILE_CONTENT ]]; then
+                exit 1
+            else
+                echo "No coding style errors"
+            fi
+
+
+    check_program_compilation:
+      name: "Check if the program can build without error"
+      needs: check_coding_style
+      runs-on: ubuntu-latest
+      container: epitechcontent/epitest-docker:latest
+      timeout-minutes: 2
+      steps:
+        - name: "Get files of the repository"
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+
+        - name: "Compile the program"
+          run: make
+
+        - name: "Clean the repository"
+          run: make clean
+
+        - name: "Check if all binaries are present"
+          run: |
+            OLDIFS=$IFS
+            IFS=","
+            for binary in $EXECUTABLES;
+            do
+              ./$binary
+            done
+            IFS=$OLDIFS
+
+    push_to_mirror:
+      name: "Push the actual repository in the mirror repository"
+      needs: check_program_compilation
+      runs-on: ubuntu-latest
+      if : ${{ github.event_name == 'push' }}
+      steps:
+          - uses: actions/checkout@v4
+            with:
+              fetch-depth: 0
+          - uses: pixta-dev/repository-mirroring-action@v1
+            with:
+              target_repo_url: ${{ env.MIRROR_URL }}
+              ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
