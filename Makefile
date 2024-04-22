@@ -13,7 +13,7 @@ OBJ		=	$(SRC:.c=.o)
 
 CSFML_FLAGS    = -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 
-CFLAGS += -g
+CFLAGS += -Werror -Wall -Wextra -g
 
 MAC_INCLUDES    =	-I/opt/homebrew/Cellar/csfml/2.5.2_1/include     \
                 	-L/opt/homebrew/Cellar/csfml/2.5.2_1/lib
