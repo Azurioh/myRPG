@@ -32,4 +32,3 @@ int increase_sound_volume(game_t *game_info);
 int decrease_music_volume(game_t *game_info);
 int decrease_sound_volume(game_t *game_info);
 #endif
-

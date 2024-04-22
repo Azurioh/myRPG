@@ -32,4 +32,3 @@ typedef struct player_s {
 } player_t;
 
 #endif
-
