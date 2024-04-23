@@ -71,7 +71,7 @@ jobs:
             IFS=","
             for binary in $EXECUTABLES;
             do
-              if ![ -f ./$binary ]; then
+              if [[ ! -f ./$binary ]]; then
                 exit 1
               fi
             done
