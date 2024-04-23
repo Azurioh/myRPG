@@ -29,9 +29,9 @@ skills_t **init_player_skills(void)
     if (!player_skills) {
         return NULL;
     }
-    player_skills[0] = init_skill("Hache du Viking", 0, 0, 4);
-    player_skills[1] = init_skill("Lancer de hache", 0, 0, 3);
-    player_skills[2] = init_skill("Hydromel", 0, 0, 2);
-    player_skills[3] = init_skill("Rage du viking", 0, 0, 1);
+    player_skills[0] = init_skill(strdup("Hache du Viking"), 0, 0, 4);
+    player_skills[1] = init_skill(strdup("Lancer de hache"), 0, 0, 3);
+    player_skills[2] = init_skill(strdup("Hydromel"), 0, 0, 2);
+    player_skills[3] = init_skill(strdup("Rage du viking"), 0, 0, 1);
     return player_skills;
 }
