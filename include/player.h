@@ -12,7 +12,9 @@
 typedef struct skills_s {
     char *name;
     int level;
+    int unlocked;
     int max_level;
+    int is_max_level;
 } skills_t;
 
 typedef struct player_interface_s {
@@ -25,10 +27,20 @@ typedef struct player_interface_s {
 
 typedef struct player_s {
     int life;
+    int is_alive;
+    int nb_dead;
     int experience;
     int level;
-    skills_t *skills;
+    int nb_skills_to_upgrade;
+    skills_t **skills;
     player_interface_t *interface;
 } player_t;
 
+player_t *init_player(void);
+skills_t **init_player_skills(void);
+
+int update_player_experience(player_t *player, unsigned int amount);
+int update_skill(player_t *player, unsigned int skill_index);
+int increase_player_life(player_t *player, unsigned int amount);
+int decrease_player_life(player_t *player, unsigned int amount);
 #endif
