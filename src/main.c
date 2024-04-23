@@ -5,7 +5,9 @@
 ** Main function to start the program
 */
 
+#include "../include/myrpg.h"
+
 int main(void)
 {
-    return 0;
+    return start_game();
 }
