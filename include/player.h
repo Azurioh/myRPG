@@ -8,6 +8,7 @@
 #ifndef PLAYER_H
     #define PLAYER_H
     #include <SFML/Graphics.h>
+    #include <string.h>
 
 typedef struct skills_s {
     char *name;
@@ -38,6 +39,7 @@ typedef struct player_s {
 
 player_t *init_player(void);
 skills_t **init_player_skills(void);
+void free_player(player_t *player);
 
 int update_player_experience(player_t *player, unsigned int amount);
 int update_skill(player_t *player, unsigned int skill_index);
