@@ -53,3 +53,5 @@ dkms.conf
 
 *.log
 *.vgcore
+.DS_Store
+.vscode
