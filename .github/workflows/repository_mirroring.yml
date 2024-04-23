@@ -71,7 +71,8 @@ jobs:
             IFS=","
             for binary in $EXECUTABLES;
             do
-              ./$binary
+              if ![ -f ./$binary ]; then
+              exit 1;
             done
             IFS=$OLDIFS
 
