@@ -16,9 +16,10 @@ int game_loop(myrpg_t *myrpg)
         if (game_info->event.type == sfEvtClosed) {
             return -1;
         }
+        EVENTS->events[EVENTS->actual_event]->event_function(myrpg);
     }
     sfRenderWindow_clear(game_info->window, sfBlack);
-    display_main_menu(myrpg);
+    EVENTS->events[EVENTS->actual_event]->display_function(myrpg);
     sfRenderWindow_display(game_info->window);
     return 0;
 }
