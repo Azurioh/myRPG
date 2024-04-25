@@ -28,23 +28,37 @@ char *name_and_level(myrpg_t *myrpg)
     return player;
 }
 
+char *upgrade_text(myrpg_t *myrpg)
+{
+    char *upgrade = strdup("Nombre d'ameliorations disponibles : ");
+
+    strcat(upgrade, nbr_to_str(myrpg->player->nb_skills_to_upgrade));
+    return upgrade;
+}
+
 void display_hud(myrpg_t *myrpg)
 {
     sfRenderWindow *window = myrpg->game_info->window;
 
     myrpg->player->experience = 50;
-    myrpg->player->life = 90;
-    myrpg->player->level = 69;
+    myrpg->player->life = 8;
+    myrpg->player->level = 6;
     myrpg->can_interact = 1;
-    sfRenderWindow_drawSprite(window, myrpg->hud->profile->sprite, NULL);
+    myrpg->player->nb_skills_to_upgrade = 0012;
     change_percentage(myrpg->hud->life->sprite, myrpg->player->life);
     change_percentage(myrpg->hud->exp->sprite, myrpg->player->experience);
+    sfText_setString(myrpg->hud->name, name_and_level(myrpg));
+    sfRenderWindow_drawSprite(window, myrpg->hud->profile->sprite, NULL);
     sfRenderWindow_drawSprite(window, myrpg->hud->life->sprite, NULL);
     sfRenderWindow_drawSprite(window, myrpg->hud->exp->sprite, NULL);
-    sfText_setString(myrpg->hud->name, name_and_level(myrpg));
     sfRenderWindow_drawText(window, myrpg->hud->name, NULL);
     sfRenderWindow_drawSprite(window, myrpg->hud->inventory->sprite, NULL);
+    sfRenderWindow_drawText(window, myrpg->hud->act_text, NULL);
+    if (myrpg->player->nb_skills_to_upgrade > 0) {
+        sfText_setString(myrpg->hud->skill_text, upgrade_text(myrpg));
+        sfRenderWindow_drawSprite(window, myrpg->hud->skill->sprite, NULL);
+        sfRenderWindow_drawText(window, myrpg->hud->skill_text, NULL);
+    }
     if (myrpg->can_interact == 1)
         sfRenderWindow_drawText(window, myrpg->hud->action, NULL);
-    sfRenderWindow_drawText(window, myrpg->hud->act_text, NULL);
 }
