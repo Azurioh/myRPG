@@ -51,6 +51,6 @@ int decrease_music_volume(game_t *game_info)
     if (game_info->music_volume == 0) {
         return 0;
     }
-    game_info->music_volume += 10;
+    game_info->music_volume -= 10;
     return 0;
 }
