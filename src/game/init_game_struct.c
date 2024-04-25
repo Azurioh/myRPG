@@ -48,6 +48,7 @@ game_t *init_game_struct(void)
     game_info->framerate_list = get_framerate_list();
     game_info->scaling = (sfVector2f){1, 1};
     game_info->window_size_list = get_window_size_list();
+    game_info->window = NULL;
     init_window(game_info);
     return game_info;
 }
