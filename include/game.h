@@ -8,6 +8,7 @@
 #ifndef GAME_H
     #define GAME_H
     #include <SFML/Graphics.h>
+    #include <SFML/Graphics/Types.h>
     #include "button.h"
 
 typedef struct game_s {
@@ -15,6 +16,10 @@ typedef struct game_s {
     sfVideoMode *window_size_list;
     sfVector2f scaling;
     sfEvent event;
+    sfSprite *player;
+    sfSprite *map;
+    sfSprite *undermap;
+    sfView *map_view;
     int actual_window_size;
     unsigned int *framerate_list;
     int actual_framerate;
