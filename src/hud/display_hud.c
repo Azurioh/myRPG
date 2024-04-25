@@ -35,6 +35,7 @@ void display_hud(myrpg_t *myrpg)
     myrpg->player->experience = 50;
     myrpg->player->life = 90;
     myrpg->player->level = 69;
+    myrpg->can_interact = 1;
     sfRenderWindow_drawSprite(window, myrpg->hud->profile->sprite, NULL);
     change_percentage(myrpg->hud->life->sprite, myrpg->player->life);
     change_percentage(myrpg->hud->exp->sprite, myrpg->player->experience);
@@ -43,6 +44,7 @@ void display_hud(myrpg_t *myrpg)
     sfText_setString(myrpg->hud->name, name_and_level(myrpg));
     sfRenderWindow_drawText(window, myrpg->hud->name, NULL);
     sfRenderWindow_drawSprite(window, myrpg->hud->inventory->sprite, NULL);
-    sfRenderWindow_drawSprite(window, myrpg->hud->action->sprite, NULL);
+    if (myrpg->can_interact == 1)
+        sfRenderWindow_drawText(window, myrpg->hud->action, NULL);
     sfRenderWindow_drawText(window, myrpg->hud->act_text, NULL);
 }

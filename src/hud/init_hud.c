@@ -40,8 +40,8 @@ hud_t *init_hud(char *name)
     hud->exp = create_imagefile("assets/hud/level.png", 148, 96, 2);
     hud->life = create_imagefile("assets/hud/life.png", 148, 56, 2);
     hud->inventory = create_imagefile("assets/hud/bag.png", 1800, 400, 2);
-    hud->action = create_imagefile("assets/hud/action.png", 990, 400, 1);
     hud->font = sfFont_createFromFile("assets/font/alagard.ttf");
+    hud->action = create_text("F", 48, (sfVector2f){1050, 450}, hud->font);
     hud->name = create_text(name, 32, (sfVector2f){130, 6}, hud->font);
     hud->act_text = create_text("E", 48, (sfVector2f){1840, 500}, hud->font);
     return hud;

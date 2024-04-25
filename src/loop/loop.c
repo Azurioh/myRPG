@@ -17,10 +17,9 @@ int game_loop(myrpg_t *myrpg)
             return -1;
         }
     }
+    display_main_menu(myrpg);
     sfRenderWindow_clear(game_info->window, sfWhite);
     display_hud(myrpg);
-    sfRenderWindow_clear(game_info->window, sfBlack);
-    display_main_menu(myrpg);
     sfRenderWindow_display(game_info->window);
     return 0;
 }

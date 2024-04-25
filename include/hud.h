@@ -21,10 +21,10 @@ typedef struct hud_s {
     image_t *life;
     image_t *exp;
     image_t *skill_to_up;
-    image_t *action;
+    sfFont *font;
+    sfText *action;
     sfText *name;
     sfText *act_text;
-    sfFont *font;
 } hud_t;
 
 hud_t *init_hud(char *name);

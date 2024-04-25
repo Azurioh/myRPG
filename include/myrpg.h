@@ -25,6 +25,7 @@ typedef struct myrpg_s {
     sfSprite *background;
     button_t **buttons;
     hud_t *hud;
+    int can_interact;
 } myrpg_t;
 
 int start_game(void);
