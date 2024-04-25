@@ -2,7 +2,7 @@ name: myrpg
 
 env:
   MIRROR_URL: "git@github.com:EpitechPromo2028/B-MUL-200-MLH-2-1-myrpg-corentin.bergaentzle.git"
-  EXECUTABLES: "myrpg"
+  EXECUTABLES: "my_rpg"
 
 on:
   push:
@@ -71,7 +71,9 @@ jobs:
             IFS=","
             for binary in $EXECUTABLES;
             do
-              ./$binary
+              if [[ ! -f ./$binary ]]; then
+                exit 1
+              fi
             done
             IFS=$OLDIFS
 
