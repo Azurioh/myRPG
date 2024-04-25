@@ -8,6 +8,7 @@
 #ifndef MYRPG_H
     #define MYRPG_H
     #include <SFML/Graphics.h>
+    #include <SFML/Graphics/Types.h>
     #include <stdlib.h>
     #include <stdio.h>
 
@@ -16,6 +17,7 @@
     #include "button.h"
     #include "events.h"
     #include "generation.h"
+    #include "move.h"
 
 typedef struct myrpg_s {
     player_t *player;
