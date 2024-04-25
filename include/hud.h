@@ -16,12 +16,13 @@ typedef struct image_s {
 } image_t;
 
 typedef struct hud_s {
+    sfFont *font;
     image_t *inventory;
     image_t *profile;
     image_t *life;
     image_t *exp;
-    image_t *skill_to_up;
-    sfFont *font;
+    image_t *skill;
+    sfText *skill_text;
     sfText *action;
     sfText *name;
     sfText *act_text;
