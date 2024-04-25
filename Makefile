@@ -5,7 +5,7 @@
 ## All rules to build the program
 ##
 
-NAME	=	myrpg
+NAME	=	my_rpg
 
 SRC =   $(shell find src -name '*.c')
 
