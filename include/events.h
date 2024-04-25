@@ -23,13 +23,17 @@ typedef struct event_item_s {
     char *event_name;
     sfEvent event;
     void (*event_function)(void *);
+    void (*display_function)(void *);
 } event_item_t;
 
 typedef struct event_s {
     enum event_name actual_event;
+    enum event_name previous_event;
     event_item_t **events;
 } event_t;
 
 void free_events(event_t *events);
-
+event_t *init_events(void);
+event_item_t *load_main_menu_events(void);
+event_item_t *load_settings_event(void);
 #endif
