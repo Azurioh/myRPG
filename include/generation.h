@@ -9,5 +9,5 @@
     #define GENERATION_H
     #include <SFML/Graphics.h>
 
-sfSprite *generate_sprite_with_file(char *file_path);
+sfSprite *generate_sprite_with_file(char *file_path, float scaling);
 #endif
