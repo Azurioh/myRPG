@@ -9,5 +9,8 @@
     #define GENERATION_H
     #include <SFML/Graphics.h>
 
+    #define MAP_PATH "assets/test.png"
+    #define PLAYER_PATH "assets/player_sprite.png"
+
 sfSprite *generate_sprite_with_file(char *file_path);
 #endif
