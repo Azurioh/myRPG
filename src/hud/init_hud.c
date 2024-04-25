@@ -7,7 +7,7 @@
 
 #include "../../include/myrpg.h"
 
-image_t *create_imagefile(char *path, int x, int y, int scale)
+image_t *create_imagefile(char *path, int x, int y, float scale)
 {
     image_t *image = malloc(sizeof(image_t));
 
@@ -44,5 +44,8 @@ hud_t *init_hud(char *name)
     hud->action = create_text("F", 48, (sfVector2f){1050, 450}, hud->font);
     hud->name = create_text(name, 32, (sfVector2f){130, 6}, hud->font);
     hud->act_text = create_text("E", 48, (sfVector2f){1840, 500}, hud->font);
+    hud->skill = create_imagefile("assets/hud/notification.png", 1050, 15, 1);
+    hud->skill_text = create_text("Nombre d'ameliorations disponibles :",
+    26, (sfVector2f){1130, 43}, hud->font);
     return hud;
 }
