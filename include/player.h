@@ -27,6 +27,7 @@ typedef struct player_interface_s {
 } player_interface_t;
 
 typedef struct player_s {
+    char *name;
     int life;
     int is_alive;
     int nb_dead;

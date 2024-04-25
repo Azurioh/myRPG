@@ -7,7 +7,7 @@
 
 #include "../../include/myrpg.h"
 
-image_t *create_image_from_file(char *path, int x, int y, int scale)
+image_t *create_imagefile(char *path, int x, int y, int scale)
 {
     image_t *image = malloc(sizeof(image_t));
 
@@ -20,12 +20,29 @@ image_t *create_image_from_file(char *path, int x, int y, int scale)
     return image;
 }
 
-hud_t *init_hud(void)
+sfText *create_text(char *string, int size, sfVector2f position, sfFont *font)
+{
+    sfText *text = sfText_create();
+
+    sfText_setCharacterSize(text, size);
+    sfText_setPosition(text, position);
+    sfText_setFont(text, font);
+    sfText_setString(text, string);
+    sfText_setOutlineThickness(text, 2);
+    return text;
+}
+
+hud_t *init_hud(char *name)
 {
     hud_t *hud = malloc(sizeof(hud_t));
 
-    hud->profile = create_image_from_file("assets/hud/profile.png", 4, 4, 2);
-    hud->level = create_image_from_file("assets/hud/level.png", 148, 56, 2);
-    hud->life = create_image_from_file("assets/hud/life.png", 148, 16, 2);
+    hud->profile = create_imagefile("assets/hud/profile.png", 4, 4, 2);
+    hud->exp = create_imagefile("assets/hud/level.png", 148, 96, 2);
+    hud->life = create_imagefile("assets/hud/life.png", 148, 56, 2);
+    hud->inventory = create_imagefile("assets/hud/bag.png", 1800, 400, 2);
+    hud->action = create_imagefile("assets/hud/action.png", 990, 400, 1);
+    hud->font = sfFont_createFromFile("assets/font/alagard.ttf");
+    hud->name = create_text(name, 32, (sfVector2f){130, 6}, hud->font);
+    hud->act_text = create_text("E", 48, (sfVector2f){1840, 500}, hud->font);
     return hud;
 }

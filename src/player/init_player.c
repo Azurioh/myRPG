@@ -53,6 +53,7 @@ player_t *init_player(void)
     if (!player) {
         return NULL;
     }
+    player->name = strdup("Toskra");
     player->life = 100;
     player->is_alive = 1;
     player->nb_dead = 0;

@@ -19,11 +19,16 @@ typedef struct hud_s {
     image_t *inventory;
     image_t *profile;
     image_t *life;
-    image_t *level;
+    image_t *exp;
     image_t *skill_to_up;
+    image_t *action;
     sfText *name;
+    sfText *act_text;
+    sfFont *font;
 } hud_t;
 
-hud_t *init_hud(void);
+hud_t *init_hud(char *name);
+char *my_revstr(char *str);
+char *nbr_to_str(int nb);
 
 #endif /* !HUD_H */
