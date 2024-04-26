@@ -9,6 +9,7 @@
     #define PLAYER_H
     #include <SFML/Graphics.h>
     #include <string.h>
+    #include "inventory.h"
 
 typedef struct skills_s {
     char *name;
@@ -36,6 +37,7 @@ typedef struct player_s {
     int nb_skills_to_upgrade;
     skills_t **skills;
     player_interface_t *interface;
+    inventory_t *inventory;
 } player_t;
 
 player_t *init_player(void);

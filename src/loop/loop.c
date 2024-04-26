@@ -20,6 +20,7 @@ int game_loop(myrpg_t *myrpg)
     display_main_menu(myrpg);
     sfRenderWindow_clear(game_info->window, sfWhite);
     display_hud(myrpg);
+    display_inventory(myrpg);
     sfRenderWindow_display(game_info->window);
     return 0;
 }
