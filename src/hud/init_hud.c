@@ -7,31 +7,6 @@
 
 #include "../../include/myrpg.h"
 
-image_t *create_imagefile(char *path, int x, int y, float scale)
-{
-    image_t *image = malloc(sizeof(image_t));
-
-    image->texture = sfTexture_createFromFile(path, NULL);
-    image->sprite = sfSprite_create();
-    sfSprite_setTexture(image->sprite, image->texture, sfTrue);
-    if (scale != 0)
-        sfSprite_setScale(image->sprite, (sfVector2f){scale, scale});
-    sfSprite_setPosition(image->sprite, (sfVector2f){x, y});
-    return image;
-}
-
-sfText *create_text(char *string, int size, sfVector2f position, sfFont *font)
-{
-    sfText *text = sfText_create();
-
-    sfText_setCharacterSize(text, size);
-    sfText_setPosition(text, position);
-    sfText_setFont(text, font);
-    sfText_setString(text, string);
-    sfText_setOutlineThickness(text, 2);
-    return text;
-}
-
 hud_t *init_hud(char *name)
 {
     hud_t *hud = malloc(sizeof(hud_t));

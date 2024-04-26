@@ -8,12 +8,7 @@
 #ifndef HUD_H
     #define HUD_H
     #include <SFML/Graphics.h>
-
-
-typedef struct image_s {
-    sfTexture *texture;
-    sfSprite *sprite;
-} image_t;
+    #include "generation.h"
 
 typedef struct hud_s {
     sfFont *font;
