@@ -15,5 +15,6 @@ typedef struct inventory_s {
 } inventory_t;
 
 inventory_t *init_inventory(void);
+void free_inventory(inventory_t *inventory);
 
 #endif /* !INVENTORY_H */

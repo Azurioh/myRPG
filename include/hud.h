@@ -28,5 +28,4 @@ char *my_revstr(char *str);
 char *nbr_to_str(int nb);
 void free_hud(hud_t *myrpg);
 
-
 #endif /* !HUD_H */
