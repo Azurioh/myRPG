@@ -17,6 +17,7 @@
     #include "events.h"
     #include "generation.h"
     #include "hud.h"
+    #include "inventory.h"
 
 typedef struct myrpg_s {
     player_t *player;
@@ -31,6 +32,7 @@ typedef struct myrpg_s {
 int start_game(void);
 int loop(myrpg_t *myrpg);
 void free_myrpg(myrpg_t *myrpg);
+void free_image(image_t *image);
 
 void load_main_menu(myrpg_t *myrpg);
 void display_main_menu(myrpg_t *myrpg);
