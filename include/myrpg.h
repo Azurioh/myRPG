@@ -17,7 +17,6 @@
     #include "events.h"
     #include "generation.h"
     #include "hud.h"
-    #include "inventory.h"
 
 typedef struct myrpg_s {
     player_t *player;
