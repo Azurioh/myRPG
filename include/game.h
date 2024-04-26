@@ -18,7 +18,7 @@ typedef struct game_s {
     sfEvent event;
     sfSprite *player;
     sfSprite *map;
-    sfSprite *undermap;
+    sfImage *undermap;
     sfView *map_view;
     int actual_window_size;
     unsigned int *framerate_list;
