@@ -7,6 +7,7 @@
 
 #include "../../include/myrpg.h"
 #include "../../include/generation.h"
+#include <SFML/Graphics/Image.h>
 #include <SFML/Graphics/Rect.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
@@ -70,13 +71,19 @@ static sfSprite *create_player(game_t *game_info)
     return sprite_player;
 }
 
+sfImage *init_undermap(void)
+{
+    sfImage *undermap = sfImage_createFromFile(UNDERMAP_PATH);
+
+    return undermap;
+}
+
 game_t *init_game_struct(void)
 {
     game_t *game_info = malloc(sizeof(game_t));
 
-    if (!game_info) {
+    if (!game_info)
         return NULL;
-    }
     game_info->actual_window_size = 1;
     game_info->actual_framerate = 1;
     game_info->sound_volume = 50;
@@ -87,6 +94,7 @@ game_t *init_game_struct(void)
     game_info->scaling = (sfVector2f){1, 1};
     game_info->window_size_list = get_window_size_list();
     game_info->map = init_map();
+    game_info->undermap = init_undermap();
     game_info->map_view = init_view(game_info);
     game_info->player = create_player(game_info);
     init_window(game_info);
