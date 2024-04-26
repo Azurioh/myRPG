@@ -9,6 +9,7 @@
     #define GENERATION_H
     #include <SFML/Graphics.h>
 
+    #define UNDERMAP_PATH "assets/test.png"
     #define MAP_PATH "assets/test.png"
     #define PLAYER_PATH "assets/player_sprite.png"
 
