@@ -6,6 +6,11 @@
 */
 
 #include "../../include/myrpg.h"
+#include <SFML/Graphics/RenderWindow.h>
+#include <SFML/Graphics/View.h>
+#include <SFML/Window/Keyboard.h>
+#include <time.h>
+#include <unistd.h>
 
 int game_loop(myrpg_t *myrpg)
 {
@@ -13,13 +18,17 @@ int game_loop(myrpg_t *myrpg)
 
     while (sfRenderWindow_pollEvent(game_info->window,
         &game_info->event)) {
-        if (game_info->event.type == sfEvtClosed) {
+        if (check_events(game_info, myrpg->hud) == -1) {
             return -1;
         }
     }
     display_main_menu(myrpg);
     sfRenderWindow_clear(game_info->window, sfWhite);
+    sfRenderWindow_clear(game_info->window, sfBlack);
+    sfRenderWindow_drawSprite(game_info->window, game_info->map, NULL);
+    sfRenderWindow_setView(game_info->window, game_info->map_view);
     display_hud(myrpg);
+    sfRenderWindow_drawSprite(game_info->window, game_info->player, NULL);
     sfRenderWindow_display(game_info->window);
     return 0;
 }

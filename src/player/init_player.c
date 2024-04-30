@@ -50,9 +50,8 @@ player_t *init_player(void)
 {
     player_t *player = malloc(sizeof(player_t));
 
-    if (!player) {
+    if (!player)
         return NULL;
-    }
     player->name = strdup("Toskra");
     player->life = 100;
     player->is_alive = 1;

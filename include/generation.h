@@ -8,6 +8,9 @@
 #ifndef GENERATION_H
     #define GENERATION_H
     #include <SFML/Graphics.h>
+    #define UNDERMAP_PATH "assets/test.png"
+    #define MAP_PATH "assets/test.png"
+    #define PLAYER_PATH "assets/player_sprite.png"
 
 typedef struct image_s {
     sfTexture *texture;
@@ -18,4 +21,6 @@ typedef struct image_s {
 sfSprite *generate_sprite_with_file(char *file_path);
 image_t *create_imagefile(char *path, int x, int y, float scale);
 sfText *create_text(char *string, int size, sfVector2f position, sfFont *font);
+
+sfSprite *generate_sprite_with_file(char *file_path);
 #endif
