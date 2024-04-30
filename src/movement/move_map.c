@@ -6,16 +6,6 @@
 */
 
 #include "../../include/game.h"
-#include <SFML/Config.h>
-#include <SFML/Graphics/Color.h>
-#include <SFML/Graphics/Image.h>
-#include <SFML/Graphics/Rect.h>
-#include <SFML/Graphics/RectangleShape.h>
-#include <SFML/Graphics/RenderWindow.h>
-#include <SFML/Graphics/Sprite.h>
-#include <SFML/Graphics/View.h>
-#include <SFML/System/Vector2.h>
-#include <stdio.h>
 
 void move_down_view(game_t *game_info)
 {
