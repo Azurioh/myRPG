@@ -8,6 +8,7 @@
 #ifndef HUD_H
     #define HUD_H
     #include <SFML/Graphics.h>
+    #include "game.h"
     #include "generation.h"
 
 typedef struct hud_s {
@@ -23,7 +24,7 @@ typedef struct hud_s {
     sfText *act_text;
 } hud_t;
 
-hud_t *init_hud(char *name);
+hud_t *init_hud(char *name, game_t *game_info);
 char *my_revstr(char *str);
 char *nbr_to_str(int nb);
 void free_hud(hud_t *myrpg);
