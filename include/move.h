@@ -10,11 +10,11 @@
     #include "game.h"
     #include "hud.h"
     #include "inventory.h"
-    #define MOVE_UP sfKeyUp
-    #define MOVE_DOWN sfKeyDown
-    #define MOVE_LEFT sfKeyLeft
-    #define MOVE_RIGHT sfKeyRight
+    #define MOVE_UP sfKeyZ
+    #define MOVE_DOWN sfKeyS
+    #define MOVE_LEFT sfKeyQ
+    #define MOVE_RIGHT sfKeyD
 
-void move_hud(hud_t *hud, int x, int y);
-void move_inventory(inventory_t *inventory, int x_move, int y_move);
+void move_hud(hud_t *hud, sfVector2f movement);
+void move_inventory(inventory_t *inventory, sfVector2f movement);
 #endif

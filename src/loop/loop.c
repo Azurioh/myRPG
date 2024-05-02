@@ -12,6 +12,18 @@
 #include <time.h>
 #include <unistd.h>
 
+void make_move(myrpg_t *myrpg)
+{
+    if (sfKeyboard_isKeyPressed(MOVE_DOWN))
+        move_down_view(myrpg->game_info, myrpg);
+    if (sfKeyboard_isKeyPressed(MOVE_UP))
+        move_up_view(myrpg->game_info, myrpg);
+    if (sfKeyboard_isKeyPressed(MOVE_RIGHT))
+        move_right_view(myrpg->game_info, myrpg);
+    if (sfKeyboard_isKeyPressed(MOVE_LEFT))
+        move_left_view(myrpg->game_info, myrpg);
+}
+
 int game_loop(myrpg_t *myrpg)
 {
     game_t *game_info = myrpg->game_info;
@@ -22,6 +34,8 @@ int game_loop(myrpg_t *myrpg)
             return -1;
         }
     }
+    make_move(myrpg);
+    move(myrpg);
     display_main_menu(myrpg);
     sfRenderWindow_clear(game_info->window, sfWhite);
     sfRenderWindow_setView(game_info->window, game_info->map_view);

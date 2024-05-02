@@ -10,10 +10,8 @@
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Text.h>
 
-void move_hud(hud_t *hud, int x_move, int y_move)
+void move_hud(hud_t *hud, sfVector2f offset)
 {
-    sfVector2f offset = {x_move, y_move};
-
     sfSprite_move(hud->exp->sprite, offset);
     sfSprite_move(hud->life->sprite, offset);
     sfSprite_move(hud->skill->sprite, offset);

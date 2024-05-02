@@ -38,6 +38,7 @@ int check_events(myrpg_t *myrpg);
 void free_myrpg(myrpg_t *myrpg);
 void free_image(image_t *image);
 
+void move(myrpg_t *myrpg);
 void move_down_view(game_t *game_info, myrpg_t *myrpg);
 void move_up_view(game_t *game_info, myrpg_t *myrpg);
 void move_left_view(game_t *game_info, myrpg_t *myrpg);

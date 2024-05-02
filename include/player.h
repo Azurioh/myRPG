@@ -21,6 +21,8 @@ typedef struct skills_s {
 
 typedef struct player_interface_s {
     sfSprite *sprite;
+    sfVector2f movement;
+    float speed;
     sfIntRect rect;
     sfVector2f scale;
     sfClock *clock;

@@ -43,6 +43,8 @@ static player_interface_t *init_player_interface(void)
     player_interface->scale = (sfVector2f){1, 1};
     player_interface->clock = sfClock_create();
     player_interface->animation_time = 0.2;
+    player_interface->movement = (sfVector2f){0, 0};
+    player_interface->speed = 0.15;
     return player_interface;
 }
 

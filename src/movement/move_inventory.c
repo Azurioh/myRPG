@@ -9,9 +9,7 @@
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Text.h>
 
-void move_inventory(inventory_t *inventory, int x_move, int y_move)
+void move_inventory(inventory_t *inventory, sfVector2f offset)
 {
-    sfVector2f offset = {x_move, y_move};
-
     sfSprite_move(inventory->image->sprite, offset);
 }
