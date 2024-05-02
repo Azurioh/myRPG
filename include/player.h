@@ -48,4 +48,5 @@ int update_player_experience(player_t *player, unsigned int amount);
 int update_skill(player_t *player, unsigned int skill_index);
 int increase_player_life(player_t *player, unsigned int amount);
 int decrease_player_life(player_t *player, unsigned int amount);
+sfSprite *init_player_sprite(player_interface_t *player_interface);
 #endif

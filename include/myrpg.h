@@ -18,11 +18,8 @@
     #include "events.h"
     #include "generation.h"
     #include "hud.h"
-<<<<<<< HEAD
     #include "inventory.h"
-=======
     #include "move.h"
->>>>>>> main
 
 typedef struct myrpg_s {
     player_t *player;
@@ -42,11 +39,5 @@ void free_image(image_t *image);
 void load_main_menu(myrpg_t *myrpg);
 void display_main_menu(myrpg_t *myrpg);
 void display_hud(myrpg_t *myrpg);
-<<<<<<< HEAD
 void display_inventory(myrpg_t *myrpg);
-=======
-
-void load_main_menu(myrpg_t *myrpg);
-void display_main_menu(myrpg_t *myrpg);
->>>>>>> main
 #endif

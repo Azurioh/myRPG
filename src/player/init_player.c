@@ -10,7 +10,7 @@
 #include "SFML/Graphics/Texture.h"
 #include "SFML/System/Clock.h"
 
-static sfSprite *init_player_sprite(player_interface_t *player_interface)
+sfSprite *init_player_sprite(player_interface_t *player_interface)
 {
     sfSprite *sprite = sfSprite_create();
     sfTexture *texture = sfTexture_createFromFile("assets/player_sprite.png",
