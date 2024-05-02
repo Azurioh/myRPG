@@ -29,10 +29,12 @@ typedef struct myrpg_s {
     button_t **buttons;
     hud_t *hud;
     int can_interact;
+    int is_inventory;
 } myrpg_t;
 
 int start_game(void);
 int loop(myrpg_t *myrpg);
+int check_events(myrpg_t *myrpg);
 void free_myrpg(myrpg_t *myrpg);
 void free_image(image_t *image);
 

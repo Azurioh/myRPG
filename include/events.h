@@ -32,7 +32,6 @@ typedef struct event_s {
     event_item_t **events;
 } event_t;
 
-int check_events(game_t *game_info, hud_t *hud);
 void free_events(event_t *events);
 
 #endif

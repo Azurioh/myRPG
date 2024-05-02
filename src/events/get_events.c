@@ -4,9 +4,7 @@
 ** File description:
 ** get the events in the game
 */
-
-#include "../../include/move.h"
-#include "../../include/hud.h"
+#include "../../include/myrpg.h"
 #include <SFML/Window/Event.h>
 #include <SFML/Window/Keyboard.h>
 
@@ -26,10 +24,13 @@ void make_move(game_t *game_info, hud_t *hud)
         move_left_view(game_info, hud);
 }
 
-int check_events(game_t *game_info, hud_t *hud)
+int check_events(myrpg_t *myrpg)
 {
-    if (game_info->event.type == sfEvtClosed)
+    if (myrpg->game_info->event.type == sfEvtClosed)
         return -1;
-    make_move(game_info, hud);
+    make_move(myrpg->game_info, myrpg->hud);
+    if (myrpg->game_info->event.type == sfEvtKeyPressed &&
+        myrpg->game_info->event.key.code == INVENTORY_KEY)
+        myrpg->is_inventory = (myrpg->is_inventory == 0) ? 1 : 0;
     return 0;
 }

@@ -18,18 +18,17 @@ int game_loop(myrpg_t *myrpg)
 
     while (sfRenderWindow_pollEvent(game_info->window,
         &game_info->event)) {
-        if (check_events(game_info, myrpg->hud) == -1) {
+        if (check_events(myrpg) == -1) {
             return -1;
         }
     }
     display_main_menu(myrpg);
     sfRenderWindow_clear(game_info->window, sfWhite);
-    sfRenderWindow_clear(game_info->window, sfBlack);
-    sfRenderWindow_drawSprite(game_info->window, game_info->map, NULL);
     sfRenderWindow_setView(game_info->window, game_info->map_view);
+    sfRenderWindow_drawSprite(game_info->window, game_info->map, NULL);
+    sfRenderWindow_drawSprite(game_info->window, game_info->player, NULL);
     display_hud(myrpg);
     display_inventory(myrpg);
-    sfRenderWindow_drawSprite(game_info->window, game_info->player, NULL);
     sfRenderWindow_display(game_info->window);
     return 0;
 }

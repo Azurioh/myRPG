@@ -16,8 +16,9 @@ static myrpg_t *init_myrpg(void)
     myrpg->player = init_player();
     myrpg->game_info = init_game_struct();
     myrpg->hud = init_hud(myrpg->player->name, myrpg->game_info);
-    myrpg->player->inventory = init_inventory();
+    myrpg->player->inventory = init_inventory(myrpg->game_info);
     myrpg->can_interact = 0;
+    myrpg->is_inventory = 0;
     myrpg->list_of_events = NULL;
     myrpg->background = NULL;
     myrpg->buttons = NULL;
