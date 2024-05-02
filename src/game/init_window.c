@@ -6,6 +6,7 @@
 */
 
 #include "../../include/myrpg.h"
+#include <SFML/Window/Window.h>
 
 int init_window(game_t *game_info)
 {
@@ -16,7 +17,8 @@ int init_window(game_t *game_info)
         return -1;
     }
     window_size = game_info->window_size_list[game_info->actual_window_size];
-    window = sfRenderWindow_create(window_size, "MyRPG", sfDefaultStyle, NULL);
+    window = sfRenderWindow_create(window_size, "MyRPG",
+                                sfDefaultStyle | sfClose, NULL);
     game_info->window = window;
     return 0;
 }

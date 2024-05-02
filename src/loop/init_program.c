@@ -11,9 +11,8 @@ static myrpg_t *init_myrpg(void)
 {
     myrpg_t *myrpg = malloc(sizeof(myrpg_t));
 
-    if (!myrpg) {
+    if (!myrpg)
         return NULL;
-    }
     myrpg->player = init_player();
     myrpg->game_info = init_game_struct();
     myrpg->hud = init_hud(myrpg->player->name);
@@ -33,5 +32,6 @@ int start_game(void)
         return 84;
     } else {
         return loop(myrpg);
+    return loop(myrpg);
     }
 }
