@@ -9,14 +9,12 @@
     #define MOVE_H
     #include "game.h"
     #include "hud.h"
+    #include "inventory.h"
     #define MOVE_UP sfKeyUp
     #define MOVE_DOWN sfKeyDown
     #define MOVE_LEFT sfKeyLeft
     #define MOVE_RIGHT sfKeyRight
 
-void move_down_view(game_t *game_info, hud_t *hud);
-void move_up_view(game_t *game_info, hud_t *hud);
-void move_left_view(game_t *game_info, hud_t *hud);
-void move_right_view(game_t *game_info, hud_t *hud);
 void move_hud(hud_t *hud, int x, int y);
+void move_inventory(inventory_t *inventory, int x_move, int y_move);
 #endif

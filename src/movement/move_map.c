@@ -5,11 +5,9 @@
 ** move the view
 */
 
-#include "../../include/game.h"
-#include "../../include/hud.h"
-#include "../../include/move.h"
+#include "../../include/myrpg.h"
 
-void move_down_view(game_t *game_info, hud_t *hud)
+void move_down_view(game_t *game_info, myrpg_t *myrpg)
 {
     sfVector2f center_view;
     sfColor color;
@@ -25,10 +23,11 @@ void move_down_view(game_t *game_info, hud_t *hud)
     sfView_move(game_info->map_view, (sfVector2f){0, 7});
     center_view = sfView_getCenter(game_info->map_view);
     sfSprite_setPosition(game_info->player, center_view);
-    move_hud(hud, 0, 7);
+    move_hud(myrpg->hud, 0, 7);
+    move_inventory(myrpg->player->inventory, 0, 7);
 }
 
-void move_up_view(game_t *game_info, hud_t *hud)
+void move_up_view(game_t *game_info, myrpg_t *myrpg)
 {
     sfVector2f center_view;
     sfColor color;
@@ -44,10 +43,11 @@ void move_up_view(game_t *game_info, hud_t *hud)
     sfView_move(game_info->map_view, (sfVector2f){0, -7});
     center_view = sfView_getCenter(game_info->map_view);
     sfSprite_setPosition(game_info->player, center_view);
-    move_hud(hud, 0, -7);
+    move_hud(myrpg->hud, 0, -7);
+    move_inventory(myrpg->player->inventory, 0, -7);
 }
 
-void move_left_view(game_t *game_info, hud_t *hud)
+void move_left_view(game_t *game_info, myrpg_t *myrpg)
 {
     sfVector2f center_view;
     sfColor color;
@@ -63,10 +63,11 @@ void move_left_view(game_t *game_info, hud_t *hud)
     sfView_move(game_info->map_view, (sfVector2f){-7, 0});
     center_view = sfView_getCenter(game_info->map_view);
     sfSprite_setPosition(game_info->player, center_view);
-    move_hud(hud, -7, 0);
+    move_hud(myrpg->hud, -7, 0);
+    move_inventory(myrpg->player->inventory, -7, 0);
 }
 
-void move_right_view(game_t *game_info, hud_t *hud)
+void move_right_view(game_t *game_info, myrpg_t *myrpg)
 {
     sfVector2f center_view;
     sfColor color;
@@ -82,5 +83,6 @@ void move_right_view(game_t *game_info, hud_t *hud)
     sfView_move(game_info->map_view, (sfVector2f){7, 0});
     center_view = sfView_getCenter(game_info->map_view);
     sfSprite_setPosition(game_info->player, center_view);
-    move_hud(hud, 7, 0);
+    move_hud(myrpg->hud, 7, 0);
+    move_inventory(myrpg->player->inventory, 7, 0);
 }

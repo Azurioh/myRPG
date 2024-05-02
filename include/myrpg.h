@@ -38,6 +38,11 @@ int check_events(myrpg_t *myrpg);
 void free_myrpg(myrpg_t *myrpg);
 void free_image(image_t *image);
 
+void move_down_view(game_t *game_info, myrpg_t *myrpg);
+void move_up_view(game_t *game_info, myrpg_t *myrpg);
+void move_left_view(game_t *game_info, myrpg_t *myrpg);
+void move_right_view(game_t *game_info, myrpg_t *myrpg);
+
 void load_main_menu(myrpg_t *myrpg);
 void display_main_menu(myrpg_t *myrpg);
 void display_hud(myrpg_t *myrpg);
