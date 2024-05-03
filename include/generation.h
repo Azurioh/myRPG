@@ -11,6 +11,7 @@
     #define UNDERMAP_PATH "assets/test.png"
     #define MAP_PATH "assets/test.png"
     #define PLAYER_PATH "assets/player_sprite.png"
+    #define SCALING 0.65
 
 typedef struct image_s {
     sfTexture *texture;
