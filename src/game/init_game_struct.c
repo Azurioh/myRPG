@@ -7,6 +7,7 @@
 
 #include "../../include/myrpg.h"
 #include "../../include/generation.h"
+#include <SFML/Graphics/View.h>
 
 static sfVideoMode *get_window_size_list(void)
 {
@@ -50,6 +51,7 @@ static sfView *init_view(game_t *game_info)
 
     sfView_setCenter(tmp_view, (sfVector2f){center_map.y, center_map.x});
     sfView_setSize(tmp_view, (sfVector2f){1920, 1080});
+    sfView_zoom(tmp_view, 0.65);
     return tmp_view;
 }
 
