@@ -8,6 +8,7 @@
 #include "../../include/myrpg.h"
 #include <SFML/Graphics/View.h>
 #include <SFML/System/Vector2.h>
+#include <SFML/Window/Window.h>
 
 void init_text(hud_t *hud, sfVector2f resize, char *name)
 {
