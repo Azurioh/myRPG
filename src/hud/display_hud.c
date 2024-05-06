@@ -32,7 +32,8 @@ char *upgrade_text(myrpg_t *myrpg)
 {
     char *upgrade = strdup("Nombre d'ameliorations disponibles : ");
 
-    upgrade = my_strcat(upgrade, nbr_to_str(myrpg->player->nb_skills_to_upgrade));
+    upgrade = my_strcat(upgrade,
+        nbr_to_str(myrpg->player->nb_skills_to_upgrade));
     return upgrade;
 }
 
