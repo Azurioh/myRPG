@@ -26,20 +26,4 @@ typedef struct game_s {
 
 game_t *init_game_struct(void);
 void free_game(game_t *game_info);
-
-int change_size_of_window(game_t *game_info, int add);
-int init_window(game_t *game_info);
-
-int mute_music(game_t *game_info);
-int mute_sound(game_t *game_info);
-
-int increase_music_volume(game_t *game_info);
-int increase_sound_volume(game_t *game_info);
-int increase_framerate_of_window(game_t *game_info);
-int increase_size_of_window(game_t *game_info);
-
-int decrease_music_volume(game_t *game_info);
-int decrease_sound_volume(game_t *game_info);
-int decrease_framerate_of_window(game_t *game_info);
-int decrease_size_of_window(game_t *game_info);
 #endif
