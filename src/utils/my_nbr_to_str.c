@@ -44,7 +44,7 @@ char *my_nbr_to_str(int nb)
     int divise = my_pow(10, my_int_len(nb) - 1);
     int i = 0;
 
-    str = malloc(sizeof(char) * my_int_len(nb) + 1);
+    str = malloc(sizeof(char) * (my_int_len(nb) + 1));
     while (divise > 0) {
         str[i] = '0' + (nb / divise);
         nb -= (nb / divise) * divise;
