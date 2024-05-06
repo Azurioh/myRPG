@@ -11,7 +11,7 @@ void display_inventory(myrpg_t *myrpg)
 {
     if (myrpg->is_inventory == 0)
         return;
-    sfRenderWindow_drawSprite(myrpg->game_info->window,
+    sfRenderWindow_drawSprite(SETTINGS->window,
     myrpg->player->inventory->image->sprite, NULL);
     return;
 }
