@@ -19,7 +19,7 @@ void load_static_settings_texts(sfText **texts, settings_t *settings)
         630 * settings->scaling}, 40, sfBlack);
     texts[3] = init_text("Son", (sfVector2f){ 1120 * settings->scaling,
         630 * settings->scaling}, 40, sfBlack);
-    for (int i = 1; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         sfText_setScale(texts[i], (sfVector2f){scaling, scaling});
     }
 }
