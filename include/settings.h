@@ -32,6 +32,25 @@ typedef struct settings_s {
     int music_muted;
 } settings_t;
 
+settings_t *init_settings(void);
 void load_settings_menu(settings_t *settings);
-void show_settings_menu(button_t *button, void *args);
+
+int change_size_of_window(settings_t *settings, int add);
+int init_window(settings_t *settings);
+
+int mute_music(settings_t *settings);
+int mute_sound(settings_t *settings);
+
+int increase_music_volume(settings_t *settings);
+int increase_sound_volume(settings_t *settings);
+int increase_framerate_of_window(settings_t *settings);
+int increase_size_of_window(settings_t *settings);
+
+int decrease_music_volume(settings_t *settings);
+int decrease_sound_volume(settings_t *settings);
+int decrease_framerate_of_window(settings_t *settings);
+int decrease_size_of_window(settings_t *settings);
+
+sfSprite *load_settings_background(sfRenderWindow *window,
+    float scaling);
 #endif
