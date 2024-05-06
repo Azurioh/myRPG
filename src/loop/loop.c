@@ -7,30 +7,27 @@
 
 #include "../../include/myrpg.h"
 
-int game_loop(myrpg_t *myrpg)
+void game_loop(myrpg_t *myrpg)
 {
-    game_t *game_info = myrpg->game_info;
+    settings_t *settings = myrpg->settings;
 
-    while (sfRenderWindow_pollEvent(game_info->window,
-        &game_info->event)) {
-        if (game_info->event.type == sfEvtClosed) {
-            return -1;
+    while (sfRenderWindow_pollEvent(settings->window,
+        &settings->event)) {
+        if (settings->event.type == sfEvtClosed) {
+            myrpg->game_open = 0;
         }
-        EVENTS->events[EVENTS->actual_event]->event_function(myrpg);
+        EVENTS->event_function(myrpg);
     }
-    sfRenderWindow_clear(game_info->window, sfBlack);
-    EVENTS->events[EVENTS->actual_event]->display_function(myrpg);
-    sfRenderWindow_display(game_info->window);
-    return 0;
+    sfRenderWindow_clear(settings->window, sfBlack);
+    EVENTS->display_function(myrpg);
+    sfRenderWindow_display(settings->window);
 }
 
 int loop(myrpg_t *myrpg)
 {
-    load_main_menu(myrpg);
-    while (1) {
-        if (game_loop(myrpg) == -1) {
-            break;
-        }
+    EVENTS->load_function(myrpg);
+    while (myrpg->game_open == 1) {
+        game_loop(myrpg);
     }
     free_myrpg(myrpg);
     return 0;
