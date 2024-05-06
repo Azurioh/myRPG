@@ -21,6 +21,16 @@ static void show_settings_menu(button_t *button, void *args)
     load_settings(args);
 }
 
+static void launch_game(button_t *button, void *args)
+{
+    myrpg_t *myrpg = args;
+
+    (void) button;
+    EVENTS->unload_function(myrpg);
+    load_game(args);
+    EVENTS->load_function(myrpg);
+}
+
 static button_t **generate_main_menu_buttons(myrpg_t *myrpg)
 {
     button_t **buttons = malloc(sizeof(button_t *) * 5);
@@ -29,9 +39,9 @@ static button_t **generate_main_menu_buttons(myrpg_t *myrpg)
         return NULL;
     }
     buttons[0] = init_button("Nouvelle partie", (sfVector2f){360 * SCALING,
-        900 * SCALING}, "assets/new-game-button.png", NULL);
+        900 * SCALING}, "assets/new-game-button.png", &launch_game);
     buttons[1] = init_button("Reprendre la partie", (sfVector2f){760 * SCALING,
-        900 * SCALING}, "assets/resume-game-button.png", NULL);
+        900 * SCALING}, "assets/resume-game-button.png", &launch_game);
     buttons[2] = init_button("Paramètres", (sfVector2f){1160 * SCALING,
         900 * SCALING}, "assets/settings-button.png", &show_settings_menu);
     buttons[3] = init_button("Quitter", (sfVector2f){1560 * SCALING,
