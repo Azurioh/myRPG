@@ -10,7 +10,7 @@
 #include <SFML/System/Vector2.h>
 #include <SFML/Window/Window.h>
 
-void init_text(hud_t *hud, sfVector2f resize, char *name)
+void init_hud_text(hud_t *hud, sfVector2f resize, char *name)
 {
     hud->font = sfFont_createFromFile("assets/font/alagard.ttf");
     hud->action = create_text("F", 48, (sfVector2f){resize.x + 1050,
@@ -40,6 +40,6 @@ hud_t *init_hud(char *name, game_t *game_info)
                                 resize.y + 350, 1.2);
     hud->skill = create_imagefile("assets/hud/notification.png",
                                 resize.x + 700, resize.y + 15, 0.6);
-    init_text(hud, resize, name);
+    init_hud_text(hud, resize, name);
     return hud;
 }
