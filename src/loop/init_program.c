@@ -7,18 +7,6 @@
 
 #include "../../include/myrpg.h"
 
-static settings_t *init_settings(game_t *game_info)
-{
-    settings_t *settings = malloc(sizeof(settings_t));
-
-    settings->scaling = 1;
-    settings->window = game_info->window;
-    settings->show_settings_menu = 0;
-    settings->visual_elements = NULL;
-    load_settings_menu(settings);
-    return settings;
-}
-
 static myrpg_t *init_myrpg(void)
 {
     myrpg_t *myrpg = malloc(sizeof(myrpg_t));
@@ -27,11 +15,12 @@ static myrpg_t *init_myrpg(void)
         return NULL;
     }
     myrpg->player = init_player();
-    myrpg->game_info = init_game_struct();
-    myrpg->settings = init_settings(GAME_INFO);
-    myrpg->list_of_events = init_events();
+    myrpg->game_open = 1;
+    myrpg->settings = init_settings();
+    myrpg->events = malloc(sizeof(event_t));
     myrpg->background = NULL;
     myrpg->buttons = NULL;
+    load_main_menu(myrpg);
     return myrpg;
 }
 
