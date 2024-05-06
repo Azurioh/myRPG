@@ -16,7 +16,10 @@ int init_window(settings_t *settings)
         return -1;
     }
     window_size = settings->window_size_list[settings->actual_window_size];
-    window = sfRenderWindow_create(window_size, "MyRPG", sfClose, NULL);
+    window = sfRenderWindow_create(window_size, "MyRPG",
+        sfClose | sfDefaultStyle, NULL);
+    sfRenderWindow_setFramerateLimit(window,
+        settings->framerate_list[settings->actual_framerate]);
     if (settings->window) {
         sfRenderWindow_destroy(settings->window);
     }
