@@ -7,41 +7,48 @@
 
 #include "../../../include/myrpg.h"
 
-static int update_scaling(settings_t *settings)
+static void update_scaling(settings_t *settings)
 {
-    int width = settings->window_size_list[settings->actual_window_size].width;
+    float width =
+        settings->window_size_list[settings->actual_window_size].width;
 
-    return width / 1920;
+    settings->scaling = (width / 1920);
 }
 
-int increase_size_of_window(settings_t *settings)
+int increase_size_of_window(void *args)
 {
-    if (!settings
-        || !settings->window
-        || !settings->window_size_list) {
+    myrpg_t *myrpg = args;
+
+    if (!SETTINGS
+        || !SETTINGS->window
+        || !SETTINGS->window_size_list) {
         return -1;
     }
-    if (settings->actual_window_size == 2) {
+    if (SETTINGS->actual_window_size == 2) {
         return 0;
     }
-    settings->actual_window_size++;
-    update_scaling(settings);
-    init_window(settings);
+    SETTINGS->actual_window_size++;
+    update_scaling(SETTINGS);
+    init_window(SETTINGS);
+    EVENTS->load_function(myrpg);
     return 0;
 }
 
-int decrease_size_of_window(settings_t *settings)
+int decrease_size_of_window(void *args)
 {
-    if (!settings
-        || !settings->window
-        || !settings->window_size_list) {
+    myrpg_t *myrpg = args;
+
+    if (!SETTINGS
+        || !SETTINGS->window
+        || !SETTINGS->window_size_list) {
         return -1;
     }
-    if (settings->actual_window_size == 0) {
+    if (SETTINGS->actual_window_size == 0) {
         return 0;
     }
-    settings->actual_window_size--;
-    update_scaling(settings);
-    init_window(settings);
+    SETTINGS->actual_window_size--;
+    update_scaling(SETTINGS);
+    init_window(SETTINGS);
+    EVENTS->load_function(myrpg);
     return 0;
 }
