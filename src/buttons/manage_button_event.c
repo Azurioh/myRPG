@@ -13,13 +13,13 @@ void manage_button_event(button_t **buttons, myrpg_t *myrpg)
         return;
     }
     for (int i = 0; buttons[i]; i++) {
-        if (SETTINGS->event.type == sfEvtMouseButtonPressed
+        if (EVENTS->event.type == sfEvtMouseButtonPressed
             && buttons[i]->is_clicked(buttons[i], SETTINGS->window) == sfTrue
             && buttons[i]->action) {
             buttons[i]->action(buttons[i], myrpg);
             return;
         }
-        if (SETTINGS->event.type == sfEvtMouseMoved) {
+        if (EVENTS->event.type == sfEvtMouseMoved) {
             buttons[i]->is_hover(buttons[i], SETTINGS->window);
         }
         animate_button(buttons[i]);
