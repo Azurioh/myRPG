@@ -37,4 +37,8 @@ void load_settings_elements(void *args);
 void load_settings_event(void *args);
 button_t **load_settings_buttons(settings_t *settings);
 void display_settings(void *args);
+
+void load_game(void *args);
+void display_game(void *args);
+void load_game_elements(void *args);
 #endif
