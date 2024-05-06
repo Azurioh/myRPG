@@ -12,7 +12,6 @@ void unload_settings(void *args)
     myrpg_t *myrpg = args;
 
     SETTINGS->show_settings_menu = 0;
-
     EVENTS->load_function = EVENTS->previous_load_function;
     EVENTS->unload_function = EVENTS->previous_unload_function;
     EVENTS->event_function = EVENTS->previous_event_function;
