@@ -10,7 +10,7 @@
 #include "SFML/Graphics/Texture.h"
 #include "SFML/System/Clock.h"
 
-static sfSprite *init_player_sprite(player_interface_t *player_interface)
+sfSprite *init_player_sprite(player_interface_t *player_interface)
 {
     sfSprite *sprite = sfSprite_create();
     sfTexture *texture = sfTexture_createFromFile("assets/player_sprite.png",
@@ -43,6 +43,8 @@ static player_interface_t *init_player_interface(void)
     player_interface->scale = (sfVector2f){1, 1};
     player_interface->clock = sfClock_create();
     player_interface->animation_time = 0.2;
+    player_interface->movement = (sfVector2f){0, 0};
+    player_interface->speed = 0.15;
     return player_interface;
 }
 
@@ -50,9 +52,9 @@ player_t *init_player(void)
 {
     player_t *player = malloc(sizeof(player_t));
 
-    if (!player) {
+    if (!player)
         return NULL;
-    }
+    player->name = strdup("Toskra");
     player->life = 100;
     player->is_alive = 1;
     player->nb_dead = 0;

@@ -13,8 +13,10 @@
     #define EVENTS myrpg->events
     #define BUTTONS myrpg->buttons
     #define SCALING myrpg->settings->scaling
+    #define WINDOW SETTINGS->window
 
     #include <SFML/Graphics.h>
+    #include <SFML/Graphics/Types.h>
     #include <stdlib.h>
     #include <stdio.h>
 
@@ -24,6 +26,9 @@
     #include "events.h"
     #include "generation.h"
     #include "settings.h"
+    #include "hud.h"
+    #include "inventory.h"
+    #include "move.h"
 
 typedef struct myrpg_s {
     int game_open;
@@ -33,11 +38,24 @@ typedef struct myrpg_s {
     sfSprite *background;
     button_t **buttons;
     settings_t *settings;
+    hud_t *hud;
+    int can_interact;
+    int is_inventory;
 } myrpg_t;
 
 int start_game(void);
 int loop(myrpg_t *myrpg);
+int check_events(myrpg_t *myrpg);
 void free_myrpg(myrpg_t *myrpg);
+void free_image(image_t *image);
+
+void move(myrpg_t *myrpg);
+void move_down_view(game_t *game_info, myrpg_t *myrpg);
+void move_up_view(game_t *game_info, myrpg_t *myrpg);
+void move_left_view(game_t *game_info, myrpg_t *myrpg);
+void move_right_view(game_t *game_info, myrpg_t *myrpg);
+void display_inventory(myrpg_t *myrpg);
+void display_hud(myrpg_t *myrpg);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
     sfColor color);

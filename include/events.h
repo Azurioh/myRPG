@@ -7,6 +7,8 @@
 
 #ifndef EVENT_H
     #define EVENT_H
+    #include "game.h"
+    #include "hud.h"
     #include <SFML/Graphics.h>
     #include "button.h"
     #include "settings.h"

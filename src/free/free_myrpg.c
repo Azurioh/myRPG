@@ -16,5 +16,7 @@ void free_myrpg(myrpg_t *myrpg)
     free_game(myrpg->game_info);
     sfSprite_destroy(myrpg->background);
     free_all_buttons(myrpg->buttons);
+    free_hud(myrpg->hud);
+    free_inventory(myrpg->player->inventory);
     free(myrpg);
 }

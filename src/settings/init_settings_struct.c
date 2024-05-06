@@ -6,6 +6,8 @@
 */
 
 #include "../../include/myrpg.h"
+#include "../../include/generation.h"
+#include <SFML/Graphics/View.h>
 
 static sfVideoMode *get_window_size_list(void)
 {

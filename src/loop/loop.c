@@ -12,8 +12,8 @@ void game_loop(myrpg_t *myrpg)
     settings_t *settings = myrpg->settings;
 
     while (sfRenderWindow_pollEvent(settings->window,
-        &settings->event)) {
-        if (settings->event.type == sfEvtClosed) {
+        &EVENTS->event)) {
+        if (EVENTS->event.type == sfEvtClosed) {
             myrpg->game_open = 0;
         }
         EVENTS->event_function(myrpg);

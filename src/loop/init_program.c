@@ -11,13 +11,13 @@ static myrpg_t *init_myrpg(void)
 {
     myrpg_t *myrpg = malloc(sizeof(myrpg_t));
 
-    if (!myrpg) {
+    if (!myrpg)
         return NULL;
-    }
-    myrpg->player = init_player();
     myrpg->game_open = 1;
     myrpg->settings = init_settings();
     myrpg->events = malloc(sizeof(event_t));
+    myrpg->can_interact = 0;
+    myrpg->is_inventory = 0;
     myrpg->background = NULL;
     myrpg->buttons = NULL;
     load_main_menu(myrpg);

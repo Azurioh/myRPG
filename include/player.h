@@ -9,6 +9,7 @@
     #define PLAYER_H
     #include <SFML/Graphics.h>
     #include <string.h>
+    #include "inventory.h"
 
 typedef struct skills_s {
     char *name;
@@ -20,6 +21,8 @@ typedef struct skills_s {
 
 typedef struct player_interface_s {
     sfSprite *sprite;
+    sfVector2f movement;
+    float speed;
     sfIntRect rect;
     sfVector2f scale;
     sfClock *clock;
@@ -27,6 +30,7 @@ typedef struct player_interface_s {
 } player_interface_t;
 
 typedef struct player_s {
+    char *name;
     int life;
     int is_alive;
     int nb_dead;
@@ -35,6 +39,7 @@ typedef struct player_s {
     int nb_skills_to_upgrade;
     skills_t **skills;
     player_interface_t *interface;
+    inventory_t *inventory;
 } player_t;
 
 player_t *init_player(void);
@@ -45,4 +50,5 @@ int update_player_experience(player_t *player, unsigned int amount);
 int update_skill(player_t *player, unsigned int skill_index);
 int increase_player_life(player_t *player, unsigned int amount);
 int decrease_player_life(player_t *player, unsigned int amount);
+sfSprite *init_player_sprite(player_interface_t *player_interface);
 #endif
