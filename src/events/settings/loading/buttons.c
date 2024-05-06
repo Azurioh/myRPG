@@ -15,7 +15,7 @@ static void manage_settings_button_action(button_t *button, void *args)
     if (strcmp(button->button_name, "decrease_fps") == 0)
         decrease_framerate_of_window(settings);
     if (strcmp(button->button_name, "decrease_resolution") == 0)
-        decrease_size_of_window(settings);
+        decrease_size_of_window(myrpg);
     if (strcmp(button->button_name, "decrease_music") == 0)
         decrease_music_volume(settings);
     if (strcmp(button->button_name, "decrease_sound") == 0)
@@ -23,7 +23,7 @@ static void manage_settings_button_action(button_t *button, void *args)
     if (strcmp(button->button_name, "increase_fps") == 0)
         increase_framerate_of_window(settings);
     if (strcmp(button->button_name, "increase_resolution") == 0)
-        increase_size_of_window(settings);
+        increase_size_of_window(myrpg);
     if (strcmp(button->button_name, "increase_music") == 0)
         increase_music_volume(settings);
     if (strcmp(button->button_name, "increase_sound") == 0)
