@@ -12,7 +12,9 @@
 typedef struct button_s {
     char *button_name;
     sfVector2f position;
+    sfRectangleShape *hitbox;
     sfSprite *image_sprite;
+    float initial_scaling;
     sfBool actually_hover;
     sfBool actually_clicked;
     sfBool (*is_clicked)(struct button_s *, sfRenderWindow *);
