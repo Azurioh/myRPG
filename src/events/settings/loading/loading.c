@@ -16,6 +16,7 @@ void load_settings_elements(void *args)
         SETTINGS->visual_elements = NULL;
         return;
     }
+    EVENTS->previous_load_function(myrpg);
     visual_elements->background = load_settings_background(SETTINGS->window,
         SETTINGS->scaling);
     visual_elements->buttons = load_settings_buttons(SETTINGS);
