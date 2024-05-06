@@ -9,7 +9,8 @@
     #define MYRPG_H
     #define PLAYER myrpg->player
     #define GAME_INFO myrpg->game_info
-    #define EVENTS myrpg->list_of_events
+    #define SETTINGS myrpg->settings
+    #define EVENTS myrpg->events
     #define BUTTONS myrpg->buttons
     #define SCALING myrpg->settings->scaling
 
@@ -25,9 +26,10 @@
     #include "settings.h"
 
 typedef struct myrpg_s {
+    int game_open;
     player_t *player;
     game_t *game_info;
-    event_t *list_of_events;
+    event_t *events;
     sfSprite *background;
     button_t **buttons;
     settings_t *settings;
@@ -39,13 +41,13 @@ void free_myrpg(myrpg_t *myrpg);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
     sfColor color);
-void load_main_menu(myrpg_t *myrpg);
 
 button_t **load_settings_buttons(settings_t *settings);
 sfText **load_settings_texts(settings_t *settings);
 
 void manage_button_event(button_t **buttons, myrpg_t *myrpg);
-void animate_button(button_t *button, settings_t *setting);
+void animate_button(button_t *button);
 
 char *my_nbr_to_str(int nb);
+char *my_strcat(char *dest, char const *str);
 #endif
