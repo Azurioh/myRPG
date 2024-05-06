@@ -8,32 +8,31 @@
 #ifndef EVENT_H
     #define EVENT_H
     #include <SFML/Graphics.h>
-
-enum event_name {
-    MAIN_MENU_EVT = 0,
-    CINEMATIC_EVT,
-    MISSION_EVT,
-    CHATTING_EVT,
-    FIGHT_EVT,
-    PAUSE_EVT,
-    SETTINGS_EVT,
-};
-
-typedef struct event_item_s {
-    char *event_name;
-    sfEvent event;
-    void (*event_function)(void *);
-    void (*display_function)(void *);
-} event_item_t;
+    #include "button.h"
+    #include "settings.h"
 
 typedef struct event_s {
-    enum event_name actual_event;
-    enum event_name previous_event;
-    event_item_t **events;
+    sfEvent event;
+    void (*load_function)(void *);
+    void (*unload_function)(void *);
+    void (*event_function)(void *);
+    void (*display_function)(void *);
+    void (*previous_load_function)(void *);
+    void (*previous_unload_function)(void *);
+    void (*previous_event_function)(void *);
+    void (*previous_display_function)(void *);
 } event_t;
 
-void free_events(event_t *events);
-event_t *init_events(void);
-event_item_t *load_main_menu_events(void);
-event_item_t *load_settings_event(void);
+void load_main_menu(void *args);
+void load_main_menu_elements(void *args);
+void unload_main_menu(void *args);
+void display_main_menu(void *args);
+void load_main_menu_buttons(void *args);
+
+void load_settings(void *args);
+void unload_settings(void *args);
+void load_settings_elements(void *args);
+void load_settings_event(void *args);
+button_t **load_settings_buttons(settings_t *settings);
+void display_settings(void *args);
 #endif
