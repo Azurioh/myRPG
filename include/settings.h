@@ -44,12 +44,12 @@ int mute_sound(settings_t *settings);
 int increase_music_volume(settings_t *settings);
 int increase_sound_volume(settings_t *settings);
 int increase_framerate_of_window(settings_t *settings);
-int increase_size_of_window(settings_t *settings);
+int increase_size_of_window(void *args);
 
 int decrease_music_volume(settings_t *settings);
 int decrease_sound_volume(settings_t *settings);
 int decrease_framerate_of_window(settings_t *settings);
-int decrease_size_of_window(settings_t *settings);
+int decrease_size_of_window(void *args);
 
 sfSprite *load_settings_background(sfRenderWindow *window,
     float scaling);
