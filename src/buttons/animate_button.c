@@ -37,14 +37,17 @@ static void animate_not_hover(button_t *button, sfVector2f scale)
     }
 }
 
-void animate_button(button_t *button, settings_t *setting)
+void animate_button(button_t *button)
 {
     sfVector2f scale = sfSprite_getScale(button->image_sprite);
 
-    if (scale.x < setting->scaling + 0.1 && button->actually_hover == sfTrue) {
+    if (!button) {
+        return;
+    }
+    if (scale.x < button->initial_scaling + 0.1 && button->actually_hover == sfTrue) {
         animate_hover(button, scale);
     }
-    if (scale.x > setting->scaling && button->actually_hover == sfFalse) {
+    if (scale.x > button->initial_scaling && button->actually_hover == sfFalse) {
         animate_not_hover(button, scale);
     }
 }
