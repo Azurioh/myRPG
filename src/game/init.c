@@ -45,6 +45,22 @@ sfImage *init_undermap(void)
     return undermap;
 }
 
+static keybinds_t *init_keybinds(void)
+{
+    keybinds_t *keybinds = malloc(sizeof(keybinds_t));
+
+    if (!keybinds) {
+        return NULL;
+    }
+    keybinds->move_up = sfKeyZ;
+    keybinds->move_down = sfKeyS;
+    keybinds->move_left = sfKeyQ;
+    keybinds->move_right = sfKeyD;
+    keybinds->open_inventory = sfKeyF;
+    keybinds->interact = sfKeyE;
+    return keybinds;
+}
+
 game_t *init_game_struct(void)
 {
     game_t *game_info = malloc(sizeof(game_t));
@@ -55,5 +71,6 @@ game_t *init_game_struct(void)
     game_info->undermap = init_undermap();
     game_info->map_view = init_view(game_info);
     game_info->player = create_player(game_info);
+    game_info->keybinds = init_keybinds();
     return game_info;
 }
