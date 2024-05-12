@@ -12,6 +12,7 @@ void unload_main_menu(void *args)
     myrpg_t *myrpg = args;
 
     sfSprite_destroy(myrpg->background);
+    myrpg->background = NULL;
     for (int i = 0; BUTTONS[i]; i++) {
         free_button(BUTTONS[i]);
     }
