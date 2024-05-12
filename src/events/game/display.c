@@ -9,13 +9,13 @@
 
 static void make_move(myrpg_t *myrpg)
 {
-    if (sfKeyboard_isKeyPressed(MOVE_DOWN))
+    if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->move_down))
         move_down_view(myrpg->game_info, myrpg);
-    if (sfKeyboard_isKeyPressed(MOVE_UP))
+    if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->move_up))
         move_up_view(myrpg->game_info, myrpg);
-    if (sfKeyboard_isKeyPressed(MOVE_RIGHT))
+    if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->move_right))
         move_right_view(myrpg->game_info, myrpg);
-    if (sfKeyboard_isKeyPressed(MOVE_LEFT))
+    if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->move_left))
         move_left_view(myrpg->game_info, myrpg);
 }
 

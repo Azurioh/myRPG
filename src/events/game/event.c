@@ -29,7 +29,7 @@ static void exec_game_events(void *args)
     myrpg_t *myrpg = args;
 
     if (EVENTS->event.type == sfEvtKeyPressed) {
-        if (EVENTS->event.key.code == INVENTORY_KEY) {
+        if (EVENTS->event.key.code == GAME_INFO->keybinds->open_inventory) {
             myrpg->is_inventory = inventory_toggle(myrpg->is_inventory);
         }
         manage_escape_key_game(myrpg);
