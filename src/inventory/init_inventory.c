@@ -39,7 +39,7 @@ inventory_t *init_inventory(myrpg_t *myrpg)
     sfVector2f resize = {center.x - size.x / 2, center.y - size.y / 2};
 
     inventory->empty_text = sfTexture_createFromFile
-        (".assets/inventory/empty.png", sfFalse);
+        ("assets/inventory/empty.png", sfFalse);
     inventory->image = create_imagefile("assets/inventory/inventory.png",
         resize.x + 450, resize.y + 120, 1.5);
     inventory->buttons = init_buttons_inv(myrpg);
