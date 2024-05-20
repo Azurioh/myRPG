@@ -22,6 +22,12 @@ static sfBool is_btn_clicked(button_t *button, sfRenderWindow *window)
     return sfFalse;
 }
 
+static void release_button(button_t *button)
+{
+    sfSprite_setColor(button->image_sprite,
+        sfColor_fromRGBA(255, 255, 255, 255));
+}
+
 static sfBool is_hover(button_t *button, sfRenderWindow *window)
 {
     if (check_collision(button, window)) {
@@ -61,6 +67,8 @@ button_t *init_button(char *button_name, sfVector2f position,
     button->actually_clicked = sfFalse;
     button->is_clicked = &is_btn_clicked;
     button->is_hover = &is_hover;
+    button->release = &release_button;
+    button->clickable = sfTrue;
     button->action = action;
     return button;
 }
