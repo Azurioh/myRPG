@@ -29,10 +29,12 @@
     #include "hud.h"
     #include "inventory.h"
     #include "move.h"
+    #include "item.h"
 
 typedef struct myrpg_s {
     int game_open;
     player_t *player;
+    item_t **items;
     game_t *game_info;
     event_t *events;
     sfSprite *background;
@@ -45,6 +47,7 @@ typedef struct myrpg_s {
 
 int start_game(void);
 int loop(myrpg_t *myrpg);
+inventory_t *init_inventory(myrpg_t *myrpg);
 int check_events(myrpg_t *myrpg);
 void free_myrpg(myrpg_t *myrpg);
 void free_image(image_t *image);

@@ -56,8 +56,8 @@ static keybinds_t *init_keybinds(void)
     keybinds->move_down = sfKeyS;
     keybinds->move_left = sfKeyQ;
     keybinds->move_right = sfKeyD;
-    keybinds->open_inventory = sfKeyF;
-    keybinds->interact = sfKeyE;
+    keybinds->open_inventory = sfKeyE;
+    keybinds->interact = sfKeyF;
     return keybinds;
 }
 
