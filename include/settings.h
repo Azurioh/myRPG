@@ -51,6 +51,9 @@ int decrease_sound_volume(settings_t *settings);
 int decrease_framerate_of_window(settings_t *settings);
 int decrease_size_of_window(void *args);
 
+int toggle_fullscreen(void *args);
+void disable_settings_buttons(button_t **buttons, settings_t *settings);
+
 sfSprite *load_settings_background(sfRenderWindow *window,
     float scaling);
 #endif
