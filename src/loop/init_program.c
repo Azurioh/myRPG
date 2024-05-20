@@ -20,6 +20,9 @@ static myrpg_t *init_myrpg(void)
     myrpg->is_inventory = 0;
     myrpg->background = NULL;
     myrpg->buttons = NULL;
+    myrpg->player = NULL;
+    myrpg->hud = NULL;
+    myrpg->game_info = NULL;
     load_main_menu(myrpg);
     return myrpg;
 }
