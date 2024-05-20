@@ -11,7 +11,7 @@ sfSprite *load_settings_background(sfRenderWindow *window,
     float scaling)
 {
     sfSprite *sprite = generate_sprite_with_file(
-        "assets/settings_background.png", 1);
+        "assets/settings-background.png", 1);
     sfFloatRect size;
     sfVector2u window_size;
 
@@ -22,6 +22,6 @@ sfSprite *load_settings_background(sfRenderWindow *window,
     sfSprite_setPosition(sprite,
         (sfVector2f){ ((float)window_size.x / 2.),
         ((float)window_size.y / 2.0) });
-    sfSprite_setScale(sprite, (sfVector2f){scaling * 2, scaling * 2});
+    sfSprite_setScale(sprite, (sfVector2f){scaling, scaling});
     return sprite;
 }
