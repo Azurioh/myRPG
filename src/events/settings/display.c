@@ -12,14 +12,14 @@ static void update_settings_text(sfText **texts, settings_t *settings)
     char *resolution = my_nbr_to_str(
         settings->window_size_list[settings->actual_window_size].width);
 
-    sfText_setString(texts[4], my_nbr_to_str(
+    sfText_setString(texts[5], my_nbr_to_str(
         settings->framerate_list[settings->actual_framerate]));
     resolution = my_strcat(resolution, strdup("x"));
     resolution = my_strcat(resolution, my_nbr_to_str(
         settings->window_size_list[settings->actual_window_size].height));
-    sfText_setString(texts[5], resolution);
-    sfText_setString(texts[6], my_nbr_to_str(settings->music_volume));
-    sfText_setString(texts[7], my_nbr_to_str(settings->sound_volume));
+    sfText_setString(texts[6], resolution);
+    sfText_setString(texts[7], my_nbr_to_str(settings->music_volume));
+    sfText_setString(texts[8], my_nbr_to_str(settings->sound_volume));
 }
 
 static void display_settings_menu(void *args)
@@ -38,6 +38,7 @@ static void display_settings_menu(void *args)
             settings_visual->texts[i], NULL);
     }
     update_settings_text(settings_visual->texts, SETTINGS);
+    disable_settings_buttons(settings_visual->buttons, SETTINGS);
     return;
 }
 
