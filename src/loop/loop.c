@@ -13,7 +13,9 @@
 #include <unistd.h>
 
 void make_move(myrpg_t *myrpg)
-{
+{   
+    if (myrpg->is_inventory == 1)
+        return;
     if (sfKeyboard_isKeyPressed(MOVE_DOWN))
         move_down_view(myrpg->game_info, myrpg);
     if (sfKeyboard_isKeyPressed(MOVE_UP))
