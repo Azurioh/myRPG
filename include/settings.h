@@ -8,6 +8,7 @@
 #ifndef SETTINGS_H
     #define SETTINGS_H
     #include <SFML/Graphics.h>
+    #include <stdbool.h>
     #include "button.h"
 
 typedef struct settings_visual_s {
@@ -30,13 +31,14 @@ typedef struct settings_s {
     int sound_muted;
     int music_volume;
     int music_muted;
+    int fullscreen;
 } settings_t;
 
 settings_t *init_settings(void);
 void load_settings_menu(settings_t *settings);
 
 int change_size_of_window(settings_t *settings, int add);
-int init_window(settings_t *settings);
+int init_window(settings_t *settings, int fullscreen);
 
 int mute_music(settings_t *settings);
 int mute_sound(settings_t *settings);
