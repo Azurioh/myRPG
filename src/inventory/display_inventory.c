@@ -9,14 +9,17 @@
 
 void update_inventory(myrpg_t *myrpg)
 {
-    item_inv_t **inv = myrpg->player->inventory->items;
+    button_t **inv = myrpg->player->inventory->buttons;
+    int *id = myrpg->player->inventory->id;
     item_t *item;
 
     for (int i = 0; inv[i] != NULL; i++) {
-        if (inv[i]->item_id != -1) {
-            item = myrpg->items[inv[i]->item_id];
-            sfSprite_setTexture(inv[i]->sprite, item->texture, sfFalse);
-        }
+        if (id[i] != -1) {
+            item = myrpg->items[id[i]];
+            sfSprite_setTexture(inv[i]->image_sprite, item->texture, sfFalse);
+        } else
+            sfSprite_setTexture(inv[i]->image_sprite,
+                myrpg->player->inventory->empty_text, sfFalse);
     }
 }
 
@@ -29,7 +32,7 @@ void display_inventory(myrpg_t *myrpg)
     myrpg->player->inventory->image->sprite, NULL);
     for (int i = 0; i < 15; i++) {
         sfRenderWindow_drawSprite(SETTINGS->window,
-            myrpg->player->inventory->items[i]->sprite, NULL);
+            myrpg->player->inventory->buttons[i]->image_sprite, NULL);
     }
     return;
 }

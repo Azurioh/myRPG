@@ -48,9 +48,9 @@ typedef struct myrpg_s {
 int start_game(void);
 int loop(myrpg_t *myrpg);
 inventory_t *init_inventory(myrpg_t *myrpg);
-int check_events(myrpg_t *myrpg);
 void free_myrpg(myrpg_t *myrpg);
 void free_image(image_t *image);
+sfVector2f get_mouse_position(sfRenderWindow *window);
 
 void move(myrpg_t *myrpg);
 void move_down_view(game_t *game_info, myrpg_t *myrpg);

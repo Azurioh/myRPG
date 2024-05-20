@@ -28,6 +28,9 @@ static void exec_game_events(void *args)
 {
     myrpg_t *myrpg = args;
 
+    if (myrpg->is_inventory == 1) {
+        manage_button_event(myrpg->player->inventory->buttons, myrpg);
+    }
     if (EVENTS->event.type == sfEvtKeyPressed) {
         if (EVENTS->event.key.code == GAME_INFO->keybinds->open_inventory) {
             myrpg->is_inventory = inventory_toggle(myrpg->is_inventory);

@@ -33,7 +33,7 @@ int check_collision(button_t *button, sfRenderWindow *window)
 {
     sfVector2f button_pos = get_button_pos(button);
     sfFloatRect button_size = sfSprite_getGlobalBounds(button->image_sprite);
-    sfVector2i m_pos = sfMouse_getPositionRenderWindow(window);
+    sfVector2f m_pos = get_mouse_position(window);
     sfVector2f scale = get_scale(window);
 
     button_pos.x *= scale.x;
