@@ -33,13 +33,13 @@ static void manage_settings_button_action(button_t *button, void *args)
 static void init_left_choice_button(button_t **buttons, settings_t *settings)
 {
     buttons[0] = init_button("decrease_fps",
-        (sfVector2f){750 * settings->scaling, 450 * settings->scaling},
+        (sfVector2f){630 * settings->scaling, 350 * settings->scaling},
         "assets/left-choice-button.png", &manage_settings_button_action);
     buttons[2] = init_button("decrease_resolution",
-        (sfVector2f){1070 * settings->scaling, 450 * settings->scaling},
+        (sfVector2f){1080 * settings->scaling, 350 * settings->scaling},
         "assets/left-choice-button.png", &manage_settings_button_action);
     buttons[4] = init_button("decrease_music",
-        (sfVector2f){750 * settings->scaling, 700 * settings->scaling},
+        (sfVector2f){630 * settings->scaling, 700 * settings->scaling},
         "assets/left-choice-button.png", &manage_settings_button_action);
     buttons[6] = init_button("decrease_sound",
         (sfVector2f){1070 * settings->scaling, 700 * settings->scaling},
@@ -54,13 +54,13 @@ static void init_left_choice_button(button_t **buttons, settings_t *settings)
 static void init_right_choice_button(button_t **buttons, settings_t *settings)
 {
     buttons[1] = init_button("increase_fps",
-        (sfVector2f){850 * settings->scaling, 450 * settings->scaling},
+        (sfVector2f){750 * settings->scaling, 350 * settings->scaling},
         "assets/right-choice-button.png", &manage_settings_button_action);
     buttons[3] = init_button("increase_resolution",
-        (sfVector2f){1170 * settings->scaling, 450 * settings->scaling},
+        (sfVector2f){1320 * settings->scaling, 350 * settings->scaling},
         "assets/right-choice-button.png", &manage_settings_button_action);
     buttons[5] = init_button("increase_music",
-        (sfVector2f){850 * settings->scaling, 700 * settings->scaling},
+        (sfVector2f){750 * settings->scaling, 700 * settings->scaling},
         "assets/right-choice-button.png", &manage_settings_button_action);
     buttons[7] = init_button("increase_sound",
         (sfVector2f){1170 * settings->scaling, 700 * settings->scaling},

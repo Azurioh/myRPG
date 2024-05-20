@@ -10,7 +10,7 @@
 static void exec_settings_events(void *args)
 {
     myrpg_t *myrpg = args;
-    button_t **buttons = myrpg->settings->visual_elements->buttons;
+    button_t **buttons = SETTINGS->visual_elements->buttons;
 
     manage_button_event(buttons, myrpg);
 }

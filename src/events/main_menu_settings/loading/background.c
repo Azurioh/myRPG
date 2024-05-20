@@ -20,8 +20,8 @@ sfSprite *load_settings_background(sfRenderWindow *window,
     sfSprite_setOrigin(sprite,
         (sfVector2f){ size.width / 2, size.height / 2 });
     sfSprite_setPosition(sprite,
-        (sfVector2f){ ((float)window_size.x / 2.0),
+        (sfVector2f){ ((float)window_size.x / 2.),
         ((float)window_size.y / 2.0) });
-    sfSprite_setScale(sprite, (sfVector2f){scaling, scaling});
+    sfSprite_setScale(sprite, (sfVector2f){scaling * 2, scaling * 2});
     return sprite;
 }

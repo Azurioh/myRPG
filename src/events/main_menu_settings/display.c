@@ -7,6 +7,17 @@
 
 #include "../../../include/myrpg.h"
 
+static void update_text_placement(sfText **texts)
+{
+    sfFloatRect rect;
+
+    for (int i = 4; i < 8; i++) {
+        rect = sfText_getGlobalBounds(texts[i]);
+        sfText_setOrigin(texts[i],
+            (sfVector2f){(rect.width / 2) / 1.2, (rect.height / 2) / 1.2});
+    }
+}
+
 static void update_settings_text(sfText **texts, settings_t *settings)
 {
     char *resolution = my_nbr_to_str(
@@ -20,6 +31,7 @@ static void update_settings_text(sfText **texts, settings_t *settings)
     sfText_setString(texts[5], resolution);
     sfText_setString(texts[6], my_nbr_to_str(settings->music_volume));
     sfText_setString(texts[7], my_nbr_to_str(settings->sound_volume));
+    update_text_placement(texts);
 }
 
 static void display_settings_menu(void *args)
