@@ -38,14 +38,14 @@ static button_t **generate_main_menu_buttons(myrpg_t *myrpg)
     if (!buttons) {
         return NULL;
     }
-    buttons[0] = init_button("Nouvelle partie", (sfVector2f){360 * SCALING,
-        900 * SCALING}, "assets/new-game-button.png", &launch_game);
-    buttons[1] = init_button("Reprendre la partie", (sfVector2f){760 * SCALING,
-        900 * SCALING}, "assets/resume-game-button.png", &launch_game);
-    buttons[2] = init_button("Paramètres", (sfVector2f){1160 * SCALING,
+    buttons[0] = init_button("Nouvelle partie", (sfVector2f){960 * SCALING,
+        700 * SCALING}, "assets/new-game-button.png", &launch_game);
+    buttons[1] = init_button("Reprendre la partie", (sfVector2f){960 * SCALING,
+        800 * SCALING}, "assets/resume-button.png", &launch_game);
+    buttons[2] = init_button("Paramètres", (sfVector2f){960 * SCALING,
         900 * SCALING}, "assets/settings-button.png", &show_settings_menu);
-    buttons[3] = init_button("Quitter", (sfVector2f){1560 * SCALING,
-        900 * SCALING}, "assets/quit-button.png", &close_game);
+    buttons[3] = init_button("Quitter", (sfVector2f){960 * SCALING,
+        1000 * SCALING}, "assets/quit-button.png", &close_game);
     buttons[4] = NULL;
     for (int i = 0; i < 4; i++) {
         sfSprite_setScale(buttons[i]->image_sprite,
