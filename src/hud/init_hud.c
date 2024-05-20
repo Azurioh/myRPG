@@ -10,17 +10,22 @@
 #include <SFML/System/Vector2.h>
 #include <SFML/Window/Window.h>
 
-void init_text(hud_t *hud, sfVector2f resize, char *name)
+void init_hud_text(hud_t *hud, sfVector2f resize, game_t *g_info, char *name)
 {
+    char *key = malloc(sizeof(char) * 2);
+
+    key[0] = g_info->keybinds->interact + 'A';
+    key[1] = '\0';
     hud->font = sfFont_createFromFile("assets/font/alagard.ttf");
-    hud->action = create_text("F", 48, (sfVector2f){resize.x + 1050,
-                                resize.y + 450}, hud->font);
+    hud->action = create_text(key, 48,
+        (sfVector2f){resize.x + 1050, resize.y + 450}, hud->font);
+    key[0] = g_info->keybinds->open_inventory + 'A';
     hud->name = create_text(name, 22, (sfVector2f){resize.x + 90,
                                 resize.y + 3}, hud->font);
-    hud->act_text = create_text("E", 48, (sfVector2f){resize.x + 1195,
-                                resize.y + 410}, hud->font);
+    hud->act_text = create_text(key, 48,
+        (sfVector2f){resize.x + 1195, resize.y + 410}, hud->font);
     hud->skill_text = create_text("Nombre d'ameliorations disponibles :",
-    18, (sfVector2f){resize.x + 750, resize.y + 31}, hud->font);
+        18, (sfVector2f){resize.x + 750, resize.y + 31}, hud->font);
 }
 
 hud_t *init_hud(char *name, game_t *game_info)
@@ -40,6 +45,6 @@ hud_t *init_hud(char *name, game_t *game_info)
                                 resize.y + 350, 1.2);
     hud->skill = create_imagefile("assets/hud/notification.png",
                                 resize.x + 700, resize.y + 15, 0.6);
-    init_text(hud, resize, name);
+    init_hud_text(hud, resize, game_info, name);
     return hud;
 }

@@ -12,18 +12,21 @@
 typedef struct button_s {
     char *button_name;
     sfVector2f position;
+    sfRectangleShape *hitbox;
     sfSprite *image_sprite;
+    float initial_scaling;
     sfBool actually_hover;
     sfBool actually_clicked;
-    sfBool (*is_clicked)(struct button_s *, sfMouseButtonEvent *,
-        sfRenderWindow *);
-    sfBool (*is_hover)(struct button_s *, sfMouseButtonEvent *,
-        sfRenderWindow *);
-    void (*action)(void *args);
+    sfBool (*is_clicked)(struct button_s *, sfRenderWindow *);
+    sfBool (*is_hover)(struct button_s *, sfRenderWindow *);
+    sfClock *animation_clock;
+    void (*action)(struct button_s *, void *args);
 } button_t;
 
 void free_button(button_t *button);
 void free_all_buttons(button_t **buttons);
 button_t *init_button(char *button_name, sfVector2f position,
-    char *image_path, void (*action)(void *));
+    char *image_path, void (*action)(button_t *, void *));
+
+int check_collision(button_t *button, sfRenderWindow *window);
 #endif
