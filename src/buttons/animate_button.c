@@ -41,7 +41,7 @@ void animate_button(button_t *button)
 {
     sfVector2f scale = sfSprite_getScale(button->image_sprite);
 
-    if (!button) {
+    if (!button || button->clickable == sfFalse) {
         return;
     }
     if (scale.x < button->initial_scaling + 0.1
