@@ -10,6 +10,7 @@
     #include <SFML/Graphics.h>
     #define UNDERMAP_PATH "assets/test.png"
     #define MAP_PATH "assets/test.png"
+    #define FIGHT_MAP "assets/main_menu_background.jpg"
     #define PLAYER_PATH "assets/player_sprite.png"
     #define SCALING 0.65
 
