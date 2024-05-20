@@ -30,7 +30,7 @@ char *name_and_level(myrpg_t *myrpg)
 
 char *upgrade_text(myrpg_t *myrpg)
 {
-    char *upgrade = strdup("Nombre d'ameliorations disponibles : ");
+    char *upgrade = strdup("Nombre d'ameliorations disponibles : \0");
 
     strcat(upgrade, nbr_to_str(myrpg->player->nb_skills_to_upgrade));
     return upgrade;
@@ -53,7 +53,7 @@ void display_hud(myrpg_t *myrpg)
     myrpg->player->experience = 50;
     myrpg->player->life = 8;
     myrpg->player->level = 6;
-    myrpg->can_interact = 1;
+    myrpg->can_interact = 0;
     myrpg->player->nb_skills_to_upgrade = 12;
     change_percentage(myrpg->hud->life->sprite, myrpg->player->life);
     change_percentage(myrpg->hud->exp->sprite, myrpg->player->experience);
