@@ -10,9 +10,13 @@
 static sfBool is_btn_clicked(button_t *button, sfRenderWindow *window)
 {
     if (check_collision(button, window)) {
+        sfSprite_setColor(button->image_sprite,
+            sfColor_fromRGBA(255, 255, 0, 255));
         button->actually_clicked = sfTrue;
         return sfTrue;
     }
+    sfSprite_setColor(button->image_sprite,
+        sfColor_fromRGBA(255, 255, 255, 255));
     button->actually_clicked = sfFalse;
     button->is_hover(button, window);
     return sfFalse;
