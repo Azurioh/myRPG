@@ -35,9 +35,7 @@ typedef struct settings_s {
 } settings_t;
 
 settings_t *init_settings(void);
-void load_settings_menu(settings_t *settings);
 
-int change_size_of_window(settings_t *settings, int add);
 int init_window(settings_t *settings, int fullscreen);
 
 int mute_music(settings_t *settings);
