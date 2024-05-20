@@ -85,6 +85,8 @@ static button_t *init_control_button(settings_t *settings)
         "assets/controls_button.png", NULL);
 
     button->initial_scaling = settings->scaling;
+    sfSprite_setScale(button->image_sprite,
+        (sfVector2f){settings->scaling, settings->scaling});
     return button;
 }
 
