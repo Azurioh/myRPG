@@ -34,5 +34,9 @@ void display_inventory(myrpg_t *myrpg)
         sfRenderWindow_drawSprite(SETTINGS->window,
             myrpg->player->inventory->buttons[i]->image_sprite, NULL);
     }
+    sfRenderWindow_drawText(SETTINGS->window,
+    myrpg->player->inventory->name, NULL);
+    sfRenderWindow_drawText(SETTINGS->window,
+    myrpg->player->inventory->description, NULL);
     return;
 }

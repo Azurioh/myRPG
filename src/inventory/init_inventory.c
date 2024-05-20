@@ -7,6 +7,19 @@
 
 #include "../../include/myrpg.h"
 
+void init_inv_background(myrpg_t *myrpg, inventory_t *inv)
+{
+    sfVector2f center = sfView_getCenter(myrpg->game_info->map_view);
+    sfVector2f size = sfView_getSize(myrpg->game_info->map_view);
+    sfVector2f resize = {center.x - size.x / 2, center.y - size.y / 2};
+
+    inv->empty_text = sfTexture_createFromFile
+        ("./assets/inventory/empty.png", sfFalse);
+    inv->image = create_imagefile("assets/inventory/inventory.png",
+        resize.x + 450, resize.y + 120, 1.5);
+    return;
+}
+
 button_t **init_buttons_inv(myrpg_t *myrpg)
 {
     sfVector2f center = sfView_getCenter(myrpg->game_info->map_view);
@@ -31,22 +44,31 @@ button_t **init_buttons_inv(myrpg_t *myrpg)
     return items;
 }
 
-inventory_t *init_inventory(myrpg_t *myrpg)
+void init_inv_texts(myrpg_t *myrpg, inventory_t *inventory)
 {
-    inventory_t *inventory = malloc(sizeof(inventory_t));
     sfVector2f center = sfView_getCenter(myrpg->game_info->map_view);
     sfVector2f size = sfView_getSize(myrpg->game_info->map_view);
     sfVector2f resize = {center.x - size.x / 2, center.y - size.y / 2};
+    sfFont *font = sfFont_createFromFile("./assets/alagard.ttf");
 
-    inventory->empty_text = sfTexture_createFromFile
-        (".assets/inventory/empty.png", sfFalse);
-    inventory->image = create_imagefile("assets/inventory/inventory.png",
-        resize.x + 450, resize.y + 120, 1.5);
+    inventory->name = create_text("", 30,
+        (sfVector2f){resize.x + 480, resize.y + 413}, font);
+    inventory->description = create_text("", 15,
+        (sfVector2f){resize.x + 480, resize.y + 460}, font);
+}
+
+inventory_t *init_inventory(myrpg_t *myrpg)
+{
+    inventory_t *inventory = malloc(sizeof(inventory_t));
+
+    init_inv_background(myrpg, inventory);
     inventory->buttons = init_buttons_inv(myrpg);
     inventory->buttons[15] = NULL;
     inventory->id = malloc(sizeof(int) * 15);
     for (int i = 0; i < 15; i++)
         inventory->id[i] = - 1;
+    inventory->selected_item = NULL;
+    init_inv_texts(myrpg, inventory);
     inventory->id[1] = 20;
     inventory->id[12] = 11;
     inventory->id[11] = 4;

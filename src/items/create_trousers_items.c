@@ -26,17 +26,16 @@ void create_trousers_items(item_t **items, int *index)
 {
     items[*index] = create_trousers_item(
         "./assets/inventory/trousers/leather_trousers.png",
-        "Pantalon en cuir", 10, "Pantalon en cuir classique.\nDEF: 10");
+        "Pantalon en cuir", 10, "DEF: 10");
     items[*index + 1] = create_trousers_item(
         "./assets/inventory/trousers/iron_trousers.png",
-        "Pantalon en fer", 20, "Pantalon en fer résistant.\nDEF: 20");
+        "Pantalon en fer", 20, "DEF: 20");
     items[*index + 2] = create_trousers_item(
         "./assets/inventory/trousers/steel_trousers.png",
-        "Pantalon en acier", 40, "Pantalon en acier très solide.\nDEF: 40");
+        "Pantalon en acier", 40, "DEF: 40");
     items[*index + 3] = create_trousers_item(
         "./assets/inventory/trousers/dragon_trousers.png",
-        "Pantalon du dragon", 60,
-        "Pantalon fabriqué en écaille de dragon.\nDEF: 60");
+        "Pantalon du dragon", 60, "DEF: 60");
     *index += 4;
     return;
 }

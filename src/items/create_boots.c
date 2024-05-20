@@ -26,17 +26,16 @@ void create_boots_items(item_t **items, int *index)
 {
     items[*index] = create_boots_item(
         "./assets/inventory/boots/leather_boots.png",
-        "Bottes en cuir", 10, "Bottes en cuir classique.\nDEF: 10");
+        "Bottes en cuir", 10, "DEF: 10");
     items[*index + 1] = create_boots_item(
         "./assets/inventory/boots/iron_boots.png",
-        "Bottes en fer", 20, "Bottes en fer résistant.\nDEF: 20");
+        "Bottes en fer", 20, "DEF: 20");
     items[*index + 2] = create_boots_item(
         "./assets/inventory/boots/steel_boots.png",
-        "Bottes en acier", 40, "Bottes en acier très solide.\nDEF: 40");
+        "Bottes en acier", 40, "DEF: 40");
     items[*index + 3] = create_boots_item(
         "./assets/inventory/boots/dragon_boots.png",
-        "Bottes du dragon", 60,
-        "Bottes fabriqué en écaille de dragon.\nDEF: 60");
+        "Bottes du dragon", 60, "DEF: 60");
     *index += 4;
     return;
 }
