@@ -10,6 +10,7 @@
     #include <SFML/Graphics.h>
     #include <SFML/Graphics/Types.h>
     #include "button.h"
+    #include "settings.h"
 
 typedef struct keybinds_s {
     int move_up;
@@ -19,14 +20,23 @@ typedef struct keybinds_s {
     int open_inventory;
     int interact;
 } keybinds_t;
+
+typedef struct game_menu_s {
+    sfSprite *background;
+    button_t **buttons;
+} game_menu_t;
+
 typedef struct game_s {
     sfSprite *player;
     sfSprite *map;
     sfImage *undermap;
     sfView *map_view;
+    game_menu_t *game_menu;
+    sfBool show_menu;
     keybinds_t *keybinds;
 } game_t;
 
-game_t *init_game_struct(void);
+game_t *init_game_struct(settings_t *settings);
 void free_game(game_t *game_info);
+game_menu_t *init_game_menu(game_t *game_info, settings_t *settings);
 #endif
