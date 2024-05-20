@@ -80,4 +80,5 @@ void move(myrpg_t *myrpg)
     move_hud(myrpg->hud, movement);
     move_inventory(myrpg->player->inventory, movement);
     myrpg->player->interface->movement = (sfVector2f){0, 0};
+    sfSprite_getPosition(myrpg->game_info->player);
 }
