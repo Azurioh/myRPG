@@ -6,7 +6,8 @@
 */
 #include "../../include/myrpg.h"
 
-item_t *create_chestplate_item(char *path, char *name, int strength, char *description)
+item_t *create_chestplate_item(char *path, char *name, int strength,
+    char *description)
 {
     item_t *item = malloc(sizeof(item_t));
     static int id = 12;
@@ -34,7 +35,7 @@ void create_chestplate_items(item_t **items, int *index)
         "Plastron en acier", 40, "Plastron en acier très solide.\nDEF: 40");
     items[*index + 3] = create_chestplate_item(
         "./assets/inventory/chestplate/dragon_chestplate.png",
-        "Plastron du dragon", 60, 
+        "Plastron du dragon", 60,
         "Plastron fabriqué en écaille de dragon.\nDEF: 60");
     *index += 4;
     return;

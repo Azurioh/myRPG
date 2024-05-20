@@ -14,7 +14,7 @@ item_inv_t **init_items_inv(myrpg_t *myrpg)
     sfVector2f resize = {center.x - size.x / 2, center.y - size.y / 2};
     item_inv_t **items = malloc(sizeof(item_inv_t *) * 15);
     int index = 0;
-    
+
     for (int line = 0; line < 3; line++) {
         for (int col = 0; col < 5; col++) {
             items[index] = malloc(sizeof(item_inv_t));
@@ -25,11 +25,9 @@ item_inv_t **init_items_inv(myrpg_t *myrpg)
             sfSprite_setPosition(items[index]->sprite, items[index]->position);
             sfSprite_setScale(items[index]->sprite, (sfVector2f){2, 2});
             items[index]->item_id = -1;
-            //("assets/inventory/chestplate/Icon44.png", items[index]->position.x, items[index]->position.y, 2);
             index += 1;
         }
     }
-    items[index] = NULL;
     return items;
 }
 
@@ -43,12 +41,10 @@ inventory_t *init_inventory(myrpg_t *myrpg)
     inventory->image = create_imagefile("assets/inventory/inventory.png",
         resize.x + 680, resize.y + 120, 2.5);
     inventory->items = init_items_inv(myrpg);
-    
-    // sfTexture *texture = sfTexture_createFromFile("assets/inventory/heal/petite_popo.png", NULL);
-    // sfSprite_setTexture(inventory->items[0]->sprite,  texture, sfTrue);
+    inventory->items[15] = NULL;
     inventory->items[1]->item_id = 20;
     inventory->items[12]->item_id = 11;
     inventory->items[11]->item_id = 4;
-    inventory->items[9]->item_id = 0;
+    inventory->items[14]->item_id = 0;
     return inventory;
 }

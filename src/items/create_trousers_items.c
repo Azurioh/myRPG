@@ -6,7 +6,8 @@
 */
 #include "../../include/myrpg.h"
 
-item_t *create_trousers_item(char *path, char *name, int strength, char *description)
+item_t *create_trousers_item(char *path, char *name, int strength,
+    char *description)
 {
     item_t *item = malloc(sizeof(item_t));
     static int id = 16;
@@ -34,7 +35,7 @@ void create_trousers_items(item_t **items, int *index)
         "Pantalon en acier", 40, "Pantalon en acier très solide.\nDEF: 40");
     items[*index + 3] = create_trousers_item(
         "./assets/inventory/trousers/dragon_trousers.png",
-        "Pantalon du dragon", 60, 
+        "Pantalon du dragon", 60,
         "Pantalon fabriqué en écaille de dragon.\nDEF: 60");
     *index += 4;
     return;

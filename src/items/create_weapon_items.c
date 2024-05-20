@@ -6,7 +6,8 @@
 */
 #include "../../include/myrpg.h"
 
-item_t *create_weapon_item(char *path, char *name, int strength, char *description)
+item_t *create_weapon_item(char *path, char *name, int strength,
+    char *description)
 {
     item_t *item = malloc(sizeof(item_t));
     static int id = 3;
@@ -37,11 +38,10 @@ void create_weapon_items(item_t **items, int *index)
         "Une hache ayant été forgée à partir de roche de magma.\nATK: 40");
     items[*index + 3] = create_weapon_item(
         "./assets/inventory/weapon/guardian_axe.png",
-        "Hache du Guardien", 100, 
-        "Une hache ayant auparavent appartenu au gardien de la montagne.\nATK: 60");
+        "Hache du Guardien", 100,
+        "Hache ayant auparavent appartenu au gardien de la montagne\nATK: 60");
     items[*index + 4] = create_weapon_item(
         "./assets/inventory/weapon/diamond_axe.png",
-        "Hache en diamant", 10000, "Hache venant d'un autre monde.\nATK: 10000");
-    *index += 5;
-    return;
+        "Hache en diamant", 10000,
+        "Hache venant d'un autre monde.\nATK: 10000");
 }

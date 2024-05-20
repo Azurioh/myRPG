@@ -11,40 +11,22 @@
     #include <SFML/Graphics/Types.h>
     #include "button.h"
 
+typedef struct keybinds_s {
+    int move_up;
+    int move_down;
+    int move_left;
+    int move_right;
+    int open_inventory;
+    int interact;
+} keybinds_t;
 typedef struct game_s {
-    sfRenderWindow *window;
-    sfVideoMode *window_size_list;
-    sfVector2f scaling;
-    sfEvent event;
     sfSprite *player;
     sfSprite *map;
     sfImage *undermap;
     sfView *map_view;
-    int actual_window_size;
-    unsigned int *framerate_list;
-    int actual_framerate;
-    int sound_volume;
-    int sound_muted;
-    int music_volume;
-    int music_muted;
+    keybinds_t *keybinds;
 } game_t;
 
 game_t *init_game_struct(void);
 void free_game(game_t *game_info);
-
-int change_size_of_window(game_t *game_info, int add);
-int init_window(game_t *game_info);
-
-int mute_music(game_t *game_info);
-int mute_sound(game_t *game_info);
-
-int increase_music_volume(game_t *game_info);
-int increase_sound_volume(game_t *game_info);
-int increase_framerate_of_window(game_t *game_info);
-int increase_size_of_window(game_t *game_info);
-
-int decrease_music_volume(game_t *game_info);
-int decrease_sound_volume(game_t *game_info);
-int decrease_framerate_of_window(game_t *game_info);
-int decrease_size_of_window(game_t *game_info);
 #endif

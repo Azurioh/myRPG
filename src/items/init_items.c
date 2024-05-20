@@ -14,6 +14,7 @@ item_t **init_items(void)
 
     create_heal_items(items, &index);
     create_weapon_items(items, &index);
+    index += 5;
     create_helmet_items(items, &index);
     create_chestplate_items(items, &index);
     create_trousers_items(items, &index);

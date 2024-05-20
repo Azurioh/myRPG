@@ -6,7 +6,8 @@
 */
 #include "../../include/myrpg.h"
 
-item_t *create_heal_item(char *path, char *name, int strength, char *description)
+item_t *create_heal_item(char *path, char *name, int strength,
+    char *description)
 {
     item_t *item = malloc(sizeof(item_t));
     static int id = 0;

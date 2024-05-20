@@ -6,7 +6,8 @@
 */
 #include "../../include/myrpg.h"
 
-item_t *create_helmet_item(char *path, char *name, int strength, char *description)
+item_t *create_helmet_item(char *path, char *name, int strength,
+    char *description)
 {
     item_t *item = malloc(sizeof(item_t));
     static int id = 8;
@@ -34,7 +35,7 @@ void create_helmet_items(item_t **items, int *index)
         "Casque en acier", 40, "Casque en acier très solide.\nDEF: 40");
     items[*index + 3] = create_helmet_item(
         "./assets/inventory/helmet/dragon_helmet.png",
-        "Casque du dragon", 60, 
+        "Casque du dragon", 60,
         "Casque fabriqué en écaille de dragon.\nDEF: 60");
     *index += 4;
     return;

@@ -13,16 +13,14 @@ static myrpg_t *init_myrpg(void)
 
     if (!myrpg)
         return NULL;
-    myrpg->player = init_player();
-    myrpg->game_info = init_game_struct();
-    myrpg->hud = init_hud(myrpg->player->name, myrpg->game_info);
-    myrpg->player->inventory = init_inventory(myrpg);
+    myrpg->game_open = 1;
+    myrpg->settings = init_settings();
+    myrpg->events = malloc(sizeof(event_t));
     myrpg->can_interact = 0;
     myrpg->is_inventory = 0;
-    myrpg->items = init_items();
-    myrpg->list_of_events = NULL;
     myrpg->background = NULL;
     myrpg->buttons = NULL;
+    load_main_menu(myrpg);
     return myrpg;
 }
 
@@ -34,6 +32,5 @@ int start_game(void)
         return 84;
     } else {
         return loop(myrpg);
-    return loop(myrpg);
     }
 }

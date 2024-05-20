@@ -25,10 +25,11 @@ void display_inventory(myrpg_t *myrpg)
     if (myrpg->is_inventory == 0)
         return;
     update_inventory(myrpg);
-    sfRenderWindow_drawSprite(myrpg->game_info->window,
+    sfRenderWindow_drawSprite(SETTINGS->window,
     myrpg->player->inventory->image->sprite, NULL);
     for (int i = 0; i < 15; i++) {
-        sfRenderWindow_drawSprite(myrpg->game_info->window, myrpg->player->inventory->items[i]->sprite, NULL);
+        sfRenderWindow_drawSprite(SETTINGS->window,
+            myrpg->player->inventory->items[i]->sprite, NULL);
     }
     return;
 }
