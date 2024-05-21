@@ -20,6 +20,8 @@
     #include "hud.h"
     #include "inventory.h"
     #include "move.h"
+    #include "portal.h"
+    #include "npc.h"
 
 typedef struct myrpg_s {
     player_t *player;
