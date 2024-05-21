@@ -16,7 +16,7 @@ void init_inv_background(myrpg_t *myrpg, inventory_t *inv)
     inv->empty_text = sfTexture_createFromFile
         ("./assets/inventory/empty.png", sfFalse);
     inv->image = create_imagefile("assets/inventory/inventory.png",
-        resize.x + 450, resize.y + 120, 1.5);
+        resize.x + 480, resize.y + 120, 1.5);
     return;
 }
 
@@ -31,8 +31,8 @@ button_t **init_buttons_inv(myrpg_t *myrpg)
 
     for (int line = 0; line < 3; line++)
         for (int col = 0; col < 5; col++) {
-            position = (sfVector2f){resize.x + 500 + col * 51.5,
-                resize.y + 269 + line * 51.5};
+            position = (sfVector2f){resize.x + 478 + col * 51.5,
+                resize.y + 265 + line * 51.5};
             items[index] = init_button(my_nbr_to_str(index),
                 position,
                 "./assets/inventory/empty.png", &change_current_item);
@@ -52,9 +52,28 @@ void init_inv_texts(myrpg_t *myrpg, inventory_t *inventory)
     sfFont *font = sfFont_createFromFile("./assets/alagard.ttf");
 
     inventory->name = create_text("", 20,
-        (sfVector2f){resize.x + 480, resize.y + 423}, font);
+        (sfVector2f){resize.x + 510, resize.y + 421}, font);
     inventory->description = create_text("", 15,
-        (sfVector2f){resize.x + 480, resize.y + 480}, font);
+        (sfVector2f){resize.x + 510, resize.y + 478}, font);
+}
+
+sfSprite **init_equipped_items(myrpg_t *myrpg, inventory_t *inventory)
+{
+    sfSprite **equipped = malloc(sizeof(item_t *) * 6);
+    sfVector2f center = sfView_getCenter(myrpg->game_info->map_view);
+    sfVector2f size = sfView_getSize(myrpg->game_info->map_view);
+    sfVector2f resize = {center.x - size.x / 2, center.y - size.y / 2};
+
+    inventory->equipped = malloc(sizeof(item_t *) * 5);
+    for (int i = 0; i < 5; i++) {
+        inventory->equipped[i] = NULL;
+        equipped[i] = sfSprite_create();
+        sfSprite_setScale(equipped[i], (sfVector2f){1.4, 1.4});
+        sfSprite_setPosition(equipped[i], (sfVector2f){resize.x + 506 + i * 51.5, resize.y + 562});
+        sfSprite_setTexture(equipped[i], NULL, sfFalse);
+    }
+    equipped[5] = NULL;
+    return equipped;
 }
 
 inventory_t *init_inventory(myrpg_t *myrpg)
@@ -69,6 +88,7 @@ inventory_t *init_inventory(myrpg_t *myrpg)
         inventory->id[i] = - 1;
     inventory->selected_item = NULL;
     init_inv_texts(myrpg, inventory);
+    inventory->equipped_sprite = init_equipped_items(myrpg, inventory);
     inventory->id[1] = 20;
     inventory->id[12] = 11;
     inventory->id[11] = 4;

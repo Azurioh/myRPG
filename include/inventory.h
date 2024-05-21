@@ -20,8 +20,11 @@ typedef struct inventory_s {
     button_t **buttons;
     sfTexture *empty_text;
     item_t *selected_item;
+    button_t *selected_slot;
     sfText *name;
     sfText *description;
+    item_t **equipped;
+    sfSprite **equipped_sprite;
 } inventory_t;
 
 void free_inventory(inventory_t *inventory);
