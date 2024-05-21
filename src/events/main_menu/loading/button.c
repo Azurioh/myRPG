@@ -27,6 +27,10 @@ static void launch_game(button_t *button, void *args)
 
     (void) button;
     EVENTS->unload_function(myrpg);
+    sfMusic_stop(myrpg->music);
+    myrpg->music_started = false;
+    myrpg->player = init_player();
+    myrpg->game_info = init_game_struct(myrpg->settings);
     load_game(args);
     EVENTS->load_function(myrpg);
 }
@@ -55,6 +59,22 @@ static button_t **generate_main_menu_buttons(myrpg_t *myrpg)
     return buttons;
 }
 
+static sfMusic *load_music(void)
+{
+    char *music_path = my_strdup("assets/musics/diggy_instru.ogg");
+    sfMusic *music;
+    int random;
+
+    srand(time(NULL));
+    random = rand() % 100;
+    if (random <= 25) {
+        free(music_path);
+        music_path = my_strdup("assets/musics/diggy_instru_secret.ogg");
+    }
+    music = sfMusic_createFromFile(music_path);
+    return music;
+}
+
 void load_main_menu_buttons(void *args)
 {
     myrpg_t *myrpg = args;
@@ -71,4 +91,8 @@ void load_main_menu_buttons(void *args)
         buttons[i]->initial_scaling = SCALING;
     }
     myrpg->buttons = buttons;
+    if (!myrpg->music) {
+        myrpg->music = load_music();
+        myrpg->music_started = false;
+    }
 }
