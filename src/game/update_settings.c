@@ -8,98 +8,89 @@
 #include "../../include/myrpg.h"
 
 static void update_others_settings_button(button_t **buttons,
-    sfVector2f resize, float scaling)
+    sfVector2f resize)
 {
-    int val1 = sfSprite_getPosition(buttons[8]->image_sprite).x;
-    int val2 = sfSprite_getPosition(buttons[8]->image_sprite).y;
-
-    for (int i = 8; i < 11; i++) {
-        if (i == 9)
-            continue;
-        val1 = sfSprite_getPosition(buttons[i]->image_sprite).x;
-        val2 = sfSprite_getPosition(buttons[i]->image_sprite).y;
-        sfSprite_setPosition(buttons[i]->image_sprite,
-            (sfVector2f)(sfVector2f){val1 + resize.x - (300 * scaling),
-            val2 + resize.y - (300 * scaling)});
-    }
+    sfSprite_setPosition(buttons[8]->image_sprite,
+        (sfVector2f)(sfVector2f){resize.x + 625, resize.y + 470});
+    sfSprite_setPosition(buttons[10]->image_sprite,
+        (sfVector2f)(sfVector2f){resize.x + 625, resize.y + 550});
 }
 
-static void update_settings_button(button_t **buttons, sfVector2f resize,
-    float scaling)
+static void update_settings_button(button_t **buttons, sfVector2f resize)
 {
-    int val1 = sfSprite_getPosition(buttons[0]->image_sprite).x;
-    int val2 = sfSprite_getPosition(buttons[0]->image_sprite).y;
+    int x = 750;
+    int y = 170;
 
     for (int i = 0; i <= 7; i++) {
         sfSprite_setPosition(buttons[i]->image_sprite,
-            (sfVector2f){val1 + resize.x - (200 * scaling),
-            val2 + resize.y - (100 * scaling)});
+            (sfVector2f){resize.x + x, resize.y + y});
         if (i % 2 != 0) {
-            val1 -= 100;
-            val2 += 100;
+            x -= 50;
+            y += 60;
         }
         if (i % 2 == 0) {
-            val1 += 100;
+            x += 50;
         }
     }
     sfSprite_setPosition(buttons[9]->image_sprite,
-        (sfVector2f){val1 + resize.x - (200 * scaling),
-        val2 + resize.y - (100 * scaling)});
-    update_others_settings_button(buttons, resize, scaling);
+        (sfVector2f){resize.x + x, resize.y + y});
+    update_others_settings_button(buttons, resize);
 }
 
 static void update_settings_texts(sfText **texts, sfVector2f resize)
 {
-    sfVector2f txt_pos;
-    int j = 0;
-
-    for (int i = 0; i < 4; i++) {
-        txt_pos = sfText_getPosition(texts[i]);
-        sfText_setPosition(texts[i],
-            (sfVector2f){txt_pos.x + resize.x - 170,
-            txt_pos.y + resize.y - 50 - (j * 40)});
-        txt_pos = sfText_getPosition(texts[i + 5]);
-        sfText_setPosition(texts[i + 5],
-            (sfVector2f){txt_pos.x + resize.x - 240,
-            txt_pos.y + resize.y - 50 - (j * 40)});
-        j++;
-    }
-    txt_pos = sfText_getPosition(texts[4]);
-    sfText_setPosition(texts[4],
-        (sfVector2f){txt_pos.x + resize.x - 170,
-        txt_pos.y + resize.y - 50 - (j * 40)});
+    sfText_setPosition(texts[0], (sfVector2f){resize.x + 420, resize.y + 140});
+    sfText_setPosition(texts[1], (sfVector2f){resize.x + 420, resize.y + 200});
+    sfText_setPosition(texts[2], (sfVector2f){resize.x + 420, resize.y + 260});
+    sfText_setPosition(texts[3], (sfVector2f){resize.x + 420, resize.y + 320});
+    sfText_setPosition(texts[4], (sfVector2f){resize.x + 420, resize.y + 380});
+    sfText_setPosition(texts[5], (sfVector2f){resize.x + 530, resize.y + 145});
+    sfText_setPosition(texts[6], (sfVector2f){resize.x + 560, resize.y + 205});
+    sfText_setPosition(texts[7], (sfVector2f){resize.x + 530, resize.y + 265});
+    sfText_setPosition(texts[8], (sfVector2f){resize.x + 620, resize.y + 325});
 }
 
 static void update_settings_background(sfSprite *background, sfVector2f resize)
 {
-    sfVector2f bg_pos = sfSprite_getPosition(background);
-
     sfSprite_setPosition(background,
-        (sfVector2f){bg_pos.x + resize.x - 330, bg_pos.y + resize.y - 200});
+        (sfVector2f){resize.x + 620, resize.y + 350});
 }
 
 void update_settings_position(settings_t *settings,
     sfVector2f resize)
 {
     update_settings_background(settings->visual_elements->background, resize);
-    update_settings_button(settings->visual_elements->buttons, resize,
-        settings->scaling);
+    update_settings_button(settings->visual_elements->buttons, resize);
     update_settings_texts(settings->visual_elements->texts, resize);
+}
+
+static void update_settings_buttons_scaling(settings_t *settings)
+{
+    sfSprite_setScale(settings->visual_elements->background,
+        (sfVector2f){ settings->scaling / (1.7 * settings->scaling),
+        settings->scaling / (1.7 * settings->scaling)});
+    for (int i = 0; settings->visual_elements->buttons[i]; i++) {
+        sfSprite_setScale(settings->visual_elements->buttons[i]->image_sprite,
+            (sfVector2f){settings->scaling / (3 * settings->scaling),
+            settings->scaling / (3 * settings->scaling)});
+        settings->visual_elements->buttons[i]->initial_scaling =
+            settings->scaling / (3 * settings->scaling);
+    }
+    sfSprite_setScale(settings->visual_elements->buttons[8]->image_sprite,
+        (sfVector2f){settings->scaling / (1.8 * settings->scaling),
+        settings->scaling / (1.8 * settings->scaling)});
+    settings->visual_elements->buttons[8]->initial_scaling =
+        settings->scaling / (1.8 * settings->scaling);
 }
 
 void update_settings_scaling(settings_t *settings)
 {
-    sfSprite_setScale(settings->visual_elements->background,
-        (sfVector2f){ settings->scaling / 1.8, settings->scaling / 1.8});
-    for (int i = 0; settings->visual_elements->buttons[i]; i++) {
-        sfSprite_setScale(settings->visual_elements->buttons[i]->image_sprite,
-            (sfVector2f){settings->scaling / 4, settings->scaling / 4});
-        settings->visual_elements->buttons[i]->initial_scaling =
-            settings->scaling / 4;
-    }
+    update_settings_buttons_scaling(settings);
     for (int i = 0; settings->visual_elements->texts[i]; i++) {
-        sfText_setCharacterSize(settings->visual_elements->texts[i], 40);
+        sfText_setCharacterSize(settings->visual_elements->texts[i],
+            40 / settings->scaling);
         if (i > 4)
-            sfText_setCharacterSize(settings->visual_elements->texts[i], 20);
+            sfText_setCharacterSize(settings->visual_elements->texts[i],
+                30 / settings->scaling);
     }
 }
