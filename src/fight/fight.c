@@ -25,6 +25,7 @@ static void setup_attacks(myrpg_t *myrpg, fight_t *fight_infos,
     (void) play_pos;
     (void) myrpg;
     fight_infos->buttons = setup_attack_buttons(myrpg);
+    fight_infos->buttons[4] = NULL;
 }
 
 static fight_t *check_str_infos(char *str, fight_t *fight)
