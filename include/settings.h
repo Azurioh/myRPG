@@ -56,4 +56,7 @@ void disable_settings_buttons(button_t **buttons, settings_t *settings);
 
 sfSprite *load_settings_background(sfRenderWindow *window,
     float scaling);
+void manage_increase_buttons(button_t *button, void *args);
+void manage_decrease_buttons(button_t *button, void *args);
+void exec_settings_events(void *args);
 #endif
