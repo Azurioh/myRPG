@@ -71,6 +71,16 @@ void move_right_view(game_t *game_info, myrpg_t *myrpg)
     myrpg->player->interface->movement.x += myrpg->player->interface->speed;
 }
 
+static void move_menu(game_menu_t *game_menu, sfVector2f offset)
+{
+    sfSprite_move(game_menu->background, offset);
+    for (int i = 0; game_menu->buttons[i]; i++) {
+        sfSprite_move(game_menu->buttons[i]->image_sprite, offset);
+        game_menu->buttons[i]->position.x += offset.x;
+        game_menu->buttons[i]->position.y += offset.y;
+    }
+}
+
 void move(myrpg_t *myrpg)
 {
     sfVector2f movement = myrpg->player->interface->movement;
@@ -79,5 +89,6 @@ void move(myrpg_t *myrpg)
     sfSprite_move(myrpg->game_info->player, movement);
     move_hud(myrpg->hud, movement);
     move_inventory(myrpg->player->inventory, movement);
+    move_menu(GAME_INFO->game_menu, movement);
     myrpg->player->interface->movement = (sfVector2f){0, 0};
 }

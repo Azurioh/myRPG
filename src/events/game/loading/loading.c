@@ -12,7 +12,7 @@ void load_game_elements(void *args)
     myrpg_t *myrpg = args;
 
     myrpg->player = init_player();
-    myrpg->game_info = init_game_struct();
+    myrpg->game_info = init_game_struct(myrpg->settings);
     myrpg->hud = init_hud(myrpg->player->name, myrpg->game_info);
     myrpg->player->inventory = init_inventory(myrpg);
     myrpg->items = init_items();
