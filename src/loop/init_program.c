@@ -6,6 +6,7 @@
 */
 
 #include "../../include/myrpg.h"
+#include <stdio.h>
 
 static myrpg_t *init_myrpg(void)
 {
@@ -13,12 +14,9 @@ static myrpg_t *init_myrpg(void)
 
     if (!myrpg)
         return NULL;
-    myrpg->player = init_player();
-    myrpg->game_info = init_game_struct();
-    myrpg->fight_infos = init_fight();
-    myrpg->hud = init_hud(myrpg->player->name, myrpg->game_info);
-    myrpg->player->inventory = init_inventory(myrpg->game_info);
     myrpg->game_open = 1;
+    myrpg->fight_infos = malloc(sizeof(fight_t));
+    myrpg->fight_infos->in_fight = 0;
     myrpg->settings = init_settings();
     myrpg->events = malloc(sizeof(event_t));
     myrpg->can_interact = 0;
