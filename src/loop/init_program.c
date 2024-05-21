@@ -23,6 +23,8 @@ static myrpg_t *init_myrpg(void)
     myrpg->player = NULL;
     myrpg->hud = NULL;
     myrpg->game_info = NULL;
+    myrpg->music = NULL;
+    myrpg->music_started = false;
     load_main_menu(myrpg);
     return myrpg;
 }
