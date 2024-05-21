@@ -19,9 +19,9 @@ int detect_npc(player_t *player, npc_t *npc, myrpg_t *myrpg, int i)
     return -1;
 }
 
-void can_speak(myrpg_t *myrpg, npc_t *npc, int i)
+void can_speak(myrpg_t *myrpg, npc_t *npc)
 {
-    for (int i = 0; i != NULL; i++) {
+    for (int i = 0; npc->npc_info[i] != NULL; i++) {
         if (myrpg->can_interact == 1) {
             draw_text(npc, detect_npc(myrpg->player, npc, myrpg, i));
         }

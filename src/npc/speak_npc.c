@@ -9,5 +9,7 @@
 
 void draw_text(npc_t *npc, int i)
 {
-    create_text(npc->npc_info[i]->text, 10, npc->npc_info[i]->pos, FONT);
+    sfFont *font = sfFont_createFromFile(FONT);
+
+    create_text(npc->npc_info[i]->text, 10, npc->npc_info[i]->pos, font);
 }
