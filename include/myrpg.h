@@ -69,6 +69,9 @@ sfText **load_settings_texts(settings_t *settings);
 
 void manage_button_event(button_t **buttons, myrpg_t *myrpg);
 void animate_button(button_t *button);
+void check_fight(myrpg_t *myrpg, fight_t *fight_infos, game_t *game_info);
+button_attack_t **setup_attack_buttons(myrpg_t *myrpg);
+fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);
