@@ -9,17 +9,15 @@
 void drop_item(button_t *button, void *args)
 {
     myrpg_t *myrpg = (myrpg_t *)args;
-    inventory_t *inventory = myrpg->player->inventory;
-    int slot = atoi(button->button_name);
-    int item_id = inventory->id[slot];
+    button_t *selected_button = myrpg->player->inventory->selected_slot;
+    int slot = 0;
 
-    if (item_id == -1) {
+    if (selected_button == NULL)
         return;
-    }
-    inventory->selected_slot = button;
-    inventory->selected_item = myrpg->items[item_id];
-    sfText_setString(inventory->name, inventory->selected_item->name);
-    sfText_setString(inventory->description,
-        inventory->selected_item->description);
+    slot = atoi(selected_button->button_name);
+    (void)button;
+    myrpg->player->inventory->selected_item = NULL;
+    myrpg->player->inventory->selected_slot = NULL;
+    myrpg->player->inventory->id[slot] = -1;
     return;
 }
