@@ -18,7 +18,7 @@ typedef struct npc_info_s {
 } npc_info_t;
 
 typedef struct npc_s {
-    npc_info_t **npc_info
+    npc_info_t **npc_info;
 
 } npc_t;
 
