@@ -30,7 +30,7 @@ static void launch_game(button_t *button, void *args)
     sfMusic_stop(myrpg->music);
     myrpg->music_started = false;
     myrpg->player = init_player();
-    myrpg->game_info = init_game_struct(myrpg->settings);
+    myrpg->game_info = init_game_struct(myrpg);
     load_game(args);
     EVENTS->load_function(myrpg);
 }

@@ -25,9 +25,10 @@ static myrpg_t *init_myrpg(void)
     myrpg->buttons = NULL;
     myrpg->player = NULL;
     myrpg->hud = NULL;
-    myrpg->game_info = NULL;
+    myrpg->game_info = malloc(sizeof(game_t));
     myrpg->music = NULL;
     myrpg->music_started = false;
+    myrpg->game_info->keybinds = init_keybinds();
     load_main_menu(myrpg);
     return myrpg;
 }

@@ -84,4 +84,8 @@ void change_current_item(button_t *button, void *args);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);
+
+void start_to_edit_controls(myrpg_t *myrpg);
+void load_control_elements(myrpg_t *myrpg);
+void update_controls(myrpg_t *myrpg);
 #endif

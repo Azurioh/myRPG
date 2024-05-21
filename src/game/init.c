@@ -45,7 +45,7 @@ sfImage *init_undermap(void)
     return undermap;
 }
 
-static keybinds_t *init_keybinds(void)
+keybinds_t *init_keybinds(void)
 {
     keybinds_t *keybinds = malloc(sizeof(keybinds_t));
 
@@ -58,11 +58,15 @@ static keybinds_t *init_keybinds(void)
     keybinds->move_right = sfKeyD;
     keybinds->open_inventory = sfKeyE;
     keybinds->interact = sfKeyF;
+    keybinds->editing_keybinds = sfFalse;
+    keybinds->actions = NULL;
+    keybinds->keybind_edit = NULL;
     return keybinds;
 }
 
-game_t *init_game_struct(settings_t *settings)
+game_t *init_game_struct(void *args)
 {
+    myrpg_t *myrpg = args;
     game_t *game_info = malloc(sizeof(game_t));
 
     if (!game_info)
@@ -71,8 +75,8 @@ game_t *init_game_struct(settings_t *settings)
     game_info->undermap = init_undermap();
     game_info->map_view = init_view(game_info);
     game_info->player = create_player(game_info);
-    game_info->keybinds = init_keybinds();
-    game_info->game_menu = init_game_menu(game_info, settings);
+    game_info->keybinds = GAME_INFO->keybinds;
+    game_info->game_menu = init_game_menu(game_info, SETTINGS);
     game_info->show_menu = 0;
     return game_info;
 }
