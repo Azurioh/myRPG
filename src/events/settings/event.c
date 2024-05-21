@@ -7,7 +7,7 @@
 
 #include "../../../include/myrpg.h"
 
-static void exec_settings_events(void *args)
+void exec_settings_events(void *args)
 {
     myrpg_t *myrpg = args;
     button_t **buttons = SETTINGS->visual_elements->buttons;
