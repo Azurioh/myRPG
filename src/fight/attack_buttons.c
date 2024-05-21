@@ -75,7 +75,7 @@ button_attack_t *init_attack_button(char *button_name, sfVector2f position,
 
 button_attack_t **setup_attack_buttons(myrpg_t *myrpg)
 {
-    button_attack_t **buttons = malloc(sizeof(button_t *) * 4);
+    button_attack_t **buttons = malloc(sizeof(button_t *) * 5);
     sfVector2f pos = sfView_getCenter(myrpg->game_info->map_view);
 
     buttons[0] = init_attack_button("Lancer de hache",
