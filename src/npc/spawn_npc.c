@@ -4,4 +4,3 @@
 ** File description:
 ** spawn_npc
 */
-

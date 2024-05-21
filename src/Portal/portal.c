@@ -17,7 +17,7 @@ void link_portal(portal_t *portal, int src, int dest)
 int coord_portal(player_t *player, portal_t *portal, myrpg_t *myrpg, int i)
 {
     player->pos = sfView_getCenter(myrpg->game_info->map_view);
-    if(player->pos.x >= portal->portal_pos[i]->pos.x &&
+    if (player->pos.x >= portal->portal_pos[i]->pos.x &&
         player->pos.x <= portal->portal_pos[i]->pos.x + 144 &&
         player->pos.y >= portal->portal_pos[i]->pos.y && player->pos.y <=
         portal->portal_pos[i]->pos.y + 96) {
@@ -28,7 +28,8 @@ int coord_portal(player_t *player, portal_t *portal, myrpg_t *myrpg, int i)
 
 void teleport(player_t *player, portal_t *portal, int i, myrpg_t *myrpg)
 {
-    if (coord_portal(player, portal, myrpg, i) != -1 && portal->portal_pos[i]->is_teleportor != 0) {
+    if (coord_portal(player, portal, myrpg, i) != -1 &&
+    portal->portal_pos[i]->is_teleportor != 0) {
         player->pos.x = portal->portal_pos[i]->pos_tp.x;
         player->pos.y = portal->portal_pos[i]->pos_tp.y;
         sfSprite_setPosition(myrpg->game_info->player, player->pos);
@@ -38,7 +39,6 @@ void teleport(player_t *player, portal_t *portal, int i, myrpg_t *myrpg)
 static portal_pos_t **fill_struct_portal_map(void)
 {
     portal_pos_t **portal_pos = malloc(sizeof(portal_t *)*3);
-
     sfVector2f pos_bin_0 = {5000, 5000};
     sfVector2f pos_bin_1 = {6000, 6000};
 
@@ -47,7 +47,7 @@ static portal_pos_t **fill_struct_portal_map(void)
     }
     portal_pos[0]->pos = pos_bin_0;
     portal_pos[1]->pos = pos_bin_1;
-    portal_pos[2] =  NULL;
+    portal_pos[2] = NULL;
     for (int i = 0; i < 2; i++) {
         portal_pos[i]->id = i;
     }
@@ -67,7 +67,8 @@ static void create_rectangle_colision_map(portal_t *portal)
     for (int i = 0; i < 2; i++) {
         portal->portal_pos[i]->rect = sfRectangleShape_create();
         sfRectangleShape_setSize(portal->portal_pos[i]->rect, scale);
-        sfRectangleShape_setPosition(portal->portal_pos[i]->rect, portal->portal_pos[i]->pos);
+        sfRectangleShape_setPosition(portal->portal_pos[i]->rect,
+            portal->portal_pos[i]->pos);
         sfRectangleShape_setFillColor(portal->portal_pos[i]->rect, sfWhite);
     }
 }
@@ -82,10 +83,3 @@ portal_t *portal_map(void)
     link_portal(portal, 0, 1);
     return portal;
 }
-
-// void draw_rectangle(game_t *game)
-// {
-//     for (int i = 0; i < 2; i++) {
-//         sfRenderWindow_drawRectangleShape(game->map_view, game->portal->portal_pos[i]->rect, NULL);
-//     }
-// }
