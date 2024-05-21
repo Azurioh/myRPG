@@ -9,7 +9,6 @@
     #define GAME_H
     #include <SFML/Graphics.h>
     #include <SFML/Graphics/Types.h>
-    #include "button.h"
 
 typedef struct keybinds_s {
     int move_up;
@@ -19,6 +18,7 @@ typedef struct keybinds_s {
     int open_inventory;
     int interact;
 } keybinds_t;
+
 typedef struct game_s {
     sfSprite *player;
     sfSprite *map;
