@@ -26,17 +26,16 @@ void create_chestplate_items(item_t **items, int *index)
 {
     items[*index] = create_chestplate_item(
         "./assets/inventory/chestplate/leather_chestplate.png",
-        "Plastron en cuir", 10, "Plastron en cuir classique.\nDEF: 10");
+        "Plastron en cuir", 10, "DEF: 10");
     items[*index + 1] = create_chestplate_item(
         "./assets/inventory/chestplate/iron_chestplate.png",
-        "Plastron en fer", 20, "Plastron en fer résistant.\nDEF: 20");
+        "Plastron en fer", 20, "DEF: 20");
     items[*index + 2] = create_chestplate_item(
         "./assets/inventory/chestplate/steel_chestplate.png",
-        "Plastron en acier", 40, "Plastron en acier très solide.\nDEF: 40");
+        "Plastron en acier", 40, "DEF: 40");
     items[*index + 3] = create_chestplate_item(
         "./assets/inventory/chestplate/dragon_chestplate.png",
-        "Plastron du dragon", 60,
-        "Plastron fabriqué en écaille de dragon.\nDEF: 60");
+        "Plastron du dragon", 60, "DEF: 60");
     *index += 4;
     return;
 }

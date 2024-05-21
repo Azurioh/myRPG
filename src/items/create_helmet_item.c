@@ -26,17 +26,16 @@ void create_helmet_items(item_t **items, int *index)
 {
     items[*index] = create_helmet_item(
         "./assets/inventory/helmet/leather_helmet.png",
-        "Casque en cuir", 10, "Casque en cuir classique.\nDEF: 10");
+        "Casque en cuir", 10, "DEF: 10");
     items[*index + 1] = create_helmet_item(
         "./assets/inventory/helmet/iron_helmet.png",
-        "Casque en fer", 20, "Casque en fer résistant.\nDEF: 20");
+        "Casque en fer", 20, "DEF: 20");
     items[*index + 2] = create_helmet_item(
         "./assets/inventory/helmet/steel_helmet.png",
-        "Casque en acier", 40, "Casque en acier très solide.\nDEF: 40");
+        "Casque en acier", 40, "DEF: 40");
     items[*index + 3] = create_helmet_item(
         "./assets/inventory/helmet/dragon_helmet.png",
-        "Casque du dragon", 60,
-        "Casque fabriqué en écaille de dragon.\nDEF: 60");
+        "Casque du dragon", 60, "DEF: 60");
     *index += 4;
     return;
 }

@@ -17,4 +17,7 @@ void move_inventory(inventory_t *inventory, sfVector2f offset)
         inventory->buttons[i]->position.x += offset.x;
         inventory->buttons[i]->position.y += offset.y;
     }
+    sfText_move(inventory->description, offset);
+    sfText_move(inventory->name, offset);
+    return;
 }
