@@ -19,6 +19,5 @@ void free_player(player_t *player)
         free(player->skills[i]->name);
         free(player->skills[i]);
     }
-    free(player->inventory);
     free(player->skills);
 }
