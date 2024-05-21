@@ -18,8 +18,8 @@ static void update_settings_text(sfText **texts, settings_t *settings)
     resolution = my_strcat(resolution, my_nbr_to_str(
         settings->window_size_list[settings->actual_window_size].height));
     sfText_setString(texts[6], resolution);
-    sfText_setString(texts[7], my_nbr_to_str(settings->music_volume));
-    sfText_setString(texts[8], my_nbr_to_str(settings->sound_volume));
+    sfText_setString(texts[7], my_nbr_to_str(settings->sound_volume));
+    sfText_setString(texts[8], my_nbr_to_str(settings->music_volume));
 }
 
 static void display_settings_menu(void *args)

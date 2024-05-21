@@ -44,13 +44,13 @@ static void disable_resolution_button(button_t **buttons, settings_t *settings)
     buttons[3]->clickable = sfTrue;
 }
 
-static void disable_music_button(button_t **buttons, settings_t *settings)
+static void disable_sound_button(button_t **buttons, settings_t *settings)
 {
-    if (settings->music_volume == 0) {
+    if (settings->sound_volume == 0) {
         disable_button(buttons[4]);
         return;
     }
-    if (settings->music_volume == 100) {
+    if (settings->sound_volume == 100) {
         disable_button(buttons[5]);
         return;
     }
@@ -58,13 +58,13 @@ static void disable_music_button(button_t **buttons, settings_t *settings)
     buttons[5]->clickable = sfTrue;
 }
 
-static void disable_sound_button(button_t **buttons, settings_t *settings)
+static void disable_music_button(button_t **buttons, settings_t *settings)
 {
-    if (settings->sound_volume == 0) {
+    if (settings->music_volume == 0) {
         disable_button(buttons[6]);
         return;
     }
-    if (settings->sound_volume == 100) {
+    if (settings->music_volume == 100) {
         disable_button(buttons[7]);
         return;
     }
