@@ -7,50 +7,63 @@
 
 #include "../../../include/myrpg.h"
 
-int increase_sound_volume(settings_t *settings)
+int increase_sound_volume(void *args)
 {
-    if (!settings) {
+    myrpg_t *myrpg = args;
+
+    if (!SETTINGS) {
         return -1;
     }
-    if (settings->sound_volume == 100) {
+    if (SETTINGS->sound_volume == 100) {
         return 0;
     }
-    settings->sound_volume += 10;
+    SETTINGS->sound_volume += 10;
+    sfMusic_setVolume(myrpg->music, SETTINGS->music_volume);
     return 0;
 }
 
-int decrease_sound_volume(settings_t *settings)
+int decrease_sound_volume(void *args)
 {
-    if (!settings) {
+    myrpg_t *myrpg = args;
+
+    if (!SETTINGS) {
         return -1;
     }
-    if (settings->sound_volume == 0) {
+    if (SETTINGS->sound_volume == 0) {
         return 0;
     }
-    settings->sound_volume -= 10;
+    SETTINGS->sound_volume -= 10;
+    sfMusic_setVolume(myrpg->music, SETTINGS->music_volume);
     return 0;
 }
 
-int increase_music_volume(settings_t *settings)
+int increase_music_volume(void *args)
 {
-    if (!settings) {
+    myrpg_t *myrpg = args;
+
+    if (!SETTINGS) {
         return -1;
     }
-    if (settings->music_volume == 100) {
+    if (SETTINGS->music_volume == 100) {
         return 0;
     }
-    settings->music_volume += 10;
+    SETTINGS->music_volume += 10;
+    sfMusic_setVolume(myrpg->music, SETTINGS->music_volume);
+    fflush(stdout);
     return 0;
 }
 
-int decrease_music_volume(settings_t *settings)
+int decrease_music_volume(void *args)
 {
-    if (!settings) {
+    myrpg_t *myrpg = args;
+
+    if (!SETTINGS) {
         return -1;
     }
-    if (settings->music_volume == 0) {
+    if (SETTINGS->music_volume == 0) {
         return 0;
     }
-    settings->music_volume -= 10;
+    SETTINGS->music_volume -= 10;
+    sfMusic_setVolume(myrpg->music, SETTINGS->music_volume);
     return 0;
 }
