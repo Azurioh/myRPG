@@ -26,6 +26,21 @@ void update_equipment(inventory_t *inventory, int i)
     inventory->selected_slot = NULL;
 }
 
+void heal_player(myrpg_t *myrpg)
+{
+    item_t *item = myrpg->player->inventory->selected_item;
+    button_t *button = myrpg->player->inventory->selected_slot;
+    int slot = atoi(button->button_name);
+
+    if (myrpg->player->life >= 100)
+        return;
+    increase_player_life(myrpg->player, item->strength);
+    myrpg->player->inventory->selected_item = NULL;
+    myrpg->player->inventory->selected_slot = NULL;
+    myrpg->player->inventory->id[slot] = -1;
+    return;
+}
+
 void use_item(button_t *button, void *args)
 {
     myrpg_t *myrpg = (myrpg_t *)args;
@@ -45,7 +60,7 @@ void use_item(button_t *button, void *args)
         case (BOOTS):
             return update_equipment(myrpg->player->inventory, 4);
         case (HEAL):
-            return update_equipment(myrpg->player->inventory, 1);
+            return heal_player(myrpg);
     }
     return;
 }
