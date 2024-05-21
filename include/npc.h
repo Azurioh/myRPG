@@ -7,6 +7,7 @@
 
 #ifndef INCLUDED_NPC_H
     #define INCLUDED_NPC_H
+    #define FONT "../../assets/font/alagard.ttf"
     #include "myrpg.h"
 
 typedef struct npc_info_s {
@@ -15,11 +16,11 @@ typedef struct npc_info_s {
     int is_speak;
     sfRectangleShape *rect;
     char *text;
+    sfSprite *sprite;
 } npc_info_t;
 
 typedef struct npc_s {
     npc_info_t **npc_info
-
 } npc_t;
 
 // void spawn_npc(image_t *image, myrpg_t *myrpg);
