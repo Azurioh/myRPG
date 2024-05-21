@@ -26,13 +26,13 @@ void create_heal_items(item_t **items, int *index)
 {
     items[*index] = create_heal_item(
         "./assets/inventory/heal/gourde_du_brave.png",
-        "Gourde du Brave", 100, "Regénère 100 HP.");
+        "Gourde du Brave", 100, "Regenere 100 HP.");
     items[*index + 1] = create_heal_item(
         "./assets/inventory/heal/grosse_popo.png",
-        "Grosse Popo", 100, "Regénère 50 HP.");
+        "Grosse Popo", 50, "Regenere 50 HP.");
     items[*index + 2] = create_heal_item(
         "./assets/inventory/heal/petite_popo.png",
-        "Petite Popo", 100, "Regénère 25 HP.");
+        "Petite Popo", 25, "Regenere 25 HP.");
     *index += 3;
     return;
 }

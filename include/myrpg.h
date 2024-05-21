@@ -66,6 +66,7 @@ void display_hud(myrpg_t *myrpg);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
     sfColor color);
+button_t **init_action_buttons(myrpg_t *myrpg);
 
 button_t **load_settings_buttons(settings_t *settings);
 sfText **load_settings_texts(settings_t *settings);

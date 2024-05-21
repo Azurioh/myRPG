@@ -55,11 +55,11 @@ player_t *init_player(void)
     if (!player)
         return NULL;
     player->name = strdup("Toskra");
-    player->life = 100;
+    player->life = 9;
     player->is_alive = 1;
     player->nb_dead = 0;
     player->experience = 0;
-    player->level = 0;
+    player->level = 1;
     player->nb_skills_to_upgrade = 0;
     player->skills = init_player_skills();
     player->interface = init_player_interface();

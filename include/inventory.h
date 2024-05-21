@@ -25,8 +25,12 @@ typedef struct inventory_s {
     sfText *description;
     item_t **equipped;
     sfSprite **equipped_sprite;
+    button_t **action_buttons;
 } inventory_t;
 
 void free_inventory(inventory_t *inventory);
+void use_item(button_t *button, void *args);
+void drop_item(button_t *button, void *args);
+int add_item_in_inv(inventory_t *inventory, int item_id);
 
 #endif /* !INVENTORY_H */

@@ -51,11 +51,6 @@ void display_hud(myrpg_t *myrpg)
 {
     sfRenderWindow *window = SETTINGS->window;
 
-    myrpg->player->experience = 50;
-    myrpg->player->life = 8;
-    myrpg->player->level = 6;
-    myrpg->can_interact = 0;
-    myrpg->player->nb_skills_to_upgrade = 12;
     change_percentage(myrpg->hud->life->sprite, myrpg->player->life);
     change_percentage(myrpg->hud->exp->sprite, myrpg->player->experience);
     sfText_setString(myrpg->hud->name, name_and_level(myrpg));

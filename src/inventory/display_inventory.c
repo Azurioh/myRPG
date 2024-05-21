@@ -41,6 +41,16 @@ void display_equipped(inventory_t *inventory, sfRenderWindow *window)
     }
 }
 
+void display_action_buttons(myrpg_t *myrpg)
+{
+    inventory_t *inventory = myrpg->player->inventory;
+
+    sfRenderWindow_drawSprite(myrpg->settings->window,
+        inventory->action_buttons[0]->image_sprite, NULL);
+    sfRenderWindow_drawSprite(myrpg->settings->window,
+        inventory->action_buttons[1]->image_sprite, NULL);
+}
+
 void display_inventory(myrpg_t *myrpg)
 {
     if (myrpg->is_inventory == 0)
@@ -58,5 +68,6 @@ void display_inventory(myrpg_t *myrpg)
     sfRenderWindow_drawText(SETTINGS->window,
     myrpg->player->inventory->description, NULL);
     display_equipped(myrpg->player->inventory, myrpg->settings->window);
+    display_action_buttons(myrpg);
     return;
 }
