@@ -33,6 +33,7 @@ static void exec_game_events(void *args)
 
     if (myrpg->is_inventory == 1) {
         manage_button_event(myrpg->player->inventory->buttons, myrpg);
+        manage_button_event(myrpg->player->inventory->action_buttons, myrpg);
     }
     if (GAME_INFO->show_menu == sfTrue) {
         manage_button_event(GAME_INFO->game_menu->buttons, myrpg);

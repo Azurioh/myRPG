@@ -31,7 +31,7 @@ button_t **init_buttons_inv(myrpg_t *myrpg)
 
     for (int line = 0; line < 3; line++)
         for (int col = 0; col < 5; col++) {
-            position = (sfVector2f){resize.x + 478 + col * 51.5,
+            position = (sfVector2f){resize.x + 529.5 + col * 51.5,
                 resize.y + 265 + line * 51.5};
             items[index] = init_button(my_nbr_to_str(index),
                 position,
@@ -69,7 +69,8 @@ sfSprite **init_equipped_items(myrpg_t *myrpg, inventory_t *inventory)
         inventory->equipped[i] = NULL;
         equipped[i] = sfSprite_create();
         sfSprite_setScale(equipped[i], (sfVector2f){1.4, 1.4});
-        sfSprite_setPosition(equipped[i], (sfVector2f){resize.x + 506 + i * 51.5, resize.y + 562});
+        sfSprite_setPosition(equipped[i],
+            (sfVector2f){resize.x + 506 + i * 51.5, resize.y + 562});
         sfSprite_setTexture(equipped[i], NULL, sfFalse);
     }
     equipped[5] = NULL;
@@ -89,7 +90,8 @@ inventory_t *init_inventory(myrpg_t *myrpg)
     inventory->selected_item = NULL;
     init_inv_texts(myrpg, inventory);
     inventory->equipped_sprite = init_equipped_items(myrpg, inventory);
-    inventory->id[1] = 20;
+    inventory->action_buttons = init_action_buttons(myrpg);
+    inventory->id[0] = 20;
     inventory->id[12] = 11;
     inventory->id[11] = 4;
     inventory->id[14] = 3;
