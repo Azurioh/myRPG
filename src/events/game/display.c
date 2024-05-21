@@ -6,6 +6,10 @@
 */
 
 #include "../../../include/myrpg.h"
+#include <SFML/Graphics/Sprite.h>
+#include <SFML/Graphics/Types.h>
+#include <SFML/Graphics/View.h>
+#include <SFML/System/Vector2.h>
 
 static void make_move(myrpg_t *myrpg)
 {
@@ -28,7 +32,10 @@ void display_game(void *args)
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->player, NULL);
     display_hud(myrpg);
     display_inventory(myrpg);
-    if (myrpg->is_inventory == 0) {
+    if (myrpg->fight_infos->in_fight == 1) {
+        fight(myrpg);
+    }
+    if (myrpg->is_inventory == 0 && myrpg->fight_infos->in_fight == 0) {
         make_move(myrpg);
         move(myrpg);
     }
