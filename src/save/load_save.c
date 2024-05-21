@@ -41,11 +41,34 @@ static bool settings_save(myrpg_t *myrpg)
     return true;
 }
 
+static bool player_save(myrpg_t *myrpg)
+{
+    int fd = open(".player", O_RDONLY);
+    char *buffer;
+    char **options;
+
+    if (fd == -1) {
+        return false;
+    }
+    buffer = read_fd(fd, ".player");
+    options = my_str_to_word_array(buffer, "\n");
+    if (!options || my_arraylen(options) != 5) {
+        free(buffer);
+        return false;
+    }
+    load_player_save(myrpg, options);
+    return true;
+}
+
 bool load_game_save(myrpg_t *myrpg)
 {
     if (settings_save(myrpg) == true) {
         myrpg->save_loaded = true;
     } else {
+        return false;
+    }
+    if (player_save(myrpg) == false) {
+        myrpg->save_loaded = false;
         return false;
     }
     return true;
