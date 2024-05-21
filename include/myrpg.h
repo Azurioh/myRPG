@@ -15,10 +15,10 @@
     #define SCALING myrpg->settings->scaling
     #define WINDOW SETTINGS->window
 
-    #include <SFML/Graphics.h>
-    #include <SFML/Graphics/Types.h>
+    #include <SFML/Audio.h>
     #include <stdlib.h>
     #include <stdio.h>
+    #include <time.h>
 
     #include "player.h"
     #include "game.h"
@@ -38,6 +38,8 @@ typedef struct myrpg_s {
     game_t *game_info;
     event_t *events;
     sfSprite *background;
+    sfMusic *music;
+    bool music_started;
     button_t **buttons;
     settings_t *settings;
     hud_t *hud;

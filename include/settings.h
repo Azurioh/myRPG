@@ -41,13 +41,13 @@ int init_window(settings_t *settings, int fullscreen);
 int mute_music(settings_t *settings);
 int mute_sound(settings_t *settings);
 
-int increase_music_volume(settings_t *settings);
-int increase_sound_volume(settings_t *settings);
+int increase_music_volume(void *args);
+int increase_sound_volume(void *args);
 int increase_framerate_of_window(settings_t *settings);
 int increase_size_of_window(void *args);
 
-int decrease_music_volume(settings_t *settings);
-int decrease_sound_volume(settings_t *settings);
+int decrease_music_volume(void *args);
+int decrease_sound_volume(void *args);
 int decrease_framerate_of_window(settings_t *settings);
 int decrease_size_of_window(void *args);
 

@@ -39,4 +39,8 @@ typedef struct game_s {
 game_t *init_game_struct(settings_t *settings);
 void free_game(game_t *game_info);
 game_menu_t *init_game_menu(game_t *game_info, settings_t *settings);
+
+void update_settings_position(settings_t *settings,
+    sfVector2f resize);
+void update_settings_scaling(settings_t *settings);
 #endif
