@@ -16,7 +16,6 @@ static myrpg_t *init_myrpg(void)
         return NULL;
     myrpg->game_open = 1;
     myrpg->fight_infos = malloc(sizeof(fight_t));
-    myrpg->fight_infos->in_fight = 0;
     myrpg->settings = init_settings();
     myrpg->events = malloc(sizeof(event_t));
     myrpg->can_interact = 0;
@@ -37,6 +36,7 @@ int start_game(void)
 {
     myrpg_t *myrpg = init_myrpg();
 
+    myrpg->fight_infos->in_fight = 0;
     if (!myrpg) {
         return 84;
     } else {
