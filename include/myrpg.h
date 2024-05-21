@@ -92,4 +92,6 @@ void update_controls(myrpg_t *myrpg);
 void load_settings_save(myrpg_t *myrpg, char **options);
 void save_game(myrpg_t *myrpg);
 bool load_game_save(myrpg_t *myrpg);
+void load_player_save(myrpg_t *myrpg, char **options);
+void remove_save(myrpg_t *myrpg);
 #endif
