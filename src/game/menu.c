@@ -9,17 +9,20 @@
 
 static void show_settings(button_t *button, void *args)
 {
+    myrpg_t *myrpg = args;
+
     (void) button;
-    load_settings(args);
+    load_settings(myrpg);
+    EVENTS->load_function(myrpg);
 }
 
 static void manage_ingame_button_action(button_t *button, void *args)
 {
     myrpg_t *myrpg = args;
 
+    button->release(button);
+    button->actually_clicked = sfFalse;
     if (strcmp(button->button_name, "resume") == 0) {
-        button->release(button);
-        button->actually_clicked = sfFalse;
         GAME_INFO->show_menu = sfFalse;
     }
     if (strcmp(button->button_name, "save") == 0)
