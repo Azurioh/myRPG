@@ -19,5 +19,7 @@ void move_inventory(inventory_t *inventory, sfVector2f offset)
     }
     sfText_move(inventory->description, offset);
     sfText_move(inventory->name, offset);
+    for (int i = 0; inventory->equipped_sprite[i] != NULL; i++)
+        sfSprite_move(inventory->equipped_sprite[i], offset);
     return;
 }

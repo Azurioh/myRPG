@@ -7,6 +7,17 @@
 
 #include "../../include/myrpg.h"
 
+void update_equipped_item(myrpg_t *myrpg)
+{
+    inventory_t *inventory = myrpg->player->inventory;
+
+    for (int i = 0; i < 5; i++) {
+        if (inventory->equipped[i] != NULL)
+            sfSprite_setTexture(inventory->equipped_sprite[i],
+                inventory->equipped[i]->texture, sfFalse);
+    }
+}
+
 void update_inventory(myrpg_t *myrpg)
 {
     button_t **inv = myrpg->player->inventory->buttons;
@@ -23,11 +34,19 @@ void update_inventory(myrpg_t *myrpg)
     }
 }
 
+void display_equipped(inventory_t *inventory, sfRenderWindow *window)
+{
+    for (int i = 0; inventory->equipped_sprite[i] != NULL; i++) {
+        sfRenderWindow_drawSprite(window, inventory->equipped_sprite[i], NULL);
+    }
+}
+
 void display_inventory(myrpg_t *myrpg)
 {
     if (myrpg->is_inventory == 0)
         return;
     update_inventory(myrpg);
+    update_equipped_item(myrpg);
     sfRenderWindow_drawSprite(SETTINGS->window,
     myrpg->player->inventory->image->sprite, NULL);
     for (int i = 0; i < 15; i++) {
@@ -38,5 +57,6 @@ void display_inventory(myrpg_t *myrpg)
     myrpg->player->inventory->name, NULL);
     sfRenderWindow_drawText(SETTINGS->window,
     myrpg->player->inventory->description, NULL);
+    display_equipped(myrpg->player->inventory, myrpg->settings->window);
     return;
 }

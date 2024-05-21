@@ -16,6 +16,7 @@ void change_current_item(button_t *button, void *args)
     if (item_id == -1) {
         return;
     }
+    inventory->selected_slot = button;
     inventory->selected_item = myrpg->items[item_id];
     sfText_setString(inventory->name, inventory->selected_item->name);
     sfText_setString(inventory->description,
