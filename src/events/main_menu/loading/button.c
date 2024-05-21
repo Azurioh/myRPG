@@ -25,11 +25,13 @@ static void launch_game(button_t *button, void *args)
 {
     myrpg_t *myrpg = args;
 
-    (void) button;
+    if (strcmp(button->button_name, "Nouvelle partie") == 0) {
+        remove_save(myrpg);
+        PLAYER = init_player();
+    }
     EVENTS->unload_function(myrpg);
     sfMusic_stop(myrpg->music);
     myrpg->music_started = false;
-    myrpg->player = init_player();
     myrpg->game_info = init_game_struct(myrpg);
     load_game(args);
     EVENTS->load_function(myrpg);
