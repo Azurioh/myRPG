@@ -68,6 +68,7 @@ sfText **load_settings_texts(settings_t *settings);
 
 void manage_button_event(button_t **buttons, myrpg_t *myrpg);
 void animate_button(button_t *button);
+void change_current_item(button_t *button, void *args);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);

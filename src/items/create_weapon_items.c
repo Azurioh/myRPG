@@ -26,16 +26,16 @@ void create_weapon_items(item_t **items, int *index)
 {
     items[*index] = create_weapon_item(
         "./assets/inventory/weapon/basic_axe.png",
-        "Hache ordinaire", 10, "ATK: ");
+        "Hache ordinaire", 10, "ATK: 10");
     items[*index + 1] = create_weapon_item(
         "./assets/inventory/weapon/steel_axe.png",
-        "Hache du Papa", 20, "ATK: 15");
+        "Hache du Papa", 20, "ATK: 20");
     items[*index + 2] = create_weapon_item(
         "./assets/inventory/weapon/fire_axe.png",
         "Hache de Feu", 40, "ATK: 40");
     items[*index + 3] = create_weapon_item(
         "./assets/inventory/weapon/guardian_axe.png",
-        "Hache du Guardien", 100, "ATK: 60");
+        "Hache du Dragon", 80, "ATK: 80");
     items[*index + 4] = create_weapon_item(
         "./assets/inventory/weapon/diamond_axe.png",
         "Hache en diamant", 10000, "ATK: 10000");

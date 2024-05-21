@@ -25,7 +25,7 @@ button_t **init_buttons_inv(myrpg_t *myrpg)
     sfVector2f center = sfView_getCenter(myrpg->game_info->map_view);
     sfVector2f size = sfView_getSize(myrpg->game_info->map_view);
     sfVector2f resize = {center.x - size.x / 2, center.y - size.y / 2};
-    button_t **items = malloc(sizeof(button_t *) * 15);
+    button_t **items = malloc(sizeof(button_t *) * 16);
     sfVector2f position;
     int index = 0;
 
@@ -35,7 +35,7 @@ button_t **init_buttons_inv(myrpg_t *myrpg)
                 resize.y + 269 + line * 51.5};
             items[index] = init_button(my_nbr_to_str(index),
                 position,
-                "./assets/inventory/empty.png", NULL);
+                "./assets/inventory/empty.png", &change_current_item);
             items[index]->initial_scaling = 1.4;
             sfSprite_setScale(items[index]->image_sprite,
                 (sfVector2f){1.4, 1.4});
@@ -51,10 +51,10 @@ void init_inv_texts(myrpg_t *myrpg, inventory_t *inventory)
     sfVector2f resize = {center.x - size.x / 2, center.y - size.y / 2};
     sfFont *font = sfFont_createFromFile("./assets/alagard.ttf");
 
-    inventory->name = create_text("", 30,
-        (sfVector2f){resize.x + 480, resize.y + 413}, font);
+    inventory->name = create_text("", 20,
+        (sfVector2f){resize.x + 480, resize.y + 423}, font);
     inventory->description = create_text("", 15,
-        (sfVector2f){resize.x + 480, resize.y + 460}, font);
+        (sfVector2f){resize.x + 480, resize.y + 480}, font);
 }
 
 inventory_t *init_inventory(myrpg_t *myrpg)
