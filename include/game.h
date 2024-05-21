@@ -19,6 +19,9 @@ typedef struct keybinds_s {
     int move_right;
     int open_inventory;
     int interact;
+    sfBool editing_keybinds;
+    int *keybind_edit;
+    char **actions;
 } keybinds_t;
 
 typedef struct game_menu_s {
@@ -36,11 +39,12 @@ typedef struct game_s {
     keybinds_t *keybinds;
 } game_t;
 
-game_t *init_game_struct(settings_t *settings);
+game_t *init_game_struct(void *args);
 void free_game(game_t *game_info);
 game_menu_t *init_game_menu(game_t *game_info, settings_t *settings);
 
 void update_settings_position(settings_t *settings,
     sfVector2f resize);
 void update_settings_scaling(settings_t *settings);
+keybinds_t *init_keybinds(void);
 #endif

@@ -37,8 +37,10 @@ static void display_settings_menu(void *args)
         sfRenderWindow_drawText(SETTINGS->window,
             settings_visual->texts[i], NULL);
     }
-    update_settings_text(settings_visual->texts, SETTINGS);
-    disable_settings_buttons(settings_visual->buttons, SETTINGS);
+    if (GAME_INFO->keybinds->editing_keybinds == sfFalse) {
+        update_settings_text(settings_visual->texts, SETTINGS);
+        disable_settings_buttons(settings_visual->buttons, SETTINGS);
+    }
     return;
 }
 
