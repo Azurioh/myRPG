@@ -20,4 +20,10 @@ void display_main_menu(void *args)
         sfRenderWindow_drawSprite(window, myrpg->buttons[i]->image_sprite,
             NULL);
     }
+    if (myrpg->music_started == false) {
+        sfMusic_setVolume(myrpg->music, SETTINGS->music_volume);
+        sfMusic_setLoop(myrpg->music, true);
+        sfMusic_play(myrpg->music);
+        myrpg->music_started = true;
+    }
 }

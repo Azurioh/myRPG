@@ -20,5 +20,7 @@ typedef struct image_s {
 
 image_t *create_imagefile(char *path, int x, int y, float scale);
 sfText *create_text(char *string, int size, sfVector2f position, sfFont *font);
+char *my_strdup(char const *str);
+
 sfSprite *generate_sprite_with_file(char *file_path, float scaling);
 #endif

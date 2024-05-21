@@ -23,6 +23,16 @@ static void make_move(myrpg_t *myrpg)
         move_left_view(myrpg->game_info, myrpg);
 }
 
+static void display_menu(myrpg_t *myrpg)
+{
+    sfRenderWindow_drawSprite(SETTINGS->window,
+        GAME_INFO->game_menu->background, NULL);
+    for (int i = 0; GAME_INFO->game_menu->buttons[i]; i++) {
+        sfRenderWindow_drawSprite(SETTINGS->window,
+        GAME_INFO->game_menu->buttons[i]->image_sprite, NULL);
+    }
+}
+
 void display_game(void *args)
 {
     myrpg_t *myrpg = args;
@@ -31,11 +41,15 @@ void display_game(void *args)
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->map, NULL);
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->player, NULL);
     display_hud(myrpg);
-    display_inventory(myrpg);
     if (myrpg->fight_infos->in_fight == 1) {
         fight(myrpg);
     }
-    if (myrpg->is_inventory == 0 && myrpg->fight_infos->in_fight == 0) {
+    if (myrpg->is_inventory == 1)
+        display_inventory(myrpg);
+    if (GAME_INFO->show_menu == 1)
+        display_menu(myrpg);
+    if (myrpg->is_inventory == 0 && GAME_INFO->show_menu == 0 &&
+        myrpg->fight_infos->in_fight == 0) {
         make_move(myrpg);
         move(myrpg);
     }

@@ -19,8 +19,10 @@ typedef struct button_s {
     sfBool actually_clicked;
     sfBool (*is_clicked)(struct button_s *, sfRenderWindow *);
     sfBool (*is_hover)(struct button_s *, sfRenderWindow *);
+    void (*release)(struct button_s *);
     sfClock *animation_clock;
     void (*action)(struct button_s *, void *args);
+    sfBool clickable;
 } button_t;
 
 void free_button(button_t *button);

@@ -56,12 +56,12 @@ static keybinds_t *init_keybinds(void)
     keybinds->move_down = sfKeyS;
     keybinds->move_left = sfKeyQ;
     keybinds->move_right = sfKeyD;
-    keybinds->open_inventory = sfKeyF;
-    keybinds->interact = sfKeyE;
+    keybinds->open_inventory = sfKeyE;
+    keybinds->interact = sfKeyF;
     return keybinds;
 }
 
-game_t *init_game_struct(void)
+game_t *init_game_struct(settings_t *settings)
 {
     game_t *game_info = malloc(sizeof(game_t));
 
@@ -72,5 +72,7 @@ game_t *init_game_struct(void)
     game_info->map_view = init_view(game_info);
     game_info->player = create_player(game_info);
     game_info->keybinds = init_keybinds();
+    game_info->game_menu = init_game_menu(game_info, settings);
+    game_info->show_menu = 0;
     return game_info;
 }

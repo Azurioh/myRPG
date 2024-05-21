@@ -15,11 +15,15 @@ int toggle_fullscreen(void *args)
         return -1;
     }
     if (SETTINGS->fullscreen == 0) {
-        init_window(SETTINGS, 1);
         SETTINGS->fullscreen = 1;
+        SETTINGS->actual_window_size = 1;
+        SETTINGS->scaling = 1;
+        init_window(SETTINGS, 1);
+        EVENTS->load_function(myrpg);
     } else {
-        init_window(SETTINGS, 0);
         SETTINGS->fullscreen = 0;
+        init_window(SETTINGS, 0);
+        EVENTS->load_function(myrpg);
     }
     return 0;
 }

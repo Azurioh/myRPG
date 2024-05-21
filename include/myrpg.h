@@ -15,10 +15,10 @@
     #define SCALING myrpg->settings->scaling
     #define WINDOW SETTINGS->window
 
-    #include <SFML/Graphics.h>
-    #include <SFML/Graphics/Types.h>
+    #include <SFML/Audio.h>
     #include <stdlib.h>
     #include <stdio.h>
+    #include <time.h>
 
     #include "player.h"
     #include "game.h"
@@ -30,14 +30,20 @@
     #include "inventory.h"
     #include "move.h"
     #include "fight.h"
+    #include "portal.h"
+    #include "npc.h"
+    #include "item.h"
 
 typedef struct myrpg_s {
     int game_open;
     player_t *player;
+    item_t **items;
     game_t *game_info;
     fight_t *fight_infos;
     event_t *events;
     sfSprite *background;
+    sfMusic *music;
+    bool music_started;
     button_t **buttons;
     settings_t *settings;
     hud_t *hud;
@@ -47,9 +53,10 @@ typedef struct myrpg_s {
 
 int start_game(void);
 int loop(myrpg_t *myrpg);
-int check_events(myrpg_t *myrpg);
+inventory_t *init_inventory(myrpg_t *myrpg);
 void free_myrpg(myrpg_t *myrpg);
 void free_image(image_t *image);
+sfVector2f get_mouse_position(sfRenderWindow *window);
 
 void fight(myrpg_t *myrpg);
 
@@ -63,6 +70,7 @@ void display_hud(myrpg_t *myrpg);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
     sfColor color);
+button_t **init_action_buttons(myrpg_t *myrpg);
 
 button_t **load_settings_buttons(settings_t *settings);
 sfText **load_settings_texts(settings_t *settings);
@@ -72,6 +80,7 @@ void animate_button(button_t *button);
 void check_fight(myrpg_t *myrpg, fight_t *fight_infos, game_t *game_info);
 button_attack_t **setup_attack_buttons(myrpg_t *myrpg);
 fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg);
+void change_current_item(button_t *button, void *args);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);
