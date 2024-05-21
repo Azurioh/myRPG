@@ -6,6 +6,7 @@
 */
 
 #include "../../include/myrpg.h"
+#include <SFML/Window/Keyboard.h>
 
 void game_loop(myrpg_t *myrpg)
 {
@@ -17,6 +18,9 @@ void game_loop(myrpg_t *myrpg)
             myrpg->game_open = 0;
         }
         EVENTS->event_function(myrpg);
+        if (sfKeyboard_isKeyPressed(sfKeyA)) {
+            fight(myrpg);
+        }
     }
     sfRenderWindow_clear(settings->window, sfBlack);
     EVENTS->display_function(myrpg);
