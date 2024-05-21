@@ -64,6 +64,7 @@ fight_t *manage_attack_button_event(button_attack_t **buttons, myrpg_t *myrpg,
             && buttons[i]->action) {
             str = buttons[i]->action(fight);
             fight = check_str_infos(str, fight);
+            fight->turn = ENEMY;
             return fight;
         }
         if (EVENTS->event.type == sfEvtMouseMoved) {
@@ -80,8 +81,12 @@ fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg)
         sfRenderWindow_drawSprite(window, myrpg->fight_infos->buttons[i]
         ->image_sprite, NULL);
     }
-    myrpg->fight_infos = manage_attack_button_event(myrpg->fight_infos->buttons
-    , myrpg, myrpg->fight_infos);
+    if (myrpg->fight_infos->turn == TOSKRA) {
+        myrpg->fight_infos = manage_attack_button_event(myrpg->fight_infos->
+        buttons, myrpg, myrpg->fight_infos);
+    } else {
+        myrpg->fight_infos = enemy_attack(myrpg->fight_infos);
+    }
     return myrpg->fight_infos;
 }
 
@@ -102,6 +107,8 @@ static void make_fight(myrpg_t *myrpg)
     myrpg->fight_infos->loaded = 1;
     myrpg->fight_infos->in_fight = 1;
     myrpg->fight_infos->angryness = 1;
+    myrpg->fight_infos->enemy_infos = init_enemy();
+    myrpg->fight_infos->turn = TOSKRA;
     sfRenderWindow_clear(WINDOW, sfBlack);
     sfSprite_setTexture(myrpg->game_info->map,
         sfTexture_createFromFile(FIGHT_MAP, NULL), sfFalse);
@@ -119,7 +126,6 @@ static void unmake_fight(myrpg_t *myrpg)
     sfSprite_setPosition(myrpg->game_info->player, myrpg->fight_infos->pos);
     sfView_setCenter(myrpg->game_info->map_view, myrpg->fight_infos->pos);
     sfRenderWindow_display(WINDOW);
-    printf("Toskra hp = %d\n", myrpg->fight_infos->toskra_hp);
     myrpg->fight_infos->in_fight = 0;
     myrpg->fight_infos->loaded = 0;
 }
