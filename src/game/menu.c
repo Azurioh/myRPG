@@ -22,6 +22,8 @@ static void manage_ingame_button_action(button_t *button, void *args)
 
     button->release(button);
     button->actually_clicked = sfFalse;
+    sfSprite_setScale(button->image_sprite,
+        (sfVector2f){button->initial_scaling, button->initial_scaling});
     if (strcmp(button->button_name, "resume") == 0) {
         GAME_INFO->show_menu = sfFalse;
     }
