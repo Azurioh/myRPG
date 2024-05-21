@@ -9,6 +9,9 @@
 
 void free_player(player_t *player)
 {
+    if (!player) {
+        return;
+    }
     sfSprite_destroy(player->interface->sprite);
     sfClock_destroy(player->interface->clock);
     free(player->interface);
@@ -16,5 +19,6 @@ void free_player(player_t *player)
         free(player->skills[i]->name);
         free(player->skills[i]);
     }
+    free(player->inventory);
     free(player->skills);
 }
