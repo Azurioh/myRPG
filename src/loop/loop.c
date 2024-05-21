@@ -7,6 +7,7 @@
 
 #include "../../include/myrpg.h"
 #include <SFML/Window/Keyboard.h>
+#include <stdio.h>
 
 void game_loop(myrpg_t *myrpg)
 {
