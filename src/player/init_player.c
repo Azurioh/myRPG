@@ -63,5 +63,6 @@ player_t *init_player(void)
     player->nb_skills_to_upgrade = 0;
     player->skills = init_player_skills();
     player->interface = init_player_interface();
+    player->pos = (sfVector2f){4510, 4150};
     return player;
 }
