@@ -69,7 +69,8 @@ sfSprite **init_equipped_items(myrpg_t *myrpg, inventory_t *inventory)
         inventory->equipped[i] = NULL;
         equipped[i] = sfSprite_create();
         sfSprite_setScale(equipped[i], (sfVector2f){1.4, 1.4});
-        sfSprite_setPosition(equipped[i], (sfVector2f){resize.x + 506 + i * 51.5, resize.y + 562});
+        sfSprite_setPosition(equipped[i],
+            (sfVector2f){resize.x + 506 + i * 51.5, resize.y + 562});
         sfSprite_setTexture(equipped[i], NULL, sfFalse);
     }
     equipped[5] = NULL;
