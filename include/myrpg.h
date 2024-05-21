@@ -29,6 +29,8 @@
     #include "hud.h"
     #include "inventory.h"
     #include "move.h"
+    #include "portal.h"
+    #include "npc.h"
     #include "item.h"
 
 typedef struct myrpg_s {

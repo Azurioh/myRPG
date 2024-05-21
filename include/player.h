@@ -40,6 +40,7 @@ typedef struct player_s {
     skills_t **skills;
     player_interface_t *interface;
     inventory_t *inventory;
+    sfVector2f pos;
 } player_t;
 
 player_t *init_player(void);

@@ -91,4 +91,5 @@ void move(myrpg_t *myrpg)
     move_inventory(myrpg->player->inventory, movement);
     move_menu(GAME_INFO->game_menu, movement);
     myrpg->player->interface->movement = (sfVector2f){0, 0};
+    sfSprite_getPosition(myrpg->game_info->player);
 }
