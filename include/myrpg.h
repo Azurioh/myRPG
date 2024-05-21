@@ -18,7 +18,10 @@
     #include <SFML/Audio.h>
     #include <stdlib.h>
     #include <stdio.h>
+    #include <unistd.h>
+    #include <fcntl.h>
     #include <time.h>
+    #include <sys/stat.h>
 
     #include "player.h"
     #include "game.h"
@@ -47,6 +50,7 @@ typedef struct myrpg_s {
     hud_t *hud;
     int can_interact;
     int is_inventory;
+    bool save_loaded;
 } myrpg_t;
 
 int start_game(void);
@@ -77,8 +81,15 @@ void change_current_item(button_t *button, void *args);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);
+int includes_in_str(char const *str, char to_find);
+char **my_str_to_word_array(char const *str, char const *step);
+int my_arraylen(char **array);
 
 void start_to_edit_controls(myrpg_t *myrpg);
 void load_control_elements(myrpg_t *myrpg);
 void update_controls(myrpg_t *myrpg);
+
+void load_settings_save(myrpg_t *myrpg, char **options);
+void save_game(myrpg_t *myrpg);
+bool load_game_save(myrpg_t *myrpg);
 #endif

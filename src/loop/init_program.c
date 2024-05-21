@@ -26,6 +26,7 @@ static myrpg_t *init_myrpg(void)
     myrpg->music = NULL;
     myrpg->music_started = false;
     myrpg->game_info->keybinds = init_keybinds();
+    load_game_save(myrpg);
     load_main_menu(myrpg);
     return myrpg;
 }
