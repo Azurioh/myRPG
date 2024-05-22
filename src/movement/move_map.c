@@ -6,6 +6,8 @@
 */
 
 #include "../../include/myrpg.h"
+#include <SFML/Graphics/RectangleShape.h>
+#include <SFML/Graphics/Types.h>
 
 void move_down_view(game_t *game_info, myrpg_t *myrpg)
 {
@@ -91,5 +93,6 @@ void move(myrpg_t *myrpg)
     move_inventory(myrpg->player->inventory, movement);
     move_menu(GAME_INFO->game_menu, movement);
     myrpg->player->interface->movement = (sfVector2f){0, 0};
-    sfSprite_getPosition(myrpg->game_info->player);
+    sfRectangleShape_setPosition(myrpg->hitbox,
+    sfSprite_getPosition(myrpg->game_info->player));
 }
