@@ -11,7 +11,8 @@
 void spawn_npc(myrpg_t *myrpg)
 {
     for (int i = 0; myrpg->npc->npc_info[i] != NULL; i++) {
-        myrpg->npc->npc_info[i]->sprite = init_npc(myrpg);
-        sfRenderWindow_drawSprite(myrpg->game_info->window, myrpg->npc->npc_info[i]->sprite, NULL);
+        myrpg->npc->npc_info[i]->sprite = init_npc();
+        sfRenderWindow_drawSprite(myrpg->settings->window,
+            myrpg->npc->npc_info[i]->sprite, NULL);
     }
 }

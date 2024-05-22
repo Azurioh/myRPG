@@ -91,7 +91,7 @@ void move_right_view(game_t *game_info, myrpg_t *myrpg)
     myrpg->player->interface->movement.x += myrpg->player->interface->speed;
 }
 
-void move_menu(game_menu_t *game_menu, sfVector2f offset)
+static void move_menu(game_menu_t *game_menu, sfVector2f offset)
 {
     sfSprite_move(game_menu->background, offset);
     for (int i = 0; game_menu->buttons[i]; i++) {
