@@ -62,7 +62,7 @@ bool player_save(myrpg_t *myrpg)
     options = my_str_to_word_array(buffer, "\n");
     free(buffer);
     if (!options || my_arraylen(options) != 6) {
-        free(buffer);
+        close(fd);
         return false;
     }
     load_player_save(myrpg, options);
