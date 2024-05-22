@@ -31,6 +31,9 @@ typedef struct inventory_s {
     sfSprite **equipped_sprite;
     button_t **action_buttons;
     player_stats_info_t *stats;
+    sfSprite *stats_sprite;
+    sfText **player_stats;
+
 } inventory_t;
 
 void free_inventory(inventory_t *inventory);
