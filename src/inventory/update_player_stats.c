@@ -11,6 +11,9 @@ void update_player_stats(player_t *player)
     int armor = 0;
     int attack = 0;
 
+    if (player == NULL || player->inventory == NULL
+        || player->inventory->equipped == NULL)
+        return;
     if (player->inventory->equipped[0] != NULL)
         attack = player->inventory->equipped[0]->strength;
     for (int i = 1; i < 5; i++) {

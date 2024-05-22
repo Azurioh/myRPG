@@ -45,6 +45,8 @@ void init_stats(myrpg_t *myrpg, inventory_t *inventory)
     sfVector2f size = sfView_getSize(myrpg->game_info->map_view);
     sfVector2f resize = {center.x - size.x / 2, center.y - size.y / 2};
 
+    myrpg->player->item_armor = 0;
+    myrpg->player->axe_attack = 0;
     inventory->stats_sprite = init_stats_sprite(resize);
     inventory->player_stats = init_stats_text(myrpg, resize);
     return;
