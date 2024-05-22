@@ -89,6 +89,5 @@ void display_game(void *args)
         make_move(myrpg);
         move(myrpg);
     }
-    GAME_INFO->keybinds->skills = sfKeyO;
     sfClock_restart(PLAYER_INTERFACE->clock);
 }
