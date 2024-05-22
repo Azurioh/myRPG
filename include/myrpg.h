@@ -31,11 +31,14 @@
     #include "move.h"
     #include "fight.h"
     #include "portal.h"
+    #include "mobs.h"
     #include "npc.h"
     #include "item.h"
 
 typedef struct myrpg_s {
     int game_open;
+    sfRectangleShape *hitbox;
+    mobs_t **mobs;
     player_t *player;
     item_t **items;
     game_t *game_info;
