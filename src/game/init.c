@@ -16,25 +16,30 @@ static sfSprite *init_map(void)
     return tmp_sprite;
 }
 
-static sfView *init_view(game_t *game_info)
+static sfView *init_view(myrpg_t *myrpg)
 {
     sfView *tmp_view = sfView_create();
-    sfFloatRect pos_view = sfSprite_getGlobalBounds(game_info->map);
-    sfVector2f center_map = {pos_view.height / 2, pos_view.width / 2};
 
-    sfView_setCenter(tmp_view, (sfVector2f){center_map.y, center_map.x});
+    sfView_setCenter(tmp_view, myrpg->player->pos);
     sfView_setSize(tmp_view, (sfVector2f){1920, 1080});
     sfView_zoom(tmp_view, 0.65);
     return tmp_view;
 }
 
-static sfSprite *create_player(game_t *game_info)
+static sfSprite *create_player(myrpg_t *myrpg)
 {
     sfTexture *player = sfTexture_createFromFile(PLAYER_PATH, NULL);
     sfSprite *sprite_player = sfSprite_create();
+    sfIntRect rect;
 
+    rect.top = 0;
+    rect.left = 0;
+    rect.width = 32;
+    rect.height = 64;
     sfSprite_setTexture(sprite_player, player, sfFalse);
-    sfSprite_setPosition(sprite_player, sfView_getCenter(game_info->map_view));
+    sfSprite_setPosition(sprite_player, myrpg->player->pos);
+    sfSprite_setTextureRect(sprite_player, rect);
+    sfSprite_setScale(sprite_player, (sfVector2f){1.5, 1.5});
     return sprite_player;
 }
 
@@ -73,10 +78,11 @@ game_t *init_game_struct(void *args)
         return NULL;
     game_info->map = init_map();
     game_info->undermap = init_undermap();
-    game_info->map_view = init_view(game_info);
-    game_info->player = create_player(game_info);
+    game_info->map_view = init_view(myrpg);
+    game_info->player = create_player(myrpg);
     game_info->keybinds = GAME_INFO->keybinds;
     game_info->game_menu = init_game_menu(game_info, SETTINGS);
     game_info->show_menu = 0;
+    game_info->clock = sfClock_create();
     return game_info;
 }
