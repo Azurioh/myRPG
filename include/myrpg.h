@@ -44,12 +44,15 @@ typedef struct myrpg_s {
     item_t **items;
     game_t *game_info;
     event_t *events;
+    game_t *game;
     sfSprite *background;
     sfMusic *music;
     bool music_started;
     button_t **buttons;
+    portal_t *portal;
     settings_t *settings;
     hud_t *hud;
+    npc_t *npc;
     int can_interact;
     int is_inventory;
     bool save_loaded;
@@ -69,6 +72,17 @@ void move_left_view(game_t *game_info, myrpg_t *myrpg);
 void move_right_view(game_t *game_info, myrpg_t *myrpg);
 void move_menu(game_menu_t *game_menu, sfVector2f offset);
 void display_inventory(myrpg_t *myrpg);
+
+
+// PORTAL
+int teleport(portal_t *portal, int i, myrpg_t *myrpg);
+void check_portal(myrpg_t *myrpg);
+void set_all_after_tp(myrpg_t *myrpg, sfVector2f movement);
+void draw_rectangle(myrpg_t *myrpg);
+
+// NPC
+void spawn_npc(myrpg_t *myrpg);
+npc_t *init_npc(void);
 void display_hud(myrpg_t *myrpg);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
