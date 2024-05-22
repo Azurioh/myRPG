@@ -21,11 +21,18 @@ static void make_move(myrpg_t *myrpg)
 
 static void display_menu(myrpg_t *myrpg)
 {
+    update_dynamic_texts(GAME_INFO, GAME_INFO->game_menu->texts);
     sfRenderWindow_drawSprite(SETTINGS->window,
-        GAME_INFO->game_menu->background, NULL);
+        GAME_INFO->game_menu->background[0], NULL);
+    sfRenderWindow_drawSprite(SETTINGS->window,
+        GAME_INFO->game_menu->background[1], NULL);
     for (int i = 0; GAME_INFO->game_menu->buttons[i]; i++) {
         sfRenderWindow_drawSprite(SETTINGS->window,
-        GAME_INFO->game_menu->buttons[i]->image_sprite, NULL);
+            GAME_INFO->game_menu->buttons[i]->image_sprite, NULL);
+    }
+    for (int i = 0; GAME_INFO->game_menu->texts[i]; i++) {
+        sfRenderWindow_drawText(SETTINGS->window,
+            GAME_INFO->game_menu->texts[i], NULL);
     }
 }
 

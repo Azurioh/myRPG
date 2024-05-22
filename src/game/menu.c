@@ -63,18 +63,25 @@ static button_t **init_game_menu_buttons(float scaling, sfVector2f resize)
     return buttons;
 }
 
-static sfSprite *load_game_background(float scaling, sfVector2f resize)
+static sfSprite **load_game_background(float scaling, sfVector2f resize)
 {
-    sfSprite *sprite = generate_sprite_with_file(
-        "assets/settings-background.png", 1);
+    sfSprite **sprite = malloc(sizeof(sfSprite *) * 2);
     sfFloatRect size;
 
-    size = sfSprite_getGlobalBounds(sprite);
-    sfSprite_setOrigin(sprite,
+    sprite[0] = generate_sprite_with_file("assets/settings-background.png", 1);
+    sprite[1] = generate_sprite_with_file("assets/settings-background.png", 1);
+    size = sfSprite_getGlobalBounds(sprite[0]);
+    sfSprite_setOrigin(sprite[0],
         (sfVector2f){ size.width / 2, size.height / 2 });
-    sfSprite_setPosition(sprite,
+    sfSprite_setPosition(sprite[0],
         (sfVector2f){ 620 * scaling + resize.x, 350 * scaling + resize.y });
-    sfSprite_setScale(sprite, (sfVector2f){scaling / 1.7, scaling / 1.7});
+    sfSprite_setScale(sprite[0], (sfVector2f){scaling / 1.7, scaling / 1.7});
+    size = sfSprite_getGlobalBounds(sprite[1]);
+    sfSprite_setOrigin(sprite[1],
+        (sfVector2f){ size.width / 2, size.height / 2 });
+    sfSprite_setPosition(sprite[1],
+        (sfVector2f){ 200 * scaling + resize.x, 350 * scaling + resize.y });
+    sfSprite_setScale(sprite[1], (sfVector2f){scaling / 3, scaling / 3});
     return sprite;
 }
 
@@ -92,5 +99,7 @@ game_menu_t *init_game_menu(game_t *game_info, settings_t *settings)
             (sfVector2f){settings->scaling / 1.5, settings->scaling / 1.5});
         game_menu->buttons[i]->initial_scaling = settings->scaling / 1.5;
     }
+    game_menu->texts = load_texts_elements(game_info, settings->scaling,
+        resize);
     return game_menu;
 }

@@ -33,7 +33,7 @@ static bool settings_save(myrpg_t *myrpg)
     }
     buffer = read_fd(fd, ".settings");
     options = my_str_to_word_array(buffer, "\n");
-    if (!options || my_arraylen(options) != 6) {
+    if (!options || my_arraylen(options) != 12) {
         free(buffer);
         return false;
     }
