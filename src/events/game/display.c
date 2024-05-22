@@ -52,4 +52,5 @@ void display_game(void *args)
         make_move(myrpg);
         move(myrpg);
     }
+    sfClock_restart(PLAYER_INTERFACE->clock);
 }

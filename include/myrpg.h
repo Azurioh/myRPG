@@ -44,12 +44,15 @@ typedef struct myrpg_s {
     item_t **items;
     game_t *game_info;
     event_t *events;
+    game_t *game;
     sfSprite *background;
     sfMusic *music;
     bool music_started;
     button_t **buttons;
+    portal_t *portal;
     settings_t *settings;
     hud_t *hud;
+    npc_t *npc;
     int can_interact;
     int is_inventory;
     bool save_loaded;
@@ -69,6 +72,17 @@ void move_left_view(game_t *game_info, myrpg_t *myrpg);
 void move_right_view(game_t *game_info, myrpg_t *myrpg);
 void move_menu(game_menu_t *game_menu, sfVector2f offset);
 void display_inventory(myrpg_t *myrpg);
+
+
+// PORTAL
+int teleport(portal_t *portal, int i, myrpg_t *myrpg);
+void check_portal(myrpg_t *myrpg);
+void set_all_after_tp(myrpg_t *myrpg, sfVector2f movement);
+void draw_rectangle(myrpg_t *myrpg);
+
+// NPC
+void spawn_npc(myrpg_t *myrpg);
+npc_t *init_npc(void);
 void display_hud(myrpg_t *myrpg);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
@@ -77,6 +91,8 @@ button_t **init_action_buttons(myrpg_t *myrpg);
 
 button_t **load_settings_buttons(settings_t *settings);
 sfText **load_settings_texts(settings_t *settings);
+void init_stats(myrpg_t *myrpg, inventory_t *inventory);
+void display_stats(myrpg_t *myrpg);
 
 void manage_button_event(button_t **buttons, myrpg_t *myrpg);
 void animate_button(button_t *button);
@@ -88,6 +104,7 @@ char *my_strcat(char *dest, char const *str);
 int includes_in_str(char const *str, char to_find);
 char **my_str_to_word_array(char const *str, char const *step);
 int my_arraylen(char **array);
+char *str_fusion(char *str1, char *str2);
 float get_time(sfClock *clock);
 sfVector2f get_resize(myrpg_t *myrpg);
 

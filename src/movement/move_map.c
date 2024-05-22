@@ -106,5 +106,4 @@ void move(myrpg_t *myrpg)
     myrpg->player->pos.x += movement.x;
     myrpg->player->pos.y += movement.y;
     myrpg->player->interface->movement = (sfVector2f){0, 0};
-    sfClock_restart(PLAYER_INTERFACE->clock);
 }

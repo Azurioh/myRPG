@@ -38,6 +38,10 @@ typedef struct player_s {
     int experience;
     int max_xp;
     int level;
+    int attack;
+    int axe_attack;
+    int armor;
+    int item_armor;
     int nb_skills_to_upgrade;
     skills_t **skills;
     player_interface_t *interface;
@@ -54,4 +58,6 @@ int update_skill(player_t *player, unsigned int skill_index);
 int increase_player_life(player_t *player, unsigned int amount);
 int decrease_player_life(player_t *player, unsigned int amount);
 sfSprite *init_player_sprite(player_interface_t *player_interface);
+void update_player_stats(player_t *player);
+
 #endif
