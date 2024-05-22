@@ -6,6 +6,7 @@
 */
 
 #include "../../../include/myrpg.h"
+#include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Types.h>
 #include <SFML/Graphics/View.h>
@@ -33,6 +34,11 @@ static void display_menu(myrpg_t *myrpg)
     }
 }
 
+void display_enemies(myrpg_t *myrpg)
+{
+    sfRenderWindow_drawRectangleShape(WINDOW, myrpg->mobs[0]->hitbox, NULL);
+}
+
 void display_game(void *args)
 {
     myrpg_t *myrpg = args;
@@ -41,6 +47,7 @@ void display_game(void *args)
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->map, NULL);
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->player, NULL);
     display_hud(myrpg);
+    display_enemies(myrpg);
     if (myrpg->fight_infos->in_fight == 1) {
         fight(myrpg);
     }
