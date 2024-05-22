@@ -79,6 +79,26 @@ bool inventory_save(myrpg_t *myrpg)
     return true;
 }
 
+bool quests_save(myrpg_t *myrpg)
+{
+    int fd = open(".quests", O_RDONLY);
+    char *buffer;
+    char **options;
+
+    if (fd == -1) {
+        return false;
+    }
+    buffer = read_fd(fd, ".quests");
+    options = my_str_to_word_array(buffer, "\n");
+    if (!options || my_arraylen(options) != 2) {
+        free(buffer);
+        return false;
+    }
+    QUESTS->actual_quest = atoi(options[0]);
+    QUESTS->quests[QUESTS->actual_quest]->nb = atoi(options[1]);
+    return true;
+}
+
 bool load_game_save(myrpg_t *myrpg)
 {
     if (settings_save(myrpg) == true) {

@@ -30,6 +30,7 @@ static void launch_game(button_t *button, void *args)
         remove_save(myrpg);
         PLAYER = init_player();
     }
+    quests_save(myrpg);
     EVENTS->unload_function(myrpg);
     sfMusic_stop(myrpg->music);
     myrpg->music_started = false;

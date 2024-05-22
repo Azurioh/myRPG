@@ -69,9 +69,26 @@ void save_inventory(myrpg_t *myrpg)
     close(fd);
 }
 
+void save_quests(myrpg_t *myrpg)
+{
+    int fd;
+
+    if (!INVENTORY)
+        return;
+    fd = open(".quests", O_CREAT | O_WRONLY, 0666);
+    if (fd == -1) {
+        printf("Can't save the quest progression...\n");
+        return;
+    }
+    dprintf(fd, "%d\n%d", QUESTS->actual_quest,
+        QUESTS->quests[QUESTS->actual_quest]->nb);
+    close(fd);
+}
+
 void save_game(myrpg_t *myrpg)
 {
     save_settings(myrpg);
     save_player(myrpg);
     save_inventory(myrpg);
+    save_quests(myrpg);
 }
