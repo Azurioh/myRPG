@@ -39,9 +39,10 @@ void save_player(myrpg_t *myrpg)
         printf("Can't save player...\n");
         return;
     }
-    dprintf(fd, "%d\n%d\n%d\n%d\n%f\n%f", player->life, player->experience,
-        player->level, player->nb_skills_to_upgrade, player->pos.x,
-        player->pos.y);
+    dprintf(fd, "%d\n%d\n%d\n%d\n%f\n%f\n%d\n%d\n%d", player->life,
+        player->experience, player->level, player->nb_skills_to_upgrade,
+        player->pos.x, player->pos.y, player->skills[0]->level,
+        player->skills[1]->level, player->skills[2]->level);
     close(fd);
 }
 
