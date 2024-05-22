@@ -29,7 +29,9 @@ typedef struct myrpg_s {
     event_t *list_of_events;
     sfSprite *background;
     button_t **buttons;
+    portal_t *portal;
     hud_t *hud;
+    npc_t *npc;
     int can_interact;
     int is_inventory;
 } myrpg_t;
@@ -50,4 +52,13 @@ void load_main_menu(myrpg_t *myrpg);
 void display_main_menu(myrpg_t *myrpg);
 void display_hud(myrpg_t *myrpg);
 void display_inventory(myrpg_t *myrpg);
+
+
+// PORTAL
+void teleport(player_t *player, portal_t *portal, int i, myrpg_t *myrpg);
+void check_portal(myrpg_t *myrpg);
+
+// NPC
+void spawn_npc(myrpg_t *myrpg);
+sfSprite *init_npc();
 #endif
