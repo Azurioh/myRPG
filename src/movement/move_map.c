@@ -12,7 +12,7 @@ static void animate_player(myrpg_t *myrpg, int top)
     float seconds = get_time(myrpg->game_info->clock);
     static int offset = 0;
 
-    if (seconds > 0.2) {
+    if (seconds > 0.1) {
         PLAYER_INTERFACE->rect.top = PLAYER_INTERFACE->rect.height * top;
         PLAYER_INTERFACE->rect.left = offset * PLAYER_INTERFACE->rect.width;
         sfClock_restart(myrpg->game_info->clock);
