@@ -49,11 +49,11 @@ static portal_pos_t **fill_struct_portal_map(void)
         portal_pos[i] = malloc(sizeof(portal_pos_t));
     }
     portal_pos[0]->pos = (sfVector2f) {5000, 5000};
-    portal_pos[1]->pos = (sfVector2f) {5000, 5000};
+    portal_pos[1]->pos = (sfVector2f) {4500, 4500};
     portal_pos[2]->pos = (sfVector2f) {5000, 5000};
     portal_pos[3]->pos = (sfVector2f) {5000, 5000};
     portal_pos[4]->pos = (sfVector2f) {5000, 5000};
-    portal_pos[5]->pos = (sfVector2f){4500, 4500};
+    portal_pos[5]->pos = (sfVector2f) {4500, 4500};
     portal_pos[6] = NULL;
     for (int i = 0; i < 7; i++) {
         portal_pos[i]->id = i;

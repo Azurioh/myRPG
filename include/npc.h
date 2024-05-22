@@ -17,6 +17,7 @@ typedef struct npc_info_s {
     sfRectangleShape *rect;
     char *text;
     sfSprite *sprite;
+    int id;
 } npc_info_t;
 
 typedef struct npc_s {
