@@ -22,7 +22,6 @@ static myrpg_t *init_myrpg(void)
     myrpg->buttons = NULL;
     myrpg->player = NULL;
     myrpg->hud = NULL;
-    myrpg->portal = portal_map();
     myrpg->game_info = malloc(sizeof(game_t));
     myrpg->music = NULL;
     myrpg->music_started = false;
@@ -36,6 +35,7 @@ int start_game(void)
 {
     myrpg_t *myrpg = init_myrpg();
 
+    myrpg->portal = portal_map();
     if (!myrpg) {
         return 84;
     } else {
