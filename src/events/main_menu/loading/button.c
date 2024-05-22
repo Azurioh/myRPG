@@ -6,6 +6,9 @@
 */
 
 #include "../../../../include/myrpg.h"
+#include <SFML/Graphics/RectangleShape.h>
+#include <SFML/Graphics/Types.h>
+#include <SFML/System/Vector2.h>
 
 static void close_game(button_t *button, void *args)
 {
