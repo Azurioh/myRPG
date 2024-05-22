@@ -7,13 +7,13 @@
 
 #include "../../include/myrpg.h"
 
-void change_percentage(sfSprite *sprite, int percentage)
+void change_percentage(sfSprite *sprite, int percentage, int max)
 {
     sfIntRect rect;
 
     rect.top = 0;
     rect.left = 0;
-    rect.width = 104 * percentage / 100;
+    rect.width = 104 * percentage / max;
     rect.height = 12;
     sfSprite_setTextureRect(sprite, rect);
 }
@@ -51,8 +51,10 @@ void display_hud(myrpg_t *myrpg)
 {
     sfRenderWindow *window = SETTINGS->window;
 
-    change_percentage(myrpg->hud->life->sprite, myrpg->player->life);
-    change_percentage(myrpg->hud->exp->sprite, myrpg->player->experience);
+    change_percentage(myrpg->hud->life->sprite, myrpg->player->life,
+        myrpg->player->max_hp);
+    change_percentage(myrpg->hud->exp->sprite, myrpg->player->experience,
+        myrpg->player->max_xp);
     sfText_setString(myrpg->hud->name, name_and_level(myrpg));
     display_profile(myrpg);
     sfRenderWindow_drawSprite(window, myrpg->hud->inventory->sprite, NULL);

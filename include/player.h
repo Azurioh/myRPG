@@ -30,11 +30,13 @@ typedef struct player_interface_s {
 } player_interface_t;
 
 typedef struct player_s {
+    int max_hp;
     char *name;
     int life;
     int is_alive;
     int nb_dead;
     int experience;
+    int max_xp;
     int level;
     int nb_skills_to_upgrade;
     skills_t **skills;
