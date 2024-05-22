@@ -24,6 +24,7 @@ static myrpg_t *init_myrpg(void)
     myrpg->game_info->map_view = NULL;
     myrpg->music = NULL;
     myrpg->music_started = false;
+    myrpg->quests = create_quest_list();
     myrpg->game_info->keybinds = init_keybinds();
     load_game_save(myrpg);
     load_main_menu(myrpg);

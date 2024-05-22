@@ -27,7 +27,7 @@ static void load_static_keybind_texts(sfText **texts, sfVector2f resize)
         (sfVector2f){ resize.x + 90, resize.y + 430 }, 30, color);
 }
 
-static void load_dynamic_keybind_texts(sfText **texts,  sfVector2f resize)
+static void load_dynamic_keybind_texts(sfText **texts, sfVector2f resize)
 {
     texts[6] = init_text("",
         (sfVector2f){ resize.x + 235, resize.y + 230 }, 30, sfWhite);

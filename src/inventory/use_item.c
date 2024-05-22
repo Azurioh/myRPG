@@ -13,6 +13,8 @@ void update_equipment(myrpg_t *myrpg, int i)
     int slot = atoi(button->button_name);
     int old_id = -1;
 
+    if (strcmp(item->name, "Hache ordinaire") == 0)
+        QUESTS->quests[0]->nb++;
     if (INVENTORY->equipped[i] == NULL) {
         INVENTORY->id[slot] = -1;
         INVENTORY->equipped[i] = item;

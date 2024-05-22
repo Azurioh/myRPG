@@ -12,7 +12,6 @@ static void update_keybinds_position(sfSprite *background, sfText **texts,
 {
     sfSprite_setPosition(background,
         (sfVector2f){resize.x + 620, resize.y + 350});
-    printf("DEBUG: %f | %f\n", resize.x, resize.y);
     sfText_setPosition(texts[0], (sfVector2f){resize.x + 420, resize.y + 140});
     sfText_setPosition(texts[1], (sfVector2f){resize.x + 420, resize.y + 200});
     sfText_setPosition(texts[2], (sfVector2f){resize.x + 420, resize.y + 260});
@@ -23,8 +22,10 @@ static void update_keybinds_position(sfSprite *background, sfText **texts,
     sfText_setPosition(texts[7], (sfVector2f){resize.x + 530, resize.y + 265});
     sfText_setPosition(texts[8], (sfVector2f){resize.x + 620, resize.y + 325});
     sfText_setPosition(texts[9], (sfVector2f){resize.x + 620, resize.y + 325});
-    sfText_setPosition(texts[10], (sfVector2f){resize.x + 620, resize.y + 325});
-    sfText_setPosition(texts[11], (sfVector2f){resize.x + 620, resize.y + 325});
+    sfText_setPosition(texts[10],
+        (sfVector2f){resize.x + 620, resize.y + 325});
+    sfText_setPosition(texts[11],
+        (sfVector2f){resize.x + 620, resize.y + 325});
 }
 
 void update_keybinds_scaling(settings_t *settings, sfVector2f resize)

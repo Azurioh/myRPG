@@ -16,6 +16,8 @@
     #define WINDOW SETTINGS->window
     #define PLAYER_INTERFACE myrpg->player->interface
     #define INVENTORY myrpg->player->inventory
+    #define QUESTS myrpg->quests
+    #define HUD myrpg->hud
 
     #include <SFML/Audio.h>
     #include <stdlib.h>
@@ -37,6 +39,7 @@
     #include "portal.h"
     #include "npc.h"
     #include "item.h"
+    #include "quest.h"
 
 typedef struct myrpg_s {
     int game_open;
@@ -47,6 +50,7 @@ typedef struct myrpg_s {
     game_t *game;
     sfSprite *background;
     sfMusic *music;
+    quest_list_t *quests;
     bool music_started;
     button_t **buttons;
     portal_t *portal;
