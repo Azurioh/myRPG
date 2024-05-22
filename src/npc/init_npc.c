@@ -59,7 +59,7 @@ npc_t *init_npc(void)
 
     npc->npc_info = fill_struct_npc();
     for (int i = 0; npc->npc_info[i] != NULL; i++) {
-        npc->npc_info[i]->sprite = init_npc_sprite( );
+        npc->npc_info[i]->sprite = init_npc_sprite();
     }
     create_npc_collision_npc(npc);
     return npc;
