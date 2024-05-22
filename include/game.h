@@ -30,6 +30,7 @@ typedef struct game_menu_s {
 } game_menu_t;
 
 typedef struct game_s {
+    sfClock *clock;
     sfSprite *player;
     sfSprite *map;
     sfImage *undermap;

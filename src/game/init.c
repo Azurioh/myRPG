@@ -30,9 +30,16 @@ static sfSprite *create_player(myrpg_t *myrpg)
 {
     sfTexture *player = sfTexture_createFromFile(PLAYER_PATH, NULL);
     sfSprite *sprite_player = sfSprite_create();
+    sfIntRect rect;
 
+    rect.top = 0;
+    rect.left = 0;
+    rect.width = 32;
+    rect.height = 64;
     sfSprite_setTexture(sprite_player, player, sfFalse);
     sfSprite_setPosition(sprite_player, myrpg->player->pos);
+    sfSprite_setTextureRect(sprite_player, rect);
+    sfSprite_setScale(sprite_player, (sfVector2f){1.5, 1.5});
     return sprite_player;
 }
 
@@ -76,5 +83,6 @@ game_t *init_game_struct(void *args)
     game_info->keybinds = GAME_INFO->keybinds;
     game_info->game_menu = init_game_menu(game_info, SETTINGS);
     game_info->show_menu = 0;
+    game_info->clock = sfClock_create();
     return game_info;
 }
