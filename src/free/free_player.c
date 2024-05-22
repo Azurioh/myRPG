@@ -7,17 +7,35 @@
 
 #include "../../include/myrpg.h"
 
-void free_player(player_t *player)
+static void free_player_interface(player_interface_t *player)
 {
     if (!player) {
         return;
     }
-    sfSprite_destroy(player->interface->sprite);
-    sfClock_destroy(player->interface->clock);
-    free(player->interface);
-    for (int i = 0; i < 3; i++) {
-        free(player->skills[i]->name);
-        free(player->skills[i]);
+    sfSprite_destroy(player->sprite);
+    sfClock_destroy(player->clock);
+    free(player);
+}
+
+static void free_player_skills(skills_t **skills)
+{
+    if (!skills) {
+        return;
     }
-    free(player->skills);
+    for (int i = 0; i < 4; i++) {
+        free(skills[i]->name);
+        free(skills[i]);
+    }
+    free(skills);
+}
+
+void free_player(player_t *player)
+{
+    if (!player)
+        return;
+    free(player->name);
+    free_player_skills(player->skills);
+    free_player_interface(player->interface);
+    free_inventory(player->inventory);
+    free(player);
 }
