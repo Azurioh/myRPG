@@ -25,4 +25,5 @@ typedef struct quest_list_s {
 
 quest_list_t *create_quest_list(void);
 void update_quest(quest_list_t *quest_list);
+void free_quests(quest_list_t *quests);
 #endif

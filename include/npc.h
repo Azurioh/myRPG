@@ -25,6 +25,7 @@ typedef struct npc_s {
 
 } npc_t;
 
+void free_npc(npc_t *npc);
 void draw_text(npc_t *npc, int i);
 
 #endif

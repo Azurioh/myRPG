@@ -12,7 +12,7 @@ static void free_game_menu(game_menu_t *game_menu)
     if (!game_menu) {
         return;
     }
-    for (int i = 0; game_menu->background[i]; i++) {
+    for (int i = 0; i < 2; i++) {
         sfSprite_destroy(game_menu->background[i]);
     }
     for (int i = 0; game_menu->buttons[i]; i++) {

@@ -47,7 +47,6 @@ typedef struct myrpg_s {
     item_t **items;
     game_t *game_info;
     event_t *events;
-    game_t *game;
     sfSprite *background;
     sfMusic *music;
     quest_list_t *quests;
@@ -111,6 +110,8 @@ int my_arraylen(char **array);
 char *str_fusion(char *str1, char *str2);
 float get_time(sfClock *clock);
 sfVector2f get_resize(myrpg_t *myrpg);
+void free_all_texts(sfText **texts);
+void free_array(char **array);
 
 void start_to_edit_controls(myrpg_t *myrpg);
 void load_control_elements(myrpg_t *myrpg);

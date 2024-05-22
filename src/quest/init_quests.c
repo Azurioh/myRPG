@@ -11,8 +11,8 @@ static quest_t *init_quest(char *name, char *description, int nb_required)
 {
     quest_t *quest = malloc(sizeof(quest_t));
 
-    quest->name = name;
-    quest->description = description;
+    quest->name = strdup(name);
+    quest->description = strdup(description);
     quest->is_unlocked = false;
     quest->is_validate = false;
     quest->nb = 0;

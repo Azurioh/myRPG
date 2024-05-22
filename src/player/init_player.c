@@ -68,5 +68,6 @@ player_t *init_player(void)
     player->skills = init_player_skills();
     player->interface = init_player_interface();
     player->pos = (sfVector2f){4510, 4150};
+    player->inventory = NULL;
     return player;
 }

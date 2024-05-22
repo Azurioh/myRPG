@@ -23,7 +23,6 @@ void free_inventory(inventory_t *inventory)
     free_image(inventory->image);
     free(inventory->id);
     free_all_buttons(inventory->buttons);
-    free(inventory->buttons);
     sfText_destroy(inventory->name);
     sfText_destroy(inventory->description);
     for (int i = 0; inventory->equipped_sprite[i]; i++)

@@ -28,16 +28,21 @@ static bool settings_save(myrpg_t *myrpg)
     char *buffer;
     char **options;
 
-    if (fd == -1) {
+    if (fd == -1)
+        return false;
+    buffer = read_fd(fd, ".settings");
+    if (!buffer) {
+        close(fd);
         return false;
     }
-    buffer = read_fd(fd, ".settings");
     options = my_str_to_word_array(buffer, "\n");
+    free(buffer);
     if (!options || my_arraylen(options) != 12) {
-        free(buffer);
+        close(fd);
         return false;
     }
     load_settings_save(myrpg, options);
+    free_array(options);
     return true;
 }
 
@@ -47,16 +52,21 @@ bool player_save(myrpg_t *myrpg)
     char *buffer;
     char **options;
 
-    if (fd == -1) {
+    if (fd == -1)
+        return false;
+    buffer = read_fd(fd, ".player");
+    if (!buffer) {
+        close(fd);
         return false;
     }
-    buffer = read_fd(fd, ".player");
     options = my_str_to_word_array(buffer, "\n");
+    free(buffer);
     if (!options || my_arraylen(options) != 6) {
         free(buffer);
         return false;
     }
     load_player_save(myrpg, options);
+    free_array(options);
     return true;
 }
 
@@ -66,16 +76,20 @@ bool inventory_save(myrpg_t *myrpg)
     char *buffer;
     char **options;
 
-    if (fd == -1) {
+    if (fd == -1)
+        return false;
+    buffer = read_fd(fd, ".inventory");
+    if (!buffer) {
+        close(fd);
         return false;
     }
-    buffer = read_fd(fd, ".inventory");
     options = my_str_to_word_array(buffer, "\n");
+    free(buffer);
     if (!options || my_arraylen(options) != 20) {
-        free(buffer);
         return false;
     }
     load_inventory_save(myrpg, options);
+    free_array(options);
     return true;
 }
 
@@ -85,13 +99,17 @@ bool quests_save(myrpg_t *myrpg)
     char *buffer;
     char **options;
 
-    if (fd == -1) {
+    if (fd == -1)
+        return false;
+    buffer = read_fd(fd, ".quests");
+    if (!buffer) {
+        close(fd);
         return false;
     }
-    buffer = read_fd(fd, ".quests");
     options = my_str_to_word_array(buffer, "\n");
+    free(buffer);
     if (!options || my_arraylen(options) != 2) {
-        free(buffer);
+        close(fd);
         return false;
     }
     QUESTS->actual_quest = atoi(options[0]);

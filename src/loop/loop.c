@@ -15,6 +15,7 @@ void game_loop(myrpg_t *myrpg)
         &EVENTS->event)) {
         if (EVENTS->event.type == sfEvtClosed) {
             myrpg->game_open = 0;
+            return;
         }
         EVENTS->event_function(myrpg);
     }
