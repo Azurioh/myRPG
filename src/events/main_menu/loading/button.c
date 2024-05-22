@@ -34,6 +34,7 @@ static void launch_game(button_t *button, void *args)
     myrpg->music_started = false;
     myrpg->game_info = init_game_struct(myrpg);
     load_game(args);
+    save_game(myrpg);
     EVENTS->load_function(myrpg);
 }
 
