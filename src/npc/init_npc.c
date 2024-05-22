@@ -10,7 +10,7 @@
 #include "../../include/myrpg.h"
 
 
-sfSprite *init_npc_sprite(npc_t *npc)
+sfSprite *init_npc_sprite(void)
 {
     sfSprite *sprite = sfSprite_create();
     sfTexture *texture = sfTexture_createFromFile(PLAYER_PATH, NULL);
@@ -38,6 +38,9 @@ static npc_info_t **fill_struct_npc(void)
 
     if (!npc_info)
         return NULL;
+    for (int i = 0; i < 7; i++) {
+        npc_info[i] = malloc(sizeof(npc_info_t));
+    }
     npc_info[0]->pos = (sfVector2f) {5000, 5000};
     npc_info[1]->pos = (sfVector2f) {5200, 5200};
     npc_info[2]->pos = (sfVector2f) {5400, 5400};
@@ -56,7 +59,8 @@ npc_t *init_npc(void)
 
     npc->npc_info = fill_struct_npc();
     for (int i = 0; npc->npc_info[i] != NULL; i++) {
-        npc->npc_info[i]->sprite = init_npc_sprite(npc);
+        npc->npc_info[i]->sprite = init_npc_sprite( );
     }
+    create_npc_collision_npc(npc);
     return npc;
 }

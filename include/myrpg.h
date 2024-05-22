@@ -80,7 +80,7 @@ void draw_rectangle(myrpg_t *myrpg);
 
 // NPC
 void spawn_npc(myrpg_t *myrpg);
-sfSprite *init_npc(void);
+npc_t *init_npc(void);
 void display_hud(myrpg_t *myrpg);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
