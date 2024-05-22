@@ -11,9 +11,10 @@ void load_player_save(myrpg_t *myrpg, char **options)
 {
     player_t *player = init_player();
 
-    player->experience = atoi(options[0]);
-    player->level = atoi(options[1]);
-    player->nb_skills_to_upgrade = atoi(options[2]);
-    player->pos = (sfVector2f){atoi(options[3]), atoi(options[4])};
+    player->life = atoi(options[0]);
+    player->experience = atoi(options[1]);
+    player->level = atoi(options[2]);
+    player->nb_skills_to_upgrade = atoi(options[3]);
+    player->pos = (sfVector2f){atof(options[4]), atof(options[5])};
     PLAYER = player;
 }

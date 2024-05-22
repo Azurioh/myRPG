@@ -52,7 +52,7 @@ static bool player_save(myrpg_t *myrpg)
     }
     buffer = read_fd(fd, ".player");
     options = my_str_to_word_array(buffer, "\n");
-    if (!options || my_arraylen(options) != 5) {
+    if (!options || my_arraylen(options) != 6) {
         free(buffer);
         return false;
     }
