@@ -28,9 +28,11 @@ static void manage_ingame_button_action(button_t *button, void *args)
         GAME_INFO->show_menu = sfFalse;
     }
     if (strcmp(button->button_name, "save") == 0)
+        return save_game(myrpg);
+    if (strcmp(button->button_name, "load") == 0) {
+        player_save(myrpg);
         return;
-    if (strcmp(button->button_name, "load") == 0)
-        return;
+    }
     if (strcmp(button->button_name, "settings") == 0)
         show_settings(button, args);
     if (strcmp(button->button_name, "quit") == 0)

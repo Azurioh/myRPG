@@ -12,7 +12,11 @@
     #include "game.h"
     #include "button.h"
     #include "item.h"
-    #define INVENTORY_KEY sfKeyE
+
+typedef struct player_stats_info_s {
+    sfSprite *background;
+    sfText **texts;
+} player_stats_info_t;
 
 typedef struct inventory_s {
     image_t *image;
@@ -26,6 +30,7 @@ typedef struct inventory_s {
     item_t **equipped;
     sfSprite **equipped_sprite;
     button_t **action_buttons;
+    player_stats_info_t *stats;
 } inventory_t;
 
 void free_inventory(inventory_t *inventory);

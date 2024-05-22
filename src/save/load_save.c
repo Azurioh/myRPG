@@ -41,7 +41,7 @@ static bool settings_save(myrpg_t *myrpg)
     return true;
 }
 
-static bool player_save(myrpg_t *myrpg)
+bool player_save(myrpg_t *myrpg)
 {
     int fd = open(".player", O_RDONLY);
     char *buffer;

@@ -29,7 +29,6 @@ int loop(myrpg_t *myrpg)
     while (myrpg->game_open == 1) {
         game_loop(myrpg);
     }
-    save_game(myrpg);
     free_myrpg(myrpg);
     return 0;
 }

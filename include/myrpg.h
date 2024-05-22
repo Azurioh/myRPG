@@ -15,6 +15,7 @@
     #define SCALING myrpg->settings->scaling
     #define WINDOW SETTINGS->window
     #define PLAYER_INTERFACE myrpg->player->interface
+    #define INVENTORY myrpg->player->inventory
 
     #include <SFML/Audio.h>
     #include <stdlib.h>
@@ -66,6 +67,7 @@ void move_down_view(game_t *game_info, myrpg_t *myrpg);
 void move_up_view(game_t *game_info, myrpg_t *myrpg);
 void move_left_view(game_t *game_info, myrpg_t *myrpg);
 void move_right_view(game_t *game_info, myrpg_t *myrpg);
+void move_menu(game_menu_t *game_menu, sfVector2f offset);
 void display_inventory(myrpg_t *myrpg);
 void display_hud(myrpg_t *myrpg);
 
@@ -79,6 +81,7 @@ sfText **load_settings_texts(settings_t *settings);
 void manage_button_event(button_t **buttons, myrpg_t *myrpg);
 void animate_button(button_t *button);
 void change_current_item(button_t *button, void *args);
+void erase_text(myrpg_t *myrpg);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);
@@ -96,4 +99,7 @@ void save_game(myrpg_t *myrpg);
 bool load_game_save(myrpg_t *myrpg);
 void load_player_save(myrpg_t *myrpg, char **options);
 void remove_save(myrpg_t *myrpg);
+void save_settings(myrpg_t *myrpg);
+void save_player(myrpg_t *myrpg);
+bool player_save(myrpg_t *myrpg);
 #endif

@@ -7,7 +7,7 @@
 
 #include "../../include/myrpg.h"
 
-static void save_settings(myrpg_t *myrpg)
+void save_settings(myrpg_t *myrpg)
 {
     int fd = open(".settings", O_CREAT | O_WRONLY, 0666);
 
@@ -21,7 +21,7 @@ static void save_settings(myrpg_t *myrpg)
     close(fd);
 }
 
-static void save_player(myrpg_t *myrpg)
+void save_player(myrpg_t *myrpg)
 {
     int fd;
     player_t *player = myrpg->player;
