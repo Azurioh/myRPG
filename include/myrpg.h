@@ -102,4 +102,7 @@ void remove_save(myrpg_t *myrpg);
 void save_settings(myrpg_t *myrpg);
 void save_player(myrpg_t *myrpg);
 bool player_save(myrpg_t *myrpg);
+void save_inventory(myrpg_t *myrpg);
+void load_inventory_save(myrpg_t *myrpg, char **options);
+bool inventory_save(myrpg_t *myrpg);
 #endif

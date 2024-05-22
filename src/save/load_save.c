@@ -60,6 +60,25 @@ bool player_save(myrpg_t *myrpg)
     return true;
 }
 
+bool inventory_save(myrpg_t *myrpg)
+{
+    int fd = open(".inventory", O_RDONLY);
+    char *buffer;
+    char **options;
+
+    if (fd == -1) {
+        return false;
+    }
+    buffer = read_fd(fd, ".inventory");
+    options = my_str_to_word_array(buffer, "\n");
+    if (!options || my_arraylen(options) != 20) {
+        free(buffer);
+        return false;
+    }
+    load_inventory_save(myrpg, options);
+    return true;
+}
+
 bool load_game_save(myrpg_t *myrpg)
 {
     if (settings_save(myrpg) == true) {

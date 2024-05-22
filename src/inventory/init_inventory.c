@@ -90,12 +90,13 @@ inventory_t *init_inventory(myrpg_t *myrpg)
     inventory->selected_item = NULL;
     init_inv_texts(myrpg, inventory);
     inventory->equipped_sprite = init_equipped_items(myrpg, inventory);
+    inventory->equipped = malloc(sizeof(item_t *) * 5);
     inventory->action_buttons = init_action_buttons(myrpg);
     inventory->id[0] = 20;
-    inventory->id[12] = 11;
+    inventory->id[1] = 11;
     inventory->id[2] = 2;
-    inventory->id[11] = 4;
-    inventory->id[5] = 0;
-    inventory->id[14] = 3;
+    inventory->id[3] = 4;
+    inventory->id[4] = 0;
+    inventory->id[5] = 3;
     return inventory;
 }

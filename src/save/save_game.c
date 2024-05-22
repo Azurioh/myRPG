@@ -6,6 +6,7 @@
 */
 
 #include "../../include/myrpg.h"
+#include <stdlib.h>
 
 void save_settings(myrpg_t *myrpg)
 {
@@ -40,8 +41,33 @@ void save_player(myrpg_t *myrpg)
     close(fd);
 }
 
+void save_inventory(myrpg_t *myrpg)
+{
+    int fd;
+
+    if (!INVENTORY)
+        return;
+    fd = open(".inventory", O_CREAT | O_WRONLY, 0666);
+    if (fd == -1) {
+        printf("Can't save inventory...\n");
+        return;
+    }
+    for (int i = 0; i < 15; i++)
+        dprintf(fd, "%d\n", INVENTORY->id[i]);
+    for (int i = 0; i < 5; i++) {
+        if (INVENTORY->equipped[i])
+            dprintf(fd, "%d", INVENTORY->equipped[i]->item_id);
+        else
+            dprintf(fd, "-1");
+        if (i < 4)
+            dprintf(fd, "\n");
+    }
+    close(fd);
+}
+
 void save_game(myrpg_t *myrpg)
 {
     save_settings(myrpg);
     save_player(myrpg);
+    save_inventory(myrpg);
 }
