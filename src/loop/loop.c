@@ -41,6 +41,7 @@ int game_loop(myrpg_t *myrpg)
     sfRenderWindow_setView(game_info->window, game_info->map_view);
     sfRenderWindow_drawSprite(game_info->window, game_info->map, NULL);
     sfRenderWindow_drawSprite(game_info->window, game_info->player, NULL);
+    check_portal(myrpg);
     display_hud(myrpg);
     display_inventory(myrpg);
     sfRenderWindow_display(game_info->window);
