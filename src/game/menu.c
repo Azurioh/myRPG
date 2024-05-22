@@ -36,9 +36,8 @@ static void manage_ingame_button_action(button_t *button, void *args)
     }
     if (strcmp(button->button_name, "settings") == 0)
         show_settings(button, args);
-    if (strcmp(button->button_name, "quit") == 0) {
+    if (strcmp(button->button_name, "quit") == 0)
         myrpg->game_open = 0;
-    }
 }
 
 static button_t **init_game_menu_buttons(sfVector2f resize)
