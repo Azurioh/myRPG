@@ -29,7 +29,7 @@ static void manage_escape_key_game(myrpg_t *myrpg)
 
 void draw_rectangle(myrpg_t *myrpg)
 {
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 6; i++) {
         sfRenderWindow_drawRectangleShape(myrpg->settings->window,
             myrpg->portal->portal_pos[i]->rect, NULL);
     }
