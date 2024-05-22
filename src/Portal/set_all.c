@@ -33,7 +33,8 @@ static void set_inventory(inventory_t *inventory, sfVector2f offset)
     for (int i = 0; inventory->equipped_sprite[i] != NULL; i++)
         sfSprite_setPosition(inventory->equipped_sprite[i], offset);
     for (int i = 0; inventory->action_buttons[i] != NULL; i++)
-        sfSprite_setPosition(inventory->action_buttons[i]->image_sprite, offset);
+        sfSprite_setPosition(inventory->action_buttons[i]->image_sprite,
+            offset);
     return;
 }
 
@@ -49,6 +50,9 @@ static void set_menu(game_menu_t *game_menu, sfVector2f offset)
 
 void set_all_after_tp(myrpg_t *myrpg, sfVector2f movement)
 {
+    sfTime wait_time;
+
+    wait_time.microseconds = 150000;
     sfView_setCenter(myrpg->game_info->map_view, movement);
     sfSprite_setPosition(myrpg->game_info->player, movement);
     set_hud(myrpg->hud, movement);
@@ -58,5 +62,5 @@ void set_all_after_tp(myrpg_t *myrpg, sfVector2f movement)
     myrpg->player->pos.y = movement.y;
     myrpg->player->interface->movement = (sfVector2f){0, 0};
     sfSprite_setPosition(myrpg->game_info->player, movement);
+    sfSleep(wait_time);
 }
-
