@@ -15,7 +15,7 @@ void save_settings(myrpg_t *myrpg)
         printf("Can't save settings...\n");
         return;
     }
-    dprintf(fd, "%f\n%d\n%d\n%d\n%d\n%d\n", SETTINGS->scaling,
+    dprintf(fd, "%f\n%d\n%d\n%d\n%d\n%d", SETTINGS->scaling,
         SETTINGS->actual_window_size, SETTINGS->actual_framerate,
         SETTINGS->sound_volume, SETTINGS->music_volume, SETTINGS->fullscreen);
     close(fd);
@@ -34,7 +34,7 @@ void save_player(myrpg_t *myrpg)
         printf("Can't save player...\n");
         return;
     }
-    dprintf(fd, "%d\n%d\n%d\n%d\n%f\n%f\n", player->life, player->experience,
+    dprintf(fd, "%d\n%d\n%d\n%d\n%f\n%f", player->life, player->experience,
         player->level, player->nb_skills_to_upgrade, player->pos.x,
         player->pos.y);
     close(fd);
