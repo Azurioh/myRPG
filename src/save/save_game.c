@@ -59,7 +59,7 @@ void save_inventory(myrpg_t *myrpg)
     for (int i = 0; i < 15; i++)
         dprintf(fd, "%d\n", INVENTORY->id[i]);
     for (int i = 0; i < 5; i++) {
-        if (INVENTORY->equipped[i])
+        if (INVENTORY->equipped[i] && INVENTORY->equipped[i]->name)
             dprintf(fd, "%d", INVENTORY->equipped[i]->item_id);
         else
             dprintf(fd, "-1");
