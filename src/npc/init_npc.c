@@ -47,7 +47,6 @@ static npc_info_t **fill_struct_npc(void)
     for (int i = 0; i < 6; i++) {
         npc_info[i]->id = i;
     }
-
     return npc_info;
 }
 
