@@ -12,9 +12,10 @@ static void update_equipped_item(myrpg_t *myrpg)
     inventory_t *inventory = myrpg->player->inventory;
 
     for (int i = 0; i < 5; i++) {
-        if (inventory->equipped[i] != NULL)
+        if (inventory->equipped[i] != NULL) {
             sfSprite_setTexture(inventory->equipped_sprite[i],
                 inventory->equipped[i]->texture, sfFalse);
+        }
     }
 }
 

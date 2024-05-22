@@ -25,8 +25,9 @@ typedef struct keybinds_s {
 } keybinds_t;
 
 typedef struct game_menu_s {
-    sfSprite *background;
+    sfSprite **background;
     button_t **buttons;
+    sfText **texts;
 } game_menu_t;
 
 typedef struct game_s {
@@ -48,4 +49,8 @@ void update_settings_position(settings_t *settings,
     sfVector2f resize);
 void update_settings_scaling(settings_t *settings);
 keybinds_t *init_keybinds(void);
+
+sfText **load_texts_elements(game_t *game_info, float scaling,
+    sfVector2f resize);
+void update_dynamic_texts(game_t *game_info, sfText **texts);
 #endif
