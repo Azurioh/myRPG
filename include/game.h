@@ -19,6 +19,7 @@ typedef struct keybinds_s {
     int move_right;
     int open_inventory;
     int interact;
+    int skills;
     sfBool editing_keybinds;
     int *keybind_edit;
     char **actions;
@@ -37,7 +38,7 @@ typedef struct game_s {
     sfImage *undermap;
     sfView *map_view;
     game_menu_t *game_menu;
-    sfBool show_menu;
+    int show_menu;
     keybinds_t *keybinds;
 } game_t;
 

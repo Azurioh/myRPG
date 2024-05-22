@@ -21,8 +21,28 @@ static void manage_escape_key_game(myrpg_t *myrpg)
     if (EVENTS->event.key.code == sfKeyEscape) {
         if (myrpg->is_inventory == 1) {
             myrpg->is_inventory = 0;
+        }
+        if (GAME_INFO->show_menu == 2) {
+            free(GAME_INFO->game_menu);
+            GAME_INFO->game_menu = init_game_menu(GAME_INFO, SETTINGS);
+            GAME_INFO->show_menu = 1;
+        }
+        GAME_INFO->show_menu = toggle_boolean(GAME_INFO->show_menu);
+    }
+}
+
+static void open_skills(myrpg_t *myrpg)
+{
+    if (EVENTS->event.type != sfEvtKeyPressed)
+        return;
+    if (EVENTS->event.key.code == GAME_INFO->keybinds->skills) {
+        if (GAME_INFO->show_menu == 2) {
+            free(GAME_INFO->game_menu);
+            GAME_INFO->game_menu = init_game_menu(GAME_INFO, SETTINGS);
+            GAME_INFO->show_menu = 0;
         } else {
-            GAME_INFO->show_menu = toggle_boolean(GAME_INFO->show_menu);
+            init_skills_menu(myrpg);
+            GAME_INFO->show_menu = 2;
         }
     }
 }
@@ -43,9 +63,8 @@ static void exec_game_events(void *args)
         manage_button_event(myrpg->player->inventory->buttons, myrpg);
         manage_button_event(myrpg->player->inventory->action_buttons, myrpg);
     }
-    if (GAME_INFO->show_menu == sfTrue) {
+    if (GAME_INFO->show_menu > 0)
         manage_button_event(GAME_INFO->game_menu->buttons, myrpg);
-    }
     if (EVENTS->event.type == sfEvtKeyPressed) {
         if (EVENTS->event.key.code == GAME_INFO->keybinds->open_inventory
             && GAME_INFO->show_menu == sfFalse) {
@@ -53,6 +72,7 @@ static void exec_game_events(void *args)
         }
         manage_escape_key_game(myrpg);
     }
+    open_skills(myrpg);
     check_portal(myrpg);
 }
 

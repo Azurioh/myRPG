@@ -21,7 +21,8 @@ static void make_move(myrpg_t *myrpg)
 
 static void display_menu(myrpg_t *myrpg)
 {
-    update_dynamic_texts(GAME_INFO, GAME_INFO->game_menu->texts);
+    if (GAME_INFO->show_menu == 1)
+        update_dynamic_texts(GAME_INFO, GAME_INFO->game_menu->texts);
     sfRenderWindow_drawSprite(SETTINGS->window,
         GAME_INFO->game_menu->background[0], NULL);
     sfRenderWindow_drawSprite(SETTINGS->window,
@@ -46,11 +47,12 @@ void display_game(void *args)
     display_hud(myrpg);
     if (myrpg->is_inventory == 1)
         display_inventory(myrpg);
-    if (GAME_INFO->show_menu == 1)
+    if (GAME_INFO->show_menu >= 1)
         display_menu(myrpg);
     if (myrpg->is_inventory == 0 && GAME_INFO->show_menu == 0) {
         make_move(myrpg);
         move(myrpg);
     }
+    GAME_INFO->keybinds->skills = sfKeyO;
     sfClock_restart(PLAYER_INTERFACE->clock);
 }
