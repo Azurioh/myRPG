@@ -73,14 +73,14 @@ void display_inventory(myrpg_t *myrpg);
 
 
 // PORTAL
-void teleport(player_t *player, portal_t *portal, int i, myrpg_t *myrpg);
+int teleport(portal_t *portal, int i, myrpg_t *myrpg);
 void check_portal(myrpg_t *myrpg);
 void set_all_after_tp(myrpg_t *myrpg, sfVector2f movement);
 void draw_rectangle(myrpg_t *myrpg);
 
 // NPC
 void spawn_npc(myrpg_t *myrpg);
-sfSprite *init_npc();
+sfSprite *init_npc(void);
 void display_hud(myrpg_t *myrpg);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
@@ -110,6 +110,5 @@ void save_game(myrpg_t *myrpg);
 bool load_game_save(myrpg_t *myrpg);
 void load_player_save(myrpg_t *myrpg, char **options);
 void remove_save(myrpg_t *myrpg);
-void move_menu(game_menu_t *game_menu, sfVector2f offset);
 
 #endif
