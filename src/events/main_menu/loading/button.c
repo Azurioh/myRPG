@@ -24,8 +24,9 @@ static void show_settings_menu(button_t *button, void *args)
 static void launch_game(button_t *button, void *args)
 {
     myrpg_t *myrpg = args;
+    int new_game = strcmp(button->button_name, "Nouvelle partie");
 
-    if (strcmp(button->button_name, "Nouvelle partie") == 0) {
+    if (new_game == 0) {
         remove_save(myrpg);
         PLAYER = init_player();
     }
@@ -34,8 +35,12 @@ static void launch_game(button_t *button, void *args)
     myrpg->music_started = false;
     myrpg->game_info = init_game_struct(myrpg);
     load_game(args);
-    save_game(myrpg);
     EVENTS->load_function(myrpg);
+    if (new_game == 0)
+        INVENTORY = init_inventory(myrpg);
+    else
+        inventory_save(myrpg);
+    save_game(myrpg);
 }
 
 static button_t **generate_main_menu_buttons(myrpg_t *myrpg)

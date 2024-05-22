@@ -61,6 +61,8 @@ player_t *init_player(void)
     player->nb_dead = 0;
     player->experience = 0;
     player->level = 1;
+    player->attack = 10;
+    player->armor = 5;
     player->max_xp = 50;
     player->nb_skills_to_upgrade = 0;
     player->skills = init_player_skills();

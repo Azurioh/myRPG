@@ -40,7 +40,8 @@ static void set_inventory(inventory_t *inventory, sfVector2f offset)
 
 static void set_menu(game_menu_t *game_menu, sfVector2f offset)
 {
-    sfSprite_setPosition(game_menu->background, offset);
+    sfSprite_move(game_menu->background[0], offset);
+    sfSprite_move(game_menu->background[1], offset);
     for (int i = 0; game_menu->buttons[i]; i++) {
         sfSprite_setPosition(game_menu->buttons[i]->image_sprite, offset);
         game_menu->buttons[i]->position.x += offset.x;

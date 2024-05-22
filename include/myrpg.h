@@ -91,6 +91,8 @@ button_t **init_action_buttons(myrpg_t *myrpg);
 
 button_t **load_settings_buttons(settings_t *settings);
 sfText **load_settings_texts(settings_t *settings);
+void init_stats(myrpg_t *myrpg, inventory_t *inventory);
+void display_stats(myrpg_t *myrpg);
 
 void manage_button_event(button_t **buttons, myrpg_t *myrpg);
 void animate_button(button_t *button);
@@ -102,6 +104,7 @@ char *my_strcat(char *dest, char const *str);
 int includes_in_str(char const *str, char to_find);
 char **my_str_to_word_array(char const *str, char const *step);
 int my_arraylen(char **array);
+char *str_fusion(char *str1, char *str2);
 float get_time(sfClock *clock);
 
 void start_to_edit_controls(myrpg_t *myrpg);
@@ -116,5 +119,7 @@ void remove_save(myrpg_t *myrpg);
 void save_settings(myrpg_t *myrpg);
 void save_player(myrpg_t *myrpg);
 bool player_save(myrpg_t *myrpg);
-
+void save_inventory(myrpg_t *myrpg);
+void load_inventory_save(myrpg_t *myrpg, char **options);
+bool inventory_save(myrpg_t *myrpg);
 #endif
