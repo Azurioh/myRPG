@@ -9,6 +9,9 @@
 
 void free_player(player_t *player)
 {
+    if (!player) {
+        return;
+    }
     sfSprite_destroy(player->interface->sprite);
     sfClock_destroy(player->interface->clock);
     free(player->interface);

@@ -21,6 +21,7 @@ typedef struct npc_info_s {
 
 typedef struct npc_s {
     npc_info_t **npc_info;
+
 } npc_t;
 
 void draw_text(npc_t *npc, int i);
