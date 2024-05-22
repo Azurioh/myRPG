@@ -59,4 +59,5 @@ sfSprite *load_settings_background(sfRenderWindow *window,
 void manage_increase_buttons(button_t *button, void *args);
 void manage_decrease_buttons(button_t *button, void *args);
 void exec_settings_events(void *args);
+void update_keybinds_scaling(settings_t *settings, sfVector2f resize);
 #endif

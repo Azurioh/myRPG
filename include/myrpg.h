@@ -89,6 +89,7 @@ int includes_in_str(char const *str, char to_find);
 char **my_str_to_word_array(char const *str, char const *step);
 int my_arraylen(char **array);
 float get_time(sfClock *clock);
+sfVector2f get_resize(myrpg_t *myrpg);
 
 void start_to_edit_controls(myrpg_t *myrpg);
 void load_control_elements(myrpg_t *myrpg);

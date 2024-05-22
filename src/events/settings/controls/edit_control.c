@@ -43,7 +43,8 @@ static void manage_keybinds(void *args)
     myrpg_t *myrpg = args;
 
     if (EVENTS->event.type == sfEvtKeyPressed) {
-        if (EVENTS->event.key.code == sfKeyEscape) {
+        if (EVENTS->event.key.code == sfKeyEscape
+            || EVENTS->event.key.code > sfKeyZ) {
             return;
         }
         set_new_keybind(myrpg, EVENTS->event.key.code);
