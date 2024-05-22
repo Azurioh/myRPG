@@ -39,9 +39,11 @@ static void fill_medium_quests(quest_t **quests)
 {
     quests[5] = init_quest("Le combat, tu maitriseras.",
         "Combat 5 ennemis", 5);
-    quests[6] = init_quest("Une capacite, tu perfectionneras.",
+    quests[6] = init_quest("L'habit, fera le moine.",
+        "Porte un équipement complet", 1);
+    quests[7] = init_quest("Un pouvoir, tu perfectionneras.",
         "Augmente une competence au niveau maximum", 1);
-    quests[7] = init_quest("Tes adversaires, tu domineras.",
+    quests[8] = init_quest("Tes adversaires, tu domineras.",
         "Combat 8 ennemis", 8);
 }
 
@@ -49,16 +51,16 @@ static void fill_quests(quest_t **quests)
 {
     fill_tutorial_quests(quests);
     fill_medium_quests(quests);
-    quests[8] = init_quest("Le boss, tu domineras.",
+    quests[9] = init_quest("Le boss, tu domineras.",
         "Affronte le boss final de la forêt", 1);
-    quests[9] = init_quest("Le jeu, tu finiras.",
+    quests[10] = init_quest("Le jeu, tu finiras.",
         "GG tu as fini le jeu, amuse toi maintenant !", 1);
-    quests[10] = NULL;
+    quests[11] = NULL;
 }
 
 static quest_t **init_quests(void)
 {
-    quest_t **quests = malloc(sizeof(quests) * 11);
+    quest_t **quests = malloc(sizeof(quests) * 12);
 
     fill_quests(quests);
     return quests;
