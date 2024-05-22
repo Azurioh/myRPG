@@ -93,7 +93,7 @@ fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg)
 void check_fight(myrpg_t *myrpg, fight_t *fight_infos, game_t *game_info)
 {
     (void) myrpg;
-    if (sfKeyboard_isKeyPressed(sfKeyA) && fight_infos->in_fight != 1) {
+    if (fight_infos->in_fight != 1) {
         fight_infos->in_fight = 1;
         fight_infos->toskra_hp = 100;
         fight_infos->enemy_hp = 100;
