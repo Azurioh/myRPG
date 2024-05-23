@@ -81,7 +81,7 @@ int **init_loot(void)
     return loot_table;
 }
 
-static mobs_t **init_mobs(void)
+mobs_t **init_mobs(void)
 {
     mobs_t **mobs = malloc(sizeof(mobs_t *) * 5);
 

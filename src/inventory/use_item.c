@@ -13,8 +13,6 @@ void update_equipment(myrpg_t *myrpg, int i)
     int slot = atoi(button->button_name);
     int old_id = -1;
 
-    if (strcmp(item->name, "Hache du Papa") == 0)
-        QUESTS->quests[0]->nb++;
     if (INVENTORY->equipped[i] == NULL) {
         INVENTORY->id[slot] = -1;
         INVENTORY->equipped[i] = item;
@@ -26,6 +24,7 @@ void update_equipment(myrpg_t *myrpg, int i)
     }
     INVENTORY->selected_item = NULL;
     INVENTORY->selected_slot = NULL;
+    inventory_quests(myrpg);
     return erase_text(myrpg);
 }
 
@@ -38,6 +37,11 @@ void heal_player(myrpg_t *myrpg)
     if (myrpg->player->life >= 100)
         return;
     increase_player_life(myrpg->player, item->strength);
+    if (item->item_id == 2 && QUESTS->quests[3]->is_unlocked
+        && QUESTS->quests[3]->is_validate == false) {
+        QUESTS->quests[3]->nb++;
+        update_quest(QUESTS);
+    }
     myrpg->player->inventory->selected_item = NULL;
     myrpg->player->inventory->selected_slot = NULL;
     myrpg->player->inventory->id[slot] = -1;
