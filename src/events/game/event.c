@@ -56,6 +56,13 @@ void draw_rectangle(myrpg_t *myrpg)
     }
 }
 
+static void sprint(myrpg_t *myrpg)
+{
+    if (EVENTS->event.key.code == GAME_INFO->keybinds->sprint) {
+        PLAYER->sprinting = toggle_boolean(PLAYER->sprinting);
+    }
+}
+
 static void exec_game_events(void *args)
 {
     myrpg_t *myrpg = args;
@@ -72,6 +79,7 @@ static void exec_game_events(void *args)
             myrpg->is_inventory = toggle_boolean(myrpg->is_inventory);
         }
         manage_escape_key_game(myrpg);
+        sprint(myrpg);
     }
     open_skills(myrpg);
     check_portal(myrpg);

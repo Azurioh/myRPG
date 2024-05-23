@@ -43,6 +43,7 @@ typedef struct player_s {
     int armor;
     int item_armor;
     int nb_skills_to_upgrade;
+    bool sprinting;
     skills_t **skills;
     player_interface_t *interface;
     inventory_t *inventory;

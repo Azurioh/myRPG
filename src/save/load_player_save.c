@@ -46,6 +46,7 @@ void load_player_save(myrpg_t *myrpg, char **options)
     player->nb_skills_to_upgrade = atoi(options[3]);
     player->pos = new_pos;
     player->skills = init_player_skills();
+    player->sprinting = false;
     PLAYER = player;
     load_skills(myrpg, options);
 }

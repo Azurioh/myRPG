@@ -37,7 +37,7 @@ static bool settings_save(myrpg_t *myrpg)
     }
     options = my_str_to_word_array(buffer, "\n");
     free(buffer);
-    if (!options || my_arraylen(options) != 13) {
+    if (!options || my_arraylen(options) != 14) {
         close(fd);
         return false;
     }

@@ -20,9 +20,10 @@ void save_settings(myrpg_t *myrpg)
     dprintf(fd, "%f\n%d\n%d\n%d\n%d\n%d\n", SETTINGS->scaling,
         SETTINGS->actual_window_size, SETTINGS->actual_framerate,
         SETTINGS->sound_volume, SETTINGS->music_volume, SETTINGS->fullscreen);
-    dprintf(fd, "%d\n%d\n%d\n%d\n%d\n%d\n%d", keybinds->move_up,
+    dprintf(fd, "%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d", keybinds->move_up,
         keybinds->move_down, keybinds->move_left, keybinds->move_right,
-        keybinds->open_inventory, keybinds->interact, keybinds->skills);
+        keybinds->sprint, keybinds->open_inventory, keybinds->interact,
+        keybinds->skills);
     close(fd);
 }
 

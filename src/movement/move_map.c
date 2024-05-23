@@ -11,8 +11,11 @@ static void animate_player(myrpg_t *myrpg, int top)
 {
     float seconds = get_time(myrpg->game_info->clock);
     static int offset = 0;
+    float animation_time = 0.1;
 
-    if (seconds > 0.1) {
+    if (PLAYER->sprinting == true)
+        animation_time = 0.05;
+    if (seconds > animation_time) {
         PLAYER_INTERFACE->rect.top = PLAYER_INTERFACE->rect.height * top;
         PLAYER_INTERFACE->rect.left = offset * PLAYER_INTERFACE->rect.width;
         sfClock_restart(myrpg->game_info->clock);
@@ -98,6 +101,10 @@ void move(myrpg_t *myrpg)
 
     movement.x *= seconds;
     movement.y *= seconds;
+    if (PLAYER->sprinting == true) {
+        movement.x *= 2;
+        movement.y *= 2;
+    }
     sfView_move(myrpg->game_info->map_view, movement);
     sfSprite_move(myrpg->game_info->player, movement);
     move_hud(myrpg->hud, movement);
