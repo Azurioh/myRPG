@@ -20,9 +20,9 @@ int coord_portal(portal_t *portal, myrpg_t *myrpg, int i)
     sfVector2f pos = sfView_getCenter(myrpg->game_info->map_view);
 
     if (pos.x >= portal->portal_pos[i]->pos.x &&
-        pos.x <= portal->portal_pos[i]->pos.x + 50 &&
+        pos.x <= portal->portal_pos[i]->pos.x + 100 &&
         pos.y >= portal->portal_pos[i]->pos.y && pos.y <=
-        portal->portal_pos[i]->pos.y + 50) {
+        portal->portal_pos[i]->pos.y + 100) {
             myrpg->can_interact = 1;
             return i;
         }
@@ -31,19 +31,21 @@ int coord_portal(portal_t *portal, myrpg_t *myrpg, int i)
 
 int teleport(portal_t *portal, int i, myrpg_t *myrpg)
 {
-    if (coord_portal(portal, myrpg, i) != -1 &&
-    sfKeyboard_isKeyPressed(myrpg->game_info->keybinds->interact)) {
-        move_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
+    if (coord_portal(portal, myrpg, i) != -1) {
+        myrpg->can_interact = 1;
+        if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->interact)) {
+            move_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
+        }
         return 0;
     }
-    return 1;
+    return -1;
 }
 
 static portal_pos_t **fill_struct_portal_map(void)
 {
-    portal_pos_t **portal_pos = malloc(sizeof(portal_t *) * 7);
+    portal_pos_t **portal_pos = malloc(sizeof(portal_t *) * 9);
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 8; i++) {
         portal_pos[i] = malloc(sizeof(portal_pos_t));
     }
     portal_pos[0]->pos = (sfVector2f) {4060, 5320};
@@ -52,7 +54,9 @@ static portal_pos_t **fill_struct_portal_map(void)
     portal_pos[3]->pos = (sfVector2f) {4108, 575};
     portal_pos[4]->pos = (sfVector2f) {500, 2450};
     portal_pos[5]->pos = (sfVector2f) {4600, 4550};
-    portal_pos[6] = NULL;
+    portal_pos[6]->pos = (sfVector2f) {5975, 3273};
+    portal_pos[7]->pos = (sfVector2f) {687 , 622};
+    portal_pos[8] = NULL;
     for (int i = 0; i < 6; i++) {
         portal_pos[i]->id = i;
     }
@@ -63,7 +67,7 @@ static void create_rectangle_collision_map(portal_t *portal)
 {
     sfVector2f scale = {100, 100};
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 8; i++) {
         portal->portal_pos[i]->rect = sfRectangleShape_create();
         sfRectangleShape_setSize(portal->portal_pos[i]->rect, scale);
         sfRectangleShape_setPosition(portal->portal_pos[i]->rect,
@@ -81,6 +85,7 @@ portal_t *portal_map(void)
     link_portal(portal, 0, 1);
     link_portal(portal, 2, 3);
     link_portal(portal, 4, 5);
+    link_portal(portal, 6, 7);
     return portal;
 }
 
