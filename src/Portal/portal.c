@@ -20,14 +20,12 @@ int coord_portal(portal_t *portal, myrpg_t *myrpg, int i)
     sfVector2f pos = sfView_getCenter(myrpg->game_info->map_view);
 
     if (pos.x >= portal->portal_pos[i]->pos.x &&
-        pos.x <= portal->portal_pos[i]->pos.x + 100 &&
+        pos.x <= portal->portal_pos[i]->pos.x + 50 &&
         pos.y >= portal->portal_pos[i]->pos.y && pos.y <=
-        portal->portal_pos[i]->pos.y + 100) {
+        portal->portal_pos[i]->pos.y + 50) {
             myrpg->can_interact = 1;
             return i;
-    } else {
-        myrpg->can_interact = 0;
-    }
+        }
     return -1;
 }
 
@@ -35,7 +33,7 @@ int teleport(portal_t *portal, int i, myrpg_t *myrpg)
 {
     if (coord_portal(portal, myrpg, i) != -1 &&
     sfKeyboard_isKeyPressed(myrpg->game_info->keybinds->interact)) {
-        set_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
+        move_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
         return 0;
     }
     return 1;
@@ -48,12 +46,12 @@ static portal_pos_t **fill_struct_portal_map(void)
     for (int i = 0; i < 6; i++) {
         portal_pos[i] = malloc(sizeof(portal_pos_t));
     }
-    portal_pos[0]->pos = (sfVector2f) {5000, 5000};
-    portal_pos[1]->pos = (sfVector2f) {4500, 4500};
-    portal_pos[2]->pos = (sfVector2f) {5000, 5000};
-    portal_pos[3]->pos = (sfVector2f) {5000, 5000};
-    portal_pos[4]->pos = (sfVector2f) {5000, 5000};
-    portal_pos[5]->pos = (sfVector2f) {4500, 4500};
+    portal_pos[0]->pos = (sfVector2f) {4060, 5320};
+    portal_pos[1]->pos = (sfVector2f) {2543, 692};
+    portal_pos[2]->pos = (sfVector2f) {4950, 4950};
+    portal_pos[3]->pos = (sfVector2f) {4108, 575};
+    portal_pos[4]->pos = (sfVector2f) {500, 2450};
+    portal_pos[5]->pos = (sfVector2f) {4600, 4550};
     portal_pos[6] = NULL;
     for (int i = 0; i < 6; i++) {
         portal_pos[i]->id = i;
@@ -93,4 +91,5 @@ void check_portal(myrpg_t *myrpg)
             return;
         }
     }
+    myrpg->can_interact = 0;
 }
