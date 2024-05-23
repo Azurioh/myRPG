@@ -8,6 +8,7 @@
 #include "../../include/myrpg.h"
 #include "../../include/fight.h"
 #include "../../include/generation.h"
+#include "SFML/Window/Event.h"
 #include <SFML/Graphics/Rect.h>
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
@@ -40,25 +41,22 @@ static fight_t *check_str_infos(char *str, fight_t *fight)
         fight->toskra_hp += 20;
     }
     if (str[0] == 'd') {
-        fight->angryness += 2;
+        fight->angryness += 1;
     }
     return fight;
 }
 
-fight_t *manage_attack_button_event(button_attack_t **buttons, myrpg_t *myrpg,
+fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
     fight_t *fight)
 {
-    char *str;
-
-    if (!buttons) {
+    if (!buttons || (EVENTS->event.type != sfEvtMouseButtonPressed
+        && EVENTS->event.type != sfEvtMouseMoved)) {
         return fight;
     }
     for (int i = 0; buttons[i]; i++) {
-        if (EVENTS->event.type == sfEvtMouseButtonPressed
-            && buttons[i]->is_clicked(buttons[i], SETTINGS->window) == sfTrue
-            && buttons[i]->action) {
-            str = buttons[i]->action(fight);
-            fight = check_str_infos(str, fight);
+        if (EVENTS->event.type == sfEvtMouseButtonPressed &&
+            buttons[i]->is_clicked(buttons[i], SETTINGS->window) == sfTrue) {
+            fight = check_str_infos(buttons[i]->button_name, fight);
             fight->turn = ENEMY;
             return fight;
         }
@@ -76,12 +74,11 @@ fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg)
         sfRenderWindow_drawSprite(window, myrpg->fight_infos->buttons[i]
         ->image_sprite, NULL);
     }
-    if (myrpg->fight_infos->turn == TOSKRA) {
-        myrpg->fight_infos = manage_attack_button_event(myrpg->fight_infos->
-        buttons, myrpg, myrpg->fight_infos);
-    } else {
+    if (myrpg->fight_infos->turn != TOSKRA) {
         myrpg->fight_infos = enemy_attack(myrpg->fight_infos);
         myrpg->player->life = myrpg->fight_infos->toskra_hp;
+
+    } else {
     }
     return myrpg->fight_infos;
 }

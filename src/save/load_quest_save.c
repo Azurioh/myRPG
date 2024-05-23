@@ -17,6 +17,7 @@ void load_quest_save(myrpg_t *myrpg, char **options)
     for (; i < atoi(options[0]); i++) {
         QUESTS->quests[i]->is_unlocked = true;
         QUESTS->quests[i]->nb = QUESTS->quests[i]->nb_required;
+        QUESTS->quests[i]->is_validate = true;
     }
     QUESTS->actual_quest = i;
     QUESTS->quests[i]->is_unlocked = true;
