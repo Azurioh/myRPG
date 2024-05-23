@@ -79,6 +79,8 @@ void display_game(void *args)
 
     sfRenderWindow_setView(WINDOW, GAME_INFO->map_view);
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->map, NULL);
+    if (sfKeyboard_isKeyPressed(sfKeyP) == sfTrue)
+        sfRenderWindow_drawSprite(WINDOW, GAME_INFO->undermap_sprite, NULL);
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->player, NULL);
     display_hud(myrpg);
     if (myrpg->is_inventory == 1)

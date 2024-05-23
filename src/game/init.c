@@ -43,6 +43,16 @@ static sfSprite *create_player(myrpg_t *myrpg)
     return sprite_player;
 }
 
+static sfSprite *init_undermap_sprite(void)
+{
+    sfSprite *sprite = sfSprite_create();
+    sfTexture *texture = sfTexture_createFromFile(UNDERMAP_PATH, NULL);
+
+    sfSprite_setTexture(sprite, texture, sfFalse);
+    sfSprite_setPosition(sprite, (sfVector2f){0, 0});
+    return sprite;
+}
+
 sfImage *init_undermap(void)
 {
     sfImage *undermap = sfImage_createFromFile(UNDERMAP_PATH);
@@ -79,6 +89,7 @@ game_t *init_game_struct(void *args)
         return NULL;
     game_info->map = init_map();
     game_info->undermap = init_undermap();
+    game_info->undermap_sprite = init_undermap_sprite();
     game_info->map_view = init_view(myrpg);
     game_info->player = create_player(myrpg);
     game_info->keybinds = GAME_INFO->keybinds;
