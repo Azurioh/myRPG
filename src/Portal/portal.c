@@ -56,7 +56,7 @@ static portal_pos_t **fill_struct_portal_map(void)
     portal_pos[4]->pos = (sfVector2f) {500, 2450};
     portal_pos[5]->pos = (sfVector2f) {4600, 4550};
     portal_pos[6]->pos = (sfVector2f) {5975, 3273};
-    portal_pos[7]->pos = (sfVector2f) {687 , 622};
+    portal_pos[7]->pos = (sfVector2f) {687, 622};
     portal_pos[8] = NULL;
     for (int i = 0; i < 6; i++) {
         portal_pos[i]->id = i;
