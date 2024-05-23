@@ -24,14 +24,14 @@ static void manage_ingame_button_action(button_t *button, void *args)
     button->actually_clicked = sfFalse;
     sfSprite_setScale(button->image_sprite,
         (sfVector2f){button->initial_scaling, button->initial_scaling});
-    if (strcmp(button->button_name, "resume") == 0) {
+    if (strcmp(button->button_name, "resume") == 0)
         GAME_INFO->show_menu = sfFalse;
-    }
     if (strcmp(button->button_name, "save") == 0)
         return save_game(myrpg);
     if (strcmp(button->button_name, "load") == 0) {
         player_save(myrpg);
         inventory_save(myrpg);
+        quests_save(myrpg);
         return;
     }
     if (strcmp(button->button_name, "settings") == 0)

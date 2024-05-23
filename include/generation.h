@@ -8,6 +8,7 @@
 #ifndef GENERATION_H
     #define GENERATION_H
     #include <SFML/Graphics.h>
+    #define FIGHT_MAP "assets/combat_scene.png"
     #define UNDERMAP_PATH "./assets/map/undermap.png"
     #define MAP_PATH "./assets/map/map.png"
     #define PLAYER_PATH "./assets/player_spritesheet.png"

@@ -21,8 +21,9 @@ void load_settings_save(myrpg_t *myrpg, char **options)
     keybinds->move_down = atoi(options[7]);
     keybinds->move_left = atoi(options[8]);
     keybinds->move_right = atoi(options[9]);
-    keybinds->open_inventory = atoi(options[10]);
-    keybinds->interact = atoi(options[11]);
-    keybinds->skills = atoi(options[12]);
+    keybinds->sprint = atoi(options[10]);
+    keybinds->open_inventory = atoi(options[11]);
+    keybinds->interact = atoi(options[12]);
+    keybinds->skills = atoi(options[13]);
     init_window(SETTINGS, SETTINGS->fullscreen);
 }

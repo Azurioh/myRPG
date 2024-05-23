@@ -37,7 +37,7 @@ static bool settings_save(myrpg_t *myrpg)
     }
     options = my_str_to_word_array(buffer, "\n");
     free(buffer);
-    if (!options || my_arraylen(options) != 13) {
+    if (!options || my_arraylen(options) != 14) {
         close(fd);
         return false;
     }
@@ -112,8 +112,8 @@ bool quests_save(myrpg_t *myrpg)
         close(fd);
         return false;
     }
-    QUESTS->actual_quest = atoi(options[0]);
-    QUESTS->quests[QUESTS->actual_quest]->nb = atoi(options[1]);
+    load_quest_save(myrpg, options);
+    free_array(options);
     return true;
 }
 

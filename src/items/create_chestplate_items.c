@@ -10,7 +10,7 @@ item_t *create_chestplate_item(char *path, char *name, int strength,
     char *description)
 {
     item_t *item = malloc(sizeof(item_t));
-    static int id = 12;
+    static int id = 13;
 
     item->name = my_strdup(name);
     item->description = my_strdup(description);

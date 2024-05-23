@@ -55,6 +55,8 @@ dkms.conf
 *.vgcore
 .DS_Store
 .vscode
+myrpg
+*.git*
 my_rpg
 .player
 .inventory

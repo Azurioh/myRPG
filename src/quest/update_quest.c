@@ -14,7 +14,12 @@ void update_quest(quest_list_t *quest_list)
 
     if (actual_quest->nb >= actual_quest->nb_required) {
         actual_quest->is_validate = true;
-        quest_list->quests[index_quest + 1]->is_unlocked = true;
-        quest_list->actual_quest++;
+        while (actual_quest->is_validate == true) {
+            index_quest++;
+            actual_quest->is_unlocked = true;
+            actual_quest = quest_list->quests[index_quest];
+        }
+        quest_list->actual_quest = index_quest;
+        quest_list->quests[index_quest]->is_unlocked = true;
     }
 }

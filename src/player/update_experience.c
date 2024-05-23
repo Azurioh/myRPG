@@ -13,8 +13,8 @@ int update_player_experience(player_t *player, unsigned int amount)
         return -1;
     }
     player->experience += amount;
-    if (player->experience >= 100) {
-        player->experience -= 100;
+    if (player->experience >= player->max_xp) {
+        player->experience -= player->max_xp;
         player->level++;
         player->nb_skills_to_upgrade++;
     }

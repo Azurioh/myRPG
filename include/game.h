@@ -20,6 +20,7 @@ typedef struct keybinds_s {
     int open_inventory;
     int interact;
     int skills;
+    int sprint;
     sfBool editing_keybinds;
     int *keybind_edit;
     char **actions;
