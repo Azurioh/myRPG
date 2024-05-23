@@ -42,7 +42,7 @@ void check_if_mob_mov(myrpg_t *myrpg, int i)
         && GAME_INFO->show_menu != 1 && myrpg->fight_infos->in_fight != 1) {
         dep = get_vector(player_pos, sfSprite_getPosition
         (myrpg->mobs[i]->sprite), -7);
-        check_where_move(dep);
+        check_where_move(dep, i, myrpg);
         sfSprite_move(myrpg->mobs[i]->sprite, dep);
         sfCircleShape_move(myrpg->mobs[i]->detection, dep);
         sfRectangleShape_move(myrpg->mobs[i]->hitbox, dep);
