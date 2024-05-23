@@ -31,10 +31,12 @@ int coord_portal(portal_t *portal, myrpg_t *myrpg, int i)
 
 int teleport(portal_t *portal, int i, myrpg_t *myrpg)
 {
-    if (coord_portal(portal, myrpg, i) != -1 &&
-    sfKeyboard_isKeyPressed(myrpg->game_info->keybinds->interact)) {
-        myrpg->transition_state = 0;
-        set_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
+    if (coord_portal(portal, myrpg, i) != -1) {
+        myrpg->can_interact = 1;
+        if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->interact)) {
+            myrpg->transition_state = 0;
+            move_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
+        }
         return 0;
     }
     return -1;
@@ -54,7 +56,7 @@ static portal_pos_t **fill_struct_portal_map(void)
     portal_pos[4]->pos = (sfVector2f) {500, 2450};
     portal_pos[5]->pos = (sfVector2f) {4600, 4550};
     portal_pos[6]->pos = (sfVector2f) {5975, 3273};
-    portal_pos[7]->pos = (sfVector2f) {687, 622};
+    portal_pos[7]->pos = (sfVector2f) {687 , 622};
     portal_pos[8] = NULL;
     for (int i = 0; i < 6; i++) {
         portal_pos[i]->id = i;
