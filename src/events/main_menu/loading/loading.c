@@ -10,7 +10,7 @@
 static void load_main_menu_background(myrpg_t *myrpg)
 {
     sfSprite *background = generate_sprite_with_file(
-        "assets/main_menu_background.jpg", SCALING);
+        "assets/main_menu_background.png", SCALING);
 
     if (myrpg->background) {
         sfSprite_destroy(myrpg->background);
