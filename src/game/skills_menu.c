@@ -21,6 +21,10 @@ static void manage_skills_button(button_t *button, void *args)
         return;
     }
     update_skill(PLAYER, atoi(button->button_name) - 1);
+    if (PLAYER->nb_skills_to_upgrade == 0)
+        sfSprite_setScale(button->image_sprite,
+            (sfVector2f){button->initial_scaling, button->initial_scaling});
+    manage_skills_quest(myrpg);
 }
 
 static sfSprite **load_skills_background(sfVector2f resize)

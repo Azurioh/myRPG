@@ -25,14 +25,14 @@ static void fill_tutorial_quests(quest_t **quests)
     quests[0] = init_quest("Ton arme, tu recuperera.",
         "Equipe la hache de ton pere", 1);
     quests[0]->is_unlocked = true;
-    quests[1] = init_quest("L'ennemi, tu vaincras.",
+    quests[1] = init_quest("Tes competences, tu developperas.",
+        "Ameliore une competence", 1);
+    quests[2] = init_quest("L'ennemi, tu vaincras.",
         "Combat ton premier ennemi", 1);
-    quests[2] = init_quest("La boisson, tu buveras.",
+    quests[3] = init_quest("La boisson, tu buveras.",
         "Utilise la potion dans ton inventaire", 1);
-    quests[3] = init_quest("Les niveaux, tu grimpras.",
+    quests[4] = init_quest("Les niveaux, tu grimpras.",
         "Atteint le niveau 2", 1);
-    quests[4] = init_quest("Tes competences, tu developperas.",
-        "Ameliore une compétence", 1);
 }
 
 static void fill_medium_quests(quest_t **quests)
@@ -40,7 +40,7 @@ static void fill_medium_quests(quest_t **quests)
     quests[5] = init_quest("Le combat, tu maitriseras.",
         "Combat 5 ennemis", 5);
     quests[6] = init_quest("L'habit, fera le moine.",
-        "Porte un équipement complet", 1);
+        "Porte un equipement complet", 1);
     quests[7] = init_quest("Un pouvoir, tu perfectionneras.",
         "Augmente une competence au niveau maximum", 1);
     quests[8] = init_quest("Tes adversaires, tu domineras.",

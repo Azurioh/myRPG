@@ -112,8 +112,8 @@ bool quests_save(myrpg_t *myrpg)
         close(fd);
         return false;
     }
-    QUESTS->actual_quest = atoi(options[0]);
-    QUESTS->quests[QUESTS->actual_quest]->nb = atoi(options[1]);
+    load_quest_save(myrpg, options);
+    free_array(options);
     return true;
 }
 

@@ -132,6 +132,9 @@ void save_inventory(myrpg_t *myrpg);
 void load_inventory_save(myrpg_t *myrpg, char **options);
 bool inventory_save(myrpg_t *myrpg);
 bool quests_save(myrpg_t *myrpg);
+void load_quest_save(myrpg_t *myrpg, char **options);
+
+void manage_skills_quest(myrpg_t *myrpg);
 
 void init_skills_menu(myrpg_t *myrpg);
 #endif
