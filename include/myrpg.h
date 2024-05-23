@@ -16,6 +16,8 @@
     #define WINDOW SETTINGS->window
     #define PLAYER_INTERFACE myrpg->player->interface
     #define INVENTORY myrpg->player->inventory
+    #define QUESTS myrpg->quests
+    #define HUD myrpg->hud
 
     #include <SFML/Audio.h>
     #include <stdlib.h>
@@ -37,6 +39,7 @@
     #include "portal.h"
     #include "npc.h"
     #include "item.h"
+    #include "quest.h"
 
 typedef struct myrpg_s {
     int game_open;
@@ -44,9 +47,9 @@ typedef struct myrpg_s {
     item_t **items;
     game_t *game_info;
     event_t *events;
-    game_t *game;
     sfSprite *background;
     sfMusic *music;
+    quest_list_t *quests;
     bool music_started;
     button_t **buttons;
     portal_t *portal;
@@ -79,6 +82,7 @@ int teleport(portal_t *portal, int i, myrpg_t *myrpg);
 void check_portal(myrpg_t *myrpg);
 void set_all_after_tp(myrpg_t *myrpg, sfVector2f movement);
 void draw_rectangle(myrpg_t *myrpg);
+void move_all_after_tp(myrpg_t *myrpg, sfVector2f tunnel_pos);
 
 // NPC
 void spawn_npc(myrpg_t *myrpg);
@@ -98,6 +102,7 @@ void manage_button_event(button_t **buttons, myrpg_t *myrpg);
 void animate_button(button_t *button);
 void change_current_item(button_t *button, void *args);
 void erase_text(myrpg_t *myrpg);
+int make_transition(myrpg_t *myrpg);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);
@@ -106,6 +111,9 @@ char **my_str_to_word_array(char const *str, char const *step);
 int my_arraylen(char **array);
 char *str_fusion(char *str1, char *str2);
 float get_time(sfClock *clock);
+sfVector2f get_resize(myrpg_t *myrpg);
+void free_all_texts(sfText **texts);
+void free_array(char **array);
 
 void start_to_edit_controls(myrpg_t *myrpg);
 void load_control_elements(myrpg_t *myrpg);
@@ -122,4 +130,7 @@ bool player_save(myrpg_t *myrpg);
 void save_inventory(myrpg_t *myrpg);
 void load_inventory_save(myrpg_t *myrpg, char **options);
 bool inventory_save(myrpg_t *myrpg);
+bool quests_save(myrpg_t *myrpg);
+
+void init_skills_menu(myrpg_t *myrpg);
 #endif

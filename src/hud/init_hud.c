@@ -28,6 +28,20 @@ void init_hud_text(hud_t *hud, sfVector2f resize, game_t *g_info, char *name)
         18, (sfVector2f){resize.x + 750, resize.y + 31}, hud->font);
 }
 
+static void init_quest_hud(hud_t *hud, sfVector2f resize)
+{
+    hud->quest_bg = generate_sprite_with_file(
+        "assets/hud/notification.png", 1);
+    sfSprite_setPosition(hud->quest_bg,
+        (sfVector2f){resize.x + 325, resize.y + 0});
+    hud->quest_name = init_text("Titre",
+        (sfVector2f){resize.x + 410, resize.y + 15}, 30, sfWhite);
+    hud->quest_desc = init_text("Description",
+        (sfVector2f){resize.x + 410, resize.y + 45}, 20, sfWhite);
+    sfText_setOrigin(hud->quest_name, (sfVector2f){0, 0});
+    sfText_setOrigin(hud->quest_desc, (sfVector2f){0, 0});
+}
+
 hud_t *init_hud(char *name, game_t *game_info)
 {
     hud_t *hud = malloc(sizeof(hud_t));
@@ -46,5 +60,6 @@ hud_t *init_hud(char *name, game_t *game_info)
     hud->skill = create_imagefile("assets/hud/notification.png",
                                 resize.x + 700, resize.y + 15, 0.6);
     init_hud_text(hud, resize, game_info, name);
+    init_quest_hud(hud, resize);
     return hud;
 }

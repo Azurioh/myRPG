@@ -6,6 +6,7 @@
 */
 
 #include "../../include/myrpg.h"
+#include "SFML/Graphics/Text.h"
 
 void change_percentage(sfSprite *sprite, int percentage, int max)
 {
@@ -47,6 +48,17 @@ void display_profile(myrpg_t *myrpg)
     sfRenderWindow_drawText(window, myrpg->hud->name, NULL);
 }
 
+static void display_quest(myrpg_t *myrpg)
+{
+    sfText_setString(HUD->quest_name,
+        QUESTS->quests[QUESTS->actual_quest]->name);
+    sfText_setString(HUD->quest_desc,
+        QUESTS->quests[QUESTS->actual_quest]->description);
+    sfRenderWindow_drawSprite(WINDOW, HUD->quest_bg, NULL);
+    sfRenderWindow_drawText(WINDOW, HUD->quest_name, NULL);
+    sfRenderWindow_drawText(WINDOW, HUD->quest_desc, NULL);
+}
+
 void display_hud(myrpg_t *myrpg)
 {
     sfRenderWindow *window = SETTINGS->window;
@@ -64,6 +76,7 @@ void display_hud(myrpg_t *myrpg)
         sfRenderWindow_drawSprite(window, myrpg->hud->skill->sprite, NULL);
         sfRenderWindow_drawText(window, myrpg->hud->skill_text, NULL);
     }
+    display_quest(myrpg);
     if (myrpg->can_interact == 1)
         sfRenderWindow_drawText(window, myrpg->hud->action, NULL);
 }

@@ -22,6 +22,6 @@ typedef struct portal_s {
     int nbr_portal;
 } portal_t;
 
-
+void free_portals(portal_t *portals);
 portal_t *portal_map(void);
 #endif

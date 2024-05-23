@@ -17,8 +17,11 @@ void move_hud(hud_t *hud, sfVector2f offset)
     sfSprite_move(hud->skill->sprite, offset);
     sfSprite_move(hud->profile->sprite, offset);
     sfSprite_move(hud->inventory->sprite, offset);
+    sfSprite_move(hud->quest_bg, offset);
     sfText_move(hud->name, offset);
     sfText_move(hud->action, offset);
     sfText_move(hud->act_text, offset);
     sfText_move(hud->skill_text, offset);
+    sfText_move(hud->quest_name, offset);
+    sfText_move(hud->quest_desc, offset);
 }

@@ -7,7 +7,6 @@
 
 #include "../../include/myrpg.h"
 
-
 static sfVector2f get_button_pos(button_t *button)
 {
     sfVector2f position = sfSprite_getPosition(button->image_sprite);

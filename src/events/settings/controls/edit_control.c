@@ -33,7 +33,7 @@ static void set_new_keybind(myrpg_t *myrpg, int key_choose)
     sfText_setString(SETTINGS->visual_elements->texts[2],
         GAME_INFO->keybinds->actions[i + 1]);
     sfText_setString(SETTINGS->visual_elements->texts[3], "");
-    if (i == 5) {
+    if (i == 6) {
         update_controls(myrpg);
     }
 }
@@ -43,7 +43,8 @@ static void manage_keybinds(void *args)
     myrpg_t *myrpg = args;
 
     if (EVENTS->event.type == sfEvtKeyPressed) {
-        if (EVENTS->event.key.code == sfKeyEscape) {
+        if (EVENTS->event.key.code == sfKeyEscape
+            || EVENTS->event.key.code > sfKeyZ) {
             return;
         }
         set_new_keybind(myrpg, EVENTS->event.key.code);
@@ -52,7 +53,7 @@ static void manage_keybinds(void *args)
 
 static char **get_list_of_keybinds(void)
 {
-    char **actions = malloc(sizeof(char *) * 7);
+    char **actions = malloc(sizeof(char *) * 8);
 
     actions[0] = my_strdup("Avancer");
     actions[1] = my_strdup("Reculer");
@@ -60,7 +61,8 @@ static char **get_list_of_keybinds(void)
     actions[3] = my_strdup("Droite");
     actions[4] = my_strdup("Inventaire");
     actions[5] = my_strdup("Utiliser");
-    actions[6] = NULL;
+    actions[6] = my_strdup("Competences");
+    actions[7] = NULL;
     return actions;
 }
 
