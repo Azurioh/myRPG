@@ -29,13 +29,10 @@ static void animate_player(myrpg_t *myrpg, int top)
 void move_down_view(game_t *game_info, myrpg_t *myrpg)
 {
     sfVector2f pos = sfSprite_getPosition(GAME_INFO->player);
-    // sfVector2f center_view;
     sfColor color;
-    // const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
 
     pos.x += 16 * 1.5;
     pos.y += 64 * 1.5 + 4;
-    // center_view = sfView_getCenter(game_info->map_view);
     color = sfImage_getPixel(game_info->undermap, pos.x,
                     pos.y);
     if (color.r == 255 && color.g == 0 && color.b == 0){
@@ -48,13 +45,10 @@ void move_down_view(game_t *game_info, myrpg_t *myrpg)
 void move_up_view(game_t *game_info, myrpg_t *myrpg)
 {
     sfVector2f pos = sfSprite_getPosition(GAME_INFO->player);
-    // sfVector2f center_view;
     sfColor color;
-    // const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
 
     pos.x += 16 * 1.5;
     pos.y += 64 * 1.5 - 18;
-    // center_view = sfView_getCenter(game_info->map_view);
     color = sfImage_getPixel(game_info->undermap, pos.x,
                     pos.y);
     if (color.r == 255 && color.g == 0 && color.b == 0){
@@ -67,13 +61,10 @@ void move_up_view(game_t *game_info, myrpg_t *myrpg)
 void move_left_view(game_t *game_info, myrpg_t *myrpg)
 {
     sfVector2f pos = sfSprite_getPosition(GAME_INFO->player);
-    // sfVector2f center_view;
     sfColor color;
-    // const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
 
     pos.x += 14 * 1.5 - 4;
     pos.y += 64 * 1.5;
-    // center_view = sfView_getCenter(game_info->map_view);
     color = sfImage_getPixel(game_info->undermap, pos.x,
                     pos.y);
     if (color.r == 255 && color.g == 0 && color.b == 0){
@@ -86,13 +77,10 @@ void move_left_view(game_t *game_info, myrpg_t *myrpg)
 void move_right_view(game_t *game_info, myrpg_t *myrpg)
 {
     sfVector2f pos = sfSprite_getPosition(GAME_INFO->player);
-    // sfVector2f center_view;
     sfColor color;
-    // const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
 
     pos.x += 16 * 1.5 + 4;
     pos.y += 64 * 1.5;
-    // center_view = sfView_getCenter(game_info->map_view);
     color = sfImage_getPixel(game_info->undermap, pos.x,
                     pos.y);
     if (color.r == 255 && color.g == 0 && color.b == 0){
