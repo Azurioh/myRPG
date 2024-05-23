@@ -132,13 +132,6 @@ void display_game(void *args)
         sfRenderWindow_drawSprite(WINDOW, GAME_INFO->undermap_sprite, NULL);
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->player, NULL);
     display_hud(myrpg);
-    if (myrpg->is_inventory == 1)
-        display_inventory(myrpg);
-    if (GAME_INFO->show_menu >= 1)
-        display_menu(myrpg);
-    if (myrpg->is_inventory == 0 && GAME_INFO->show_menu == 0) {
-        spawn_npc(myrpg);
-        can_speak(myrpg, myrpg->npc);
     display_enemies(myrpg);
     for (int i = 0; myrpg->mobs[i]; i++) {
         check_coll_enemy(myrpg, i);
