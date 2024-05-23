@@ -13,10 +13,11 @@
 #include <SFML/Graphics/Types.h>
 #include <SFML/System/Vector2.h>
 
-void setup_rect_player(myrpg_t *myrpg)
+static void setup_rect_player(myrpg_t *myrpg)
 {
     sfIntRect rect;
 
+    myrpg->game_info->rect = sfSprite_getTextureRect(myrpg->game_info->player);
     rect.top = 128;
     rect.left = 0;
     rect.width = 32;
@@ -24,10 +25,11 @@ void setup_rect_player(myrpg_t *myrpg)
     sfSprite_setTextureRect(myrpg->game_info->player, rect);
 }
 
-void setup_rect_mob(myrpg_t *myrpg, int i)
+static void setup_rect_mob(myrpg_t *myrpg, int i)
 {
     sfIntRect rect;
 
+    myrpg->mobs[i]->rect = sfSprite_getTextureRect(myrpg->mobs[i]->sprite);
     rect.top = 48;
     rect.left = 0;
     rect.width = 48;
@@ -35,7 +37,7 @@ void setup_rect_mob(myrpg_t *myrpg, int i)
     sfSprite_setTextureRect(myrpg->mobs[i]->sprite, rect);
 }
 
-void setup_mob_life(myrpg_t *myrpg, sfVector2f resize)
+static void setup_mob_life(myrpg_t *myrpg, sfVector2f resize)
 {
     sfText *text = sfText_create();
     sfFont *font = sfFont_createFromFile("assets/font/alagard.ttf");
@@ -59,19 +61,19 @@ void setup_mob_life(myrpg_t *myrpg, sfVector2f resize)
 
 void setup_sprites(myrpg_t *myrpg, sfVector2f resize, int i, int make)
 {
-    setup_rect_player(myrpg);
-    setup_rect_mob(myrpg, i);
-    setup_mob_life(myrpg, resize);
     sfSprite_setPosition(myrpg->game_info->player, (sfVector2f){resize.x + 100,
         resize.y + 450});
     sfSprite_setPosition(myrpg->mobs[i]->sprite, (sfVector2f){resize.x + 1000,
         resize.y + 520});
     if (make == 0) {
         sfSprite_setScale(myrpg->game_info->player, (sfVector2f){4, 4});
+        setup_rect_player(myrpg);
+        setup_rect_mob(myrpg, i);
+        setup_mob_life(myrpg, resize);
         sfSprite_setScale(myrpg->mobs[i]->sprite, (sfVector2f){4, 4});
     } else {
-        sfSprite_setScale(myrpg->game_info->player, (sfVector2f){1, 1});
-        sfSprite_setScale(myrpg->mobs[i]->sprite, (sfVector2f){1, 1});
+        sfSprite_setScale(myrpg->game_info->player, (sfVector2f){1.5, 1.5});
+        sfSprite_setScale(myrpg->mobs[i]->sprite, (sfVector2f){2, 2});
     }
 }
 
@@ -89,8 +91,19 @@ int tp_all(myrpg_t *myrpg, int i, int j)
         (sfVector2f){resize.x + 90, resize.y + 36});
     sfText_setPosition(myrpg->hud->name, (sfVector2f){resize.x + 90,
         resize.y + 3});
-    sfText_setPosition(myrpg->hud->name, (sfVector2f){resize.x + 90,
-        resize.y + 3});
     setup_sprites(myrpg, resize, i, j);
+    return 0;
+}
+
+int put_all_back(myrpg_t *myrpg, int id)
+{
+    sfSprite_setTexture(myrpg->game_info->map,
+        sfTexture_createFromFile(MAP_PATH, NULL), sfFalse);
+    sfSprite_setScale(myrpg->game_info->map, (sfVector2f){1, 1});
+    sfView_setCenter(myrpg->game_info->map_view, myrpg->fight_infos->pos);
+    tp_all(myrpg, id, 1);
+    sfSprite_setPosition(myrpg->game_info->player, myrpg->fight_infos->pos);
+    sfSprite_setTextureRect(myrpg->mobs[id]->sprite, myrpg->mobs[id]->rect);
+    sfSprite_setTextureRect(myrpg->game_info->player, myrpg->game_info->rect);
     return 0;
 }
