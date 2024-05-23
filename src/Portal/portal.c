@@ -35,6 +35,7 @@ int teleport(portal_t *portal, int i, myrpg_t *myrpg)
 {
     if (coord_portal(portal, myrpg, i) != -1 &&
     sfKeyboard_isKeyPressed(myrpg->game_info->keybinds->interact)) {
+        GAME_INFO->transition_state = 0;
         set_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
         return 0;
     }

@@ -24,6 +24,8 @@ void game_loop(myrpg_t *myrpg)
     draw_rectangle(myrpg);
     update_quest(myrpg->quests);
     sfRenderWindow_display(settings->window);
+    if (GAME_INFO->map_view)
+        make_transition(myrpg);
 }
 
 int loop(myrpg_t *myrpg)

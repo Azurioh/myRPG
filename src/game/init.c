@@ -85,5 +85,6 @@ game_t *init_game_struct(void *args)
     game_info->game_menu = init_game_menu(game_info, SETTINGS);
     game_info->show_menu = 0;
     game_info->clock = sfClock_create();
+    game_info->transition_state = 3;
     return game_info;
 }
