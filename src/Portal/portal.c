@@ -19,9 +19,9 @@ int coord_portal(portal_t *portal, myrpg_t *myrpg, int i)
 {
     sfVector2f pos = sfView_getCenter(myrpg->game_info->map_view);
 
-    if (pos.x >= portal->portal_pos[i]->pos.x &&
-        pos.x <= portal->portal_pos[i]->pos.x + 100 &&
-        pos.y >= portal->portal_pos[i]->pos.y && pos.y <=
+    if (pos.x + 24 >= portal->portal_pos[i]->pos.x &&
+        pos.x + 24 <= portal->portal_pos[i]->pos.x + 100 &&
+        pos.y + 96 >= portal->portal_pos[i]->pos.y && pos.y + 96 <=
         portal->portal_pos[i]->pos.y + 100) {
             myrpg->can_interact = 1;
             return i;
