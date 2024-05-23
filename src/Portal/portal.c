@@ -31,11 +31,10 @@ int coord_portal(portal_t *portal, myrpg_t *myrpg, int i)
 
 int teleport(portal_t *portal, int i, myrpg_t *myrpg)
 {
-    if (coord_portal(portal, myrpg, i) != -1) {
-        myrpg->can_interact = 1;
-        if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->interact)) {
-            move_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
-        }
+    if (coord_portal(portal, myrpg, i) != -1 &&
+    sfKeyboard_isKeyPressed(myrpg->game_info->keybinds->interact)) {
+        myrpg->transition_state = 0;
+        set_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
         return 0;
     }
     return -1;
