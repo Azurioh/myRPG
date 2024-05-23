@@ -37,4 +37,3 @@ void check_where_move(sfVector2f dep)
     if (abs_dep.y < abs_dep.x)
         check_up_down(dep);
 }
-
