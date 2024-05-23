@@ -87,7 +87,7 @@ void move_all_after_tp(myrpg_t *myrpg, sfVector2f tunnel_pos);
 
 // NPC
 void spawn_npc(myrpg_t *myrpg);
-npc_t *init_npc();
+npc_t *init_npc(void);
 void display_hud(myrpg_t *myrpg);
 int can_speak(myrpg_t *myrpg, npc_t *npc);
 void display_npc_text(myrpg_t *myrpg, sfText *text);
