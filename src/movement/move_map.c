@@ -25,15 +25,17 @@ static void animate_player(myrpg_t *myrpg, int top)
 
 void move_down_view(game_t *game_info, myrpg_t *myrpg)
 {
-    sfVector2f center_view;
+    sfVector2f pos = sfSprite_getPosition(GAME_INFO->player);
+    // sfVector2f center_view;
     sfColor color;
-    const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
+    // const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
 
-    center_view = sfView_getCenter(game_info->map_view);
-    color = sfImage_getPixel(game_info->undermap, center_view.x,
-                    center_view.y + rect.height);
-    if (color.r == 255 && color.g == 0 && color.b == 0 &&
-        sfFloatRect_contains(&rect, center_view.x, center_view.y) == sfTrue){
+    pos.x += 16 * 1.5;
+    pos.y += 64 * 1.5 + 4;
+    // center_view = sfView_getCenter(game_info->map_view);
+    color = sfImage_getPixel(game_info->undermap, pos.x,
+                    pos.y);
+    if (color.r == 255 && color.g == 0 && color.b == 0){
         return;
     }
     animate_player(myrpg, 0);
@@ -42,15 +44,17 @@ void move_down_view(game_t *game_info, myrpg_t *myrpg)
 
 void move_up_view(game_t *game_info, myrpg_t *myrpg)
 {
-    sfVector2f center_view;
+    sfVector2f pos = sfSprite_getPosition(GAME_INFO->player);
+    // sfVector2f center_view;
     sfColor color;
-    const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
+    // const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
 
-    center_view = sfView_getCenter(game_info->map_view);
-    color = sfImage_getPixel(game_info->undermap, center_view.x,
-                    center_view.y);
-    if (color.r == 255 && color.g == 0 && color.b == 0 &&
-        sfFloatRect_contains(&rect, center_view.x, center_view.y) == sfTrue){
+    pos.x += 16 * 1.5;
+    pos.y += 64 * 1.5 - 18;
+    // center_view = sfView_getCenter(game_info->map_view);
+    color = sfImage_getPixel(game_info->undermap, pos.x,
+                    pos.y);
+    if (color.r == 255 && color.g == 0 && color.b == 0){
         return;
     }
     animate_player(myrpg, 3);
@@ -59,15 +63,17 @@ void move_up_view(game_t *game_info, myrpg_t *myrpg)
 
 void move_left_view(game_t *game_info, myrpg_t *myrpg)
 {
-    sfVector2f center_view;
+    sfVector2f pos = sfSprite_getPosition(GAME_INFO->player);
+    // sfVector2f center_view;
     sfColor color;
-    const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
+    // const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
 
-    center_view = sfView_getCenter(game_info->map_view);
-    color = sfImage_getPixel(game_info->undermap, center_view.x,
-                    center_view.y);
-    if (color.r == 255 && color.g == 0 && color.b == 0 &&
-        sfFloatRect_contains(&rect, center_view.x, center_view.y) == sfTrue){
+    pos.x += 14 * 1.5 - 4;
+    pos.y += 64 * 1.5;
+    // center_view = sfView_getCenter(game_info->map_view);
+    color = sfImage_getPixel(game_info->undermap, pos.x,
+                    pos.y);
+    if (color.r == 255 && color.g == 0 && color.b == 0){
         return;
     }
     animate_player(myrpg, 1);
@@ -76,15 +82,17 @@ void move_left_view(game_t *game_info, myrpg_t *myrpg)
 
 void move_right_view(game_t *game_info, myrpg_t *myrpg)
 {
-    sfVector2f center_view;
+    sfVector2f pos = sfSprite_getPosition(GAME_INFO->player);
+    // sfVector2f center_view;
     sfColor color;
-    const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
+    // const sfFloatRect rect = sfSprite_getGlobalBounds(game_info->player);
 
-    center_view = sfView_getCenter(game_info->map_view);
-    color = sfImage_getPixel(game_info->undermap, center_view.x + rect.width,
-                    center_view.y);
-    if (color.r == 255 && color.g == 0 && color.b == 0 &&
-        sfFloatRect_contains(&rect, center_view.x, center_view.y) == sfTrue){
+    pos.x += 16 * 1.5 + 4;
+    pos.y += 64 * 1.5;
+    // center_view = sfView_getCenter(game_info->map_view);
+    color = sfImage_getPixel(game_info->undermap, pos.x,
+                    pos.y);
+    if (color.r == 255 && color.g == 0 && color.b == 0){
         return;
     }
     animate_player(myrpg, 2);
