@@ -8,17 +8,17 @@
 
 static void stock_text_npc_0(npc_t *npc)
 {
-    npc->npc_info[0]->text = "text du npc n°1";
+    npc->npc_info[0]->text = "text du npc numero 1";
 }
 
 static void stock_text_npc_1(npc_t *npc)
 {
-    npc->npc_info[1]->text = "text du npc n°2";
+    npc->npc_info[1]->text = "text du npc numero 2";
 }
 
 static void stock_text_npc_2(npc_t *npc)
 {
-    npc->npc_info[2]->text = "text du npc n°3";
+    npc->npc_info[2]->text = "text du npc numero 3";
 }
 
 void stock_text_in_npc(npc_t *npc)

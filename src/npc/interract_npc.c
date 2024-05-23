@@ -7,23 +7,33 @@
 #include "../../include/myrpg.h"
 #include "../../include/npc.h"
 
-int detect_npc(player_t *player, npc_t *npc, myrpg_t *myrpg, int i)
+int detect_npc(myrpg_t *myrpg, int i)
 {
-    player->pos = sfView_getCenter(myrpg->game_info->map_view);
-    if (player->pos.x >= npc->npc_info[i]->pos.x &&
-        player->pos.x <= npc->npc_info[i]->pos.x + 50 &&
-        player->pos.y >= npc->npc_info[i]->pos.y && player->pos.y <=
-        npc->npc_info[i]->pos.y + 20) {
+    myrpg->player->pos = sfView_getCenter(myrpg->game_info->map_view);
+    if (myrpg->player->pos.x >= myrpg->npc->npc_info[i]->pos.x - 50 &&
+        myrpg->player->pos.x <= myrpg->npc->npc_info[i]->pos.x + 50 &&
+        myrpg->player->pos.y >= myrpg->npc->npc_info[i]->pos.y - 50 &&
+        myrpg->player->pos.y <= myrpg->npc->npc_info[i]->pos.y + 50) {
         return i;
     }
     return -1;
 }
 
-void can_speak(myrpg_t *myrpg, npc_t *npc)
+static int can_speak2(myrpg_t *myrpg, int i)
 {
-    for (int i = 0; npc->npc_info[i] != NULL; i++) {
-        if (myrpg->can_interact == 1) {
-            draw_text(npc, detect_npc(myrpg->player, npc, myrpg, i));
+    if (detect_npc(myrpg, i) != -1) {
+        myrpg->can_interact = 1;
+        if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->interact)) {
+            display_npc_text(myrpg, myrpg->npc->npc_info[i]->text_ig);
         }
     }
+    return 0;
+}
+
+int can_speak(myrpg_t *myrpg, npc_t *npc)
+{
+    for (int i = 0; npc->npc_info[i] != NULL; i++) {
+        can_speak2(myrpg, i);
+    }
+    return -1;
 }
