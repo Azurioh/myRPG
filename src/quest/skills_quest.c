@@ -9,7 +9,7 @@
 
 static bool check_if_a_skill_is_maxed(skills_t **skills)
 {
-    for (int i = 0; skills[i]; i++) {
+    for (int i = 0; i < 3; i++) {
         if (skills[i]->is_max_level == 1) {
             return true;
         }
@@ -19,7 +19,7 @@ static bool check_if_a_skill_is_maxed(skills_t **skills)
 
 static bool check_if_any_skills_have_been_updated(skills_t **skills)
 {
-    for (int i = 0; skills[i]; i++) {
+    for (int i = 0; i < 3; i++) {
         if (skills[i]->level != 0) {
             return true;
         }

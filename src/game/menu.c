@@ -16,6 +16,14 @@ static void show_settings(button_t *button, void *args)
     EVENTS->load_function(myrpg);
 }
 
+static void reload_game(myrpg_t *myrpg)
+{
+    player_save(myrpg);
+    inventory_save(myrpg);
+    quests_save(myrpg);
+    myrpg->mobs = init_mobs();
+}
+
 static void manage_ingame_button_action(button_t *button, void *args)
 {
     myrpg_t *myrpg = args;
@@ -29,10 +37,7 @@ static void manage_ingame_button_action(button_t *button, void *args)
     if (strcmp(button->button_name, "save") == 0)
         return save_game(myrpg);
     if (strcmp(button->button_name, "load") == 0) {
-        player_save(myrpg);
-        inventory_save(myrpg);
-        quests_save(myrpg);
-        return;
+        return reload_game(myrpg);
     }
     if (strcmp(button->button_name, "settings") == 0)
         show_settings(button, args);

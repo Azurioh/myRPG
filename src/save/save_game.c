@@ -10,7 +10,7 @@
 
 void save_settings(myrpg_t *myrpg)
 {
-    int fd = open(".settings", O_CREAT | O_WRONLY, 0666);
+    int fd = open("save/.settings", O_CREAT | O_WRONLY, 0666);
     keybinds_t *keybinds = GAME_INFO->keybinds;
 
     if (fd == -1) {
@@ -35,7 +35,7 @@ void save_player(myrpg_t *myrpg)
     if (!player) {
         return;
     }
-    fd = open(".player", O_CREAT | O_WRONLY, 0666);
+    fd = open("save/.player", O_CREAT | O_WRONLY, 0666);
     if (fd == -1) {
         printf("Can't save player...\n");
         return;
@@ -53,7 +53,7 @@ void save_inventory(myrpg_t *myrpg)
 
     if (!INVENTORY)
         return;
-    fd = open(".inventory", O_CREAT | O_WRONLY, 0666);
+    fd = open("save/.inventory", O_CREAT | O_WRONLY, 0666);
     if (fd == -1) {
         printf("Can't save inventory...\n");
         return;
@@ -77,7 +77,7 @@ void save_quests(myrpg_t *myrpg)
 
     if (!INVENTORY)
         return;
-    fd = open(".quests", O_CREAT | O_WRONLY, 0666);
+    fd = open("save/.quests", O_CREAT | O_WRONLY, 0666);
     if (fd == -1) {
         printf("Can't save the quest progression...\n");
         return;

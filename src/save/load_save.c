@@ -24,13 +24,13 @@ static char *read_fd(int fd, char *pathname)
 
 static bool settings_save(myrpg_t *myrpg)
 {
-    int fd = open(".settings", O_RDONLY);
+    int fd = open("save/.settings", O_RDONLY);
     char *buffer;
     char **options;
 
     if (fd == -1)
         return false;
-    buffer = read_fd(fd, ".settings");
+    buffer = read_fd(fd, "save/.settings");
     if (!buffer) {
         close(fd);
         return false;
@@ -48,13 +48,13 @@ static bool settings_save(myrpg_t *myrpg)
 
 bool player_save(myrpg_t *myrpg)
 {
-    int fd = open(".player", O_RDONLY);
+    int fd = open("save/.player", O_RDONLY);
     char *buffer;
     char **options;
 
     if (fd == -1)
         return false;
-    buffer = read_fd(fd, ".player");
+    buffer = read_fd(fd, "save/.player");
     if (!buffer) {
         close(fd);
         return false;
@@ -72,13 +72,13 @@ bool player_save(myrpg_t *myrpg)
 
 bool inventory_save(myrpg_t *myrpg)
 {
-    int fd = open(".inventory", O_RDONLY);
+    int fd = open("save/.inventory", O_RDONLY);
     char *buffer;
     char **options;
 
     if (fd == -1)
         return false;
-    buffer = read_fd(fd, ".inventory");
+    buffer = read_fd(fd, "save/.inventory");
     if (!buffer) {
         close(fd);
         return false;
@@ -95,13 +95,13 @@ bool inventory_save(myrpg_t *myrpg)
 
 bool quests_save(myrpg_t *myrpg)
 {
-    int fd = open(".quests", O_RDONLY);
+    int fd = open("save/.quests", O_RDONLY);
     char *buffer;
     char **options;
 
     if (fd == -1)
         return false;
-    buffer = read_fd(fd, ".quests");
+    buffer = read_fd(fd, "save/.quests");
     if (!buffer) {
         close(fd);
         return false;

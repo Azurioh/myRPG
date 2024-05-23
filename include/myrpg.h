@@ -86,8 +86,7 @@ void move_right_view(game_t *game_info, myrpg_t *myrpg);
 void move_menu(game_menu_t *game_menu, sfVector2f offset);
 void display_inventory(myrpg_t *myrpg);
 sfVector2f get_vector(sfVector2f start, sfVector2f end, int speed);
-int get_loot(mobs_t *mob);
-
+int get_loot(myrpg_t *myrpg, mobs_t *mob);
 
 // PORTAL
 int teleport(portal_t *portal, int i, myrpg_t *myrpg);
@@ -156,6 +155,9 @@ bool quests_save(myrpg_t *myrpg);
 void load_quest_save(myrpg_t *myrpg, char **options);
 
 void manage_skills_quest(myrpg_t *myrpg);
+void inventory_quests(myrpg_t *myrpg);
+void fight_quests(myrpg_t *myrpg);
+mobs_t **init_mobs(void);
 
 void init_skills_menu(myrpg_t *myrpg);
 #endif
