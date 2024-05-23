@@ -48,11 +48,11 @@ static void setup_mob_life(myrpg_t *myrpg, sfVector2f resize)
     sfText_setOutlineThickness(text, 2);
     myrpg->fight_infos->enemy_infos->string = text;
     sfText_setPosition(myrpg->fight_infos->enemy_infos->string,
-        (sfVector2f){resize.x + 610, resize.y + 10});
+        (sfVector2f){resize.x + 960, resize.y + 10});
     sfSprite_setPosition(myrpg->fight_infos->enemy_infos->enemy_life,
-        (sfVector2f){resize.x + 636, resize.y + 56});
+        (sfVector2f){resize.x + 986, resize.y + 56});
     sfSprite_setPosition(myrpg->fight_infos->enemy_infos->enemy_bottle,
-        (sfVector2f){resize.x + 600, resize.y + 50});
+        (sfVector2f){resize.x + 950, resize.y + 50});
     sfSprite_setScale(myrpg->fight_infos->enemy_infos->enemy_life,
         (sfVector2f){1.5, 1.5});
     sfSprite_setScale(myrpg->fight_infos->enemy_infos->enemy_bottle,
