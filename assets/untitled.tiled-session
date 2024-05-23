@@ -1,0 +1,89 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "/home/nathancallegari/Downloads/untitled(1).tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "/home/nathancallegari/Downloads/level2.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 959.3333333333333,
+                "y": 319.3333333333333
+            }
+        },
+        "/home/nathancallegari/Downloads/mp_cs_tilemap_all.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/nathancallegari/Downloads/untitled(1).tmx": {
+            "expandedGroupLayers": [
+                2
+            ],
+            "scale": 4,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1324.25,
+                "y": 304.5
+            }
+        },
+        "/home/nathancallegari/Downloads/untitled.tmx": {
+            "scale": 0.38415625,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 1600.9110876108357,
+                "y": 265.51696087204095
+            }
+        },
+        "32x32map.tsx": {
+            "dynamicWrapping": false
+        },
+        "assets/32x32.tsx": {
+            "dynamicWrapping": true
+        },
+        "assets/32x32_bat_&_déco.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "assets/32x32map.tsx": {
+            "scaleInDock": 1
+        },
+        "assets/into house.tsx": {
+            "scaleInDock": 1
+        },
+        "into house.tsx": {
+            "scaleInDock": 1
+        },
+        "map/32x32.tsx": {
+            "dynamicWrapping": false
+        },
+        "map/map.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 4584,
+                "y": 2992
+            }
+        }
+    },
+    "last.externalTilesetPath": "/home/nathancallegari/delivery/semester02/C_Graph_Prog/assets",
+    "last.imagePath": "/home/nathancallegari/Downloads/craftpix-net-477033-winter-forest-pixel-art-top-down-tileset/All Tileset",
+    "map.height": 33,
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 200,
+    "openFiles": [
+        "/home/nathancallegari/Downloads/untitled(1).tmx",
+        "/home/nathancallegari/Downloads/level2.tmx"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "/home/nathancallegari/Downloads/untitled.tmx",
+        "/home/nathancallegari/Downloads/level2.tmx",
+        "/home/nathancallegari/Downloads/untitled(1).tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
