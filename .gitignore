@@ -58,3 +58,7 @@ dkms.conf
 myrpg
 *.git*
 my_rpg
+.player
+.inventory
+.quests
+.settings

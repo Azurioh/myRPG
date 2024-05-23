@@ -77,6 +77,7 @@ void game_loop(myrpg_t *myrpg)
     }
     sfRenderWindow_clear(settings->window, sfBlack);
     EVENTS->display_function(myrpg);
+    update_quest(myrpg->quests);
     sfRenderWindow_display(settings->window);
     if (GAME_INFO->map_view)
         make_transition(myrpg);
