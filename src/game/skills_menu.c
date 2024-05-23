@@ -90,7 +90,7 @@ static void load_skills_buttons(myrpg_t *myrpg, game_menu_t *game_menu,
 
 static sfText **load_skills_texts(sfVector2f resize)
 {
-    sfText **texts = malloc(sizeof(sfText *) * 4);
+    sfText **texts = malloc(sizeof(sfText *) * 5);
 
     texts[0] = init_text("Competences",
         (sfVector2f){ 630 + resize.x, 170 + resize.y }, 45, sfWhite);

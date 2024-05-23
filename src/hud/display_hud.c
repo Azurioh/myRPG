@@ -6,8 +6,6 @@
 */
 
 #include "../../include/myrpg.h"
-#include "SFML/Graphics/Text.h"
-#include <SFML/Graphics/RenderWindow.h>
 
 void change_percentage(sfSprite *sprite, int percentage, int max)
 {

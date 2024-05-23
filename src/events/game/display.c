@@ -80,10 +80,6 @@ static void display_menu(myrpg_t *myrpg)
         sfRenderWindow_drawText(SETTINGS->window,
             GAME_INFO->game_menu->texts[i], NULL);
     }
-    for (int i = 0; GAME_INFO->game_menu->texts[i]; i++) {
-        sfRenderWindow_drawText(SETTINGS->window,
-            GAME_INFO->game_menu->texts[i], NULL);
-    }
 }
 
 static int set_new_mob_pos(myrpg_t *myrpg, int i)

@@ -121,25 +121,19 @@ static void make_fight(myrpg_t *myrpg)
 static void unmake_fight(myrpg_t *myrpg)
 {
     int id = myrpg->fight_infos->enemy_id;
-    int loot_val = get_loot(myrpg->mobs[id]);
+    int loot_val = get_loot(myrpg, myrpg->mobs[id]);
 
     srand(time(NULL));
     if (myrpg->fight_infos->toskra_hp > 0)
         update_player_experience(myrpg->player, myrpg->mobs[id]->xp_loot);
-    if (rand() % 10 == 3)
+    if (rand() % 25 == 3)
         add_item_in_inv(myrpg->player->inventory, loot_val);
     add_item_in_inv(myrpg->player->inventory, loot_val);
     sfRenderWindow_clear(WINDOW, sfBlack);
-    sfSprite_setTexture(myrpg->game_info->map,
-        sfTexture_createFromFile(MAP_PATH, NULL), sfFalse);
-    sfSprite_setScale(myrpg->game_info->map, (sfVector2f){1, 1});
-    sfView_setCenter(myrpg->game_info->map_view, myrpg->fight_infos->pos);
-    tp_all(myrpg, id, 1);
-    sfSprite_setPosition(myrpg->game_info->player, myrpg->fight_infos->pos);
     myrpg->mobs[id]->can_collide = 0;
+    put_all_back(myrpg, id);
     sfRenderWindow_display(WINDOW);
     myrpg->player->life = myrpg->fight_infos->toskra_hp;
-    myrpg->fight_infos->loaded = 0;
 }
 
 void fight(myrpg_t *myrpg)
@@ -153,6 +147,8 @@ void fight(myrpg_t *myrpg)
             myrpg->fight_infos->enemy_hp <= 0) {
             unmake_fight(myrpg);
             myrpg->fight_infos->in_fight = 0;
+            myrpg->fight_infos->loaded = 0;
+            fight_quests(myrpg);
         }
     }
 }

@@ -76,17 +76,17 @@ button_attack_t **setup_attack_buttons(myrpg_t *myrpg)
     sfVector2f pos = sfView_getCenter(myrpg->game_info->map_view);
 
     buttons[0] = init_attack_button("Lancer de hache",
-        (sfVector2f){(pos.x + 1050) * 0.65, (pos.y) * 0.65},
-        "assets/attaque_hache.png", &axe_throw);
+        (sfVector2f){pos.x - 200, pos.y - 300},
+        "assets/skills_1.png", &axe_throw);
     buttons[1] = init_attack_button("Lancer de hache",
-        (sfVector2f){(pos.x + 1050) * 0.65, (pos.y - 100) * 0.65},
-        "assets/attaque_hache.png", &drink_hydromel);
+        (sfVector2f){pos.x - 50, pos.y - 300},
+        "assets/skills_2.png", &drink_hydromel);
     buttons[2] = init_attack_button("Lancer de hache",
-        (sfVector2f){(pos.x + 1050) * 0.65, (pos.y - 200) * 0.65},
-        "assets/attaque_hache.png", &another_attack);
+        (sfVector2f){pos.x + 100, pos.y - 300},
+        "assets/skills_3.png", &another_attack);
     buttons[3] = init_attack_button("Lancer de hache",
-        (sfVector2f){(pos.x + 1050) * 0.65, (pos.y - 300) * 0.65},
-        "assets/attaque_hache.png", &angry_guy);
+        (sfVector2f){pos.x + 250, pos.y - 300},
+        "assets/skills_4.png", &angry_guy);
     for (int i = 0; i < 4; i++) {
         sfSprite_scale(buttons[i]->image_sprite, (sfVector2f){0.5, 0.5});
         buttons[i]->initial_scaling = 0.5;
