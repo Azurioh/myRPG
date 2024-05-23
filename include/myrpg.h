@@ -79,6 +79,7 @@ int teleport(portal_t *portal, int i, myrpg_t *myrpg);
 void check_portal(myrpg_t *myrpg);
 void set_all_after_tp(myrpg_t *myrpg, sfVector2f movement);
 void draw_rectangle(myrpg_t *myrpg);
+void move_all_after_tp(myrpg_t *myrpg, sfVector2f tunnel_pos);
 
 // NPC
 void spawn_npc(myrpg_t *myrpg);
