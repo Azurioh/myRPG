@@ -59,6 +59,7 @@ typedef struct myrpg_s {
     int can_interact;
     int is_inventory;
     bool save_loaded;
+    int transition_state;
 } myrpg_t;
 
 int start_game(void);

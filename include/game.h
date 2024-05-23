@@ -32,7 +32,6 @@ typedef struct game_menu_s {
 } game_menu_t;
 
 typedef struct game_s {
-    int transition_state;
     sfClock *clock;
     sfSprite *player;
     sfSprite *map;

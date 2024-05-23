@@ -19,6 +19,7 @@ static myrpg_t *init_myrpg(void)
     myrpg_t *myrpg = malloc(sizeof(myrpg_t));
 
     myrpg->game_open = 1;
+    myrpg->transition_state = 3;
     myrpg->settings = init_settings();
     myrpg->events = malloc(sizeof(event_t));
     myrpg->can_interact = 0;
