@@ -88,6 +88,8 @@ void display_game(void *args)
     if (GAME_INFO->show_menu >= 1)
         display_menu(myrpg);
     if (myrpg->is_inventory == 0 && GAME_INFO->show_menu == 0) {
+        spawn_npc(myrpg);
+        can_speak(myrpg, myrpg->npc);
         make_move(myrpg);
         move(myrpg);
     }
