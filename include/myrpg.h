@@ -159,5 +159,8 @@ void inventory_quests(myrpg_t *myrpg);
 void fight_quests(myrpg_t *myrpg);
 mobs_t **init_mobs(void);
 
+fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
+    fight_t *fight);
+
 void init_skills_menu(myrpg_t *myrpg);
 #endif
