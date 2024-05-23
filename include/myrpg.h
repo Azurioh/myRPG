@@ -111,9 +111,9 @@ void display_stats(myrpg_t *myrpg);
 
 void manage_button_event(button_t **buttons, myrpg_t *myrpg);
 void animate_button(button_t *button);
-void animate_attack_button(button_attack_t *button);
+void animate_attack_button(button_t *button);
 void check_fight(myrpg_t *myrpg, fight_t *fight_infos, game_t *game_info);
-button_attack_t **setup_attack_buttons(myrpg_t *myrpg);
+button_t **setup_attack_buttons(myrpg_t *myrpg);
 fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg);
 int tp_all(myrpg_t *myrpg, int i, int j);
 void setup_sprites(myrpg_t *myrpg, sfVector2f resize, int i, int make);

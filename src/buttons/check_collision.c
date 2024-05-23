@@ -8,7 +8,7 @@
 #include "../../include/myrpg.h"
 #include <stdio.h>
 
-static sfVector2f get_attack_button_pos(button_attack_t *button)
+static sfVector2f get_attack_button_pos(button_t *button)
 {
     sfVector2f position = sfSprite_getPosition(button->image_sprite);
     sfFloatRect button_size = sfSprite_getGlobalBounds(button->image_sprite);
@@ -18,7 +18,7 @@ static sfVector2f get_attack_button_pos(button_attack_t *button)
     return position;
 }
 
-int check_attack_collision(button_attack_t *button, sfRenderWindow *window)
+int check_attack_collision(button_t *button, sfRenderWindow *window)
 {
     sfVector2f button_pos = get_attack_button_pos(button);
     sfFloatRect button_size = sfSprite_getGlobalBounds(button->image_sprite);

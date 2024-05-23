@@ -40,25 +40,22 @@ static fight_t *check_str_infos(char *str, fight_t *fight)
         fight->toskra_hp += 20;
     }
     if (str[0] == 'd') {
-        fight->angryness += 2;
+        fight->angryness += 1;
     }
     return fight;
 }
 
-fight_t *manage_attack_button_event(button_attack_t **buttons, myrpg_t *myrpg,
+fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
     fight_t *fight)
 {
-    char *str;
-
     if (!buttons) {
         return fight;
     }
     for (int i = 0; buttons[i]; i++) {
         if (EVENTS->event.type == sfEvtMouseButtonPressed
-            && buttons[i]->is_clicked(buttons[i], SETTINGS->window) == sfTrue
-            && buttons[i]->action) {
-            str = buttons[i]->action(fight);
-            fight = check_str_infos(str, fight);
+            && buttons[i]->is_clicked(buttons[i], SETTINGS->window)
+                == sfTrue) {
+            fight = check_str_infos(buttons[i]->button_name, fight);
             fight->turn = ENEMY;
             return fight;
         }

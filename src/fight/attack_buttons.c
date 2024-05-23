@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-static sfBool is_btn_clicked(button_attack_t *button, sfRenderWindow *window)
+static sfBool is_btn_clicked(button_t *button, sfRenderWindow *window)
 {
     if (check_attack_collision(button, window)) {
         button->actually_clicked = sfTrue;
@@ -27,7 +27,7 @@ static sfBool is_btn_clicked(button_attack_t *button, sfRenderWindow *window)
     return sfFalse;
 }
 
-static sfBool is_hover(button_attack_t *button, sfRenderWindow *window)
+static sfBool is_hover(button_t *button, sfRenderWindow *window)
 {
     if (check_attack_collision(button, window)) {
         button->actually_hover = sfTrue;
@@ -50,10 +50,10 @@ static sfSprite *init_button_sprite(char *image_path, sfVector2f position)
     return sprite;
 }
 
-button_attack_t *init_attack_button(char *button_name, sfVector2f position,
-    char *image_path, char *(*action)(void *))
+button_t *init_attack_button(char *button_name, sfVector2f position,
+    char *image_path, void (*action)(button_t *, void *))
 {
-    button_attack_t *button = malloc(sizeof(button_t));
+    button_t *button = malloc(sizeof(button_t));
 
     if (!button) {
         return NULL;
@@ -70,23 +70,23 @@ button_attack_t *init_attack_button(char *button_name, sfVector2f position,
     return button;
 }
 
-button_attack_t **setup_attack_buttons(myrpg_t *myrpg)
+button_t **setup_attack_buttons(myrpg_t *myrpg)
 {
-    button_attack_t **buttons = malloc(sizeof(button_t *) * 5);
+    button_t **buttons = malloc(sizeof(button_t *) * 5);
     sfVector2f pos = sfView_getCenter(myrpg->game_info->map_view);
 
-    buttons[0] = init_attack_button("Lancer de hache",
+    buttons[0] = init_attack_button("a",
         (sfVector2f){pos.x - 200, pos.y - 300},
-        "assets/skills_1.png", &axe_throw);
-    buttons[1] = init_attack_button("Lancer de hache",
+        "assets/skills_1.png", NULL);
+    buttons[1] = init_attack_button("b",
         (sfVector2f){pos.x - 50, pos.y - 300},
-        "assets/skills_2.png", &drink_hydromel);
-    buttons[2] = init_attack_button("Lancer de hache",
+        "assets/skills_2.png", NULL);
+    buttons[2] = init_attack_button("c",
         (sfVector2f){pos.x + 100, pos.y - 300},
-        "assets/skills_3.png", &another_attack);
-    buttons[3] = init_attack_button("Lancer de hache",
+        "assets/skills_3.png", NULL);
+    buttons[3] = init_attack_button("d",
         (sfVector2f){pos.x + 250, pos.y - 300},
-        "assets/skills_4.png", &angry_guy);
+        "assets/skills_4.png", NULL);
     for (int i = 0; i < 4; i++) {
         sfSprite_scale(buttons[i]->image_sprite, (sfVector2f){0.5, 0.5});
         buttons[i]->initial_scaling = 0.5;
