@@ -7,7 +7,7 @@
 
 #include "../../include/myrpg.h"
 
-static void animate_hover(button_attack_t *button, sfVector2f scale)
+static void animate_hover(button_t *button, sfVector2f scale)
 {
     sfTime time;
     float seconds;
@@ -22,7 +22,7 @@ static void animate_hover(button_attack_t *button, sfVector2f scale)
     }
 }
 
-static void animate_not_hover(button_attack_t *button, sfVector2f scale)
+static void animate_not_hover(button_t *button, sfVector2f scale)
 {
     sfTime time;
     float seconds;
@@ -37,7 +37,7 @@ static void animate_not_hover(button_attack_t *button, sfVector2f scale)
     }
 }
 
-void animate_attack_button(button_attack_t *button)
+void animate_attack_button(button_t *button)
 {
     sfVector2f scale = sfSprite_getScale(button->image_sprite);
 

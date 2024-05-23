@@ -111,9 +111,9 @@ void display_stats(myrpg_t *myrpg);
 
 void manage_button_event(button_t **buttons, myrpg_t *myrpg);
 void animate_button(button_t *button);
-void animate_attack_button(button_attack_t *button);
+void animate_attack_button(button_t *button);
 void check_fight(myrpg_t *myrpg, fight_t *fight_infos, game_t *game_info);
-button_attack_t **setup_attack_buttons(myrpg_t *myrpg);
+button_t **setup_attack_buttons(myrpg_t *myrpg);
 fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg);
 int tp_all(myrpg_t *myrpg, int i, int j);
 void setup_sprites(myrpg_t *myrpg, sfVector2f resize, int i, int make);
@@ -123,7 +123,7 @@ int make_transition(myrpg_t *myrpg);
 void check_coll_enemy(myrpg_t *myrpg, int i);
 void check_if_mob_mov(myrpg_t *myrpg, int i);
 int put_all_back(myrpg_t *myrpg, int id);
-void check_where_move(sfVector2f dep);
+void check_where_move(sfVector2f dep, int i, myrpg_t *myrpg);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);
@@ -158,6 +158,9 @@ void manage_skills_quest(myrpg_t *myrpg);
 void inventory_quests(myrpg_t *myrpg);
 void fight_quests(myrpg_t *myrpg);
 mobs_t **init_mobs(void);
+
+fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
+    fight_t *fight);
 
 void init_skills_menu(myrpg_t *myrpg);
 #endif

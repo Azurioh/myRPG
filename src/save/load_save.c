@@ -119,14 +119,11 @@ bool quests_save(myrpg_t *myrpg)
 
 bool load_game_save(myrpg_t *myrpg)
 {
-    if (settings_save(myrpg) == true) {
-        myrpg->save_loaded = true;
-    } else {
-        return false;
-    }
+    settings_save(myrpg);
     if (player_save(myrpg) == false) {
         myrpg->save_loaded = false;
         return false;
     }
+    myrpg->save_loaded = true;
     return true;
 }

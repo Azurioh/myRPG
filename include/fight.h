@@ -15,20 +15,6 @@ enum turn {
     ENEMY,
 };
 
-typedef struct button_attack_s {
-    char *button_name;
-    sfVector2f position;
-    sfRectangleShape *hitbox;
-    sfSprite *image_sprite;
-    float initial_scaling;
-    sfBool actually_hover;
-    sfBool actually_clicked;
-    sfBool (*is_clicked)(struct button_attack_s *, sfRenderWindow *);
-    sfBool (*is_hover)(struct button_attack_s *, sfRenderWindow *);
-    sfClock *animation_clock;
-    char *(*action)(void *args);
-} button_attack_t;
-
 typedef struct enemy_s {
     sfText *string;
     int rage_turns;
@@ -42,7 +28,7 @@ typedef struct enemy_s {
 } enemy_t;
 
 typedef struct fight_s {
-    button_attack_t **buttons;
+    button_t **buttons;
     enemy_t *enemy_infos;
     int enemy_id;
     int in_fight;
@@ -59,7 +45,7 @@ char *axe_throw(void *fight);
 char *another_attack(void *fight);
 char *drink_hydromel(void *fight);
 char *angry_guy(void *fight);
-int check_attack_collision(button_attack_t *button, sfRenderWindow *window);
+int check_attack_collision(button_t *button, sfRenderWindow *window);
 fight_t *enemy_attack(fight_t *fight);
 
 #endif
