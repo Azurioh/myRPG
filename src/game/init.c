@@ -71,9 +71,10 @@ keybinds_t *init_keybinds(void)
     keybinds->move_down = sfKeyS;
     keybinds->move_left = sfKeyQ;
     keybinds->move_right = sfKeyD;
+    keybinds->sprint = sfKeyR;
     keybinds->open_inventory = sfKeyE;
     keybinds->interact = sfKeyF;
-    keybinds->skills = sfKeyO;
+    keybinds->skills = sfKeyT;
     keybinds->editing_keybinds = sfFalse;
     keybinds->actions = NULL;
     keybinds->keybind_edit = NULL;
