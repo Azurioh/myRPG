@@ -52,7 +52,7 @@ jobs:
       needs: check_coding_style
       runs-on: ubuntu-latest
       container: epitechcontent/epitest-docker:latest
-      timeout-minutes: 2
+      timeout-minutes: 5
       steps:
         - name: "Get files of the repository"
           uses: actions/checkout@v4

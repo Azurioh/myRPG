@@ -13,11 +13,18 @@ void free_myrpg(myrpg_t *myrpg)
         return;
     }
     free_player(myrpg->player);
+    free_items(myrpg->items);
     free_game(myrpg->game_info);
-    if (myrpg->background) {
+    free(myrpg->events);
+    if (myrpg->background)
         sfSprite_destroy(myrpg->background);
-    }
-    free_all_buttons(myrpg->buttons);
+    sfMusic_destroy(myrpg->music);
+    free_quests(myrpg->quests);
+    if (myrpg->buttons)
+        free_all_buttons(myrpg->buttons);
+    free_portals(myrpg->portal);
+    free_settings(myrpg->settings);
     free_hud(myrpg->hud);
+    free_npc(myrpg->npc);
     free(myrpg);
 }

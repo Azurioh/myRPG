@@ -19,6 +19,17 @@ static void move_actual_player(myrpg_t *myrpg, sfVector2f pos_wanted)
     move_menu(GAME_INFO->game_menu, mov_vector);
 }
 
+static void load_skills(myrpg_t *myrpg, char **options)
+{
+    for (int i = 0; i < 3; i++) {
+        PLAYER->skills[i]->level = atoi(options[6 + i]);
+        if (PLAYER->skills[i]->level != 0)
+            PLAYER->skills[i]->unlocked = 1;
+        if (PLAYER->skills[i]->level == PLAYER->skills[i]->max_level)
+            PLAYER->skills[i]->is_max_level = 1;
+    }
+}
+
 void load_player_save(myrpg_t *myrpg, char **options)
 {
     player_t *player = PLAYER;
@@ -34,5 +45,7 @@ void load_player_save(myrpg_t *myrpg, char **options)
     player->level = atoi(options[2]);
     player->nb_skills_to_upgrade = atoi(options[3]);
     player->pos = new_pos;
+    player->skills = init_player_skills();
     PLAYER = player;
+    load_skills(myrpg, options);
 }

@@ -18,6 +18,9 @@ typedef struct hud_s {
     image_t *life;
     image_t *exp;
     image_t *skill;
+    sfSprite *quest_bg;
+    sfText *quest_name;
+    sfText *quest_desc;
     sfText *skill_text;
     sfText *action;
     sfText *name;

@@ -63,6 +63,7 @@ keybinds_t *init_keybinds(void)
     keybinds->move_right = sfKeyD;
     keybinds->open_inventory = sfKeyE;
     keybinds->interact = sfKeyF;
+    keybinds->skills = sfKeyO;
     keybinds->editing_keybinds = sfFalse;
     keybinds->actions = NULL;
     keybinds->keybind_edit = NULL;
@@ -84,5 +85,6 @@ game_t *init_game_struct(void *args)
     game_info->game_menu = init_game_menu(game_info, SETTINGS);
     game_info->show_menu = 0;
     game_info->clock = sfClock_create();
+    game_info->transition_state = 3;
     return game_info;
 }

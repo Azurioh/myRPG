@@ -15,13 +15,17 @@ void game_loop(myrpg_t *myrpg)
         &EVENTS->event)) {
         if (EVENTS->event.type == sfEvtClosed) {
             myrpg->game_open = 0;
+            return;
         }
         EVENTS->event_function(myrpg);
     }
     sfRenderWindow_clear(settings->window, sfBlack);
     EVENTS->display_function(myrpg);
     draw_rectangle(myrpg);
+    update_quest(myrpg->quests);
     sfRenderWindow_display(settings->window);
+    if (GAME_INFO->map_view)
+        make_transition(myrpg);
 }
 
 int loop(myrpg_t *myrpg)
