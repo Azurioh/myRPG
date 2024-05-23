@@ -15,8 +15,12 @@ int update_player_experience(player_t *player, unsigned int amount)
     player->experience += amount;
     if (player->experience >= player->max_xp) {
         player->experience -= player->max_xp;
+        player->max_hp += 10;
+        player->attack += 5;
+        player->armor += 2;
         player->level++;
-        player->nb_skills_to_upgrade++;
+        if (player->level <= 9)
+            player->nb_skills_to_upgrade++;
     }
     return 0;
 }
