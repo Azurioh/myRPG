@@ -6,6 +6,17 @@
 */
 
 #include "../../include/myrpg.h"
+#include <SFML/Graphics/CircleShape.h>
+#include <SFML/Graphics/Color.h>
+#include <SFML/Graphics/Rect.h>
+#include <SFML/Graphics/RectangleShape.h>
+#include <SFML/Graphics/Sprite.h>
+#include <SFML/Graphics/Texture.h>
+#include <SFML/Graphics/Types.h>
+#include <SFML/System/Clock.h>
+#include <SFML/System/Time.h>
+#include <SFML/System/Vector2.h>
+#include <stdio.h>
 
 static void init_tmp_game_info(myrpg_t *myrpg)
 {
@@ -38,10 +49,68 @@ static myrpg_t *init_myrpg(void)
     return myrpg;
 }
 
+mobs_t *create_sprite(mobs_t *mobs)
+{
+    sfIntRect rect;
+    sfTexture *mob = sfTexture_createFromFile
+    ("assets/enemies/sprite_enemibg.png", NULL);
+
+    rect.top = 0;
+    rect.left = 0;
+    rect.width = 48;
+    rect.height = 48;
+    mobs->clock_move = sfClock_create();
+    mobs->sprite = sfSprite_create();
+    mobs->rect = rect;
+    sfSprite_setTexture(mobs->sprite, mob, sfFalse);
+    sfSprite_setPosition(mobs->sprite, mobs->pos);
+    sfSprite_setTextureRect(mobs->sprite, mobs->rect);
+    sfSprite_scale(mobs->sprite, (sfVector2f){2, 2});
+    return mobs;
+}
+
+int **init_loot(void)
+{
+    int **loot_table = malloc(sizeof(int *) * 4);
+
+    loot_table[0] = malloc(sizeof(int) * 6);
+    loot_table[1] = malloc(sizeof(int) * 5);
+    loot_table[2] = malloc(sizeof(int) * 5);
+    loot_table[3] = malloc(sizeof(int) * 6);
+    loot_table = init_all_lootables(loot_table);
+    return loot_table;
+}
+
+static mobs_t **init_mobs(void)
+{
+    mobs_t **mobs = malloc(sizeof(mobs_t *) * 5);
+
+    mobs[0] = init_lvl_one(mobs, 0, (sfVector2f){4500, 4500});
+    mobs[1] = init_lvl_one(mobs, 1, (sfVector2f){4500, 4700});
+    mobs[2] = init_lvl_one(mobs, 2, (sfVector2f){4500, 4900});
+    mobs[3] = init_lvl_one(mobs, 3, (sfVector2f){4500, 5100});
+    mobs[4] = NULL;
+    return mobs;
+}
+
+static sfRectangleShape *init_hitbox(game_t *game_info)
+{
+    sfRectangleShape *rect = sfRectangleShape_create();
+
+    (void)game_info;
+    sfRectangleShape_setSize(rect, (sfVector2f){20, 20});
+    sfRectangleShape_setPosition(rect, (sfVector2f){20, 20});
+    return rect;
+}
+
 int start_game(void)
 {
     myrpg_t *myrpg = init_myrpg();
 
+    myrpg->fight_infos = malloc(sizeof(fight_t));
+    myrpg->mobs = init_mobs();
+    myrpg->fight_infos->in_fight = 0;
+    myrpg->hitbox = init_hitbox(myrpg->game_info);
     myrpg->npc = init_npc();
     myrpg->portal = portal_map();
     load_game_save(myrpg);

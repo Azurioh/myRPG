@@ -7,6 +7,7 @@
 
 #include "../../include/myrpg.h"
 #include "SFML/Graphics/Text.h"
+#include <SFML/Graphics/RenderWindow.h>
 
 void change_percentage(sfSprite *sprite, int percentage, int max)
 {
@@ -42,6 +43,17 @@ void display_profile(myrpg_t *myrpg)
 {
     sfRenderWindow *window = SETTINGS->window;
 
+    if (myrpg->fight_infos->in_fight == 1) {
+        change_percentage(myrpg->fight_infos->enemy_infos->enemy_life,
+        myrpg->fight_infos->enemy_hp,
+        myrpg->mobs[myrpg->fight_infos->enemy_id]->life);
+        sfRenderWindow_drawSprite(window,
+            myrpg->fight_infos->enemy_infos->enemy_bottle, NULL);
+        sfRenderWindow_drawSprite(window,
+            myrpg->fight_infos->enemy_infos->enemy_life, NULL);
+        sfRenderWindow_drawText(window,
+            myrpg->fight_infos->enemy_infos->string, NULL);
+    }
     sfRenderWindow_drawSprite(window, myrpg->hud->profile->sprite, NULL);
     sfRenderWindow_drawSprite(window, myrpg->hud->life->sprite, NULL);
     sfRenderWindow_drawSprite(window, myrpg->hud->exp->sprite, NULL);

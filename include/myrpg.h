@@ -36,16 +36,21 @@
     #include "hud.h"
     #include "inventory.h"
     #include "move.h"
+    #include "fight.h"
     #include "portal.h"
+    #include "mobs.h"
     #include "npc.h"
     #include "item.h"
     #include "quest.h"
 
 typedef struct myrpg_s {
     int game_open;
+    sfRectangleShape *hitbox;
+    mobs_t **mobs;
     player_t *player;
     item_t **items;
     game_t *game_info;
+    fight_t *fight_infos;
     event_t *events;
     sfSprite *background;
     sfMusic *music;
@@ -69,6 +74,10 @@ void free_myrpg(myrpg_t *myrpg);
 void free_image(image_t *image);
 sfVector2f get_mouse_position(sfRenderWindow *window);
 
+void fight(myrpg_t *myrpg);
+enemy_t *init_enemy(myrpg_t *myrpg);
+int **init_all_lootables(int **table);
+
 void move(myrpg_t *myrpg);
 void move_down_view(game_t *game_info, myrpg_t *myrpg);
 void move_up_view(game_t *game_info, myrpg_t *myrpg);
@@ -76,6 +85,8 @@ void move_left_view(game_t *game_info, myrpg_t *myrpg);
 void move_right_view(game_t *game_info, myrpg_t *myrpg);
 void move_menu(game_menu_t *game_menu, sfVector2f offset);
 void display_inventory(myrpg_t *myrpg);
+sfVector2f get_vector(sfVector2f start, sfVector2f end, int speed);
+int get_loot(mobs_t *mob);
 
 
 // PORTAL
@@ -101,9 +112,17 @@ void display_stats(myrpg_t *myrpg);
 
 void manage_button_event(button_t **buttons, myrpg_t *myrpg);
 void animate_button(button_t *button);
+void animate_attack_button(button_attack_t *button);
+void check_fight(myrpg_t *myrpg, fight_t *fight_infos, game_t *game_info);
+button_attack_t **setup_attack_buttons(myrpg_t *myrpg);
+fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg);
+int tp_all(myrpg_t *myrpg, int i, int j);
+void setup_sprites(myrpg_t *myrpg, sfVector2f resize, int i, int make);
 void change_current_item(button_t *button, void *args);
 void erase_text(myrpg_t *myrpg);
 int make_transition(myrpg_t *myrpg);
+void check_coll_enemy(myrpg_t *myrpg, int i);
+void check_if_mob_mov(myrpg_t *myrpg, int i);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);

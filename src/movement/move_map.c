@@ -6,6 +6,8 @@
 */
 
 #include "../../include/myrpg.h"
+#include <SFML/Graphics/RectangleShape.h>
+#include <SFML/Graphics/Types.h>
 
 static void animate_player(myrpg_t *myrpg, int top)
 {
@@ -109,4 +111,7 @@ void move(myrpg_t *myrpg)
     myrpg->player->pos.x += movement.x;
     myrpg->player->pos.y += movement.y;
     myrpg->player->interface->movement = (sfVector2f){0, 0};
+    sfRectangleShape_setPosition(myrpg->hitbox,
+    sfSprite_getPosition(myrpg->game_info->player));
+    sfClock_restart(PLAYER_INTERFACE->clock);
 }
