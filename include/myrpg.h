@@ -87,8 +87,12 @@ void move_all_after_tp(myrpg_t *myrpg, sfVector2f tunnel_pos);
 
 // NPC
 void spawn_npc(myrpg_t *myrpg);
-npc_t *init_npc(void);
+npc_t *init_npc();
 void display_hud(myrpg_t *myrpg);
+int can_speak(myrpg_t *myrpg, npc_t *npc);
+void display_npc_text(myrpg_t *myrpg, sfText *text);
+void stock_text_in_npc(npc_t *npc);
+void init_text_for_npc(npc_t *npc);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
     sfColor color);

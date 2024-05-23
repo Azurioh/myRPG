@@ -18,11 +18,12 @@ typedef struct npc_info_s {
     char *text;
     sfSprite *sprite;
     int id;
+    sfText *text_ig;
 } npc_info_t;
 
 typedef struct npc_s {
     npc_info_t **npc_info;
-
+    sfIntRect rect;
 } npc_t;
 
 void free_npc(npc_t *npc);
