@@ -77,8 +77,6 @@ fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg)
     if (myrpg->fight_infos->turn != TOSKRA) {
         myrpg->fight_infos = enemy_attack(myrpg->fight_infos);
         myrpg->player->life = myrpg->fight_infos->toskra_hp;
-
-    } else {
     }
     return myrpg->fight_infos;
 }
