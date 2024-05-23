@@ -5,26 +5,36 @@
 ** recover the loot item by doing an random
 */
 
-#include "../../include/mobs.h"
+#include "../../include/myrpg.h"
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-int get_loot(mobs_t *mob)
+static int get_rarity(void)
 {
-    int rarity = 0;
-    int val = 0;
+    int val;
+    int rarity;
 
     srand(time(NULL));
-    val = rand() % 10;
-    if (val <= 5)
+    val = rand() % 100;
+    if (val <= 50)
         rarity = 0;
-    if (val > 5 && val <= 7)
+    if (val > 50 && val <= 80)
         rarity = 1;
-    if (val > 7 && val <= 9)
+    if (val > 80 && val <= 100)
         rarity = 2;
-    if (val == 10)
-        rarity = 3;
+    return rarity;
+}
+
+int get_loot(myrpg_t *myrpg, mobs_t *mob)
+{
+    int rarity = 0;
+
+    if (QUESTS->quests[2]->is_unlocked
+        && QUESTS->quests[2]->is_validate == false) {
+        return 2;
+    }
+    rarity = get_rarity();
     srand(time(NULL));
     if (rarity == 1 || rarity == 2) {
         return mob->item_loot[rarity][rand() % 5];
