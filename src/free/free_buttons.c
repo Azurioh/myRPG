@@ -26,4 +26,5 @@ void free_all_buttons(button_t **buttons)
     for (int i = 0; buttons[i]; i++) {
         free_button(buttons[i]);
     }
+    free(buttons);
 }

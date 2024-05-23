@@ -10,7 +10,7 @@ item_t *create_boots_item(char *path, char *name, int strength,
     char *description)
 {
     item_t *item = malloc(sizeof(item_t));
-    static int id = 20;
+    static int id = 21;
 
     item->name = my_strdup(name);
     item->description = my_strdup(description);

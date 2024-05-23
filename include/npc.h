@@ -8,7 +8,7 @@
 #ifndef INCLUDED_NPC_H
     #define INCLUDED_NPC_H
     #define     FONT "../../assets/font/alagard.ttf"
-    #include "myrpg.h"
+    #include <SFML/Graphics.h>
 
 typedef struct npc_info_s {
     sfVector2f pos;
@@ -17,6 +17,7 @@ typedef struct npc_info_s {
     sfRectangleShape *rect;
     char *text;
     sfSprite *sprite;
+    int id;
 } npc_info_t;
 
 typedef struct npc_s {
@@ -24,7 +25,7 @@ typedef struct npc_s {
 
 } npc_t;
 
+void free_npc(npc_t *npc);
 void draw_text(npc_t *npc, int i);
-// void spawn_npc(image_t *image, myrpg_t *myrpg);
 
 #endif

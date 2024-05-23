@@ -17,7 +17,6 @@ char *axe_throw(void *fight_inf)
 
     (void) fight;
     time.microseconds = 500000;
-    puts("Axe Throw");
     sfSleep(time);
     return ret;
 }
@@ -30,7 +29,6 @@ char *another_attack(void *fight_inf)
 
     (void) fight;
     time.microseconds = 500000;
-    puts("Cheplu l'attaque x)");
     sfSleep(time);
     return ret;
 }
@@ -43,7 +41,6 @@ char *drink_hydromel(void *fight_inf)
 
     (void) fight;
     time.microseconds = 500000;
-    puts("Hydromel drinking BURP");
     sfSleep(time);
     return ret;
 }
@@ -56,7 +53,6 @@ char *angry_guy(void *fight_inf)
 
     (void) fight;
     time.microseconds = 500000;
-    puts("I'm an ANGRY GUY");
     sfSleep(time);
     return ret;
 }

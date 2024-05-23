@@ -19,14 +19,17 @@ typedef struct keybinds_s {
     int move_right;
     int open_inventory;
     int interact;
+    int skills;
+    int sprint;
     sfBool editing_keybinds;
     int *keybind_edit;
     char **actions;
 } keybinds_t;
 
 typedef struct game_menu_s {
-    sfSprite *background;
+    sfSprite **background;
     button_t **buttons;
+    sfText **texts;
 } game_menu_t;
 
 typedef struct game_s {
@@ -34,9 +37,10 @@ typedef struct game_s {
     sfSprite *player;
     sfSprite *map;
     sfImage *undermap;
+    sfSprite *undermap_sprite;
     sfView *map_view;
     game_menu_t *game_menu;
-    sfBool show_menu;
+    int show_menu;
     keybinds_t *keybinds;
 } game_t;
 
@@ -48,4 +52,7 @@ void update_settings_position(settings_t *settings,
     sfVector2f resize);
 void update_settings_scaling(settings_t *settings);
 keybinds_t *init_keybinds(void);
+
+sfText **load_texts_elements(game_t *game_info, sfVector2f resize);
+void update_dynamic_texts(game_t *game_info, sfText **texts);
 #endif

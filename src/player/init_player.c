@@ -52,17 +52,21 @@ player_t *init_player(void)
 {
     player_t *player = malloc(sizeof(player_t));
 
-    if (!player)
-        return NULL;
     player->name = strdup("Toskra");
-    player->life = 9;
+    player->max_hp = 100;
+    player->life = 100;
     player->is_alive = 1;
     player->nb_dead = 0;
     player->experience = 0;
     player->level = 1;
-    player->nb_skills_to_upgrade = 0;
+    player->attack = 10;
+    player->armor = 5;
+    player->max_xp = 50;
+    player->nb_skills_to_upgrade = 1;
+    player->sprinting = false;
     player->skills = init_player_skills();
     player->interface = init_player_interface();
     player->pos = (sfVector2f){4510, 4150};
+    player->inventory = NULL;
     return player;
 }

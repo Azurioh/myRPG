@@ -10,7 +10,7 @@ item_t *create_helmet_item(char *path, char *name, int strength,
     char *description)
 {
     item_t *item = malloc(sizeof(item_t));
-    static int id = 8;
+    static int id = 9;
 
     item->name = my_strdup(name);
     item->description = my_strdup(description);

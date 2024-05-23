@@ -25,5 +25,6 @@ void unload_settings(void *args)
     free(SETTINGS->visual_elements->texts);
     free(SETTINGS->visual_elements);
     SETTINGS->visual_elements = NULL;
+    save_settings(myrpg);
     EVENTS->load_function(myrpg);
 }

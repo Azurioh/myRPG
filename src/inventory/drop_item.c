@@ -19,5 +19,5 @@ void drop_item(button_t *button, void *args)
     myrpg->player->inventory->selected_item = NULL;
     myrpg->player->inventory->selected_slot = NULL;
     myrpg->player->inventory->id[slot] = -1;
-    return;
+    return erase_text(myrpg);
 }

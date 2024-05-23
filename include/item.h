@@ -34,4 +34,5 @@ void create_helmet_items(item_t **items, int *index);
 void create_chestplate_items(item_t **items, int *index);
 void create_trousers_items(item_t **items, int *index);
 void create_boots_items(item_t **items, int *index);
+void free_items(item_t **items);
 #endif /* !ITEM_H */

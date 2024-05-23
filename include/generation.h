@@ -8,10 +8,10 @@
 #ifndef GENERATION_H
     #define GENERATION_H
     #include <SFML/Graphics.h>
-    #define UNDERMAP_PATH "assets/test.png"
-    #define MAP_PATH "assets/test.png"
-    #define FIGHT_MAP "assets/main_menu_background.jpg"
-    #define PLAYER_PATH "assets/player_spritesheet.png"
+    #define FIGHT_MAP "assets/combat_scene.png"
+    #define UNDERMAP_PATH "./assets/map/undermap.png"
+    #define MAP_PATH "./assets/map/map.png"
+    #define PLAYER_PATH "./assets/player_spritesheet.png"
 
 typedef struct image_s {
     sfTexture *texture;

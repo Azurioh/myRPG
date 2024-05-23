@@ -7,15 +7,30 @@
 
 #include "../../include/myrpg.h"
 
-void update_equipped_item(myrpg_t *myrpg)
+static void update_equipped_item(myrpg_t *myrpg)
 {
     inventory_t *inventory = myrpg->player->inventory;
 
     for (int i = 0; i < 5; i++) {
-        if (inventory->equipped[i] != NULL)
+        if (inventory->equipped[i] != NULL) {
             sfSprite_setTexture(inventory->equipped_sprite[i],
                 inventory->equipped[i]->texture, sfFalse);
+        }
     }
+}
+
+static void update_inventory_stats(player_t *player)
+{
+    sfText **texts = player->inventory->player_stats;
+
+    update_player_stats(player);
+    sfText_setString(texts[0], str_fusion("Vie : ", nbr_to_str(player->life)));
+    sfText_setString(texts[1], str_fusion("Exp. : ",
+        nbr_to_str(player->experience)));
+    sfText_setString(texts[2], str_fusion("Armure : ",
+        nbr_to_str(player->armor + player->item_armor)));
+    sfText_setString(texts[3], str_fusion("Attaque : ",
+        nbr_to_str(player->attack + player->axe_attack)));
 }
 
 void update_inventory(myrpg_t *myrpg)
@@ -32,6 +47,7 @@ void update_inventory(myrpg_t *myrpg)
             sfSprite_setTexture(inv[i]->image_sprite,
                 myrpg->player->inventory->empty_text, sfFalse);
     }
+    update_inventory_stats(myrpg->player);
 }
 
 void display_equipped(inventory_t *inventory, sfRenderWindow *window)
@@ -57,6 +73,7 @@ void display_inventory(myrpg_t *myrpg)
         return;
     update_inventory(myrpg);
     update_equipped_item(myrpg);
+    display_stats(myrpg);
     sfRenderWindow_drawSprite(SETTINGS->window,
     myrpg->player->inventory->image->sprite, NULL);
     for (int i = 0; i < 15; i++) {

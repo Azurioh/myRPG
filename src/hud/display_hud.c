@@ -6,14 +6,16 @@
 */
 
 #include "../../include/myrpg.h"
+#include "SFML/Graphics/Text.h"
+#include <SFML/Graphics/RenderWindow.h>
 
-void change_percentage(sfSprite *sprite, int percentage)
+void change_percentage(sfSprite *sprite, int percentage, int max)
 {
     sfIntRect rect;
 
     rect.top = 0;
     rect.left = 0;
-    rect.width = 104 * percentage / 100;
+    rect.width = 104 * percentage / max;
     rect.height = 12;
     sfSprite_setTextureRect(sprite, rect);
 }
@@ -41,18 +43,42 @@ void display_profile(myrpg_t *myrpg)
 {
     sfRenderWindow *window = SETTINGS->window;
 
+    if (myrpg->fight_infos->in_fight == 1) {
+        change_percentage(myrpg->fight_infos->enemy_infos->enemy_life,
+        myrpg->fight_infos->enemy_hp,
+        myrpg->mobs[myrpg->fight_infos->enemy_id]->life);
+        sfRenderWindow_drawSprite(window,
+            myrpg->fight_infos->enemy_infos->enemy_bottle, NULL);
+        sfRenderWindow_drawSprite(window,
+            myrpg->fight_infos->enemy_infos->enemy_life, NULL);
+        sfRenderWindow_drawText(window,
+            myrpg->fight_infos->enemy_infos->string, NULL);
+    }
     sfRenderWindow_drawSprite(window, myrpg->hud->profile->sprite, NULL);
     sfRenderWindow_drawSprite(window, myrpg->hud->life->sprite, NULL);
     sfRenderWindow_drawSprite(window, myrpg->hud->exp->sprite, NULL);
     sfRenderWindow_drawText(window, myrpg->hud->name, NULL);
 }
 
+static void display_quest(myrpg_t *myrpg)
+{
+    sfText_setString(HUD->quest_name,
+        QUESTS->quests[QUESTS->actual_quest]->name);
+    sfText_setString(HUD->quest_desc,
+        QUESTS->quests[QUESTS->actual_quest]->description);
+    sfRenderWindow_drawSprite(WINDOW, HUD->quest_bg, NULL);
+    sfRenderWindow_drawText(WINDOW, HUD->quest_name, NULL);
+    sfRenderWindow_drawText(WINDOW, HUD->quest_desc, NULL);
+}
+
 void display_hud(myrpg_t *myrpg)
 {
     sfRenderWindow *window = SETTINGS->window;
 
-    change_percentage(myrpg->hud->life->sprite, myrpg->player->life);
-    change_percentage(myrpg->hud->exp->sprite, myrpg->player->experience);
+    change_percentage(myrpg->hud->life->sprite, myrpg->player->life,
+        myrpg->player->max_hp);
+    change_percentage(myrpg->hud->exp->sprite, myrpg->player->experience,
+        myrpg->player->max_xp);
     sfText_setString(myrpg->hud->name, name_and_level(myrpg));
     display_profile(myrpg);
     sfRenderWindow_drawSprite(window, myrpg->hud->inventory->sprite, NULL);
@@ -62,6 +88,7 @@ void display_hud(myrpg_t *myrpg)
         sfRenderWindow_drawSprite(window, myrpg->hud->skill->sprite, NULL);
         sfRenderWindow_drawText(window, myrpg->hud->skill_text, NULL);
     }
+    display_quest(myrpg);
     if (myrpg->can_interact == 1)
         sfRenderWindow_drawText(window, myrpg->hud->action, NULL);
 }
