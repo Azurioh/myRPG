@@ -20,7 +20,6 @@ void game_loop(myrpg_t *myrpg)
     }
     sfRenderWindow_clear(settings->window, sfBlack);
     EVENTS->display_function(myrpg);
-    draw_rectangle(myrpg);
     sfRenderWindow_display(settings->window);
 }
 

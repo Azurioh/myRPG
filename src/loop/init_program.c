@@ -35,6 +35,7 @@ int start_game(void)
 {
     myrpg_t *myrpg = init_myrpg();
 
+    myrpg->npc = init_npc();
     myrpg->portal = portal_map();
     if (!myrpg) {
         return 84;
