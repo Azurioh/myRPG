@@ -10,7 +10,7 @@ item_t *create_trousers_item(char *path, char *name, int strength,
     char *description)
 {
     item_t *item = malloc(sizeof(item_t));
-    static int id = 16;
+    static int id = 17;
 
     item->name = my_strdup(name);
     item->description = my_strdup(description);
