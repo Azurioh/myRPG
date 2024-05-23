@@ -23,7 +23,7 @@ static void create_npc_collision_npc(npc_t *npc)
 {
     sfVector2f scale = {100, 100};
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 5; i++) {
         npc->npc_info[i]->rect = sfRectangleShape_create();
         sfRectangleShape_setSize(npc->npc_info[i]->rect, scale);
         sfRectangleShape_setPosition(npc->npc_info[i]->rect,
@@ -38,7 +38,7 @@ static npc_info_t **fill_struct_npc(void)
 
     if (!npc_info)
         return NULL;
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 5; i++) {
         npc_info[i] = malloc(sizeof(npc_info_t));
     }
     npc_info[0]->pos = (sfVector2f) {5000, 5000};
@@ -47,7 +47,7 @@ static npc_info_t **fill_struct_npc(void)
     npc_info[3]->pos = (sfVector2f) {5600, 5600};
     npc_info[4]->pos = (sfVector2f) {5800, 5800};
     npc_info[5] = NULL;
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 5; i++) {
         npc_info[i]->id = i;
     }
     return npc_info;
