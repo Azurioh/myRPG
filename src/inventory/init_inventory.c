@@ -92,6 +92,6 @@ inventory_t *init_inventory(myrpg_t *myrpg)
     inventory->equipped_sprite = init_equipped_items(myrpg, inventory);
     inventory->action_buttons = init_action_buttons(myrpg);
     init_stats(myrpg, inventory);
-    inventory->id[0] = 4;
+    inventory->id[0] = 5;
     return inventory;
 }

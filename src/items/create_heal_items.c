@@ -33,6 +33,9 @@ void create_heal_items(item_t **items, int *index)
     items[*index + 2] = create_heal_item(
         "./assets/inventory/heal/petite_popo.png",
         "Petite Popo", 25, "Regenere 25 HP.");
-    *index += 3;
+    items[*index + 3] = create_heal_item(
+        "./assets/inventory/heal/donut.png",
+        "Donut sucre au\nsucre", 1000000, "Regenere 1.000.000 HP.");
+    *index += 4;
     return;
 }
