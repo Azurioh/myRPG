@@ -22,17 +22,25 @@ static void make_move(myrpg_t *myrpg)
 
 static void update_skills_buttons(myrpg_t *myrpg)
 {
-    for (int i = 0; i < 3; i++) {
-        if (PLAYER->nb_skills_to_upgrade == 0
-            || PLAYER->skills[i]->is_max_level == 1) {
+    button_t **buttons = GAME_INFO->game_menu->buttons;
+    sfColor color = sfColor_fromRGBA(200, 200, 200, 255);
+
+    if (PLAYER->nb_skills_to_upgrade == 0)
+        for (int i = 0; i < 3; i++) {
             GAME_INFO->game_menu->buttons[i]->clickable = sfFalse;
-            sfSprite_setColor(GAME_INFO->game_menu->buttons[i]->image_sprite,
-                sfColor_fromRGBA(200, 200, 200, 255));
-        } else {
-            GAME_INFO->game_menu->buttons[i]->clickable = sfTrue;
-            sfSprite_setColor(GAME_INFO->game_menu->buttons[i]->image_sprite,
-                sfColor_fromRGBA(255, 255, 255, 255));
+            sfSprite_setColor(buttons[i]->image_sprite, color);
         }
+    if (PLAYER->skills[0]->is_max_level == 1) {
+        GAME_INFO->game_menu->buttons[0]->clickable = sfFalse;
+        sfSprite_setColor(buttons[0]->image_sprite, color);
+    }
+    if (PLAYER->level < 2 || PLAYER->skills[1]->is_max_level == 1) {
+        GAME_INFO->game_menu->buttons[1]->clickable = sfFalse;
+        sfSprite_setColor(buttons[1]->image_sprite, color);
+    }
+    if (PLAYER->level < 2 || PLAYER->skills[2]->is_max_level == 1) {
+        GAME_INFO->game_menu->buttons[2]->clickable = sfFalse;
+        sfSprite_setColor(buttons[2]->image_sprite, color);
     }
 }
 
