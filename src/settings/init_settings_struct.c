@@ -52,7 +52,7 @@ settings_t *init_settings(void)
     settings->scaling = 1;
     settings->window_size_list = get_window_size_list();
     settings->window = NULL;
-    settings->fullscreen = 0;
+    settings->fullscreen = 1;
     settings->visual_elements = NULL;
     init_window(settings, settings->fullscreen);
     return settings;
