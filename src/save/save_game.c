@@ -20,9 +20,9 @@ void save_settings(myrpg_t *myrpg)
     dprintf(fd, "%f\n%d\n%d\n%d\n%d\n%d\n", SETTINGS->scaling,
         SETTINGS->actual_window_size, SETTINGS->actual_framerate,
         SETTINGS->sound_volume, SETTINGS->music_volume, SETTINGS->fullscreen);
-    dprintf(fd, "%d\n%d\n%d\n%d\n%d\n%d", keybinds->move_up,
+    dprintf(fd, "%d\n%d\n%d\n%d\n%d\n%d\n%d", keybinds->move_up,
         keybinds->move_down, keybinds->move_left, keybinds->move_right,
-        keybinds->open_inventory, keybinds->interact);
+        keybinds->open_inventory, keybinds->interact, keybinds->skills);
     close(fd);
 }
 
@@ -39,9 +39,10 @@ void save_player(myrpg_t *myrpg)
         printf("Can't save player...\n");
         return;
     }
-    dprintf(fd, "%d\n%d\n%d\n%d\n%f\n%f", player->life, player->experience,
-        player->level, player->nb_skills_to_upgrade, player->pos.x,
-        player->pos.y);
+    dprintf(fd, "%d\n%d\n%d\n%d\n%f\n%f\n%d\n%d\n%d", player->life,
+        player->experience, player->level, player->nb_skills_to_upgrade,
+        player->pos.x, player->pos.y, player->skills[0]->level,
+        player->skills[1]->level, player->skills[2]->level);
     close(fd);
 }
 

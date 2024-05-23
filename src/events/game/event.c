@@ -35,7 +35,8 @@ static void open_skills(myrpg_t *myrpg)
 {
     if (EVENTS->event.type != sfEvtKeyPressed)
         return;
-    if (EVENTS->event.key.code == GAME_INFO->keybinds->skills) {
+    if (EVENTS->event.key.code == GAME_INFO->keybinds->skills
+        && GAME_INFO->show_menu != 1) {
         if (GAME_INFO->show_menu == 2) {
             free(GAME_INFO->game_menu);
             GAME_INFO->game_menu = init_game_menu(GAME_INFO, SETTINGS);
