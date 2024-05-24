@@ -127,6 +127,7 @@ void check_where_move(sfVector2f dep, int i, myrpg_t *myrpg);
 float check_health_lvl(myrpg_t *myrpg);
 float check_damage_launch_lvl(myrpg_t *myrpg);
 float check_damage_axe_lvl(myrpg_t *myrpg);
+fight_t *enemy_attack(fight_t *fight, myrpg_t *myrpg);
 
 char *my_nbr_to_str(int nb);
 char *my_strcat(char *dest, char const *str);
