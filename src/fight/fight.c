@@ -29,16 +29,18 @@ static void setup_attacks(myrpg_t *myrpg, fight_t *fight_infos,
     fight_infos->buttons[4] = NULL;
 }
 
-static fight_t *check_str_infos(char *str, fight_t *fight)
+static fight_t *check_str_infos(char *str, fight_t *fight, myrpg_t *myrpg)
 {
     if (str[0] == 'a') {
-        fight->enemy_hp -= 20 * fight->angryness;
+        fight->enemy_hp -= (20 * check_damage_axe_lvl(myrpg))
+        * fight->angryness;
     }
     if (str[0] == 'b') {
-        fight->enemy_hp -= 20 * fight->angryness;
+        fight->enemy_hp -= (20 * check_damage_launch_lvl(myrpg))
+        * fight->angryness;
     }
     if (str[0] == 'c') {
-        fight->toskra_hp += 20;
+        fight->toskra_hp += 20.00 * check_health_lvl(myrpg);
     }
     if (str[0] == 'd') {
         fight->angryness += 1;
@@ -56,7 +58,7 @@ fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
     for (int i = 0; buttons[i]; i++) {
         if (EVENTS->event.type == sfEvtMouseButtonPressed &&
             buttons[i]->is_clicked(buttons[i], SETTINGS->window) == sfTrue) {
-            fight = check_str_infos(buttons[i]->button_name, fight);
+            fight = check_str_infos(buttons[i]->button_name, fight, myrpg);
             fight->turn = ENEMY;
             return fight;
         }
