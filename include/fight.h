@@ -46,6 +46,5 @@ char *another_attack(void *fight);
 char *drink_hydromel(void *fight);
 char *angry_guy(void *fight);
 int check_attack_collision(button_t *button, sfRenderWindow *window);
-fight_t *enemy_attack(fight_t *fight);
 
 #endif
