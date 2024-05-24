@@ -110,6 +110,7 @@ void display_enemies(myrpg_t *myrpg)
 
 void make_all(myrpg_t *myrpg)
 {
+    spawn_npc(myrpg);
     display_enemies(myrpg);
     if (myrpg->fight_infos->in_fight == 1)
         fight(myrpg);
@@ -117,7 +118,6 @@ void make_all(myrpg_t *myrpg)
         display_inventory(myrpg);
     if (GAME_INFO->show_menu >= 1)
         display_menu(myrpg);
-    spawn_npc(myrpg);
 }
 
 void display_game(void *args)
@@ -129,12 +129,12 @@ void display_game(void *args)
     if (sfKeyboard_isKeyPressed(sfKeyP) == sfTrue)
         sfRenderWindow_drawSprite(WINDOW, GAME_INFO->undermap_sprite, NULL);
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->player, NULL);
-    display_hud(myrpg);
     for (int i = 0; myrpg->mobs[i]; i++) {
         check_coll_enemy(myrpg, i);
         check_if_mob_mov(myrpg, i);
     }
     make_all(myrpg);
+    display_hud(myrpg);
     if (myrpg->is_inventory == 0 && GAME_INFO->show_menu == 0 &&
         myrpg->fight_infos->in_fight == 0 &&
         !EVENTS->previous_display_function) {
