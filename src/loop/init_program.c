@@ -81,15 +81,6 @@ int **init_loot(void)
     return loot_table;
 }
 
-mobs_t **init_mobs(void)
-{
-    mobs_t **mobs = malloc(sizeof(mobs_t *) * 2);
-
-    mobs[0] = init_lvl_one(mobs, 0, (sfVector2f){4500, 4500});
-    mobs[1] = NULL;
-    return mobs;
-}
-
 static sfRectangleShape *init_hitbox(game_t *game_info)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
