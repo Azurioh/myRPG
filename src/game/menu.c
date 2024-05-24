@@ -74,7 +74,7 @@ static sfSprite **load_game_background(sfVector2f resize)
     sfFloatRect size;
 
     sprite[0] = generate_sprite_with_file("assets/settings-background.png", 1);
-    sprite[1] = generate_sprite_with_file("assets/settings-background.png", 1);
+    sprite[1] = generate_sprite_with_file("assets/keys-background.png", 1);
     size = sfSprite_getGlobalBounds(sprite[0]);
     sfSprite_setOrigin(sprite[0],
         (sfVector2f){ size.width / 2, size.height / 2 });
@@ -85,7 +85,7 @@ static sfSprite **load_game_background(sfVector2f resize)
     sfSprite_setOrigin(sprite[1],
         (sfVector2f){ size.width / 2, size.height / 2 });
     sfSprite_setPosition(sprite[1],
-        (sfVector2f){ 200 + resize.x, 350 + resize.y });
+        (sfVector2f){ 200 + resize.x, 390 + resize.y });
     sfSprite_setScale(sprite[1], (sfVector2f){1.0 / 3, 1.0 / 3});
     return sprite;
 }
