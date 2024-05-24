@@ -29,14 +29,21 @@ static void setup_attacks(myrpg_t *myrpg, fight_t *fight_infos,
     fight_infos->buttons[4] = NULL;
 }
 
+static int get_damage(myrpg_t *myrpg)
+{
+    int dmg = myrpg->player->attack + myrpg->player->axe_attack;
+
+    return dmg;
+}
+
 static fight_t *check_str_infos(char *str, fight_t *fight, myrpg_t *myrpg)
 {
     if (str[0] == 'a') {
-        fight->enemy_hp -= (20 * check_damage_axe_lvl(myrpg))
+        fight->enemy_hp -= (get_damage(myrpg) * check_damage_axe_lvl(myrpg))
         * fight->angryness;
     }
     if (str[0] == 'b') {
-        fight->enemy_hp -= (20 * check_damage_launch_lvl(myrpg))
+        fight->enemy_hp -= (get_damage(myrpg) * check_damage_launch_lvl(myrpg))
         * fight->angryness;
     }
     if (str[0] == 'c') {
@@ -77,7 +84,7 @@ fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg)
         ->image_sprite, NULL);
     }
     if (myrpg->fight_infos->turn != TOSKRA) {
-        myrpg->fight_infos = enemy_attack(myrpg->fight_infos);
+        myrpg->fight_infos = enemy_attack(myrpg->fight_infos, myrpg);
         myrpg->player->life = myrpg->fight_infos->toskra_hp;
     }
     return myrpg->fight_infos;
