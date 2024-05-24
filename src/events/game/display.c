@@ -31,25 +31,25 @@ static void update_skills_buttons(myrpg_t *myrpg)
             GAME_INFO->game_menu->buttons[i]->clickable = sfFalse;
             sfSprite_setColor(buttons[i]->image_sprite, color);
         }
-    if (PLAYER->skills[0]->is_max_level == 1) {
+    if (PLAYER->skills[1]->is_max_level == 1) {
         GAME_INFO->game_menu->buttons[0]->clickable = sfFalse;
         sfSprite_setColor(buttons[0]->image_sprite, color);
     }
-    if (PLAYER->level < 2 || PLAYER->skills[1]->is_max_level == 1) {
-        GAME_INFO->game_menu->buttons[1]->clickable = sfFalse;
-        sfSprite_setColor(buttons[1]->image_sprite, color);
-    }
     if (PLAYER->level < 2 || PLAYER->skills[2]->is_max_level == 1) {
         GAME_INFO->game_menu->buttons[2]->clickable = sfFalse;
+        sfSprite_setColor(buttons[1]->image_sprite, color);
+    }
+    if (PLAYER->level < 2 || PLAYER->skills[3]->is_max_level == 1) {
+        GAME_INFO->game_menu->buttons[3]->clickable = sfFalse;
         sfSprite_setColor(buttons[2]->image_sprite, color);
     }
 }
 
 static void update_skills_elements(myrpg_t *myrpg)
 {
-    char *str1 = nbr_to_str(PLAYER->skills[0]->level);
-    char *str2 = nbr_to_str(PLAYER->skills[1]->level);
-    char *str3 = nbr_to_str(PLAYER->skills[2]->level);
+    char *str1 = nbr_to_str(PLAYER->skills[1]->level);
+    char *str2 = nbr_to_str(PLAYER->skills[2]->level);
+    char *str3 = nbr_to_str(PLAYER->skills[3]->level);
     char *array[] = { str1, str2, str3, NULL };
 
     for (int i = 0; array[i]; i++) {

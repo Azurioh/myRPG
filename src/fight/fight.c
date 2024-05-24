@@ -27,6 +27,7 @@ static void setup_attacks(myrpg_t *myrpg, fight_t *fight_infos,
     (void) myrpg;
     fight_infos->buttons = setup_attack_buttons(myrpg);
     fight_infos->buttons[4] = NULL;
+    disable_attack_button(myrpg, fight_infos->buttons);
 }
 
 static fight_t *check_str_infos(char *str, fight_t *fight, myrpg_t *myrpg)
@@ -72,11 +73,12 @@ fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
 
 fight_t *display_attack(sfRenderWindow *window, myrpg_t *myrpg)
 {
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; myrpg->fight_infos->buttons[i]; i++) {
         sfRenderWindow_drawSprite(window, myrpg->fight_infos->buttons[i]
         ->image_sprite, NULL);
     }
-    if (myrpg->fight_infos->turn != TOSKRA) {
+    if (myrpg->fight_infos->turn != TOSKRA
+        && myrpg->fight_infos->enemy_hp != 0) {
         myrpg->fight_infos = enemy_attack(myrpg->fight_infos);
         myrpg->player->life = myrpg->fight_infos->toskra_hp;
     }
@@ -101,6 +103,7 @@ static void make_fight(myrpg_t *myrpg)
 {
     myrpg->fight_infos->loaded = 1;
     myrpg->fight_infos->in_fight = 1;
+    sfMusic_stop(myrpg->walk);
     myrpg->fight_infos->angryness = 1;
     myrpg->fight_infos->enemy_infos = init_enemy(myrpg);
     myrpg->fight_infos->turn = TOSKRA;
@@ -110,9 +113,23 @@ static void make_fight(myrpg_t *myrpg)
     sfSprite_setScale(myrpg->game_info->map, (sfVector2f){0.7, 0.7});
     sfSprite_setPosition(myrpg->game_info->player, (sfVector2f){10, 10});
     sfView_setCenter(myrpg->game_info->map_view,
-        (sfVector2f){960 * 0.65, 540 * 0.65});
+        (sfVector2f){960 * 0.65, 900 * 0.65});
     tp_all(myrpg, myrpg->fight_infos->enemy_id, 0);
     setup_attacks(myrpg, myrpg->fight_infos, myrpg->game_info);
+}
+
+static void reset_game(myrpg_t *myrpg)
+{
+    free_player(PLAYER);
+    sfView_setCenter(myrpg->game_info->map_view,
+        (sfVector2f){960 * 0.65, 900 * 0.65});
+    PLAYER = init_player();
+    INVENTORY = init_inventory(myrpg);
+    sfMusic_stop(myrpg->music);
+    load_game(myrpg);
+    EVENTS->load_function(myrpg);
+    free_quests(QUESTS);
+    QUESTS = create_quest_list();
 }
 
 static void unmake_fight(myrpg_t *myrpg)
@@ -131,6 +148,9 @@ static void unmake_fight(myrpg_t *myrpg)
     put_all_back(myrpg, id);
     sfRenderWindow_display(WINDOW);
     myrpg->player->life = myrpg->fight_infos->toskra_hp;
+    if (myrpg->player->life == 0) {
+        reset_game(myrpg);
+    }
 }
 
 void fight(myrpg_t *myrpg)

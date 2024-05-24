@@ -20,7 +20,7 @@ static void manage_skills_button(button_t *button, void *args)
         GAME_INFO->show_menu = 0;
         return;
     }
-    update_skill(PLAYER, atoi(button->button_name) - 1);
+    update_skill(PLAYER, atoi(button->button_name));
     if (PLAYER->nb_skills_to_upgrade == 0)
         sfSprite_setScale(button->image_sprite,
             (sfVector2f){button->initial_scaling, button->initial_scaling});
@@ -50,13 +50,13 @@ static void load_disabled_skills_buttons(game_menu_t *game_menu,
 {
     game_menu->buttons[3] = init_button("disabled",
         (sfVector2f){ 460 + resize.x, 330 + resize.y },
-        "assets/skills_1.png", &manage_skills_button);
+        "assets/skills_2.png", &manage_skills_button);
     game_menu->buttons[4] = init_button("disabled",
         (sfVector2f){ 630 + resize.x, 330 + resize.y },
-        "assets/skills_2.png", &manage_skills_button);
+        "assets/skills_3.png", &manage_skills_button);
     game_menu->buttons[5] = init_button("disabled",
         (sfVector2f){ 790 + resize.x, 330 + resize.y },
-        "assets/skills_3.png", &manage_skills_button);
+        "assets/skills_4.png", &manage_skills_button);
     for (int i = 3; i <= 5; i++) {
         sfSprite_setScale(game_menu->buttons[i]->image_sprite,
             (sfVector2f){0.5, 0.5});

@@ -88,6 +88,9 @@ inventory_t *init_inventory(myrpg_t *myrpg)
     for (int i = 0; i < 15; i++)
         inventory->id[i] = - 1;
     inventory->selected_item = NULL;
+    inventory->equipped = malloc(sizeof(item_t *) * 5);
+    for (int i = 0; i < 5; i++)
+        inventory->equipped[i] = NULL;
     init_inv_texts(myrpg, inventory);
     inventory->equipped_sprite = init_equipped_items(myrpg, inventory);
     inventory->action_buttons = init_action_buttons(myrpg);
