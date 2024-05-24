@@ -6,6 +6,7 @@
 */
 
 #include "../../../../include/myrpg.h"
+#include "SFML/Audio/Music.h"
 #include <SFML/Graphics/RectangleShape.h>
 #include <SFML/Graphics/Types.h>
 #include <SFML/System/Vector2.h>
@@ -24,6 +25,15 @@ static void show_settings_menu(button_t *button, void *args)
     load_settings(args);
 }
 
+void add_values_in_myrpg(myrpg_t *myrpg)
+{
+    myrpg->music_started = false;
+    myrpg->game_info = init_game_struct(myrpg);
+    myrpg->npc = init_npc(myrpg);
+    myrpg->walk = sfMusic_createFromFile("assets/musics/walk.ogg");
+    sfMusic_setLoop(myrpg->walk, sfTrue);
+}
+
 static void launch_game(button_t *button, void *args)
 {
     myrpg_t *myrpg = args;
@@ -36,8 +46,7 @@ static void launch_game(button_t *button, void *args)
         quests_save(myrpg);
     EVENTS->unload_function(myrpg);
     sfMusic_stop(myrpg->music);
-    myrpg->music_started = false;
-    myrpg->game_info = init_game_struct(myrpg);
+    add_values_in_myrpg(myrpg);
     load_game(args);
     EVENTS->load_function(myrpg);
     if (new_game == 0)

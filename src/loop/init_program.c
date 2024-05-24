@@ -108,7 +108,6 @@ int start_game(void)
     myrpg->mobs = init_mobs();
     myrpg->fight_infos->in_fight = 0;
     myrpg->hitbox = init_hitbox(myrpg->game_info);
-    myrpg->npc = init_npc();
     myrpg->portal = portal_map();
     load_game_save(myrpg);
     load_main_menu(myrpg);
