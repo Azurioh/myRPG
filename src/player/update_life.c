@@ -16,7 +16,7 @@ int increase_player_life(player_t *player, unsigned int amount)
         return 0;
     }
     player->life += amount;
-    if (player->life > 100) {
+    if (player->life > player->max_hp) {
         player->life = player->max_hp;
     }
     return 0;
