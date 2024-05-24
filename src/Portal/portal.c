@@ -90,12 +90,13 @@ portal_t *portal_map(void)
     return portal;
 }
 
-void check_portal(myrpg_t *myrpg)
+bool check_portal(myrpg_t *myrpg)
 {
     for (int i = 0; myrpg->portal->portal_pos[i] != NULL; i++) {
         if (teleport(myrpg->portal, i, myrpg) == 0) {
-            return;
+            return true;
         }
     }
     myrpg->can_interact = 0;
+    return false;
 }

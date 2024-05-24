@@ -18,6 +18,7 @@
     #define INVENTORY myrpg->player->inventory
     #define QUESTS myrpg->quests
     #define HUD myrpg->hud
+    #define NPC myrpg->npc
 
     #include <SFML/Audio.h>
     #include <stdlib.h>
@@ -54,6 +55,7 @@ typedef struct myrpg_s {
     event_t *events;
     sfSprite *background;
     sfMusic *music;
+    sfMusic *walk;
     quest_list_t *quests;
     bool music_started;
     button_t **buttons;
@@ -90,14 +92,14 @@ int get_loot(myrpg_t *myrpg, mobs_t *mob);
 
 // PORTAL
 int teleport(portal_t *portal, int i, myrpg_t *myrpg);
-void check_portal(myrpg_t *myrpg);
+bool check_portal(myrpg_t *myrpg);
 void set_all_after_tp(myrpg_t *myrpg, sfVector2f movement);
 void draw_rectangle(myrpg_t *myrpg);
 void move_all_after_tp(myrpg_t *myrpg, sfVector2f tunnel_pos);
 
 // NPC
 void spawn_npc(myrpg_t *myrpg);
-npc_t *init_npc(void);
+npc_t *init_npc(myrpg_t *myrpg);
 void display_hud(myrpg_t *myrpg);
 
 sfText *init_text(char *txt, sfVector2f position, unsigned int size,
@@ -163,4 +165,12 @@ fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
     fight_t *fight);
 
 void init_skills_menu(myrpg_t *myrpg);
+
+sfRectangleShape *load_npc_background(myrpg_t *myrpg);
+char **init_texts_npc(void);
+void load_npc_talks(void *args);
+void unload_npc_talk(void *args);
+void display_npc_talk(void *args);
+void can_speak(myrpg_t *myrpg, npc_t *npc);
+void display_npc(void *args);
 #endif

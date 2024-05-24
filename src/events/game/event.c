@@ -36,7 +36,8 @@ static void open_skills(myrpg_t *myrpg)
     if (EVENTS->event.type != sfEvtKeyPressed)
         return;
     if (EVENTS->event.key.code == GAME_INFO->keybinds->skills
-        && GAME_INFO->show_menu != 1 && QUESTS->quests[0]->is_validate == true) {
+        && GAME_INFO->show_menu != 1 &&
+        QUESTS->quests[0]->is_validate == true) {
         if (GAME_INFO->show_menu == 2) {
             free(GAME_INFO->game_menu);
             GAME_INFO->game_menu = init_game_menu(GAME_INFO, SETTINGS);
@@ -63,6 +64,13 @@ static void sprint(myrpg_t *myrpg)
     }
 }
 
+void fight_event(myrpg_t *myrpg)
+{
+    if (myrpg->fight_infos->in_fight == 1)
+        myrpg->fight_infos = manage_attack_button_event(myrpg->fight_infos->
+        buttons, myrpg, myrpg->fight_infos);
+}
+
 static void exec_game_events(void *args)
 {
     myrpg_t *myrpg = args;
@@ -80,12 +88,11 @@ static void exec_game_events(void *args)
         }
         manage_escape_key_game(myrpg);
         sprint(myrpg);
+        if (check_portal(myrpg) == false)
+            can_speak(myrpg, myrpg->npc);
     }
-    if (myrpg->fight_infos->in_fight == 1)
-        myrpg->fight_infos = manage_attack_button_event(myrpg->fight_infos->
-        buttons, myrpg, myrpg->fight_infos);
+    fight_event(myrpg);
     open_skills(myrpg);
-    check_portal(myrpg);
 }
 
 void load_game(void *args)

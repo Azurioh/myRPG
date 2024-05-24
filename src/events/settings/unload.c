@@ -16,6 +16,7 @@ void unload_settings(void *args)
     EVENTS->unload_function = EVENTS->previous_unload_function;
     EVENTS->event_function = EVENTS->previous_event_function;
     EVENTS->display_function = EVENTS->previous_display_function;
+    EVENTS->previous_display_function = NULL;
     sfSprite_destroy(SETTINGS->visual_elements->background);
     for (int i = 0; SETTINGS->visual_elements->buttons[i]; i++)
         free_button(SETTINGS->visual_elements->buttons[i]);
