@@ -9,6 +9,7 @@
 #include "../../include/myrpg.h"
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
+#include <stdio.h>
 
 enemy_t *init_enemy(myrpg_t *myrpg)
 {
@@ -31,11 +32,27 @@ enemy_t *init_enemy(myrpg_t *myrpg)
     return enemy;
 }
 
-static fight_t *attack(fight_t *fight)
+static int get_def_play(myrpg_t *myrpg)
 {
-    fight->toskra_hp -= fight->enemy_infos->attack * fight->enemy_infos->rage;
-    fight->enemy_infos->did_attack = 1;
-    return fight;
+    float def = myrpg->player->armor + myrpg->player->item_armor;
+    int tmp = def;
+    float final_val = 0;
+
+    def = 1 - ((def / 1000) * 2);
+    final_val = def * 10;
+    if (final_val - tmp > 0.5) {
+        tmp = final_val + 1;
+    } else
+        tmp = final_val;
+    return tmp;
+}
+
+static fight_t *attack(myrpg_t *myrpg)
+{
+    myrpg->fight_infos->toskra_hp -= get_def_play(myrpg) *
+        myrpg->fight_infos->enemy_infos->rage;
+    myrpg->fight_infos->enemy_infos->did_attack = 1;
+    return myrpg->fight_infos;
 }
 
 static fight_t *rage(fight_t *fight)
@@ -54,7 +71,7 @@ static fight_t *heal(fight_t *fight)
     return fight;
 }
 
-fight_t *make_ennemy_attack(fight_t *fight)
+fight_t *make_ennemy_attack(fight_t *fight, myrpg_t *myrpg)
 {
     if (fight->enemy_hp < 60 && fight->enemy_infos->heal_turns <= 0 &&
         fight->enemy_infos->did_attack != 1) {
@@ -65,7 +82,7 @@ fight_t *make_ennemy_attack(fight_t *fight)
         rage(fight);
     }
     if (fight->enemy_infos->did_attack != 1) {
-        attack(fight);
+        attack(myrpg);
     }
     fight->enemy_infos->did_attack = 0;
     fight->enemy_infos->rage_turns -= 1;
@@ -73,10 +90,10 @@ fight_t *make_ennemy_attack(fight_t *fight)
     return fight;
 }
 
-fight_t *enemy_attack(fight_t *fight)
+fight_t *enemy_attack(fight_t *fight, myrpg_t *myrpg)
 {
     if (fight->turn == ENEMY) {
-        fight = make_ennemy_attack(fight);
+        fight = make_ennemy_attack(fight, myrpg);
         fight->turn = TOSKRA;
     }
     return fight;
