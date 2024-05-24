@@ -22,6 +22,8 @@ int update_skill(player_t *player, unsigned int skill_index)
     }
     skill_to_upgrade = player->skills[skill_index];
     skill_to_upgrade->level++;
+    if (skill_to_upgrade->unlocked == 0)
+        skill_to_upgrade->unlocked = 1;
     if (skill_to_upgrade->level == skill_to_upgrade->max_level) {
         skill_to_upgrade->is_max_level = 1;
     }

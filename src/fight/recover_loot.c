@@ -32,7 +32,7 @@ int get_loot(myrpg_t *myrpg, mobs_t *mob)
 
     if (QUESTS->quests[2]->is_unlocked
         && QUESTS->quests[2]->is_validate == false) {
-        return 2;
+        return 1;
     }
     rarity = get_rarity();
     srand(time(NULL));

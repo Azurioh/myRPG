@@ -39,9 +39,9 @@ void heal_player(myrpg_t *myrpg)
     if (myrpg->player->life >= 100)
         return;
     increase_player_life(myrpg->player, item->strength);
-    if (item->item_id == 2 && QUESTS->quests[3]->is_unlocked
-        && QUESTS->quests[3]->is_validate == false) {
+    if (item->item_id == 1 && QUESTS->quests[3]->is_validate == false) {
         QUESTS->quests[3]->nb++;
+        QUESTS->quests[3]->is_validate = true;
         update_quest(QUESTS);
     }
     myrpg->player->inventory->selected_item = NULL;
