@@ -8,6 +8,7 @@
 #include "../../include/myrpg.h"
 #include <SFML/Graphics/RectangleShape.h>
 #include <SFML/Graphics/Types.h>
+#include <stdio.h>
 
 static void animate_player(myrpg_t *myrpg, int top)
 {
@@ -37,7 +38,7 @@ void move_down_view(game_t *game_info, myrpg_t *myrpg)
     pos.y += 64 * 1.5 + 4;
     color = sfImage_getPixel(game_info->undermap, pos.x,
                     pos.y);
-    if (color.r == 255 && color.g == 0 && color.b == 0){
+    if (color.r == 255 && color.g == 0 && color.b == 0) {
         return;
     }
     animate_player(myrpg, 0);
@@ -53,7 +54,7 @@ void move_up_view(game_t *game_info, myrpg_t *myrpg)
     pos.y += 64 * 1.5 - 18;
     color = sfImage_getPixel(game_info->undermap, pos.x,
                     pos.y);
-    if (color.r == 255 && color.g == 0 && color.b == 0){
+    if (color.r == 255 && color.g == 0 && color.b == 0) {
         return;
     }
     animate_player(myrpg, 3);
@@ -69,7 +70,7 @@ void move_left_view(game_t *game_info, myrpg_t *myrpg)
     pos.y += 64 * 1.5;
     color = sfImage_getPixel(game_info->undermap, pos.x,
                     pos.y);
-    if (color.r == 255 && color.g == 0 && color.b == 0){
+    if (color.r == 255 && color.g == 0 && color.b == 0) {
         return;
     }
     animate_player(myrpg, 1);
@@ -85,7 +86,7 @@ void move_right_view(game_t *game_info, myrpg_t *myrpg)
     pos.y += 64 * 1.5;
     color = sfImage_getPixel(game_info->undermap, pos.x,
                     pos.y);
-    if (color.r == 255 && color.g == 0 && color.b == 0){
+    if (color.r == 255 && color.g == 0 && color.b == 0) {
         return;
     }
     animate_player(myrpg, 2);

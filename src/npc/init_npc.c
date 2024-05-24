@@ -28,7 +28,7 @@ static void create_npc_collision_npc(npc_t *npc)
 {
     sfVector2f scale = {100, 100};
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
         npc->npc_info[i]->rect = sfRectangleShape_create();
         sfRectangleShape_setSize(npc->npc_info[i]->rect, scale);
         sfRectangleShape_setPosition(npc->npc_info[i]->rect,
@@ -39,20 +39,21 @@ static void create_npc_collision_npc(npc_t *npc)
 
 static npc_info_t **fill_struct_npc(void)
 {
-    npc_info_t **npc_info = malloc(sizeof(npc_info_t *) * 6);
+    npc_info_t **npc_info = malloc(sizeof(npc_info_t *) * 7);
 
     if (!npc_info)
         return NULL;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
         npc_info[i] = malloc(sizeof(npc_info_t));
     }
-    npc_info[0]->pos = (sfVector2f) {6000, 6000};
-    npc_info[1]->pos = (sfVector2f) {5200, 5200};
-    npc_info[2]->pos = (sfVector2f) {5400, 5400};
-    npc_info[3]->pos = (sfVector2f) {5600, 5600};
-    npc_info[4]->pos = (sfVector2f) {5800, 5800};
-    npc_info[5] = NULL;
-    for (int i = 0; i < 5; i++) {
+    npc_info[0]->pos = (sfVector2f) {914, 1976};
+    npc_info[1]->pos = (sfVector2f) {4736, 4910};
+    npc_info[2]->pos = (sfVector2f) {3981, 5405};
+    npc_info[3]->pos = (sfVector2f) {2940, 5954};
+    npc_info[4]->pos = (sfVector2f) {3203, 3647};
+    npc_info[5]->pos = (sfVector2f) {5712, 5736};
+    npc_info[6] = NULL;
+    for (int i = 0; i < 6; i++) {
         npc_info[i]->id = i;
     }
     return npc_info;

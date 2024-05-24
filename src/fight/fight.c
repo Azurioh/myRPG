@@ -137,6 +137,7 @@ static void reset_game(myrpg_t *myrpg)
     load_game(myrpg);
     EVENTS->load_function(myrpg);
     INVENTORY = init_inventory(myrpg);
+    myrpg->mobs = init_mobs();
 }
 
 static void unmake_fight(myrpg_t *myrpg)
