@@ -110,6 +110,7 @@ void display_enemies(myrpg_t *myrpg)
 
 void make_all(myrpg_t *myrpg)
 {
+    spawn_npc(myrpg);
     display_enemies(myrpg);
     if (myrpg->fight_infos->in_fight == 1)
         fight(myrpg);
@@ -117,7 +118,6 @@ void make_all(myrpg_t *myrpg)
         display_inventory(myrpg);
     if (GAME_INFO->show_menu >= 1)
         display_menu(myrpg);
-    spawn_npc(myrpg);
 }
 
 void display_game(void *args)

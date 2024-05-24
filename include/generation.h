@@ -12,6 +12,7 @@
     #define UNDERMAP_PATH "./assets/map/undermap.png"
     #define MAP_PATH "./assets/map/map.png"
     #define PLAYER_PATH "./assets/player_spritesheet.png"
+    #define NPC_PATH "./assets/npc.png"
 
 typedef struct image_s {
     sfTexture *texture;

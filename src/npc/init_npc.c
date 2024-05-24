@@ -17,7 +17,7 @@
 sfSprite *init_npc_sprite(npc_info_t *info)
 {
     sfSprite *sprite = sfSprite_create();
-    sfTexture *texture = sfTexture_createFromFile(PLAYER_PATH, NULL);
+    sfTexture *texture = sfTexture_createFromFile(NPC_PATH, NULL);
 
     sfSprite_setTexture(sprite, texture, sfFalse);
     sfSprite_setPosition(sprite, (sfVector2f){info->pos.x, info->pos.y});
