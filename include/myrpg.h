@@ -178,4 +178,5 @@ void display_npc_talk(void *args);
 void can_speak(myrpg_t *myrpg, npc_t *npc);
 void display_npc(void *args);
 void disable_attack_button(myrpg_t *myrpg, button_t **buttons);
+mobs_t **init_mobs(void);
 #endif
