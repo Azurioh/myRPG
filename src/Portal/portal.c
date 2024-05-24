@@ -19,10 +19,10 @@ int coord_portal(portal_t *portal, myrpg_t *myrpg, int i)
 {
     sfVector2f pos = sfView_getCenter(myrpg->game_info->map_view);
 
-    if (pos.x >= portal->portal_pos[i]->pos.x &&
-        pos.x <= portal->portal_pos[i]->pos.x + 100 &&
-        pos.y >= portal->portal_pos[i]->pos.y && pos.y <=
-        portal->portal_pos[i]->pos.y + 100) {
+    if (pos.x + 16 >= portal->portal_pos[i]->pos.x &&
+        pos.x + 16 <= portal->portal_pos[i]->pos.x + 150 &&
+        pos.y + 64 >= portal->portal_pos[i]->pos.y && pos.y  + 64 <=
+        portal->portal_pos[i]->pos.y + 150) {
             myrpg->can_interact = 1;
             return i;
         }
@@ -36,6 +36,7 @@ int teleport(portal_t *portal, int i, myrpg_t *myrpg)
         if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->interact)) {
             myrpg->transition_state = 0;
             move_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
+            printf("PORTAL ID : %d\n", portal->portal_pos[i]->id);
         }
         return 0;
     }
@@ -49,12 +50,12 @@ static portal_pos_t **fill_struct_portal_map(void)
     for (int i = 0; i < 8; i++) {
         portal_pos[i] = malloc(sizeof(portal_pos_t));
     }
-    portal_pos[0]->pos = (sfVector2f) {4060, 5320};
+    portal_pos[0]->pos = (sfVector2f) {4050, 5320};
     portal_pos[1]->pos = (sfVector2f) {2543, 692};
-    portal_pos[2]->pos = (sfVector2f) {4950, 4950};
+    portal_pos[2]->pos = (sfVector2f) {4950, 4930};
     portal_pos[3]->pos = (sfVector2f) {4108, 575};
     portal_pos[4]->pos = (sfVector2f) {500, 2450};
-    portal_pos[5]->pos = (sfVector2f) {4600, 4550};
+    portal_pos[5]->pos = (sfVector2f) {4580, 4550};
     portal_pos[6]->pos = (sfVector2f) {5975, 3273};
     portal_pos[7]->pos = (sfVector2f) {687, 622};
     portal_pos[8] = NULL;
@@ -66,7 +67,7 @@ static portal_pos_t **fill_struct_portal_map(void)
 
 static void create_rectangle_collision_map(portal_t *portal)
 {
-    sfVector2f scale = {100, 100};
+    sfVector2f scale = {150, 150};
 
     for (int i = 0; i < 8; i++) {
         portal->portal_pos[i]->rect = sfRectangleShape_create();
