@@ -83,10 +83,16 @@ int **init_loot(void)
 
 mobs_t **init_mobs(void)
 {
-    mobs_t **mobs = malloc(sizeof(mobs_t *) * 2);
+    mobs_t **mobs = malloc(sizeof(mobs_t *) * 7);
 
-    mobs[0] = init_lvl_one(mobs, 0, (sfVector2f){4500, 4500});
-    mobs[1] = NULL;
+    mobs[0] = init_lvl_one(mobs, 0, (sfVector2f){5500, 5500});
+    mobs[1] = init_lvl_one(mobs, 1, (sfVector2f){5951, 3460});
+    // mobs[1] = init_lvl_one(mobs, 0, (sfVector2f){4500, 4500});
+    // mobs[2] = init_lvl_one(mobs, 0, (sfVector2f){4500, 4500});
+    // mobs[3] = init_lvl_one(mobs, 0, (sfVector2f){4500, 4500});
+    // mobs[4] = init_lvl_one(mobs, 0, (sfVector2f){4500, 4500});
+    // mobs[5] = init_lvl_one(mobs, 0, (sfVector2f){4500, 4500});
+    mobs[2] = NULL;
     return mobs;
 }
 
