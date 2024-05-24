@@ -16,7 +16,7 @@ mobs_t *init_lvl_one(mobs_t **mobs, int i, sfVector2f pos)
     mobs[i]->id = i;
     mobs[i]->can_collide = 1;
     mobs[i]->level = 1;
-    mobs[i]->damages = 20;
+    mobs[i]->damages = 10;
     mobs[i]->xp_loot = 40;
     mobs[i]->item_loot = init_loot();
     mobs[i]->pos = pos;
@@ -39,7 +39,7 @@ mobs_t *init_lvl_two(mobs_t **mobs, int i, sfVector2f pos)
     mobs[i]->id = i;
     mobs[i]->can_collide = 1;
     mobs[i]->level = 2;
-    mobs[i]->damages = 30;
+    mobs[i]->damages = 20;
     mobs[i]->xp_loot = 50;
     mobs[i]->item_loot = init_loot();
     mobs[i]->pos = pos;
@@ -62,7 +62,7 @@ mobs_t *init_lvl_three(mobs_t **mobs, int i, sfVector2f pos)
     mobs[i]->id = i;
     mobs[i]->can_collide = 1;
     mobs[i]->level = 3;
-    mobs[i]->damages = 40;
+    mobs[i]->damages = 30;
     mobs[i]->xp_loot = 60;
     mobs[i]->item_loot = init_loot();
     mobs[i]->pos = pos;
@@ -85,7 +85,7 @@ mobs_t *init_lvl_four(mobs_t **mobs, int i, sfVector2f pos)
     mobs[i]->id = i;
     mobs[i]->can_collide = 1;
     mobs[i]->level = 4;
-    mobs[i]->damages = 50;
+    mobs[i]->damages = 40;
     mobs[i]->xp_loot = 80;
     mobs[i]->item_loot = init_loot();
     mobs[i]->pos = pos;
@@ -108,7 +108,7 @@ mobs_t *init_lvl_boss(mobs_t **mobs, int i, sfVector2f pos)
     mobs[i]->id = i;
     mobs[i]->can_collide = 1;
     mobs[i]->level = 1;
-    mobs[i]->damages = 20;
+    mobs[i]->damages = 50;
     mobs[i]->xp_loot = 40;
     mobs[i]->item_loot = init_loot();
     mobs[i]->pos = pos;
