@@ -21,7 +21,7 @@ int coord_portal(portal_t *portal, myrpg_t *myrpg, int i)
 
     if (pos.x + 16 >= portal->portal_pos[i]->pos.x &&
         pos.x + 16 <= portal->portal_pos[i]->pos.x + 150 &&
-        pos.y + 64 >= portal->portal_pos[i]->pos.y && pos.y  + 64 <=
+        pos.y + 64 >= portal->portal_pos[i]->pos.y && pos.y + 64 <=
         portal->portal_pos[i]->pos.y + 150) {
             myrpg->can_interact = 1;
             return i;
