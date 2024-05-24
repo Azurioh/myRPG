@@ -70,6 +70,23 @@ button_t *init_attack_button(char *button_name, sfVector2f position,
     return button;
 }
 
+void disable_attack_button(myrpg_t *myrpg, button_t **buttons)
+{
+    if (PLAYER->skills[1]->unlocked == 0) {
+        buttons[1] = NULL;
+        return;
+    }
+    if (PLAYER->skills[2]->unlocked == 0) {
+        buttons[2] = NULL;
+        return;
+    }
+    if (PLAYER->skills[3]->unlocked == 0) {
+        buttons[3] = NULL;
+        return;
+    }
+    buttons[4] = NULL;
+}
+
 button_t **setup_attack_buttons(myrpg_t *myrpg)
 {
     button_t **buttons = malloc(sizeof(button_t *) * 5);

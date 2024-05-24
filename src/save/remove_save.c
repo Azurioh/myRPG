@@ -9,11 +9,12 @@
 
 void remove_save(myrpg_t *myrpg)
 {
-    char *saves_path[] = { ".player", NULL };
+    char *saves_path[] = { "save/.player", "save/.inventory", "save/.quests",
+        NULL };
     int fd;
 
     for (int i = 0; saves_path[i]; i++) {
-        fd = open(saves_path[i], O_WRONLY);
+        fd = open(saves_path[i], O_WRONLY | O_TRUNC);
         if (fd == -1)
             continue;
         write(fd, "", 1);
