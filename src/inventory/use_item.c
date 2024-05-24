@@ -36,7 +36,7 @@ void heal_player(myrpg_t *myrpg)
     button_t *button = myrpg->player->inventory->selected_slot;
     int slot = atoi(button->button_name);
 
-    if (myrpg->player->life >= 100)
+    if (myrpg->player->life >= myrpg->player->max_hp)
         return;
     increase_player_life(myrpg->player, item->strength);
     if (item->item_id == 1 && QUESTS->quests[3]->is_validate == false) {
