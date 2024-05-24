@@ -36,7 +36,6 @@ int teleport(portal_t *portal, int i, myrpg_t *myrpg)
         if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->interact)) {
             myrpg->transition_state = 0;
             move_all_after_tp(myrpg, portal->portal_pos[i]->pos_tp);
-            printf("PORTAL ID : %d\n", portal->portal_pos[i]->id);
         }
         return 0;
     }
