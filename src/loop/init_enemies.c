@@ -58,12 +58,13 @@ void init_bottom_right_corner_mobs(mobs_t **mobs)
 
 mobs_t **init_mobs(void)
 {
-    mobs_t **mobs = malloc(sizeof(mobs_t *) * 33);
+    mobs_t **mobs = malloc(sizeof(mobs_t *) * 34);
 
     init_top_left_corner_mobs(mobs);
     init_bottom_left_corner_mobs(mobs);
     init_top_right_corner_mobs(mobs);
     init_bottom_right_corner_mobs(mobs);
-    mobs[32] = NULL;
+    mobs[32] = init_lvl_boss(mobs, 32, (sfVector2f){3055, 2700});
+    mobs[33] = NULL;
     return mobs;
 }

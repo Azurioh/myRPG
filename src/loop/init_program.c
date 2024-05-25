@@ -69,6 +69,28 @@ mobs_t *create_sprite(mobs_t *mobs)
     return mobs;
 }
 
+mobs_t *create_boss_sprite(mobs_t *mobs)
+{
+    sfIntRect rect;
+    sfTexture *mob = sfTexture_createFromFile
+    ("assets/enemies/sprite_enemibg.png", NULL);
+    sfColor color = sfColor_fromRGBA(223, 124, 215, 255);
+
+    rect.top = 0;
+    rect.left = 0;
+    rect.width = 48;
+    rect.height = 48;
+    mobs->clock_move = sfClock_create();
+    mobs->sprite = sfSprite_create();
+    mobs->rect = rect;
+    sfSprite_setTexture(mobs->sprite, mob, sfFalse);
+    sfSprite_setPosition(mobs->sprite, mobs->pos);
+    sfSprite_setTextureRect(mobs->sprite, mobs->rect);
+    sfSprite_scale(mobs->sprite, (sfVector2f){5, 5});
+    sfSprite_setColor(mobs->sprite, color);
+    return mobs;
+}
+
 int **init_loot(void)
 {
     int **loot_table = malloc(sizeof(int *) * 4);
