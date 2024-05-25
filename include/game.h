@@ -36,6 +36,7 @@ typedef struct game_s {
     sfClock *clock;
     sfSprite *player;
     sfSprite *map;
+    sfSprite *uppermap;
     sfImage *undermap;
     sfIntRect rect;
     sfSprite *undermap_sprite;

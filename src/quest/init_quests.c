@@ -51,11 +51,9 @@ static void fill_quests(quest_t **quests)
 {
     fill_tutorial_quests(quests);
     fill_medium_quests(quests);
-    quests[9] = init_quest("Le boss, tu domineras.",
-        "Affronte le boss final de la forêt", 1);
-    quests[10] = init_quest("Le jeu, tu finiras.",
+    quests[9] = init_quest("Le jeu, tu finiras.",
         "GG tu as fini le jeu, amuse toi maintenant !", 1);
-    quests[11] = NULL;
+    quests[10] = NULL;
 }
 
 static quest_t **init_quests(void)

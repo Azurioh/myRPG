@@ -8,6 +8,7 @@
 #include "../../include/npc.h"
 #include "../../include/generation.h"
 #include "../../include/myrpg.h"
+#include "SFML/Graphics/Color.h"
 #include "SFML/Graphics/Font.h"
 #include "SFML/Graphics/RectangleShape.h"
 #include "SFML/Graphics/Text.h"
@@ -69,11 +70,13 @@ static npc_visual_t *init_npc_visual(myrpg_t *myrpg)
     resize.y += 200;
     visual->rect = sfRectangleShape_create();
     sfRectangleShape_setSize(visual->rect, (sfVector2f){1920, 500});
-    sfRectangleShape_setFillColor(visual->rect, sfWhite);
+    sfRectangleShape_setFillColor(visual->rect,
+        sfColor_fromRGBA(200, 200, 200, 255));
     visual->text = sfText_create();
     sfText_setFont(visual->text, font);
-    sfText_setColor(visual->text, sfBlack);
     sfText_setCharacterSize(visual->text, 50);
+    sfText_setOutlineColor(visual->text, sfBlack);
+    sfText_setOutlineThickness(visual->text, 4);
     return visual;
 }
 
