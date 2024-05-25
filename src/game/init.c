@@ -19,7 +19,8 @@ static sfSprite *init_map(void)
 
 static sfSprite *init_uppermap(void)
 {
-    sfTexture *tmp_texture = sfTexture_createFromFile("./assets/map/map2.png", NULL);
+    sfTexture *tmp_texture = sfTexture_createFromFile("./assets/map/map2.png",
+    NULL);
     sfSprite *tmp_sprite = sfSprite_create();
 
     sfSprite_setTexture(tmp_sprite, tmp_texture, sfFalse);
