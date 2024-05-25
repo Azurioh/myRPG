@@ -38,6 +38,7 @@ typedef struct game_s {
     sfSprite *player;
     sfSprite *map;
     sfMusic *attack_s;
+    sfSprite *uppermap;
     sfImage *undermap;
     sfIntRect rect;
     sfSprite *undermap_sprite;
