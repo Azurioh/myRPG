@@ -16,13 +16,15 @@ static int get_rarity(void)
     int rarity;
 
     srand(time(NULL));
-    val = rand() % 100;
-    if (val <= 50)
-        rarity = 0;
-    if (val > 50 && val <= 80)
+    val = rand() % 1000;
+    if (val <= 500)
         rarity = 1;
-    if (val > 80 && val <= 100)
+    if (val > 500 && val <= 790)
         rarity = 2;
+    if (val > 790 && val <= 980)
+        rarity = 3;
+    if (val > 980 && val <= 1000)
+        rarity = 4;
     return rarity;
 }
 
@@ -36,9 +38,19 @@ int get_loot(myrpg_t *myrpg, mobs_t *mob)
     }
     rarity = get_rarity();
     srand(time(NULL));
-    if (rarity == 1 || rarity == 2) {
-        return mob->item_loot[rarity][rand() % 5];
-    } else {
-        return mob->item_loot[rarity][rand() % 6];
-    }
+    return mob->item_loot[rarity][rand() % 5];
+}
+
+void add_item(myrpg_t *myrpg, int i)
+{
+    int heal_item;
+
+    srand(time(NULL));
+    heal_item = get_rarity() - 1;
+    add_item_in_inv(myrpg->player->inventory,
+        myrpg->mobs[i]->item_loot[0][heal_item]);
+    if (rand() % 25 == 3)
+        add_item_in_inv(myrpg->player->inventory,
+            get_loot(myrpg, myrpg->mobs[i]));
+    add_item_in_inv(myrpg->player->inventory, get_loot(myrpg, myrpg->mobs[i]));
 }

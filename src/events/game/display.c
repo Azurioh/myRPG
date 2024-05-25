@@ -97,7 +97,7 @@ void display_enemies(myrpg_t *myrpg)
     for (int i = 0; myrpg->mobs[i]; i++) {
         time = sfClock_getElapsedTime(myrpg->mobs[i]->clock);
         if (myrpg->mobs[i]->can_collide == 1) {
-        sfRenderWindow_drawSprite(WINDOW, myrpg->mobs[i]->sprite, NULL);
+            sfRenderWindow_drawSprite(WINDOW, myrpg->mobs[i]->sprite, NULL);
         }
         if (sfTime_asMilliseconds(time) >=
             sfTime_asMilliseconds(myrpg->mobs[i]->respawn) &&
@@ -112,6 +112,7 @@ void make_all(myrpg_t *myrpg)
 {
     spawn_npc(myrpg);
     display_enemies(myrpg);
+    sfRenderWindow_drawSprite(WINDOW, GAME_INFO->uppermap, NULL);
     if (myrpg->fight_infos->in_fight == 1)
         fight(myrpg);
     if (myrpg->is_inventory == 1)
@@ -133,7 +134,6 @@ void display_game(void *args)
         check_coll_enemy(myrpg, i);
         check_if_mob_mov(myrpg, i);
     }
-    sfRenderWindow_drawSprite(WINDOW, GAME_INFO->uppermap, NULL);
     make_all(myrpg);
     display_hud(myrpg);
     if (myrpg->is_inventory == 0 && GAME_INFO->show_menu == 0 &&

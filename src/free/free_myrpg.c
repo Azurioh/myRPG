@@ -6,6 +6,7 @@
 */
 
 #include "../../include/myrpg.h"
+#include <SFML/Graphics/RectangleShape.h>
 
 void free_myrpg(myrpg_t *myrpg)
 {
@@ -26,5 +27,6 @@ void free_myrpg(myrpg_t *myrpg)
     free_settings(myrpg->settings);
     free_hud(myrpg->hud);
     free_npc(myrpg->npc);
+    sfRectangleShape_destroy(myrpg->hitbox);
     free(myrpg);
 }

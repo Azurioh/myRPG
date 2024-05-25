@@ -9,11 +9,13 @@
 #include "../../include/fight.h"
 #include "../../include/generation.h"
 #include "SFML/Window/Event.h"
+#include <SFML/Audio/Music.h>
 #include <SFML/Graphics/Rect.h>
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Text.h>
 #include <SFML/Graphics/Types.h>
+#include <SFML/System/Time.h>
 #include <SFML/System/Vector2.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -63,6 +65,7 @@ fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
         && EVENTS->event.type != sfEvtMouseMoved)) {
         return fight;
     }
+    sfMusic_setLoop(myrpg->game_info->attack_s, sfTrue);
     for (int i = 0; buttons[i]; i++) {
         if (EVENTS->event.type == sfEvtMouseButtonPressed &&
             buttons[i]->is_clicked(buttons[i], SETTINGS->window) == sfTrue) {
@@ -130,6 +133,7 @@ static void reset_game(myrpg_t *myrpg)
     move_all_after_tp(myrpg,
         (sfVector2f){960 * 0.65, 900 * 0.65});
     free_player(PLAYER);
+    free_mobs(myrpg->mobs);
     PLAYER = init_player();
     free_quests(QUESTS);
     QUESTS = create_quest_list();
@@ -143,20 +147,18 @@ static void reset_game(myrpg_t *myrpg)
 static void unmake_fight(myrpg_t *myrpg)
 {
     int id = myrpg->fight_infos->enemy_id;
-    int loot_val = get_loot(myrpg, myrpg->mobs[id]);
 
     srand(time(NULL));
     if (myrpg->fight_infos->toskra_hp > 0)
         update_player_experience(myrpg->player, myrpg->mobs[id]->xp_loot);
-    if (rand() % 25 == 3)
-        add_item_in_inv(myrpg->player->inventory, loot_val);
-    add_item_in_inv(myrpg->player->inventory, loot_val);
+    add_item(myrpg, id);
     sfRenderWindow_clear(WINDOW, sfBlack);
     myrpg->mobs[id]->can_collide = 0;
     put_all_back(myrpg, id);
     sfRenderWindow_display(WINDOW);
+    free_all_buttons(myrpg->fight_infos->buttons);
     myrpg->player->life = myrpg->fight_infos->toskra_hp;
-    if (myrpg->player->life == 0) {
+    if (myrpg->player->life <= 0) {
         reset_game(myrpg);
     }
 }
