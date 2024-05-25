@@ -6,6 +6,7 @@
 */
 
 #include "../../include/myrpg.h"
+#include <SFML/Audio/Music.h>
 
 static sfSprite *init_map(void)
 {
@@ -97,5 +98,6 @@ game_t *init_game_struct(void *args)
     game_info->game_menu = init_game_menu(game_info, SETTINGS);
     game_info->show_menu = 0;
     game_info->clock = sfClock_create();
+    game_info->attack_s = sfMusic_createFromFile("assets/musics/attack.ogg");
     return game_info;
 }
