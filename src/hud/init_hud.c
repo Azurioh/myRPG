@@ -18,7 +18,7 @@ void init_hud_text(hud_t *hud, sfVector2f resize, game_t *g_info, char *name)
     key[1] = '\0';
     hud->font = sfFont_createFromFile("assets/font/alagard.ttf");
     hud->action = create_text(key, 48,
-        (sfVector2f){resize.x + 1050, resize.y + 450}, hud->font);
+        (sfVector2f){resize.x + 720, resize.y + 320}, hud->font);
     key[0] = g_info->keybinds->open_inventory + 'A';
     hud->name = create_text(name, 22, (sfVector2f){resize.x + 90,
                                 resize.y + 3}, hud->font);
