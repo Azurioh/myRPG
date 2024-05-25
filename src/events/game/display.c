@@ -55,7 +55,7 @@ static void update_skills_elements(myrpg_t *myrpg)
     for (int i = 0; array[i]; i++) {
         array[i] = my_strcat(array[i], "/");
         array[i] = my_strcat(array[i],
-            nbr_to_str(PLAYER->skills[i]->max_level));
+            nbr_to_str(PLAYER->skills[i]->max_level - 1));
     }
     for (int i = 1; i < 4; i++)
         sfText_setString(GAME_INFO->game_menu->texts[i], array[i - 1]);
