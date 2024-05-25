@@ -8,7 +8,6 @@
 #ifndef GAME_H
     #define GAME_H
     #include <SFML/Audio/Types.h>
-#include <SFML/Graphics.h>
     #include <SFML/Graphics/Types.h>
     #include "button.h"
     #include "settings.h"
