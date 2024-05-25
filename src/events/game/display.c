@@ -133,6 +133,7 @@ void display_game(void *args)
         check_coll_enemy(myrpg, i);
         check_if_mob_mov(myrpg, i);
     }
+    sfRenderWindow_drawSprite(WINDOW, GAME_INFO->uppermap, NULL);
     make_all(myrpg);
     display_hud(myrpg);
     if (myrpg->is_inventory == 0 && GAME_INFO->show_menu == 0 &&
