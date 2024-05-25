@@ -17,6 +17,7 @@ sfSprite *init_player_sprite(player_interface_t *player_interface)
         &player_interface->rect);
 
     sfSprite_setTexture(sprite, texture, sfFalse);
+    sfTexture_destroy(texture);
     return sprite;
 }
 
