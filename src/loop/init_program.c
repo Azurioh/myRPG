@@ -71,12 +71,14 @@ mobs_t *create_sprite(mobs_t *mobs)
 
 int **init_loot(void)
 {
-    int **loot_table = malloc(sizeof(int *) * 4);
+    int **loot_table = malloc(sizeof(int *) * 6);
 
-    loot_table[0] = malloc(sizeof(int) * 6);
+    loot_table[0] = malloc(sizeof(int) * 4);
     loot_table[1] = malloc(sizeof(int) * 5);
     loot_table[2] = malloc(sizeof(int) * 5);
-    loot_table[3] = malloc(sizeof(int) * 6);
+    loot_table[3] = malloc(sizeof(int) * 5);
+    loot_table[4] = malloc(sizeof(int) * 5);
+    loot_table[5] = NULL;
     loot_table = init_all_lootables(loot_table);
     return loot_table;
 }
