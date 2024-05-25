@@ -152,10 +152,8 @@ static void unmake_fight(myrpg_t *myrpg)
     if (myrpg->fight_infos->toskra_hp > 0)
         update_player_experience(myrpg->player, myrpg->mobs[id]->xp_loot);
     add_item(myrpg, id);
-    sfRenderWindow_clear(WINDOW, sfBlack);
     myrpg->mobs[id]->can_collide = 0;
     put_all_back(myrpg, id);
-    sfRenderWindow_display(WINDOW);
     free_all_buttons(myrpg->fight_infos->buttons);
     myrpg->player->life = myrpg->fight_infos->toskra_hp;
     if (myrpg->player->life <= 0) {
