@@ -17,7 +17,7 @@ static void load_special_texts(char **texts)
     texts[5] = strdup("(Me frappe pas stp)");
     texts[6] = NULL;
     texts[7] = strdup("Tu es trop fort !");
-    texts[8] = strdup("J'aimerai être aussi fort que toi...");
+    texts[8] = strdup("J'aimerai etre aussi fort que toi...");
     texts[9] = strdup("Soulever des gros troncs ca doit etre cool");
     texts[10] = NULL;
     texts[11] = strdup("J'ai perdu mon frigo !");

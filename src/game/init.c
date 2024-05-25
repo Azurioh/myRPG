@@ -24,6 +24,7 @@ static sfSprite *init_uppermap(void)
     sfSprite *tmp_sprite = sfSprite_create();
 
     sfSprite_setTexture(tmp_sprite, tmp_texture, sfFalse);
+    sfSprite_setPosition(tmp_sprite, (sfVector2f){-2, -10});
     return tmp_sprite;
 }
 
