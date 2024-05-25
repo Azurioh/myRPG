@@ -35,3 +35,4 @@ typedef struct mobs_s {
 int **init_loot(void);
 mobs_t *create_sprite(mobs_t *mobs);
 mobs_t *init_lvl_one(mobs_t **mobs, int i, sfVector2f pos);
+void free_mobs(mobs_t **mobs);
