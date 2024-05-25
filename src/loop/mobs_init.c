@@ -50,6 +50,7 @@ mobs_t *init_lvl_two(mobs_t **mobs, int i, sfVector2f pos)
     sfCircleShape_setRadius(mobs[i]->detection, 350);
     sfCircleShape_setPosition(mobs[i]->detection, pos);
     mobs[i] = create_sprite(mobs[i]);
+    sfSprite_setColor(mobs[i]->sprite, sfGreen);
     sfRectangleShape_setPosition(mobs[i]->hitbox, mobs[i]->pos);
     sfRectangleShape_setSize(mobs[i]->hitbox, (sfVector2f){50, 50});
     return mobs[i];
@@ -73,6 +74,7 @@ mobs_t *init_lvl_three(mobs_t **mobs, int i, sfVector2f pos)
     sfCircleShape_setRadius(mobs[i]->detection, 400);
     sfCircleShape_setPosition(mobs[i]->detection, pos);
     mobs[i] = create_sprite(mobs[i]);
+    sfSprite_setColor(mobs[i]->sprite, sfRed);
     sfRectangleShape_setPosition(mobs[i]->hitbox, mobs[i]->pos);
     sfRectangleShape_setSize(mobs[i]->hitbox, (sfVector2f){50, 50});
     return mobs[i];
@@ -96,6 +98,7 @@ mobs_t *init_lvl_four(mobs_t **mobs, int i, sfVector2f pos)
     sfCircleShape_setRadius(mobs[i]->detection, 400);
     sfCircleShape_setPosition(mobs[i]->detection, pos);
     mobs[i] = create_sprite(mobs[i]);
+    sfSprite_setColor(mobs[i]->sprite, sfYellow);
     sfRectangleShape_setPosition(mobs[i]->hitbox, mobs[i]->pos);
     sfRectangleShape_setSize(mobs[i]->hitbox, (sfVector2f){50, 50});
     return mobs[i];
