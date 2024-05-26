@@ -129,6 +129,8 @@ void check_coll_enemy(myrpg_t *myrpg, int i);
 void check_if_mob_mov(myrpg_t *myrpg, int i);
 int put_all_back(myrpg_t *myrpg, int id);
 void check_where_move(sfVector2f dep, int i, myrpg_t *myrpg);
+void check_coll_enemy(myrpg_t *myrpg, int i);
+void check_if_mob_mov(myrpg_t *myrpg, int i);
 float check_health_lvl(myrpg_t *myrpg);
 float check_damage_launch_lvl(myrpg_t *myrpg);
 float check_damage_axe_lvl(myrpg_t *myrpg);
