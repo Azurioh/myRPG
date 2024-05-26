@@ -32,14 +32,14 @@ enemy_t *init_enemy(myrpg_t *myrpg)
     return enemy;
 }
 
-static int get_def_play(myrpg_t *myrpg)
+static int get_def_play(myrpg_t *myrpg, int i)
 {
     float def = myrpg->player->armor + myrpg->player->item_armor;
     int tmp = def;
     float final_val = 0;
 
     def = 1 - ((def / 1000) * 2);
-    final_val = def * 10;
+    final_val = def * myrpg->mobs[i]->damages;
     if (final_val - tmp > 0.5) {
         tmp = final_val + 1;
     } else
@@ -49,7 +49,8 @@ static int get_def_play(myrpg_t *myrpg)
 
 static fight_t *attack(myrpg_t *myrpg)
 {
-    myrpg->fight_infos->toskra_hp -= get_def_play(myrpg) *
+    myrpg->fight_infos->toskra_hp -=
+        get_def_play(myrpg, myrpg->fight_infos->enemy_id) *
         myrpg->fight_infos->enemy_infos->rage;
     myrpg->fight_infos->enemy_infos->did_attack = 1;
     return myrpg->fight_infos;
@@ -63,9 +64,9 @@ static fight_t *rage(fight_t *fight)
     return fight;
 }
 
-static fight_t *heal(fight_t *fight)
+static fight_t *heal(fight_t *fight, myrpg_t *myrpg, int i)
 {
-    fight->enemy_hp += 20;
+    fight->enemy_hp += 10 + 10 * myrpg->mobs[i]->level;
     fight->enemy_infos->heal_turns = 3;
     fight->enemy_infos->did_attack = 1;
     return fight;
@@ -75,10 +76,10 @@ fight_t *make_ennemy_attack(fight_t *fight, myrpg_t *myrpg)
 {
     if (fight->enemy_hp < 60 && fight->enemy_infos->heal_turns <= 0 &&
         fight->enemy_infos->did_attack != 1) {
-        heal(fight);
+        heal(fight, myrpg, myrpg->fight_infos->enemy_id);
     }
     if (fight->toskra_hp > 60 && fight->enemy_infos->rage_turns <= 0 &&
-        fight->enemy_infos->did_attack != 1) {
+        fight->enemy_infos->did_attack != 1 && fight->enemy_infos->rage < 2) {
         rage(fight);
     }
     if (fight->enemy_infos->did_attack != 1) {

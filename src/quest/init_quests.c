@@ -22,7 +22,7 @@ static quest_t *init_quest(char *name, char *description, int nb_required)
 
 static void fill_tutorial_quests(quest_t **quests)
 {
-    quests[0] = init_quest("Ton arme, tu recuperera.",
+    quests[0] = init_quest("Ton arme, tu recupereras.",
         "Equipe la hache de ton pere", 1);
     quests[0]->is_unlocked = true;
     quests[1] = init_quest("Tes competences, tu developperas.",
@@ -51,9 +51,11 @@ static void fill_quests(quest_t **quests)
 {
     fill_tutorial_quests(quests);
     fill_medium_quests(quests);
-    quests[9] = init_quest("Le jeu, tu finiras.",
+    quests[9] = init_quest("Le boss, tu domineras.",
+        "Affronte le boss final de la montagne", 1);
+    quests[10] = init_quest("Le jeu, tu finiras.",
         "GG tu as fini le jeu, amuse toi maintenant !", 1);
-    quests[10] = NULL;
+    quests[11] = NULL;
 }
 
 static quest_t **init_quests(void)

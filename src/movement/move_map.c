@@ -8,6 +8,7 @@
 #include "../../include/myrpg.h"
 #include <SFML/Graphics/RectangleShape.h>
 #include <SFML/Graphics/Types.h>
+#include <stdio.h>
 
 static void animate_player(myrpg_t *myrpg, int top)
 {

@@ -7,7 +7,7 @@
 
 #ifndef GAME_H
     #define GAME_H
-    #include <SFML/Graphics.h>
+    #include <SFML/Audio/Types.h>
     #include <SFML/Graphics/Types.h>
     #include "button.h"
     #include "settings.h"
@@ -36,6 +36,7 @@ typedef struct game_s {
     sfClock *clock;
     sfSprite *player;
     sfSprite *map;
+    sfMusic *attack_s;
     sfSprite *uppermap;
     sfImage *undermap;
     sfIntRect rect;

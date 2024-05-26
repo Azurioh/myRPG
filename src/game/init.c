@@ -6,6 +6,7 @@
 */
 
 #include "../../include/myrpg.h"
+#include <SFML/Audio/Music.h>
 
 static sfSprite *init_map(void)
 {
@@ -13,6 +14,17 @@ static sfSprite *init_map(void)
     sfSprite *tmp_sprite = sfSprite_create();
 
     sfSprite_setTexture(tmp_sprite, tmp_texture, sfFalse);
+    return tmp_sprite;
+}
+
+static sfSprite *init_uppermap(void)
+{
+    sfTexture *tmp_texture = sfTexture_createFromFile("./assets/map/map2.png",
+    NULL);
+    sfSprite *tmp_sprite = sfSprite_create();
+
+    sfSprite_setTexture(tmp_sprite, tmp_texture, sfFalse);
+    sfSprite_setPosition(tmp_sprite, (sfVector2f){-2, -10});
     return tmp_sprite;
 }
 
@@ -92,10 +104,12 @@ game_t *init_game_struct(void *args)
     game_info->undermap = init_undermap();
     game_info->undermap_sprite = init_undermap_sprite();
     game_info->map_view = init_view(myrpg);
+    game_info->uppermap = init_uppermap();
     game_info->player = create_player(myrpg);
     game_info->keybinds = GAME_INFO->keybinds;
     game_info->game_menu = init_game_menu(game_info, SETTINGS);
     game_info->show_menu = 0;
     game_info->clock = sfClock_create();
+    game_info->attack_s = sfMusic_createFromFile("assets/musics/attack.ogg");
     return game_info;
 }

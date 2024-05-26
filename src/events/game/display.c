@@ -55,7 +55,7 @@ static void update_skills_elements(myrpg_t *myrpg)
     for (int i = 0; array[i]; i++) {
         array[i] = my_strcat(array[i], "/");
         array[i] = my_strcat(array[i],
-            nbr_to_str(PLAYER->skills[i]->max_level));
+            nbr_to_str(PLAYER->skills[i]->max_level - 1));
     }
     for (int i = 1; i < 4; i++)
         sfText_setString(GAME_INFO->game_menu->texts[i], array[i - 1]);
@@ -97,7 +97,7 @@ void display_enemies(myrpg_t *myrpg)
     for (int i = 0; myrpg->mobs[i]; i++) {
         time = sfClock_getElapsedTime(myrpg->mobs[i]->clock);
         if (myrpg->mobs[i]->can_collide == 1) {
-        sfRenderWindow_drawSprite(WINDOW, myrpg->mobs[i]->sprite, NULL);
+            sfRenderWindow_drawSprite(WINDOW, myrpg->mobs[i]->sprite, NULL);
         }
         if (sfTime_asMilliseconds(time) >=
             sfTime_asMilliseconds(myrpg->mobs[i]->respawn) &&
@@ -112,6 +112,7 @@ void make_all(myrpg_t *myrpg)
 {
     spawn_npc(myrpg);
     display_enemies(myrpg);
+    sfRenderWindow_drawSprite(WINDOW, GAME_INFO->uppermap, NULL);
     if (myrpg->fight_infos->in_fight == 1)
         fight(myrpg);
     if (myrpg->is_inventory == 1)

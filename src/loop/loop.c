@@ -90,6 +90,7 @@ int loop(myrpg_t *myrpg)
     while (myrpg->game_open == 1) {
         game_loop(myrpg);
     }
+    free_mobs(myrpg->mobs);
     free_myrpg(myrpg);
     return 0;
 }
