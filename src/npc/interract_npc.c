@@ -35,7 +35,8 @@ static bool check_npc(myrpg_t *myrpg, npc_info_t *info)
 {
     if (check_npc_collision(myrpg, info)) {
         myrpg->can_interact = 1;
-        if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->interact) == true) {
+        if (sfKeyboard_isKeyPressed(GAME_INFO->keybinds->interact) == true
+            && myrpg->is_inventory == 0 && GAME_INFO->show_menu == 0) {
             display_npc(myrpg);
         }
         return true;

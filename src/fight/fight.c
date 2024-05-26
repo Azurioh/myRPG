@@ -8,6 +8,8 @@
 #include "../../include/myrpg.h"
 #include "../../include/fight.h"
 #include "../../include/generation.h"
+#include "SFML/System/Sleep.h"
+#include "SFML/System/Time.h"
 #include "SFML/Window/Event.h"
 #include <SFML/Audio/Music.h>
 #include <SFML/Graphics/Rect.h>
@@ -71,11 +73,13 @@ fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
             buttons[i]->is_clicked(buttons[i], SETTINGS->window) == sfTrue) {
             fight = check_str_infos(buttons[i]->button_name, fight, myrpg);
             fight->turn = ENEMY;
+            sfSprite_setScale(buttons[i]->image_sprite, (sfVector2f){
+                buttons[i]->initial_scaling, buttons[i]->initial_scaling
+            });
             return fight;
         }
-        if (EVENTS->event.type == sfEvtMouseMoved) {
+        if (EVENTS->event.type == sfEvtMouseMoved)
             buttons[i]->is_hover(buttons[i], SETTINGS->window);
-        }
         animate_attack_button(buttons[i]);
     }
     return fight;

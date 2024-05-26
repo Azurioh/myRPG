@@ -16,6 +16,8 @@ void drop_item(button_t *button, void *args)
         return;
     slot = atoi(selected_button->button_name);
     (void)button;
+    if (INVENTORY->id[slot] == 5 && QUESTS->quests[0]->is_validate == false)
+        return;
     myrpg->player->inventory->selected_item = NULL;
     myrpg->player->inventory->selected_slot = NULL;
     myrpg->player->inventory->id[slot] = -1;
