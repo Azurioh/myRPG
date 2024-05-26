@@ -142,8 +142,6 @@ static void reset_game(myrpg_t *myrpg)
     free_quests(QUESTS);
     QUESTS = create_quest_list();
     sfMusic_stop(myrpg->music);
-    load_game(myrpg);
-    EVENTS->load_function(myrpg);
     INVENTORY = init_inventory(myrpg);
     myrpg->mobs = init_mobs();
 }
@@ -160,6 +158,7 @@ static void unmake_fight(myrpg_t *myrpg)
     put_all_back(myrpg, id);
     free_all_buttons(myrpg->fight_infos->buttons);
     myrpg->player->life = myrpg->fight_infos->toskra_hp;
+    fight_quests(myrpg);
     if (myrpg->player->life <= 0) {
         reset_game(myrpg);
     }
@@ -177,7 +176,6 @@ void fight(myrpg_t *myrpg)
             unmake_fight(myrpg);
             myrpg->fight_infos->in_fight = 0;
             myrpg->fight_infos->loaded = 0;
-            fight_quests(myrpg);
         }
     }
 }
