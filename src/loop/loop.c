@@ -14,8 +14,6 @@
 #include <SFML/System/Clock.h>
 #include <SFML/System/Vector2.h>
 #include <SFML/Window/Keyboard.h>
-#include <stdio.h>
-#include <math.h>
 
 void game_loop(myrpg_t *myrpg)
 {

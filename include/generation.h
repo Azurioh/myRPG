@@ -11,6 +11,7 @@
     #define FIGHT_MAP "assets/combat_scene.png"
     #define UNDERMAP_PATH "./assets/map/undermap.png"
     #define MAP_PATH "./assets/map/map.png"
+    #define UPPERMAP_PATH "./assets/map/map2.png"
     #define PLAYER_PATH "./assets/player_spritesheet.png"
     #define NPC_PATH "./assets/npc.png"
 

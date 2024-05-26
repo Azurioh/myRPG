@@ -97,7 +97,7 @@ int tp_all(myrpg_t *myrpg, int i, int j)
 
 int put_all_back(myrpg_t *myrpg, int id)
 {
-    sfSprite_setTexture(myrpg->game_info->map, myrpg->map, sfFalse);
+    sfSprite_setTexture(myrpg->game_info->map, myrpg->maps[0], sfFalse);
     sfSprite_setScale(myrpg->game_info->map, (sfVector2f){1, 1});
     sfView_setCenter(myrpg->game_info->map_view, myrpg->fight_infos->pos);
     tp_all(myrpg, id, 1);

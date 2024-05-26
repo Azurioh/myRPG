@@ -8,22 +8,19 @@
 #include "../../include/myrpg.h"
 #include <SFML/Audio/Music.h>
 
-static sfSprite *init_map(void)
+static sfSprite *init_map(myrpg_t *myrpg)
 {
-    sfTexture *tmp_texture = sfTexture_createFromFile(MAP_PATH, NULL);
     sfSprite *tmp_sprite = sfSprite_create();
 
-    sfSprite_setTexture(tmp_sprite, tmp_texture, sfFalse);
+    sfSprite_setTexture(tmp_sprite, myrpg->maps[0], sfFalse);
     return tmp_sprite;
 }
 
-static sfSprite *init_uppermap(void)
+static sfSprite *init_uppermap(myrpg_t *myrpg)
 {
-    sfTexture *tmp_texture = sfTexture_createFromFile("./assets/map/map2.png",
-    NULL);
     sfSprite *tmp_sprite = sfSprite_create();
 
-    sfSprite_setTexture(tmp_sprite, tmp_texture, sfFalse);
+    sfSprite_setTexture(tmp_sprite, myrpg->maps[3], sfFalse);
     sfSprite_setPosition(tmp_sprite, (sfVector2f){-2, -10});
     return tmp_sprite;
 }
@@ -55,12 +52,11 @@ static sfSprite *create_player(myrpg_t *myrpg)
     return sprite_player;
 }
 
-static sfSprite *init_undermap_sprite(void)
+static sfSprite *init_undermap_sprite(myrpg_t *myrpg)
 {
     sfSprite *sprite = sfSprite_create();
-    sfTexture *texture = sfTexture_createFromFile(UNDERMAP_PATH, NULL);
 
-    sfSprite_setTexture(sprite, texture, sfFalse);
+    sfSprite_setTexture(sprite, myrpg->maps[2], sfFalse);
     sfSprite_setPosition(sprite, (sfVector2f){0, 0});
     return sprite;
 }
@@ -100,11 +96,11 @@ game_t *init_game_struct(void *args)
 
     if (!game_info)
         return NULL;
-    game_info->map = init_map();
+    game_info->map = init_map(myrpg);
     game_info->undermap = init_undermap();
-    game_info->undermap_sprite = init_undermap_sprite();
+    game_info->undermap_sprite = init_undermap_sprite(myrpg);
     game_info->map_view = init_view(myrpg);
-    game_info->uppermap = init_uppermap();
+    game_info->uppermap = init_uppermap(myrpg);
     game_info->player = create_player(myrpg);
     game_info->keybinds = GAME_INFO->keybinds;
     game_info->game_menu = init_game_menu(game_info, SETTINGS);
