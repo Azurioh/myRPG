@@ -13,6 +13,11 @@ void fight_quests(myrpg_t *myrpg)
         QUESTS->quests[4]->nb++;
         update_quest(QUESTS);
     }
+    if (QUESTS->quests[9]->is_unlocked == true)
+        if (myrpg->mobs[myrpg->fight_infos->enemy_id]->level == 5) {
+            QUESTS->quests[9]->nb++;
+            return update_quest(QUESTS);
+        }
     for (int i = 2; i <= 8; i += 3) {
         if (QUESTS->quests[i]->is_unlocked == true
             && QUESTS->quests[i]->is_validate == false) {
