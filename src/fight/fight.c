@@ -43,22 +43,23 @@ static int get_damage(myrpg_t *myrpg)
 
 static fight_t *check_str_infos(char *str, fight_t *fight, myrpg_t *myrpg)
 {
-    if (str[0] == 'a') {
+    if (str[0] == 'a' && fight->turn != ENEMY) {
         fight->enemy_hp -= (get_damage(myrpg) * check_damage_axe_lvl(myrpg))
         * fight->angryness;
         animate_attack(myrpg, 1, fight->enemy_id);
                                 }
-    if (str[0] == 'b') {
+    if (str[0] == 'b' && fight->turn != ENEMY) {
         fight->enemy_hp -= (get_damage(myrpg) * check_damage_launch_lvl(myrpg))
         * fight->angryness;
         animate_attack(myrpg, 1, fight->enemy_id);
     }
-    if (str[0] == 'c') {
+    if (str[0] == 'c' && fight->turn != ENEMY) {
         fight->toskra_hp += 25.00 / 100.00 * myrpg->player->max_hp;
     }
-    if (str[0] == 'd') {
+    if (str[0] == 'd' && fight->turn != ENEMY) {
         fight->angryness += 1;
     }
+    fight->turn = ENEMY;
     return fight;
 }
 
@@ -73,7 +74,6 @@ fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
         if (EVENTS->event.type == sfEvtMouseButtonPressed &&
             buttons[i]->is_clicked(buttons[i], SETTINGS->window) == sfTrue) {
             fight = check_str_infos(buttons[i]->button_name, fight, myrpg);
-            fight->turn = ENEMY;
             sfSprite_setScale(buttons[i]->image_sprite, (sfVector2f){
                 buttons[i]->initial_scaling, buttons[i]->initial_scaling});
             return fight;
