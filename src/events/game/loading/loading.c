@@ -28,7 +28,6 @@ void load_game_elements(void *args)
 
     myrpg->hud = init_hud(myrpg->player->name, myrpg->game_info);
     myrpg->player->inventory = init_inventory(myrpg);
-    myrpg->items = init_items();
     myrpg->can_interact = 0;
     myrpg->is_inventory = 0;
     if (myrpg->music_started == false) {
