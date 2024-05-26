@@ -125,8 +125,8 @@ void move(myrpg_t *myrpg)
     movement.x *= seconds;
     movement.y *= seconds;
     if (PLAYER->sprinting == true) {
-        movement.x *= 2;
-        movement.y *= 2;
+        movement.x *= 1.5;
+        movement.y *= 1.5;
     }
     play_walk_sound(myrpg, movement);
     sfView_move(myrpg->game_info->map_view, movement);
