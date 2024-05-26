@@ -44,6 +44,14 @@
     #include "item.h"
     #include "quest.h"
 
+typedef struct loading_screen_s {
+    sfRectangleShape *background;
+    sfText *text;
+    sfRectangleShape **loading_bars;
+    sfClock *animation_clock;
+    int loading_status;
+} loading_screen_t;
+
 typedef struct myrpg_s {
     int game_open;
     sfRectangleShape *hitbox;
@@ -62,6 +70,7 @@ typedef struct myrpg_s {
     button_t **buttons;
     portal_t *portal;
     settings_t *settings;
+    loading_screen_t *loading_screen;
     hud_t *hud;
     npc_t *npc;
     int can_interact;
@@ -183,4 +192,6 @@ void can_speak(myrpg_t *myrpg, npc_t *npc);
 void display_npc(void *args);
 void disable_attack_button(myrpg_t *myrpg, button_t **buttons);
 mobs_t **init_mobs(void);
+
+void loading_screen(myrpg_t *myrpg);
 #endif
