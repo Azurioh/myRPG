@@ -36,11 +36,11 @@ static void update_skills_buttons(myrpg_t *myrpg)
         sfSprite_setColor(buttons[0]->image_sprite, color);
     }
     if (PLAYER->level < 2 || PLAYER->skills[2]->is_max_level == 1) {
-        GAME_INFO->game_menu->buttons[2]->clickable = sfFalse;
+        GAME_INFO->game_menu->buttons[1]->clickable = sfFalse;
         sfSprite_setColor(buttons[1]->image_sprite, color);
     }
-    if (PLAYER->level < 2 || PLAYER->skills[3]->is_max_level == 1) {
-        GAME_INFO->game_menu->buttons[3]->clickable = sfFalse;
+    if (PLAYER->level < 3 || PLAYER->skills[3]->is_max_level == 1) {
+        GAME_INFO->game_menu->buttons[2]->clickable = sfFalse;
         sfSprite_setColor(buttons[2]->image_sprite, color);
     }
 }
@@ -113,6 +113,7 @@ void make_all(myrpg_t *myrpg)
     spawn_npc(myrpg);
     display_enemies(myrpg);
     sfRenderWindow_drawSprite(WINDOW, GAME_INFO->uppermap, NULL);
+    display_hud(myrpg);
     if (myrpg->fight_infos->in_fight == 1)
         fight(myrpg);
     if (myrpg->is_inventory == 1)
@@ -135,7 +136,6 @@ void display_game(void *args)
         check_if_mob_mov(myrpg, i);
     }
     make_all(myrpg);
-    display_hud(myrpg);
     if (myrpg->is_inventory == 0 && GAME_INFO->show_menu == 0 &&
         myrpg->fight_infos->in_fight == 0 &&
         !EVENTS->previous_display_function) {
