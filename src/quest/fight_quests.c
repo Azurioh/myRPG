@@ -16,6 +16,8 @@ void fight_quests(myrpg_t *myrpg)
     if (QUESTS->quests[9]->is_unlocked == true)
         if (myrpg->mobs[myrpg->fight_infos->enemy_id]->level == 5) {
             QUESTS->quests[9]->nb++;
+            add_item_in_inv(INVENTORY, 8);
+            add_item_in_inv(INVENTORY, 3);
             return update_quest(QUESTS);
         }
     for (int i = 2; i <= 8; i += 3) {
