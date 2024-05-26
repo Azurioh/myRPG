@@ -88,9 +88,9 @@ static void exec_game_events(void *args)
         }
         manage_escape_key_game(myrpg);
         sprint(myrpg);
-        if (check_portal(myrpg) == false)
-            can_speak(myrpg, myrpg->npc);
     }
+    if (check_portal(myrpg) == false)
+        can_speak(myrpg, myrpg->npc);
     fight_event(myrpg);
     open_skills(myrpg);
 }

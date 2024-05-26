@@ -117,11 +117,11 @@ static sfRectangleShape *init_hitbox(game_t *game_info)
 
 static void init_texture_maps(myrpg_t *myrpg)
 {
-    sfTexture *map = sfTexture_createFromFile(MAP_PATH, NULL);
-    sfTexture *fight_map = sfTexture_createFromFile(FIGHT_MAP, NULL);
-
-    myrpg->map = map;
-    myrpg->fight_map = fight_map;
+    myrpg->maps = malloc(sizeof(sfTexture *) * 4);
+    myrpg->maps[0] = sfTexture_createFromFile(MAP_PATH, NULL);
+    myrpg->maps[1] = sfTexture_createFromFile(FIGHT_MAP, NULL);
+    myrpg->maps[2] = sfTexture_createFromFile(UNDERMAP_PATH, NULL);
+    myrpg->maps[3] = sfTexture_createFromFile(UPPERMAP_PATH, NULL);
 }
 
 int start_game(void)

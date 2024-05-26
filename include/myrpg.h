@@ -47,8 +47,7 @@
 typedef struct myrpg_s {
     int game_open;
     sfRectangleShape *hitbox;
-    sfTexture *map;
-    sfTexture *fight_map;
+    sfTexture **maps;
     mobs_t **mobs;
     player_t *player;
     item_t **items;
