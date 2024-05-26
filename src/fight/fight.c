@@ -78,9 +78,8 @@ fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
             });
             return fight;
         }
-        if (EVENTS->event.type == sfEvtMouseMoved) {
+        if (EVENTS->event.type == sfEvtMouseMoved)
             buttons[i]->is_hover(buttons[i], SETTINGS->window);
-        }
         animate_attack_button(buttons[i]);
     }
     return fight;
