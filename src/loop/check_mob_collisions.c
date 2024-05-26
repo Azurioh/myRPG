@@ -65,4 +65,3 @@ void check_coll_enemy(myrpg_t *myrpg, int i)
         sfClock_restart(myrpg->mobs[i]->clock);
     }
 }
-
