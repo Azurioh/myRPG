@@ -53,6 +53,7 @@ static fight_t *attack(myrpg_t *myrpg)
         get_def_play(myrpg, myrpg->fight_infos->enemy_id) *
         myrpg->fight_infos->enemy_infos->rage;
     myrpg->fight_infos->enemy_infos->did_attack = 1;
+    animate_attack(myrpg, 0, myrpg->fight_infos->enemy_id);
     return myrpg->fight_infos;
 }
 
