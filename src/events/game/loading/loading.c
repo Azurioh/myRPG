@@ -27,7 +27,6 @@ void load_game_elements(void *args)
     sfVector2f resize = {center.x - size.x / 2, center.y - size.y / 2};
 
     myrpg->hud = init_hud(myrpg->player->name, myrpg->game_info);
-    myrpg->player->inventory = init_inventory(myrpg);
     myrpg->can_interact = 0;
     myrpg->is_inventory = 0;
     if (myrpg->music_started == false) {
