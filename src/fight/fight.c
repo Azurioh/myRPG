@@ -46,10 +46,12 @@ static fight_t *check_str_infos(char *str, fight_t *fight, myrpg_t *myrpg)
     if (str[0] == 'a') {
         fight->enemy_hp -= (get_damage(myrpg) * check_damage_axe_lvl(myrpg))
         * fight->angryness;
-    }
+        animate_attack(myrpg, 1, fight->enemy_id);
+                                }
     if (str[0] == 'b') {
         fight->enemy_hp -= (get_damage(myrpg) * check_damage_launch_lvl(myrpg))
         * fight->angryness;
+        animate_attack(myrpg, 1, fight->enemy_id);
     }
     if (str[0] == 'c') {
         fight->toskra_hp += 20.00 * check_health_lvl(myrpg);
@@ -67,15 +69,13 @@ fight_t *manage_attack_button_event(button_t **buttons, myrpg_t *myrpg,
         && EVENTS->event.type != sfEvtMouseMoved)) {
         return fight;
     }
-    sfMusic_setLoop(myrpg->game_info->attack_s, sfTrue);
     for (int i = 0; buttons[i]; i++) {
         if (EVENTS->event.type == sfEvtMouseButtonPressed &&
             buttons[i]->is_clicked(buttons[i], SETTINGS->window) == sfTrue) {
             fight = check_str_infos(buttons[i]->button_name, fight, myrpg);
             fight->turn = ENEMY;
             sfSprite_setScale(buttons[i]->image_sprite, (sfVector2f){
-                buttons[i]->initial_scaling, buttons[i]->initial_scaling
-            });
+                buttons[i]->initial_scaling, buttons[i]->initial_scaling});
             return fight;
         }
         if (EVENTS->event.type == sfEvtMouseMoved)
