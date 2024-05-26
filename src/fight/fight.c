@@ -122,8 +122,7 @@ static void make_fight(myrpg_t *myrpg)
     myrpg->fight_infos->enemy_infos = init_enemy(myrpg);
     myrpg->fight_infos->turn = TOSKRA;
     sfRenderWindow_clear(WINDOW, sfBlack);
-    sfSprite_setTexture(myrpg->game_info->map,
-        sfTexture_createFromFile(FIGHT_MAP, NULL), sfFalse);
+    sfSprite_setTexture(myrpg->game_info->map, myrpg->fight_map, sfFalse);
     sfSprite_setScale(myrpg->game_info->map, (sfVector2f){0.7, 0.7});
     sfSprite_setPosition(myrpg->game_info->player, (sfVector2f){10, 10});
     sfView_setCenter(myrpg->game_info->map_view,

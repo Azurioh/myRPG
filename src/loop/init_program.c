@@ -115,10 +115,20 @@ static sfRectangleShape *init_hitbox(game_t *game_info)
     return rect;
 }
 
+static void init_texture_maps(myrpg_t *myrpg)
+{
+    sfTexture *map = sfTexture_createFromFile(MAP_PATH, NULL);
+    sfTexture *fight_map = sfTexture_createFromFile(FIGHT_MAP, NULL);
+
+    myrpg->map = map;
+    myrpg->fight_map = fight_map;
+}
+
 int start_game(void)
 {
     myrpg_t *myrpg = init_myrpg();
 
+    init_texture_maps(myrpg);
     myrpg->fight_infos = malloc(sizeof(fight_t));
     myrpg->mobs = init_mobs();
     myrpg->fight_infos->in_fight = 0;
