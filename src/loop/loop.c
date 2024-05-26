@@ -35,9 +35,32 @@ void game_loop(myrpg_t *myrpg)
         make_transition(myrpg);
 }
 
+static void fade_background(myrpg_t *myrpg)
+{
+    sfColor bg_color =
+        sfRectangleShape_getFillColor(myrpg->loading_screen->background);
+    sfTime time;
+
+    while (bg_color.a > 0) {
+        time = sfClock_getElapsedTime(myrpg->loading_screen->animation_clock);
+        if (time.microseconds >= 1000) {
+            bg_color.a -= 2.55;
+            sfRectangleShape_setFillColor(myrpg->loading_screen->background,
+                bg_color);
+            sfClock_restart(myrpg->loading_screen->animation_clock);
+        }
+        sfRenderWindow_clear(WINDOW, sfWhite);
+        EVENTS->display_function(myrpg);
+        sfRenderWindow_drawRectangleShape(WINDOW,
+            myrpg->loading_screen->background, NULL);
+        sfRenderWindow_display(WINDOW);
+    }
+}
+
 int loop(myrpg_t *myrpg)
 {
     EVENTS->load_function(myrpg);
+    fade_background(myrpg);
     while (myrpg->game_open == 1) {
         game_loop(myrpg);
     }

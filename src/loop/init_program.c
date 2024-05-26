@@ -42,7 +42,6 @@ static myrpg_t *init_myrpg(void)
     myrpg->music = NULL;
     myrpg->music_started = false;
     myrpg->quests = create_quest_list();
-    myrpg->portal = portal_map();
     myrpg->items = NULL;
     myrpg->npc = NULL;
     init_tmp_game_info(myrpg);
@@ -115,30 +114,14 @@ static sfRectangleShape *init_hitbox(game_t *game_info)
     return rect;
 }
 
-static void init_texture_maps(myrpg_t *myrpg)
-{
-    myrpg->maps = malloc(sizeof(sfTexture *) * 4);
-    myrpg->maps[0] = sfTexture_createFromFile(MAP_PATH, NULL);
-    myrpg->maps[1] = sfTexture_createFromFile(FIGHT_MAP, NULL);
-    myrpg->maps[2] = sfTexture_createFromFile(UNDERMAP_PATH, NULL);
-    myrpg->maps[3] = sfTexture_createFromFile(UPPERMAP_PATH, NULL);
-}
-
 int start_game(void)
 {
     myrpg_t *myrpg = init_myrpg();
 
-    init_texture_maps(myrpg);
     myrpg->fight_infos = malloc(sizeof(fight_t));
-    myrpg->mobs = init_mobs();
     myrpg->fight_infos->in_fight = 0;
     myrpg->hitbox = init_hitbox(myrpg->game_info);
-    myrpg->portal = portal_map();
     load_game_save(myrpg);
-    load_main_menu(myrpg);
-    if (!myrpg) {
-        return 84;
-    } else {
-        return loop(myrpg);
-    }
+    loading_screen(myrpg);
+    return 0;
 }

@@ -107,11 +107,11 @@ mobs_t *init_lvl_four(mobs_t **mobs, int i, sfVector2f pos)
 mobs_t *init_lvl_boss(mobs_t **mobs, int i, sfVector2f pos)
 {
     mobs[i] = malloc(sizeof(mobs_t));
-    mobs[i]->life = 2000;
+    mobs[i]->life = 1000;
     mobs[i]->id = i;
     mobs[i]->can_collide = 1;
     mobs[i]->level = 5;
-    mobs[i]->damages = 60;
+    mobs[i]->damages = 50;
     mobs[i]->xp_loot = 300;
     mobs[i]->item_loot = init_loot();
     mobs[i]->pos = pos;

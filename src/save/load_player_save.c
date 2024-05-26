@@ -37,12 +37,15 @@ void load_player_save(myrpg_t *myrpg, char **options)
 
     if (!PLAYER) {
         player = init_player();
-    } else {
+    } else
         move_actual_player(myrpg, new_pos);
-    }
     player->life = atoi(options[0]);
     player->experience = atoi(options[1]);
     player->level = atoi(options[2]);
+    player->max_xp = 50 + player->level * 30;
+    player->max_hp = 100 + (10 * (player->level - 1));
+    player->attack = 5 * player->level;
+    player->armor = 5 + (2 * (player->level - 1));
     player->nb_skills_to_upgrade = atoi(options[3]);
     player->pos = new_pos;
     player->skills = init_player_skills();
