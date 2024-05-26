@@ -92,16 +92,16 @@ button_t **setup_attack_buttons(myrpg_t *myrpg)
     button_t **buttons = malloc(sizeof(button_t *) * 5);
     sfVector2f pos = sfView_getCenter(myrpg->game_info->map_view);
 
-    buttons[0] = init_attack_button("a",
+    buttons[0] = init_button("a",
         (sfVector2f){pos.x - 200, pos.y - 300},
         "assets/skills_1.png", NULL);
-    buttons[1] = init_attack_button("b",
+    buttons[1] = init_button("b",
         (sfVector2f){pos.x - 50, pos.y - 300},
         "assets/skills_2.png", NULL);
-    buttons[2] = init_attack_button("c",
+    buttons[2] = init_button("c",
         (sfVector2f){pos.x + 100, pos.y - 300},
         "assets/skills_3.png", NULL);
-    buttons[3] = init_attack_button("d",
+    buttons[3] = init_button("d",
         (sfVector2f){pos.x + 250, pos.y - 300},
         "assets/skills_4.png", NULL);
     for (int i = 0; i < 4; i++) {
