@@ -54,7 +54,7 @@ static fight_t *check_str_infos(char *str, fight_t *fight, myrpg_t *myrpg)
         animate_attack(myrpg, 1, fight->enemy_id);
     }
     if (str[0] == 'c') {
-        fight->toskra_hp += 20.00 * check_health_lvl(myrpg);
+        fight->toskra_hp += 25.00 / 100.00 * myrpg->player->max_hp;
     }
     if (str[0] == 'd') {
         fight->angryness += 1;
